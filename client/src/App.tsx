@@ -1,3 +1,5 @@
+import { Canvas } from "@react-three/fiber";
+
 const App = () => {
     return <></>;
 };

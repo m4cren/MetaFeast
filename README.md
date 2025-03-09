@@ -26,6 +26,7 @@ An interactive three dimensional costumer interface for dining restaurant
 4. after non mag 'cd ../' ka para mapunta ka ulit sa root directory
    (MetaFeast) yung mismong folder, if asa root folder ka na naman
    type 'cd server' para mapunta ka sa server folder tas type
+   'venv\Scrips\activate' para maactivate yung virtual environment tas
    'pip install -r requirements.txt' para naman to sa dependencies sa backend
 
 ---
@@ -58,7 +59,6 @@ An interactive three dimensional costumer interface for dining restaurant
 14. Reviews storing in the backend
 15. Last table update back to available after costumer click the done button
 16. Check other device compatibility, client testing, debugging
-
 
     ---- Must Have ----
 
