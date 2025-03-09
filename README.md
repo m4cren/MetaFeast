@@ -12,21 +12,30 @@ An interactive three dimensional costumer interface for dining restaurant
 
 1. Wag pansinin yung venv sa server
 
+---
+
 2. Wag pansinin yung node_modules sa client,
    focus ka lang doon sa 'public', 'src' wag pansinin yung mga asa baba
 
+---
+
 3. pag na clone mo to, type mo 'cd client' tas 'npm i' para mainstall
    mo ung mga dependencies, andon na lahat like tailwind
+
+---
 
 4. after non mag 'cd ../' ka para mapunta ka ulit sa root directory
    (MetaFeast) yung mismong folder, if asa root folder ka na naman
    type 'cd server' para mapunta ka sa server folder tas type
    'pip install -r requirements.txt' para naman to sa dependencies sa backend
 
+---
+
 5. Basahin yung mga comments ko tsaka leave ka lng ng comment sa taas ng code na want mo ma understand
 
+---
+
 6. Laging mag 'git pull origin main' muna bago mag add ng codes
-   
 
 ---- ACCOMPLISH ----
 
