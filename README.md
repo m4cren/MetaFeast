@@ -24,6 +24,8 @@ An interactive three dimensional costumer interface for dining restaurant
    'pip install -r requirements.txt' para naman to sa dependencies sa backend
 
 5. Basahin yung mga comments ko tsaka leave ka lng ng comment sa taas ng code na want mo ma understand
+
+6. Laging mag 'git pull origin main' muna bago mag add ng codes
    
 
 ---- ACCOMPLISH ----
