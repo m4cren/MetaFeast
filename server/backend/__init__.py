@@ -6,7 +6,7 @@ from flask import Flask
 from .extensions import db, migrate, socketio, jwt
 from .db_config import schema, password, username, host
 from .error_handler import handle404
-
+from .sockets import SocketIO
 import os
 import pymysql
 from flask_cors import CORS

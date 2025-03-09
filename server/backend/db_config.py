@@ -3,7 +3,7 @@
 
 from .extensions import db
 
-host = "192.168.1.35"
+host = "192.168.1.33"
 schema = "MetaFeastDB"
 username = "root"
 password = f"%40%23OctObEr102704"
