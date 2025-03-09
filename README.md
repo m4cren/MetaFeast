@@ -58,11 +58,13 @@ An interactive three dimensional costumer interface for dining restaurant
 14. Reviews storing in the backend
 15. Last table update back to available after costumer click the done button
 16. Check other device compatibility, client testing, debugging
-    --- Must Have ---
 
-Scene and Tables 3D Models
-Products
-Reciepts Creation
-Saving costumer's stage when they accidentally exit the browser
+
+    ---- Must Have ----
+
+**Scene and Tables 3D Models
+**Products
+**Reciepts Creation
+**Saving costumer's stage when they accidentally exit the browser
 
 ---------------------------------------- enjoy coding :> --------------------------------------------
