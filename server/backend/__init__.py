@@ -1,8 +1,11 @@
 import eventlet
 eventlet.monkey_patch()
+
 from flask import Flask
 from .extensions import db, migrate, socketio,  jwt 
 from .db_config import schema, password, username, host
+from .error_handler import handle404
+
 import os
 import pymysql
 from flask_cors import CORS
@@ -16,7 +19,7 @@ def create_website():
      app.config["JWT_SECRET_KEY"] = os.urandom(27)
      CORS(app, supports_credentials=True)
 
-     #PALITAN SA DB_CONFIG YUNG CREDENTIALS NANG DATABASE NG BABY KO, YUNG SCHEMA IS YUNG MAKIKITA PAG NAOPEN NA UNG DATABASE SA WORKBENCH SA LEFT SIDE
+     #PALITAN SA db_config.py YUNG CREDENTIALS NANG DATABASE, YUNG SCHEMA IS YUNG MAKIKITA PAG NAOPEN NA UNG DATABASE SA WORKBENCH SA LEFT SIDE
 
      app.config["SQLALCHEMY_DATABASE_URI"] = (
           f"mysql+pymysql://{username}:{password}@{host}/{schema}?charset=utf8"
@@ -25,8 +28,15 @@ def create_website():
 
      from .api.auth import auth
      from .api.order import order
+     from .error_handler import error_handler
+
+ 
      app.register_blueprint(order)
      app.register_blueprint(auth)
+     
+     app.register_error_handler(404, handle404)
+
+     from .db_models import AdminCredentials
     
 
      db.init_app(app)
