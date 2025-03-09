@@ -62,9 +62,9 @@ An interactive three dimensional costumer interface for dining restaurant
 
     ---- Must Have ----
 
-**Scene and Tables 3D Models
-**Products
-**Reciepts Creation
-**Saving costumer's stage when they accidentally exit the browser
+**Scene and Tables 3D Models**
+**Products**
+**Reciepts Creation**
+**Saving costumer's stage when they accidentally exit the browser**
 
 ---------------------------------------- enjoy coding :> --------------------------------------------
