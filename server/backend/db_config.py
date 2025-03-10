@@ -3,10 +3,10 @@
 
 from .extensions import db
 
-host = "192.168.1.33"
-schema = "MetaFeastDB"
+host = "localhost:3306"
+schema = "MetaFeast"
 username = "root"
-password = f"%40%23OctObEr102704"
+password = "7894561230"
 port = "6969"
 
 
