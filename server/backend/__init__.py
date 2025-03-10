@@ -5,7 +5,6 @@ eventlet.monkey_patch()
 from flask import Flask
 from .extensions import db, migrate, socketio, jwt
 from .db_config import schema, password, username, host
-from .error_handler import handle404
 from .sockets import SocketIO
 import os
 import pymysql
@@ -30,12 +29,12 @@ def create_website():
 
     from .api.auth import auth
     from .api.order import order
-    from .error_handler import error_handler
+ 
 
     app.register_blueprint(order)
     app.register_blueprint(auth)
 
-    app.register_error_handler(404, handle404)
+  
 
     from .db_models import AdminCredentials
 
