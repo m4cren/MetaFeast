@@ -9,6 +9,7 @@ from .sockets import SocketIO
 import os
 import pymysql
 from flask_cors import CORS
+from datetime import timedelta
 
 pymysql.install_as_MySQLdb()
 
@@ -19,6 +20,7 @@ def create_website():
     app.config["SECRET_KEY"] = os.urandom(10)
     app.config["JWT_SECRET_KEY"] = os.urandom(27)
     CORS(app, supports_credentials=True)
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=8)
 
     # PALITAN SA db_config.py YUNG CREDENTIALS NANG DATABASE, YUNG SCHEMA IS YUNG MAKIKITA PAG NAOPEN NA UNG DATABASE SA WORKBENCH SA LEFT SIDE
 

@@ -16,7 +16,7 @@ def costumerLogin():
 
      if(is_costumer):
           print('Name already taken')
-          return jsonify({'message': 'Name Already Taken', 'status': False})
+          return jsonify({'message': f'Someone here named { name}', 'status': False})
      else:
           new_costumer = Costumer(costumer_name = name)
           save_data(new_costumer)

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
@@ -40,7 +40,22 @@ const SelectTable = ({ setPhase }: Props) => {
         fetchCostumer();
     });
 
-    const handleExit = () => {
+    const handleExit = async () => {
+        const token = localStorage.getItem("token");
+
+        const headers = {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        };
+
+        const response = await axios.get(
+            "http://192.168.1.33:6969/costumer-exit",
+            {
+                headers,
+                withCredentials: false,
+            },
+        );
+        console.log(response.data.message);
         localStorage.removeItem("current_phase");
         localStorage.removeItem("token");
         setPhase(0);
@@ -59,4 +74,4 @@ const SelectTable = ({ setPhase }: Props) => {
     );
 };
 
-export default SelectTable;
+export default memo(SelectTable);

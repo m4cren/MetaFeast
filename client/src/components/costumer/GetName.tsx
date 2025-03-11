@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import axios from "axios";
 
 interface FormType {
@@ -23,11 +23,9 @@ const GetName = ({ setPhase }: Props) => {
             setWarningContent("Please enter your name :<");
             setIsWarning(true);
 
-            const timer = setTimeout(() => {
+            setTimeout(() => {
                 setIsWarning(false);
             }, 5000);
-
-            return () => clearTimeout(timer);
         }
 
         const submitToServer = async () => {
@@ -65,6 +63,7 @@ const GetName = ({ setPhase }: Props) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName({ ...name, [e.currentTarget.name]: e.currentTarget.value });
     };
+
     return (
         <div className="fixed w-full h-screen flex items-center justify-center">
             <div className="w-[90vw]  flex flex-col justify-center items-center h-[30rem] gap-16">
@@ -102,4 +101,4 @@ const GetName = ({ setPhase }: Props) => {
     );
 };
 
-export default GetName;
+export default memo(GetName);

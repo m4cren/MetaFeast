@@ -21,3 +21,22 @@ def phase_1():
           'message': 'ok',
           'costumer_name': current_costumer.costumer_name
      })
+
+
+@costumer.route('/costumer-exit', methods = ['POST', 'GET'])
+@jwt_required()
+def exit_costumer():
+     current_costumer_id = get_jwt_identity()
+
+     costumer_to_leave = Costumer.query.filter_by(id = current_costumer_id).first()
+
+     if not costumer_to_leave:
+          return jsonify({'message': 'Costumer not found', 'status': False})
+     
+     delete_data(costumer_to_leave)
+
+
+     return jsonify({
+          'message': 'Succesfully loggout!',
+          'status': True
+     })
