@@ -4,7 +4,7 @@
 from .extensions import db
 
 # For Ganda's db credentials
-# host = "localhost:3306"
+# host = "127.0.0.1:3306"
 # schema = "MetaFeast"
 # username = "root"
 # password = "7894561230"
