@@ -18,6 +18,9 @@ username = "root"
 password = f"%40%23OctObEr102704"
 port = "6969"
 
+def hi():
+    return 'hi'
+
 # SHORTCUT DOON SA DB.SESSION.ADD AT DB.SESSION.COMMIT NA MAY KASAMANG ROLLBACK PAG ERROR
 def save_data(data):
 

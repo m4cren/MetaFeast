@@ -1,6 +1,8 @@
 import { memo, useState } from "react";
 import axios from "axios";
 
+import useServerAddress from "../../hooks/useServerAddress";
+
 interface FormType {
     costumer_name: string;
 }
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const GetName = ({ setPhase }: Props) => {
+    const { server } = useServerAddress();
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const [warningContent, setWarningContent] = useState<string>("");
     const [name, setName] = useState<FormType>({
@@ -31,7 +34,7 @@ const GetName = ({ setPhase }: Props) => {
         const submitToServer = async () => {
             try {
                 const response = await axios.post(
-                    "http://192.168.1.33:6969/get-costumer-name",
+                    `${server}/get-costumer-name`,
                     name,
                 );
                 const token = response.data.access_token;

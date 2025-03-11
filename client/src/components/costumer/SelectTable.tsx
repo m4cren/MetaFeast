@@ -1,11 +1,13 @@
 import axios from "axios";
 import { memo, useEffect, useState } from "react";
+import useServerAddress from "../../hooks/useServerAddress";
 
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SelectTable = ({ setPhase }: Props) => {
+    const { server } = useServerAddress();
     const [costumerName, setCostumerName] = useState<string>("Loading..");
 
     useEffect(() => {
@@ -22,13 +24,10 @@ const SelectTable = ({ setPhase }: Props) => {
                     "Content-Type": "application/json",
                 };
 
-                const response = await axios.get(
-                    "http://192.168.1.33:6969/phase-1",
-                    {
-                        headers,
-                        withCredentials: false,
-                    },
-                );
+                const response = await axios.get(`${server}/phase-1`, {
+                    headers,
+                    withCredentials: false,
+                });
 
                 setCostumerName(response.data.costumer_name);
             } catch (error) {
@@ -48,13 +47,10 @@ const SelectTable = ({ setPhase }: Props) => {
             "Content-Type": "application/json",
         };
 
-        const response = await axios.get(
-            "http://192.168.1.33:6969/costumer-exit",
-            {
-                headers,
-                withCredentials: false,
-            },
-        );
+        const response = await axios.get(`${server}/costumer-exit`, {
+            headers,
+            withCredentials: false,
+        });
         console.log(response.data.message);
         localStorage.removeItem("current_phase");
         localStorage.removeItem("token");
