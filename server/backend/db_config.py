@@ -2,24 +2,29 @@
 
 
 from .extensions import db
-
-# For Ganda's db credentials
-# host = "127.0.0.1:3306"
-# schema = "MetaFeast"
-# username = "root"
-# password = "7894561230"
-# port = "6969"
+import os
 
 
-#Rainier's db credentials
-host = "192.168.1.33"
-schema = "metafeastdb"
-username = "root"
-password = f"%40%23OctObEr102704"
-port = "6969"
+venv_path = os.environ.get('VIRTUAL_ENV')
 
-def hi():
-    return 'hi'
+if venv_path:
+    if venv_path == r'C:\Users\renre\webDev\MetaFeast\server\venv_m4cren':
+        print('Rainier\'s virtual environment is activated')
+        host = "192.168.1.33"
+        schema = "metafeastdb"
+        username = "root"
+        password = f"%40%23OctObEr102704"
+        port = "6969"
+    elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
+        print('Mikaela\'s virtual environment is activated')
+        host = "127.0.0.1"
+        schema = "MetaFeast"
+        username = "root"
+        password = "7894561230"
+        port = "3306"
+    else:
+        print('PLease activate a virtual environment')
+
 
 # SHORTCUT DOON SA DB.SESSION.ADD AT DB.SESSION.COMMIT NA MAY KASAMANG ROLLBACK PAG ERROR
 def save_data(data):

@@ -4,7 +4,7 @@ eventlet.monkey_patch()
 
 from flask import Flask
 from .extensions import db, migrate, socketio, jwt
-from .db_config import schema, password, username, host
+from .db_config import schema, password, username,port, host
 from .sockets import SocketIO
 import os
 import pymysql
@@ -22,10 +22,13 @@ def create_website():
     CORS(app, supports_credentials=True)
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=8)
 
+    
+    
+
     # PALITAN SA db_config.py YUNG CREDENTIALS NANG DATABASE, YUNG SCHEMA IS YUNG MAKIKITA PAG NAOPEN NA UNG DATABASE SA WORKBENCH SA LEFT SIDE
 
     app.config["SQLALCHEMY_DATABASE_URI"] = (
-        "mysql+pymysql://root:7894561230@127.0.0.1:3306/MetaFeast?charset=utf8"
+        f"mysql+pymysql://{username}:{password}@{host}/{schema}?charset=utf8"
     )
     # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') PARA LANG TO SA PAG DEDEPLOY
 
