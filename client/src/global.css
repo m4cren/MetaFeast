@@ -12,5 +12,12 @@
 }
 
 body {
-    background-color: #f3f3f3;
+    background-color: #1e1e1e;
+}
+
+/* default is 400px and below when developing (small screen first) */
+@theme {
+    --breakpoint-phone: 400px;
+    --breakpoint-tablet: 600px;
+    --breakpoint-desktop: 1000px;
 }

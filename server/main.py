@@ -8,5 +8,7 @@ app = create_website()
 
 # paltan yung host doon sa db_config.py based sa ip address or paltan ng 'localhost' tas yung port ay 3306
 
+
+#tanggalin yung host at port if naka localhost at 127.0.0.1
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True,  host=host, port=port)

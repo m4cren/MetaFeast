@@ -29,14 +29,14 @@ def create_website():
 
     from .api.auth import auth
     from .api.order import order
+    from .api.costumer import costumer
  
 
     app.register_blueprint(order)
     app.register_blueprint(auth)
-
+    app.register_blueprint(costumer)
   
 
-    from .db_models import AdminCredentials
 
     db.init_app(app)
     jwt.init_app(app)
