@@ -10,7 +10,7 @@ export default defineConfig({
     //paltan to katulad ng sa backend ip address pero dapat magkaiba sila ng port
 
     server: {
-        host: "192.168.1.33",
+        host: "192.168.1.35",
         port: 1000,
     },
 });

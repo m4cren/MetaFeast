@@ -10,7 +10,7 @@ venv_path = os.environ.get('VIRTUAL_ENV')
 if venv_path:
     if venv_path == r'C:\Users\renre\webDev\MetaFeast\server\venv_m4cren':
         print('Rainier\'s virtual environment is activated')
-        host = "192.168.1.33"
+        host = "192.168.1.35"
         schema = "metafeastdb"
         username = "root"
         password = f"%40%23OctObEr102704"

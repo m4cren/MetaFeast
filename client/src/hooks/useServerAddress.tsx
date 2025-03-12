@@ -1,5 +1,5 @@
 const useServerAddress = () => {
-    const server = "http://192.168.1.33:6969";
+    const server = "http://192.168.1.35.194:6969";
     return { server };
 };
 

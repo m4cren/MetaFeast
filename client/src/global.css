@@ -21,3 +21,7 @@ body {
     --breakpoint-tablet: 600px;
     --breakpoint-desktop: 1000px;
 }
+
+@utility cam-ctrl-btn {
+    @apply text-white/60 font-semibold text-[0.9rem] p-3 border-1 border-white/50 rounded-md;
+}
