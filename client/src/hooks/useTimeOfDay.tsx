@@ -4,11 +4,10 @@ const getTimeOfDay = () => {
     const now = new Date();
     let hours = now.getHours();
 
-    if (hours < 6) return "Madaling Araw";
-    if (hours < 12) return "Umaga";
-    if (hours < 18) return "Hapon";
-    if (hours < 20) return "Gabi na";
-    return "Maghahating Gabi na";
+    if (hours > 5) return "Araw";
+    if (hours > 17) return "Gabi";
+
+    return "wala";
 };
 
 const useTimeOfDay = () => {
