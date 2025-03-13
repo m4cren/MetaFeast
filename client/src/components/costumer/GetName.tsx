@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 import useServerAddress from "../../hooks/useServerAddress";
@@ -104,4 +104,4 @@ const GetName = ({ setPhase }: Props) => {
     );
 };
 
-export default memo(GetName);
+export default GetName;

@@ -1,10 +1,10 @@
 import { useGLTF } from "@react-three/drei";
 
 const Restaurant = () => {
-    const restaurant = useGLTF("/models/restaurant_packed.glb");
+    const model = useGLTF("/models/restaurant_packed.glb");
     return (
         <object3D>
-            <primitive object={restaurant.scene} />
+            <primitive object={model.scene} />
         </object3D>
     );
 };

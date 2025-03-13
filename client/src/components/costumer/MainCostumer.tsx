@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import GetName from "./GetName";
 import SelectTable from "./SelectTable";
-import CostumerScene from "./scenes/CostumerScene";
+
 import LoadingScreen from "../LoadingScreen";
 import SceneCameraController from "./SceneCameraController";
 import useCameraControl from "../../hooks/useCameraControl";
+
+const CostumerScene = lazy(() => import("./scenes/CostumerScene"));
 
 const MainCostumer = () => {
     const { camPos, camRot, cameraFunctions } = useCameraControl();
@@ -29,15 +31,9 @@ const MainCostumer = () => {
 
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1000);
+        }, 7000);
 
         return () => clearTimeout(timer);
-    }, []);
-
-    const stableSetPhase = useCallback<
-        React.Dispatch<React.SetStateAction<number>>
-    >((value) => {
-        setPhase(value);
     }, []);
 
     return (
@@ -45,7 +41,9 @@ const MainCostumer = () => {
             <div className="fixed z-10">{isLoading && <LoadingScreen />}</div>
 
             <div className="fixed w-full h-screen z-1">
-                <CostumerScene camPos={camPos} camRot={camRot} />
+                <Suspense fallback={<LoadingScreen />}>
+                    <CostumerScene camPos={camPos} camRot={camRot} />
+                </Suspense>
             </div>
 
             <div className="fixed bottom-4 z-5">
@@ -53,8 +51,8 @@ const MainCostumer = () => {
             </div>
 
             {/* <div>
-                {phase === 0 && <GetName setPhase={stableSetPhase} />}
-                {phase === 1 && <SelectTable setPhase={stableSetPhase} />}
+                {phase === 0 && <GetName setPhase={setPhase} />}
+                {phase === 1 && <SelectTable setPhase={setPhase} />}
             </div> */}
         </>
     );
