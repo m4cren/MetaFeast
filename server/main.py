@@ -1,5 +1,5 @@
-from backend import socketio, create_website, db
-from backend.db_config import host, port
+from backend import socketio, create_website, db, host, port
+
 import os
 
 

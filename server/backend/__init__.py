@@ -4,7 +4,7 @@ eventlet.monkey_patch()
 
 from flask import Flask
 from .extensions import db, migrate, socketio, jwt
-from .db_config import schema, password, username,port, host
+from .db_config import m4cren_host, m4cren_password, m4cren_port, m4cren_schema, m4cren_username, mika_host, mika_password, mika_port, mika_schema, mika_username
 from .sockets import SocketIO
 import os
 import pymysql
@@ -13,6 +13,11 @@ from datetime import timedelta
 
 pymysql.install_as_MySQLdb()
 
+username = None
+password = None 
+host = None
+port = None
+schema = None 
 
 def create_website():
 
@@ -27,11 +32,33 @@ def create_website():
 
     # PALITAN SA db_config.py YUNG CREDENTIALS NANG DATABASE, YUNG SCHEMA IS YUNG MAKIKITA PAG NAOPEN NA UNG DATABASE SA WORKBENCH SA LEFT SIDE
 
+    
+    venv_path = os.environ.get('VIRTUAL_ENV')
+
+    if venv_path:
+        if venv_path == r'C:\Users\renre\webDev\MetaFeast\server\venv_m4cren':
+            print('Rainier virtual environment is activated')
+            username = m4cren_username
+            password = m4cren_password
+            host = m4cren_host
+            port = m4cren_port
+            schema = m4cren_schema
+        elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
+            print('Mika virtual environment is activated')
+            username = mika_username
+            password = mika_password
+            host = mika_host
+            port = mika_port
+            schema = mika_schema
+        else:
+            print('PLease activate a virtual environment')
+    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') PARA LANG TO SA PAG DEDEPLOY
+
+
+
     app.config["SQLALCHEMY_DATABASE_URI"] = (
         f"mysql+pymysql://{username}:{password}@{host}/{schema}?charset=utf8"
     )
-    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') PARA LANG TO SA PAG DEDEPLOY
-
     from .api.auth import auth
     from .api.order import order
     from .api.costumer import costumer
