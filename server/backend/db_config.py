@@ -17,7 +17,7 @@ if venv_path:
         port = "6969"
     elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
         print('Mikaela\'s virtual environment is activated')
-        host = "127.0.0.1"
+        host = "127.0.0.1:3306"
         schema = "MetaFeast"
         username = "root"
         password = "7894561230"

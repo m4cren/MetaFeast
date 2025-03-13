@@ -22,6 +22,7 @@ if venv_path:
             socketio.run(app, debug=True,  host=host, port=port)
     elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
        
+       print("mika")
        if __name__ == "__main__":
             socketio.run(app, debug=True)
     else:
