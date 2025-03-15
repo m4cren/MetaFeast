@@ -58,7 +58,9 @@ const SelectTable = ({ setPhase }: Props) => {
     };
     return (
         <div className="flex justify-center w-full h-screen items-center flex-col gap-10">
-            <h1 className="text-white text-4xl">Welcome, {costumerName}</h1>
+            <h1 className="text-white text-4xl">
+                Select Table, {costumerName}
+            </h1>
 
             <button
                 className="text-white p-4 text-2xl rounded-2xl border-1"

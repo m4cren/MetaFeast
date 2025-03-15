@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import useServerAddress from "../../hooks/useServerAddress";
@@ -9,12 +9,49 @@ interface FormType {
 
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
+    setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
 }
 
-const GetName = ({ setPhase }: Props) => {
+const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
     const { server } = useServerAddress();
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const [warningContent, setWarningContent] = useState<string>("");
+
+    const setFrameOne = () => {
+        setCamPos([
+            31.500000000000156, 1.8999999999999977, -13.399999999999972,
+        ]);
+        setCamRot([0.1, 1.1000000000000005, -8.673617379884035e-17]);
+
+        setFrameTwo();
+    };
+
+    const setFrameTwo = () => {
+        setTimeout(() => {
+            setCamPos([
+                19.599999999999987, 1.8999999999999977, -14.999999999999966,
+            ]);
+            setCamRot([
+                0.10010000000000001, 0.01999999999999969,
+                -8.673617379884035e-17,
+            ]);
+
+            setFrameThree();
+        }, 269);
+    };
+
+    const setFrameThree = () => {
+        setTimeout(() => {
+            setCamPos([
+                19.19999999999998, 3.6999999999999993, -17.599999999999984,
+            ]);
+            setCamRot([
+                0.10200000000000006, 0.029999999999999694, 0.019999999999999914,
+            ]);
+        }, 700);
+    };
+
     const [name, setName] = useState<FormType>({
         costumer_name: "",
     });
@@ -22,7 +59,7 @@ const GetName = ({ setPhase }: Props) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (name.costumer_name == "") {
+        if (name.costumer_name.length <= 0) {
             setWarningContent("Please enter your name :<");
             setIsWarning(true);
 
@@ -52,6 +89,7 @@ const GetName = ({ setPhase }: Props) => {
                     localStorage.setItem("token", token);
                     setPhase(1);
                     localStorage.setItem("current_phase", "phase_1");
+                    setFrameOne();
                 }
             } catch (error) {
                 console.error(error);

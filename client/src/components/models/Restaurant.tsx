@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 
 const Restaurant = () => {
-    const model = useGLTF("/models/restaurant_packed.glb");
+    const model = useGLTF("/models/restaurant.glb");
     return (
         <object3D>
             <primitive object={model.scene} />

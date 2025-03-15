@@ -6,13 +6,15 @@ import LoadingScreen from "./components/LoadingScreen";
 const MainCostumer = lazy(() => import("./components/costumer/MainCostumer"));
 const MainAdmin = lazy(() => import("./components/admin/MainAdmin"));
 
+export const loader_timer = 20000;
+
 const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 7000);
+        }, loader_timer);
 
         return () => clearTimeout(timer);
     }, []);

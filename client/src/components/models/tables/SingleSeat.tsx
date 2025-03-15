@@ -1,5 +1,9 @@
 import { useGLTF } from "@react-three/drei";
-import { useEffect, useState } from "react";
+import { ThreeEvent } from "@react-three/fiber";
+import { useEffect, useMemo, useRef } from "react";
+import * as THREE from "three";
+
+const TABLE_ID = ["A1", "A2", "A3", "A4", "A5", "A6"];
 
 const TABLE_POSITION = [
     [14.2, 0.76, -18.3],
@@ -9,48 +13,52 @@ const TABLE_POSITION = [
     [14.2, 0.76, -23.5],
     [14.2, 0.76, -24.8],
 ];
-const TABLE_ID = ["A1", "A2", "A3", "A4", "A5", "A6"];
 
-type TableProp = {
-    position: number[];
-    table_id: string;
-};
 const SingleSeat = () => {
-    const model = useGLTF("/models/single_seat_packed.glb");
+    const { scene } = useGLTF("/models/single_seat.glb");
 
-    const [table, setTable] = useState<TableProp[]>([]);
+    const meshRef = useRef<THREE.InstancedMesh>(null);
+
+    const meshes = useMemo(() => {
+        const foundMeshes: THREE.Mesh[] = [];
+        scene.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                foundMeshes.push(child);
+            }
+        });
+        return foundMeshes;
+    }, [scene]);
 
     useEffect(() => {
-        const setTableProp = () => {
-            const temp: TableProp[] = [];
-            for (let i = 0; i < TABLE_ID.length; i++) {
-                let newValue = {
-                    position: TABLE_POSITION[i],
-                    table_id: TABLE_ID[i],
-                };
+        if (!meshRef.current) return;
 
-                temp.push(newValue);
-            }
+        const matrix = new THREE.Matrix4();
 
-            setTable(temp);
-        };
+        const positions = TABLE_POSITION.map(
+            (pos) => new THREE.Vector3(...pos),
+        );
 
-        setTableProp();
-    }, []);
+        positions.forEach((pos, index) => {
+            matrix.setPosition(pos);
+            meshRef.current!.setMatrixAt(index, matrix);
+        });
 
-    const handleClick = (table_id: string) => {
-        alert(table_id);
+        meshRef.current!.instanceMatrix.needsUpdate = true;
+    }, [meshes]);
+    if (meshes.length === 0) return null;
+    const handleClick = (event: ThreeEvent<PointerEvent>) => {
+        if (event.instanceId !== undefined) {
+            console.log(`TABLE ID: ${TABLE_ID[event.instanceId]}`);
+        }
     };
 
-    return table.map(({ position, table_id }, index) => (
-        <object3D
-            key={index}
-            position={[position[0], position[1], position[2]]}
-            onClick={() => handleClick(table_id)}
-        >
-            <primitive object={model.scene.clone()} />
-        </object3D>
-    ));
+    return (
+        <instancedMesh
+            ref={meshRef}
+            args={[meshes[0].geometry, meshes[0].material, 6]}
+            onClick={handleClick}
+        />
+    );
 };
 
 export default SingleSeat;
