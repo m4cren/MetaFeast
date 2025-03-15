@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useCameraControl = () => {
+export const useCameraControl = () => {
     const [posX, setPosX] = useState<number>(33.500000000000185);
     const [posY, setPosY] = useState<number>(1.8999999999999977);
     const [posZ, setPosZ] = useState<number>(-26.100000000000104);
@@ -47,5 +47,3 @@ const useCameraControl = () => {
         },
     };
 };
-
-export default useCameraControl;

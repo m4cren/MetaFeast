@@ -2,7 +2,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
 
-const useCameraTransition = (
+export const useCameraTransition = (
     targetPos: [number, number, number],
     targetRot: [number, number, number],
 ) => {
@@ -39,5 +39,3 @@ const useCameraTransition = (
         camera.rotation.set(rotX.get(), rotY.get(), rotZ.get());
     });
 };
-
-export default useCameraTransition;

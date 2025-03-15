@@ -1,4 +1,4 @@
-import useCameraTransition from "../hooks/useCameraTransition";
+import { useCameraTransition } from "../hooks/useCameraTransition";
 
 const CameraController = ({
     position,

@@ -1,4 +1,5 @@
-from backend import socketio, create_website, db, host, port
+from backend import socketio, create_website
+from backend.db_config import m4cren_host, m4cren_port, mika_host, mika_port
 
 import os
 
@@ -17,9 +18,10 @@ app = create_website()
 
 if venv_path:
     if venv_path == r'C:\Users\renre\webDev\MetaFeast\server\venv_m4cren':
-       
+     
+
        if __name__ == "__main__":
-            socketio.run(app, debug=True,  host=host, port=port)
+            socketio.run(app, debug=True,  host=m4cren_host, port=m4cren_port)
     elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
        
        print("mika")

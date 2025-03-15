@@ -54,7 +54,7 @@ def create_website():
             print('PLease activate a virtual environment')
     # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') PARA LANG TO SA PAG DEDEPLOY
 
-
+    print(username, password, host,port, schema)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = (
         f"mysql+pymysql://{username}:{password}@{host}/{schema}?charset=utf8"
