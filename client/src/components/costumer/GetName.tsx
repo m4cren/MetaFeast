@@ -19,15 +19,12 @@ const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
     const [warningContent, setWarningContent] = useState<string>("");
 
     const setFrameOne = () => {
+        setPhase(1);
         setCamPos([
             31.500000000000156, 1.8999999999999977, -13.399999999999972,
         ]);
         setCamRot([0.1, 1.1000000000000005, -8.673617379884035e-17]);
 
-        setFrameTwo();
-    };
-
-    const setFrameTwo = () => {
         setTimeout(() => {
             setCamPos([
                 19.599999999999987, 1.8999999999999977, -14.999999999999966,
@@ -37,19 +34,18 @@ const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
                 -8.673617379884035e-17,
             ]);
 
-            setFrameThree();
-        }, 269);
-    };
+            setTimeout(() => {
+                setCamPos([
+                    19.19999999999998, 3.6999999999999993, -17.599999999999984,
+                ]);
+                setCamRot([
+                    0.10200000000000006, 0.029999999999999694,
+                    0.019999999999999914,
+                ]);
 
-    const setFrameThree = () => {
-        setTimeout(() => {
-            setCamPos([
-                19.19999999999998, 3.6999999999999993, -17.599999999999984,
-            ]);
-            setCamRot([
-                0.10200000000000006, 0.029999999999999694, 0.019999999999999914,
-            ]);
-        }, 700);
+                localStorage.setItem("current_phase", "phase_1");
+            }, 700);
+        }, 269);
     };
 
     const [name, setName] = useState<FormType>({
@@ -87,8 +83,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
                     return () => clearTimeout(timer);
                 } else if (response.data.status) {
                     localStorage.setItem("token", token);
-                    setPhase(1);
-                    localStorage.setItem("current_phase", "phase_1");
+
                     setFrameOne();
                 }
             } catch (error) {
@@ -107,8 +102,8 @@ const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
 
     return (
         <div className="fixed w-full h-screen flex items-center justify-center">
-            <div className="w-[90vw]  flex flex-col justify-center items-center h-[30rem] gap-16">
-                <h1 className="text-[1.4rem] text-white font-[500] phone:text-[1.6rem]">
+            <div className="w-[90vw]  flex flex-col justify-center items-center h-[30rem] gap-16 bg-white/10 backdrop-blur-[5px] border-1 rounded-2xl border-white/20">
+                <h1 className="text-[1.4rem] text-white font-[500] phone:text-[1.6rem] text-shadow-lg">
                     What do we want to call you?
                 </h1>
                 <form
@@ -123,7 +118,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
                         ) : null}
                         <input
                             type="text"
-                            className="text-center border-1 border-white w-[90%] h-[2.4rem] rounded-2xl text-white"
+                            className="text-center border-1 outline-none border-white w-[90%] h-[2.4rem] rounded-2xl text-white text-shadow-lg"
                             name="costumer_name"
                             onChange={handleChange}
                             value={name.costumer_name}
@@ -132,7 +127,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
 
                     <button
                         type="submit"
-                        className="text-white border-1 p-4 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-2xl"
+                        className="text-white text-shadow-lg border-1 p-4 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-2xl"
                     >
                         Proceed
                     </button>

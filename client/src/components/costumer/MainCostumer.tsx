@@ -78,8 +78,12 @@ const MainCostumer = () => {
                     </div>
                 )}
                 {phase === 1 && (
-                    <div className="absolute top-0 left-0 z-1 w-full h-screen">
-                        <SelectTable setPhase={setPhase} />
+                    <div className="absolute top-0 left-0 z-1 w-full h-screen pointer-events-none">
+                        <SelectTable
+                            setPhase={setPhase}
+                            setCamPos={setCamPos}
+                            setCamRot={setCamRot}
+                        />
                     </div>
                 )}
             </div>

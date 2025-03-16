@@ -25,3 +25,14 @@ body {
 @utility cam-ctrl-btn {
     @apply text-white/60 font-semibold text-[0.9rem] p-3 border-1 border-white/50 rounded-md;
 }
+@layer utilities {
+    .text-shadow-sm {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .text-shadow-md {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .text-shadow-lg {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    }
+}

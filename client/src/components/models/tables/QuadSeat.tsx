@@ -43,8 +43,6 @@ const QuadSeat = () => {
     useEffect(() => {
         if (!meshRef.current || meshes.length === 0) return;
 
-        console.log("✅ Setting up instanced meshes...");
-
         TABLE_POSITION.forEach((pos, index) => {
             const instanceMatrix = new THREE.Matrix4();
             instanceMatrix.setPosition(new THREE.Vector3(...pos));
