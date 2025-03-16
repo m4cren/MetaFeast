@@ -1,9 +1,10 @@
 import axios from "axios";
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import useServerAddress from "../../hooks/useServerAddress";
 import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
 import { Gi3dStairs } from "react-icons/gi";
+import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -14,7 +15,13 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
     const { server } = useServerAddress();
     const [isLeftClicked, setIsLeftClicked] = useState<boolean>(false);
     const [isRightClicked, setIsRightClicked] = useState<boolean>(false);
-
+    const [floor, setFloor] = useState<number>(1);
+    const {
+        to_1st_Frames,
+        to_2nd_Frames,
+        selTable1stF_Frames,
+        selTable2ndF_Frames,
+    } = useCostumerFrameProvider();
     useEffect(() => {
         const fetchCostumer = async () => {
             try {
@@ -47,125 +54,139 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
     const handleLeftClick = () => {
         setIsLeftClicked(true);
         setIsRightClicked(false);
-        setCamPos([19.19999999999998, 3.199999999999999, -18.199999999999992]);
-        setCamRot([
-            0.10200000000000006, 0.7500000000000002, 0.42000000000000015,
-        ]);
+
+        if (floor === 1) {
+            setCamPos(selTable1stF_Frames.left.pos);
+            setCamRot(selTable1stF_Frames.left.rot);
+        } else if (floor === 2) {
+            setCamPos(selTable2ndF_Frames.left.pos);
+            setCamRot(selTable2ndF_Frames.left.rot);
+        }
     };
     const handleRightClick = () => {
         setIsLeftClicked(false);
         setIsRightClicked(true);
-        setCamPos([19.79999999999999, 3.499999999999999, -17.29999999999998]);
-        setCamRot([
-            0.10200000000000006, -0.3600000000000005, -0.2900000000000002,
-        ]);
+
+        if (floor === 1) {
+            setCamPos(selTable1stF_Frames.right.pos);
+            setCamRot(selTable1stF_Frames.right.rot);
+        } else if (floor === 2) {
+            setCamPos(selTable2ndF_Frames.right.pos);
+            setCamRot(selTable2ndF_Frames.right.rot);
+        }
     };
     const handleMidClick = () => {
         setIsLeftClicked(false);
         setIsRightClicked(false);
-        setCamPos([19.19999999999998, 3.6999999999999993, -17.599999999999984]);
-        setCamRot([
-            0.10200000000000006, 0.029999999999999694, -0.019999999999999914,
-        ]);
+
+        if (floor === 1) {
+            setCamPos(selTable1stF_Frames.mid.pos);
+            setCamRot(selTable1stF_Frames.mid.rot);
+        } else if (floor === 2) {
+            setCamPos(selTable2ndF_Frames.mid.pos);
+            setCamRot(selTable2ndF_Frames.mid.rot);
+        }
     };
 
     const frame_sec = 200;
 
-    const handleNextFloor = () => {
-        setCamPos([
-            19.499999999999986, 1.6999999999999975, -17.499999999999982,
-        ]);
-        setCamRot([
-            0.10140000000000005, -1.4200000000000013, -0.4500000000000003,
-        ]);
+    const doNothing = useCallback(() => {
+        console.log("hehe");
+    }, []);
+
+    const handleDownFloor = () => {
+        setIsRightClicked(false);
+        setIsLeftClicked(false);
+        setCamPos(to_1st_Frames.frame1.pos);
+        setCamRot(to_1st_Frames.frame1.rot);
 
         setTimeout(() => {
-            setCamPos([
-                23.000000000000036, 1.6999999999999975, -16.59999999999997,
-            ]);
-            setCamRot([
-                0.10140000000000005, -1.5300000000000014, -0.4400000000000003,
-            ]);
+            setCamPos(to_1st_Frames.frame2.pos);
+            setCamRot(to_1st_Frames.frame2.rot);
+            setTimeout(() => {
+                setCamPos(to_1st_Frames.frame3.pos);
+                setCamRot(to_1st_Frames.frame3.rot);
+                setTimeout(() => {
+                    setCamPos(to_1st_Frames.frame4.pos);
+                    setCamRot(to_1st_Frames.frame4.rot);
+                    setTimeout(() => {
+                        setCamPos(to_1st_Frames.frame5.pos);
+                        setCamRot(to_1st_Frames.frame5.rot);
+                        setTimeout(() => {
+                            setCamPos(to_1st_Frames.frame6.pos);
+                            setCamRot(to_1st_Frames.frame6.rot);
+                            setTimeout(() => {
+                                setCamPos(to_1st_Frames.frame7.pos);
+                                setCamRot(to_1st_Frames.frame7.rot);
+                                setTimeout(() => {
+                                    setCamPos(to_1st_Frames.frame8.pos);
+                                    setCamRot(to_1st_Frames.frame8.rot);
+                                    setTimeout(() => {
+                                        setFloor(1);
+                                        setCamPos(selTable1stF_Frames.mid.pos);
+                                        setCamRot(selTable1stF_Frames.mid.rot);
+                                    }, frame_sec);
+                                }, frame_sec);
+                            }, frame_sec);
+                        }, frame_sec);
+                    }, frame_sec);
+                }, frame_sec);
+            }, frame_sec);
+        }, 700);
+    };
+
+    const handleNextFloor = () => {
+        setIsRightClicked(false);
+        setIsLeftClicked(false);
+        setCamPos(to_2nd_Frames.frame1.pos);
+        setCamRot(to_2nd_Frames.frame1.rot);
+
+        setTimeout(() => {
+            setCamPos(to_2nd_Frames.frame2.pos);
+            setCamRot(to_2nd_Frames.frame2.rot);
 
             setTimeout(() => {
-                setCamPos([
-                    24.00000000000005, 1.8999999999999975, -16.499999999999968,
-                ]);
-                setCamRot([
-                    0.10150000000000005, -1.0000000000000009,
-                    -0.4400000000000003,
-                ]);
+                setCamPos(to_2nd_Frames.frame3.pos);
+                setCamRot(to_2nd_Frames.frame3.rot);
                 setTimeout(() => {
-                    setCamPos([
-                        25.200000000000067, 2.1499999999999972,
-                        -16.399999999999967,
-                    ]);
-                    setCamRot([
-                        0.1, -0.16000000000000014, -0.030000000000000027,
-                    ]);
+                    setCamPos(to_2nd_Frames.frame4.pos);
+                    setCamRot(to_2nd_Frames.frame4.rot);
 
                     setTimeout(() => {
-                        setCamPos([
-                            25.700000000000074, 2.3999999999999964,
-                            -17.94999999999999,
-                        ]);
-                        setCamRot([
-                            0.09949999999999999, 0.11999999999999984,
-                            -0.030000000000000027,
-                        ]);
+                        setCamPos(to_2nd_Frames.frame5.pos);
+                        setCamRot(to_2nd_Frames.frame5.rot);
 
                         setTimeout(() => {
-                            setCamPos([
-                                25.800000000000075, 2.999999999999994,
-                                -19.200000000000006,
-                            ]);
-                            setCamRot([
-                                0.09929999999999999, 0.9400000000000005,
-                                -0.21000000000000008,
-                            ]);
+                            setCamPos(to_2nd_Frames.frame6.pos);
+                            setCamRot(to_2nd_Frames.frame6.rot);
                             setTimeout(() => {
-                                setCamPos([
-                                    24.950000000000063, 3.149999999999993,
-                                    -20.600000000000026,
-                                ]);
-                                setCamRot([
-                                    0.10140000000000005, 2.629999999999988,
-                                    0.1299999999999999,
-                                ]);
+                                setCamPos(to_2nd_Frames.frame7.pos);
+                                setCamRot(to_2nd_Frames.frame7.rot);
 
                                 setTimeout(() => {
-                                    setCamPos([
-                                        24.05000000000005, 3.149999999999993,
-                                        -20.25000000000002,
-                                    ]);
-                                    setCamRot([
-                                        0.10070000000000003, 3.179999999999976,
-                                        -0.020000000000000087,
-                                    ]);
+                                    setCamPos(to_2nd_Frames.frame8.pos);
+                                    setCamRot(to_2nd_Frames.frame8.rot);
 
                                     setTimeout(() => {
-                                        setCamPos([
-                                            24.250000000000053,
-                                            3.9999999999999893,
-                                            -18.399999999999995,
-                                        ]);
-                                        setCamRot([
-                                            0.10070000000000003,
-                                            2.8299999999999836,
-                                            0.1199999999999999,
-                                        ]);
+                                        setCamPos(to_2nd_Frames.frame9.pos);
+                                        setCamRot(to_2nd_Frames.frame9.rot);
 
                                         setTimeout(() => {
-                                            setCamPos([
-                                                24.05000000000005,
-                                                4.899999999999986,
-                                                -16.299999999999965,
-                                            ]);
-                                            setCamRot([
-                                                0.10040000000000002,
-                                                0.8800000000000003,
-                                                0.07999999999999992,
-                                            ]);
+                                            setCamPos(
+                                                to_2nd_Frames.frame10.pos,
+                                            );
+                                            setCamRot(
+                                                to_2nd_Frames.frame10.rot,
+                                            );
+                                            setTimeout(() => {
+                                                setFloor(2);
+                                                setCamPos(
+                                                    selTable2ndF_Frames.mid.pos,
+                                                );
+                                                setCamRot(
+                                                    selTable2ndF_Frames.mid.rot,
+                                                );
+                                            }, frame_sec);
                                         }, frame_sec);
                                     }, frame_sec);
                                 }, frame_sec);
@@ -186,10 +207,23 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
             </div>
 
             <button
-                onClick={handleNextFloor}
+                onClick={
+                    floor === 1
+                        ? handleNextFloor
+                        : floor === 2
+                          ? handleDownFloor
+                          : doNothing
+                }
                 className=" text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 fixed top-[95%] left-1/2 translate-x-[-50%] translate-y-[-50%] hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
             >
-                <Gi3dStairs /> <p className="text-[1.25rem]">2nd Floor</p>
+                <Gi3dStairs />{" "}
+                <p className="text-[1.25rem]">
+                    {floor === 1
+                        ? "Go up stairs"
+                        : floor === 2
+                          ? "Go down stairs"
+                          : null}
+                </p>
             </button>
 
             {!isLeftClicked && !isRightClicked ? (

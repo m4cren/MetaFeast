@@ -12,6 +12,10 @@ const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            localStorage.removeItem("current_phase");
+        }
         const timer = setTimeout(() => {
             setIsLoading(false);
         }, loader_timer);

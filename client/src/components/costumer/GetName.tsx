@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import useServerAddress from "../../hooks/useServerAddress";
+import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
 
 interface FormType {
     costumer_name: string;
@@ -11,46 +12,76 @@ interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setIsName: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
+const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
+    console.log(setIsName);
     const { server } = useServerAddress();
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const [warningContent, setWarningContent] = useState<string>("");
+    const { afterName_Frames, selTable1stF_Frames } =
+        useCostumerFrameProvider();
 
     const setFrameOne = () => {
-        setPhase(1);
-        setCamPos([
-            31.500000000000156, 1.8999999999999977, -13.399999999999972,
-        ]);
-        setCamRot([0.1, 1.1000000000000005, -8.673617379884035e-17]);
+        setCamPos(afterName_Frames.frame1.pos);
+        setCamRot(afterName_Frames.frame1.rot);
 
         setTimeout(() => {
-            setCamPos([
-                19.599999999999987, 1.8999999999999977, -14.999999999999966,
-            ]);
-            setCamRot([
-                0.10010000000000001, 0.01999999999999969,
-                -8.673617379884035e-17,
-            ]);
+            setCamPos(afterName_Frames.frame2.pos);
+            setCamRot(afterName_Frames.frame2.rot);
 
             setTimeout(() => {
-                setCamPos([
-                    19.19999999999998, 3.6999999999999993, -17.599999999999984,
-                ]);
-                setCamRot([
-                    0.10200000000000006, 0.029999999999999694,
-                    0.019999999999999914,
-                ]);
-
-                localStorage.setItem("current_phase", "phase_1");
-            }, 700);
-        }, 269);
+                setCamPos(afterName_Frames.frame3.pos);
+                setCamRot(afterName_Frames.frame3.rot);
+                setTimeout(() => {
+                    setCamPos(afterName_Frames.frame4.pos);
+                    setCamRot(afterName_Frames.frame4.rot);
+                    setTimeout(() => {
+                        setCamPos(afterName_Frames.frame5.pos);
+                        setCamRot(afterName_Frames.frame5.rot);
+                        setTimeout(() => {
+                            setCamPos(selTable1stF_Frames.mid.pos);
+                            setCamRot(selTable1stF_Frames.mid.rot);
+                            setPhase(1);
+                            localStorage.setItem("current_phase", "phase_1");
+                        }, 700);
+                    }, 400);
+                }, 400);
+            }, 400);
+        }, 400);
     };
 
     const [name, setName] = useState<FormType>({
         costumer_name: "",
     });
+
+    const submitToServer = async () => {
+        try {
+            const response = await axios.post(
+                `${server}/get-costumer-name`,
+                name,
+            );
+            const token = response.data.access_token;
+
+            if (!response.data.status) {
+                setWarningContent(response.data.message);
+                setIsWarning(true);
+
+                const timer = setTimeout(() => {
+                    setIsWarning(false);
+                }, 5000);
+
+                return () => clearTimeout(timer);
+            } else if (response.data.status) {
+                localStorage.setItem("token", token);
+                setIsName(true);
+                setFrameOne();
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -63,33 +94,6 @@ const GetName = ({ setPhase, setCamPos, setCamRot }: Props) => {
                 setIsWarning(false);
             }, 5000);
         }
-
-        const submitToServer = async () => {
-            try {
-                const response = await axios.post(
-                    `${server}/get-costumer-name`,
-                    name,
-                );
-                const token = response.data.access_token;
-
-                if (!response.data.status) {
-                    setWarningContent(response.data.message);
-                    setIsWarning(true);
-
-                    const timer = setTimeout(() => {
-                        setIsWarning(false);
-                    }, 5000);
-
-                    return () => clearTimeout(timer);
-                } else if (response.data.status) {
-                    localStorage.setItem("token", token);
-
-                    setFrameOne();
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        };
 
         submitToServer();
 

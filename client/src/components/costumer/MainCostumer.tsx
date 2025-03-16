@@ -7,58 +7,54 @@ import GetName from "./GetName";
 import SelectTable from "./SelectTable";
 
 import { loader_timer } from "../../App";
+import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
+import useCameraControl from "../../hooks/useCameraControl";
 
 const MainCostumer = () => {
     // const { camPos, camRot, cameraFunctions } = useCameraControl();
+    // console.log(
+    //     `Cam Pos: PX - ${camPos[0]}    PY - ${camPos[1]}    PZ - ${camPos[2]}`,
+    // );
+    // console.log(
+    //     `Cam Rot: RX - ${camRot[0]}    RY - ${camRot[1]}    RZ - ${camRot[2]}`,
+    // );
 
-    const [camPos, setCamPos] = useState<[number, number, number]>([
-        32.60000000000017, 6.999999999999989, -10.899999999999977,
-    ]);
-    const [camRot, setCamRot] = useState<[number, number, number]>([
-        0.10140000000000005, 0.7800000000000002, 0.3200000000000002,
-    ]);
+    const { init_Frame, pickName_Frame, selTable1stF_Frames } =
+        useCostumerFrameProvider();
+
+    const [camPos, setCamPos] = useState<[number, number, number]>(
+        init_Frame.pos,
+    );
+    const [camRot, setCamRot] = useState<[number, number, number]>(
+        init_Frame.rot,
+    );
 
     const [phase, setPhase] = useState<number>(0);
+    const [isName, setIsName] = useState<boolean>(false);
+    console.log(setIsName);
 
     useEffect(() => {
         let get_phase = localStorage.getItem("current_phase");
-        let token = localStorage.getItem("token");
 
-        if (!token) {
-            localStorage.removeItem("current_phase");
+        if (!get_phase) {
             setPhase(0);
+            const timer_initial = setTimeout(() => {
+                setCamPos(pickName_Frame.pos);
+                setCamRot(pickName_Frame.rot);
+            }, loader_timer - 500);
+            return () => clearTimeout(timer_initial);
+        } else {
+            switch (get_phase) {
+                case "phase_1":
+                    setPhase(1);
+                    setTimeout(() => {
+                        setCamPos(selTable1stF_Frames.mid.pos);
+                        setCamRot(selTable1stF_Frames.mid.rot);
+                    }, loader_timer - 500);
+
+                    break;
+            }
         }
-
-        const timer_initial = setTimeout(() => {
-            setCamPos([
-                33.500000000000185, 1.8999999999999977, -26.100000000000104,
-            ]);
-            setCamRot([
-                0.10040000000000002, 2.199999999999997, 0.09999999999999999,
-            ]);
-        }, loader_timer - 500);
-
-        switch (get_phase) {
-            case "phase_0":
-                setPhase(0);
-                break;
-            case "phase_1":
-                setPhase(1);
-                setTimeout(() => {
-                    setCamPos([
-                        19.19999999999998, 3.6999999999999993,
-                        -17.599999999999984,
-                    ]);
-                    setCamRot([
-                        0.10200000000000006, 0.029999999999999694,
-                        0.019999999999999914,
-                    ]);
-                }, loader_timer - 500);
-
-                break;
-        }
-
-        return () => clearTimeout(timer_initial);
     }, []);
 
     return (
@@ -68,12 +64,13 @@ const MainCostumer = () => {
                     <CostumerScene camPos={camPos} camRot={camRot} />
                 </div>
 
-                {phase === 0 && (
+                {phase === 0 && !isName && (
                     <div className="absolute top-0 left-0 z-1 w-full h-screen">
                         <GetName
                             setPhase={setPhase}
                             setCamPos={setCamPos}
                             setCamRot={setCamRot}
+                            setIsName={setIsName}
                         />
                     </div>
                 )}
