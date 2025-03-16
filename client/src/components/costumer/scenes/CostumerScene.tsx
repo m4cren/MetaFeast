@@ -3,13 +3,13 @@ import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { lazy, Suspense } from "react";
 import CameraController from "../../CameraController";
+import QuadSeat from "../../models/tables/QuadSeat";
+import SingleSeat from "../../models/tables/SingleSeat";
+import DoubleSeat from "../../models/tables/DoubleSeat";
 
 const BackgroundScene = lazy(() => import("./BackgroundScene"));
 const Restaurant = lazy(() => import("../../models/Restaurant"));
 const Stairs = lazy(() => import("../../models/Stairs"));
-const SingleSeat = lazy(() => import("../../models/tables/SingleSeat"));
-const DoubleSeat = lazy(() => import("../../models/tables/DoubleSeat"));
-const QuadSeat = lazy(() => import("../../models/tables/QuadSeat"));
 
 interface CameraControl {
     camPos: number[];
@@ -17,8 +17,9 @@ interface CameraControl {
 }
 
 const CostumerScene = ({ camPos, camRot }: CameraControl) => {
+    const uniqueKey = Date.now();
     return (
-        <Canvas>
+        <Canvas gl={{ powerPreference: "high-performance" }}>
             <CameraController
                 position={[camPos[0], camPos[1], camPos[2]]}
                 rotation={[Math.PI / camRot[0], camRot[1], camRot[2]]}
@@ -29,10 +30,9 @@ const CostumerScene = ({ camPos, camRot }: CameraControl) => {
                 <Restaurant />
                 <Stairs />
                 <BackgroundScene />
-
-                <QuadSeat />
-                <DoubleSeat />
-                <SingleSeat />
+                <QuadSeat key={`quad-${uniqueKey}`} />
+                <SingleSeat key={`single-${uniqueKey}`} />
+                <DoubleSeat key={`double-${uniqueKey}`} />
             </Suspense>
         </Canvas>
     );

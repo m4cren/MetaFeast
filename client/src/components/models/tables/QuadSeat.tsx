@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
 const TABLE_ID = ["A7", "A8", "A15", "A16", "B1", "B3", "B4", "B5"];
@@ -19,33 +19,43 @@ const QuadSeat = () => {
     const { scene } = useGLTF("/models/quad_seat.glb");
     const meshRef = useRef<THREE.InstancedMesh>(null);
 
-    const meshes = useMemo(() => {
+    const [meshes, setMeshes] = useState<THREE.Mesh[]>([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (!scene) return;
+
         const foundMeshes: THREE.Mesh[] = [];
         scene.traverse((child) => {
             if (child instanceof THREE.Mesh) {
                 foundMeshes.push(child);
+                child.visible = true;
+                child.frustumCulled = false;
             }
         });
-        return foundMeshes;
+
+        if (foundMeshes.length > 0) {
+            setMeshes(foundMeshes);
+            setIsLoaded(true);
+        }
     }, [scene]);
 
     useEffect(() => {
-        if (!meshRef.current) return;
+        if (!meshRef.current || meshes.length === 0) return;
 
-        const matrix = new THREE.Matrix4();
+        console.log("✅ Setting up instanced meshes...");
 
-        const positions = TABLE_POSITION.map(
-            (pos) => new THREE.Vector3(...pos),
-        );
-
-        positions.forEach((pos, index) => {
-            matrix.setPosition(pos);
-            meshRef.current!.setMatrixAt(index, matrix);
+        TABLE_POSITION.forEach((pos, index) => {
+            const instanceMatrix = new THREE.Matrix4();
+            instanceMatrix.setPosition(new THREE.Vector3(...pos));
+            meshRef.current!.setMatrixAt(index, instanceMatrix);
         });
 
         meshRef.current!.instanceMatrix.needsUpdate = true;
     }, [meshes]);
-    if (meshes.length === 0) return null;
+
+    if (!isLoaded || meshes.length === 0) return null;
+
     const handleClick = (event: ThreeEvent<PointerEvent>) => {
         if (event.instanceId !== undefined) {
             console.log(`TABLE ID: ${TABLE_ID[event.instanceId]}`);
@@ -55,7 +65,11 @@ const QuadSeat = () => {
     return (
         <instancedMesh
             ref={meshRef}
-            args={[meshes[0].geometry, meshes[0].material, 8]}
+            args={[
+                meshes[0].geometry,
+                meshes[0].material,
+                TABLE_POSITION.length,
+            ]}
             onClick={handleClick}
         />
     );

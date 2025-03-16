@@ -22,6 +22,12 @@ const MainCostumer = () => {
 
     useEffect(() => {
         let get_phase = localStorage.getItem("current_phase");
+        let token = localStorage.getItem("token");
+
+        if (!token) {
+            localStorage.removeItem("current_phase");
+            setPhase(0);
+        }
 
         const timer_initial = setTimeout(() => {
             setCamPos([
