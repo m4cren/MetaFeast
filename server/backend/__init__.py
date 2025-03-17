@@ -10,20 +10,20 @@ import os
 import pymysql
 from flask_cors import CORS
 from datetime import timedelta
+from dotenv import load_dotenv
+from .SQL_QUERY import create_table
+
+load_dotenv()
 
 pymysql.install_as_MySQLdb()
 
-username = None
-password = None 
-host = None
-port = None
-schema = None 
+
 
 def create_website():
 
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = os.urandom(10)
-    app.config["JWT_SECRET_KEY"] = os.urandom(27)
+    app.config["SECRET_KEY"] = os.getenv('SECRET_KEY')
+    app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
     CORS(app, supports_credentials=True)
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=8)
 
@@ -38,36 +38,38 @@ def create_website():
     if venv_path:
         if venv_path == r'C:\Users\renre\webDev\MetaFeast\server\venv_m4cren':
             print('Rainier virtual environment is activated')
-            username = m4cren_username
-            password = m4cren_password
-            host = m4cren_host
-            port = m4cren_port
-            schema = m4cren_schema
+
+          
+            app.config["SQLALCHEMY_DATABASE_URI"] = (
+                f"mysql+pymysql://{m4cren_username}:{m4cren_password}@{m4cren_host}/{m4cren_schema}?charset=utf8"
+            )
+            
         elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
+
+
             print('Mika virtual environment is activated')
-            username = mika_username
-            password = mika_password
-            host = mika_host
-            port = mika_port
-            schema = mika_schema
+            app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///mikaela.db'
+            
+           
         else:
             print('PLease activate a virtual environment')
     # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') PARA LANG TO SA PAG DEDEPLOY
 
-   
+    
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = (
-        f"mysql+pymysql://{username}:{password}@{host}/{schema}?charset=utf8"
-    )
+    
     from .api.auth import auth
     from .api.order import order
     from .api.costumer import costumer
+    from .api.tables import tables
  
 
     app.register_blueprint(order)
     app.register_blueprint(auth)
     app.register_blueprint(costumer)
-  
+    app.register_blueprint(tables)
+    
+    from .db_models import Table
 
 
     db.init_app(app)
@@ -77,6 +79,11 @@ def create_website():
 
     create_database(app)
 
+    
+
+    create_table(app)
+
+    
     return app
 
 

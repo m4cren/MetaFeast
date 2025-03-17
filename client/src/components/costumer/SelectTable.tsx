@@ -1,6 +1,6 @@
 import axios from "axios";
 import { memo, useCallback, useEffect, useState } from "react";
-import useServerAddress from "../../hooks/useServerAddress";
+import useServerAddress from "../../../useServerAddress";
 import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
 import { Gi3dStairs } from "react-icons/gi";
@@ -13,9 +13,11 @@ interface Props {
 
 const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
     const { server } = useServerAddress();
+    const [name, setName] = useState<string>("...Loading");
     const [isLeftClicked, setIsLeftClicked] = useState<boolean>(false);
     const [isRightClicked, setIsRightClicked] = useState<boolean>(false);
     const [floor, setFloor] = useState<number>(1);
+    const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
     const {
         to_1st_Frames,
         to_2nd_Frames,
@@ -41,7 +43,7 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
                     withCredentials: false,
                 });
 
-                console.log(response.data.costumer_name);
+                setName(response.data.costumer_name);
             } catch (error) {
                 localStorage.removeItem("token");
                 setPhase(0);
@@ -95,8 +97,9 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
     }, []);
 
     const handleDownFloor = () => {
-        setIsRightClicked(false);
-        setIsLeftClicked(false);
+        setIsTransitioning(true);
+        setIsRightClicked(true);
+        setIsLeftClicked(true);
         setCamPos(to_1st_Frames.frame1.pos);
         setCamRot(to_1st_Frames.frame1.rot);
 
@@ -122,6 +125,9 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
                                     setCamPos(to_1st_Frames.frame8.pos);
                                     setCamRot(to_1st_Frames.frame8.rot);
                                     setTimeout(() => {
+                                        setIsRightClicked(false);
+                                        setIsLeftClicked(false);
+                                        setIsTransitioning(false);
                                         setFloor(1);
                                         setCamPos(selTable1stF_Frames.mid.pos);
                                         setCamRot(selTable1stF_Frames.mid.rot);
@@ -136,8 +142,9 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
     };
 
     const handleNextFloor = () => {
-        setIsRightClicked(false);
-        setIsLeftClicked(false);
+        setIsRightClicked(true);
+        setIsTransitioning(true);
+        setIsLeftClicked(true);
         setCamPos(to_2nd_Frames.frame1.pos);
         setCamRot(to_2nd_Frames.frame1.rot);
 
@@ -179,6 +186,9 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
                                                 to_2nd_Frames.frame10.rot,
                                             );
                                             setTimeout(() => {
+                                                setIsRightClicked(false);
+                                                setIsTransitioning(false);
+                                                setIsLeftClicked(false);
                                                 setFloor(2);
                                                 setCamPos(
                                                     selTable2ndF_Frames.mid.pos,
@@ -201,30 +211,32 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
     return (
         <>
             <div className="w-full flex justify-center items-center p-6 bg-white/10 backdrop-blur-[10px] border-b-2 border-b-white/20">
-                <h1 className="text-white text-4xl font-semibold text-shadow-lg">
-                    Select Table
+                <h1 className="text-white text-3xl font-medium text-shadow-lg">
+                    Select Table, {name}
                 </h1>
             </div>
 
-            <button
-                onClick={
-                    floor === 1
-                        ? handleNextFloor
-                        : floor === 2
-                          ? handleDownFloor
-                          : doNothing
-                }
-                className=" text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 fixed top-[95%] left-1/2 translate-x-[-50%] translate-y-[-50%] hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
-            >
-                <Gi3dStairs />{" "}
-                <p className="text-[1.25rem]">
-                    {floor === 1
-                        ? "Go up stairs"
-                        : floor === 2
-                          ? "Go down stairs"
-                          : null}
-                </p>
-            </button>
+            {!isTransitioning ? (
+                <button
+                    onClick={
+                        floor === 1
+                            ? handleNextFloor
+                            : floor === 2
+                              ? handleDownFloor
+                              : doNothing
+                    }
+                    className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 fixed top-[95%] left-1/2 translate-x-[-50%] translate-y-[-50%] hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
+                >
+                    <Gi3dStairs />
+                    <p className="text-[1.25rem] w-max">
+                        {floor === 1
+                            ? "Go up stairs"
+                            : floor === 2
+                              ? "Go down stairs"
+                              : null}
+                    </p>
+                </button>
+            ) : null}
 
             {!isLeftClicked && !isRightClicked ? (
                 <>

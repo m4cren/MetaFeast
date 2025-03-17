@@ -425,9 +425,9 @@ class LintMiddleware:
 
             status: str = args[0]
             headers: list[tuple[str, str]] = args[1]
-            exc_info: (
-                None | (tuple[type[BaseException], BaseException, TracebackType])
-            ) = args[2] if len(args) == 3 else None
+            exc_info: None | (
+                tuple[type[BaseException], BaseException, TracebackType]
+            ) = (args[2] if len(args) == 3 else None)
 
             headers_set[:] = self.check_start_response(status, headers, exc_info)
             return GuardedWrite(start_response(status, headers, exc_info), chunks)

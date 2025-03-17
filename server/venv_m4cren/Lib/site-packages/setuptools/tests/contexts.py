@@ -102,10 +102,10 @@ def multiproc(request):
     workers are used.
     """
     try:
-        worker_id = request.getfixturevalue('worker_id')
+        worker_id = request.getfixturevalue("worker_id")
     except Exception:
         return False
-    return worker_id != 'master'
+    return worker_id != "master"
 
 
 @contextlib.contextmanager

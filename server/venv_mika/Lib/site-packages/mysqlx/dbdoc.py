@@ -38,6 +38,7 @@ class DbDoc(object):
     Raises:
         ValueError: If ``value`` type is not a basestring or dict.
     """
+
     def __init__(self, value):
         # TODO: Handle exceptions. What happens if it doesn't load properly?
         if isinstance(value, dict):

@@ -133,9 +133,7 @@ class _ModuleRegistry:
                 key = module.split(self.prefix)[-1].replace(".", "_")
             else:
                 key = module
-            if (
-                not path or module.startswith(path)
-            ) and key not in self.__dict__:
+            if (not path or module.startswith(path)) and key not in self.__dict__:
                 __import__(module, globals(), locals())
                 self.__dict__[key] = globals()[key] = sys.modules[module]
 

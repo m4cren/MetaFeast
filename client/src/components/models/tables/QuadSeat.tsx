@@ -1,9 +1,10 @@
 import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import useTableRequest from "../../../hooks/useTableRequest";
 
-const TABLE_ID = ["A7", "A8", "A15", "A16", "B1", "B3", "B4", "B5"];
+const TABLE_ID = ["A-7", "A-8", "A-15", "A-16", "B-1", "B-3", "B-4", "B-5"];
 const TABLE_POSITION = [
     [15.3, 0.76, -19],
     [15.3, 0.76, -22.3],
@@ -16,6 +17,7 @@ const TABLE_POSITION = [
 ];
 
 const QuadSeat = () => {
+    const { sendData } = useTableRequest();
     const { scene } = useGLTF("/models/quad_seat.glb");
     const meshRef = useRef<THREE.InstancedMesh>(null);
 
@@ -55,8 +57,12 @@ const QuadSeat = () => {
     if (!isLoaded || meshes.length === 0) return null;
 
     const handleClick = (event: ThreeEvent<PointerEvent>) => {
+        event.stopPropagation(); // Prevent clicks from passing through
+
         if (event.instanceId !== undefined) {
-            console.log(`TABLE ID: ${TABLE_ID[event.instanceId]}`);
+            let table_id: string = TABLE_ID[event.instanceId];
+
+            sendData(table_id);
         }
     };
 

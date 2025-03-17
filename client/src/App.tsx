@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { lazy, Suspense, useEffect, useState } from "react";
 import LoadingScreen from "./components/LoadingScreen";
+import { SocketContext, SocketProvider } from "./contexts/SocketContext";
+import { TableStatusProvider } from "./contexts/TableStatusContext";
 
 const MainCostumer = lazy(() => import("./components/costumer/MainCostumer"));
 const MainAdmin = lazy(() => import("./components/admin/MainAdmin"));
@@ -24,33 +26,37 @@ const App = () => {
     }, []);
 
     return (
-        <Router>
-            {isLoading && (
-                <div className="fixed w-full h-screen z-10">
-                    <LoadingScreen />
-                </div>
-            )}
+        <SocketProvider>
+            <TableStatusProvider>
+                <Router>
+                    {isLoading && (
+                        <div className="fixed w-full h-screen z-10">
+                            <LoadingScreen />
+                        </div>
+                    )}
 
-            <Routes>
-                <Route
-                    path="/admin"
-                    element={
-                        <Suspense fallback={<LoadingScreen />}>
-                            <MainAdmin />
-                        </Suspense>
-                    }
-                />
+                    <Routes>
+                        <Route
+                            path="/admin"
+                            element={
+                                <Suspense fallback={<LoadingScreen />}>
+                                    <MainAdmin />
+                                </Suspense>
+                            }
+                        />
 
-                <Route
-                    path="/"
-                    element={
-                        <Suspense fallback={<LoadingScreen />}>
-                            <MainCostumer />
-                        </Suspense>
-                    }
-                />
-            </Routes>
-        </Router>
+                        <Route
+                            path="/"
+                            element={
+                                <Suspense fallback={<LoadingScreen />}>
+                                    <MainCostumer />
+                                </Suspense>
+                            }
+                        />
+                    </Routes>
+                </Router>
+            </TableStatusProvider>
+        </SocketProvider>
     );
 };
 

@@ -24,7 +24,7 @@ const CostumerScene = ({ camPos, camRot }: CameraControl) => {
                 position={[camPos[0], camPos[1], camPos[2]]}
                 rotation={[Math.PI / camRot[0], camRot[1], camRot[2]]}
             />
-            <PerspectiveCamera makeDefault fov={85} />
+            <PerspectiveCamera makeDefault fov={95} />
 
             <Suspense fallback={null}>
                 <Restaurant />

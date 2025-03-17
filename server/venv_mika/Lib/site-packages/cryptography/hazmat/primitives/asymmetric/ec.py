@@ -324,10 +324,7 @@ class ECDSA(EllipticCurveSignatureAlgorithm):
     ):
         from cryptography.hazmat.backends.openssl.backend import backend
 
-        if (
-            deterministic_signing
-            and not backend.ecdsa_deterministic_supported()
-        ):
+        if deterministic_signing and not backend.ecdsa_deterministic_supported():
             raise UnsupportedAlgorithm(
                 "ECDSA with deterministic signature (RFC 6979) is not "
                 "supported by this version of OpenSSL.",
@@ -398,6 +395,5 @@ def get_curve_for_oid(oid: ObjectIdentifier) -> type[EllipticCurve]:
         return _OID_TO_CURVE[oid]
     except KeyError:
         raise LookupError(
-            "The provided object identifier has no matching elliptic "
-            "curve class"
+            "The provided object identifier has no matching elliptic " "curve class"
         )

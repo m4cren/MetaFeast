@@ -254,6 +254,7 @@ if sys.version_info >= (3, 13):
                 " metadata to list templates."
             ) from e
         return get_files()
+
 else:
 
     def _get_zipimporter_files(z: t.Any) -> t.Dict[str, object]:

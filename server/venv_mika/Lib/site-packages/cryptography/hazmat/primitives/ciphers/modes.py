@@ -82,9 +82,7 @@ def _check_iv_length(
         raise ValueError(f"Invalid IV size ({iv_len}) for {self.name}.")
 
 
-def _check_nonce_length(
-    nonce: bytes, name: str, algorithm: CipherAlgorithm
-) -> None:
+def _check_nonce_length(nonce: bytes, name: str, algorithm: CipherAlgorithm) -> None:
     if not isinstance(algorithm, BlockCipherAlgorithm):
         raise UnsupportedAlgorithm(
             f"{name} requires a block cipher algorithm",
@@ -239,8 +237,7 @@ class GCM(ModeWithInitializationVector, ModeWithAuthenticationTag):
                 raise ValueError("min_tag_length must be >= 4")
             if len(tag) < min_tag_length:
                 raise ValueError(
-                    f"Authentication tag must be {min_tag_length} bytes or "
-                    "longer."
+                    f"Authentication tag must be {min_tag_length} bytes or " "longer."
                 )
         self._tag = tag
         self._min_tag_length = min_tag_length
@@ -263,6 +260,5 @@ class GCM(ModeWithInitializationVector, ModeWithAuthenticationTag):
         block_size_bytes = algorithm.block_size // 8
         if self._tag is not None and len(self._tag) > block_size_bytes:
             raise ValueError(
-                f"Authentication tag cannot be more than {block_size_bytes} "
-                "bytes."
+                f"Authentication tag cannot be more than {block_size_bytes} " "bytes."
             )

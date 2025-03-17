@@ -45,9 +45,7 @@ _ALLOWED_HASHES = (
 
 def _verify_algorithm(algorithm: hashes.HashAlgorithm) -> None:
     if not isinstance(algorithm, _ALLOWED_HASHES):
-        raise ValueError(
-            "Algorithm must be SHA1, SHA224, SHA256, SHA384, or SHA512"
-        )
+        raise ValueError("Algorithm must be SHA1, SHA224, SHA256, SHA384, or SHA512")
 
 
 class OCSPCertStatus(utils.Enum):
@@ -76,9 +74,7 @@ class _SingleResponse:
         _verify_algorithm(algorithm)
         if not isinstance(this_update, datetime.datetime):
             raise TypeError("this_update must be a datetime object")
-        if next_update is not None and not isinstance(
-            next_update, datetime.datetime
-        ):
+        if next_update is not None and not isinstance(next_update, datetime.datetime):
             raise TypeError("next_update must be a datetime object or None")
 
         self._cert = cert
@@ -88,9 +84,7 @@ class _SingleResponse:
         self._next_update = next_update
 
         if not isinstance(cert_status, OCSPCertStatus):
-            raise TypeError(
-                "cert_status must be an item from the OCSPCertStatus enum"
-            )
+            raise TypeError("cert_status must be an item from the OCSPCertStatus enum")
         if cert_status is not OCSPCertStatus.REVOKED:
             if revocation_time is not None:
                 raise ValueError(
@@ -109,8 +103,7 @@ class _SingleResponse:
             revocation_time = _convert_to_naive_utc_time(revocation_time)
             if revocation_time < _EARLIEST_UTC_TIME:
                 raise ValueError(
-                    "The revocation_time must be on or after"
-                    " 1950 January 1."
+                    "The revocation_time must be on or after" " 1950 January 1."
                 )
 
             if revocation_reason is not None and not isinstance(
@@ -134,12 +127,10 @@ OCSPSingleResponse = ocsp.OCSPSingleResponse
 class OCSPRequestBuilder:
     def __init__(
         self,
-        request: tuple[
-            x509.Certificate, x509.Certificate, hashes.HashAlgorithm
-        ]
-        | None = None,
-        request_hash: tuple[bytes, bytes, int, hashes.HashAlgorithm]
-        | None = None,
+        request: (
+            tuple[x509.Certificate, x509.Certificate, hashes.HashAlgorithm] | None
+        ) = None,
+        request_hash: tuple[bytes, bytes, int, hashes.HashAlgorithm] | None = None,
         extensions: list[x509.Extension[x509.ExtensionType]] = [],
     ) -> None:
         self._request = request
@@ -219,8 +210,7 @@ class OCSPResponseBuilder:
     def __init__(
         self,
         response: _SingleResponse | None = None,
-        responder_id: tuple[x509.Certificate, OCSPResponderEncoding]
-        | None = None,
+        responder_id: tuple[x509.Certificate, OCSPResponderEncoding] | None = None,
         certs: list[x509.Certificate] | None = None,
         extensions: list[x509.Extension[x509.ExtensionType]] = [],
     ):
@@ -268,9 +258,7 @@ class OCSPResponseBuilder:
         if not isinstance(responder_cert, x509.Certificate):
             raise TypeError("responder_cert must be a Certificate")
         if not isinstance(encoding, OCSPResponderEncoding):
-            raise TypeError(
-                "encoding must be an element from OCSPResponderEncoding"
-            )
+            raise TypeError("encoding must be an element from OCSPResponderEncoding")
 
         return OCSPResponseBuilder(
             self._response,
@@ -327,13 +315,9 @@ class OCSPResponseBuilder:
         )
 
     @classmethod
-    def build_unsuccessful(
-        cls, response_status: OCSPResponseStatus
-    ) -> OCSPResponse:
+    def build_unsuccessful(cls, response_status: OCSPResponseStatus) -> OCSPResponse:
         if not isinstance(response_status, OCSPResponseStatus):
-            raise TypeError(
-                "response_status must be an item from OCSPResponseStatus"
-            )
+            raise TypeError("response_status must be an item from OCSPResponseStatus")
         if response_status is OCSPResponseStatus.SUCCESSFUL:
             raise ValueError("response_status cannot be SUCCESSFUL")
 

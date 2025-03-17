@@ -167,9 +167,7 @@ CONDITIONAL_NAMES = {
     "Cryptography_HAS_ENGINE": cryptography_has_engine,
     "Cryptography_HAS_VERIFIED_CHAIN": cryptography_has_verified_chain,
     "Cryptography_HAS_SRTP": cryptography_has_srtp,
-    "Cryptography_HAS_OP_NO_RENEGOTIATION": (
-        cryptography_has_op_no_renegotiation
-    ),
+    "Cryptography_HAS_OP_NO_RENEGOTIATION": (cryptography_has_op_no_renegotiation),
     "Cryptography_HAS_DTLS_GET_DATA_MTU": cryptography_has_dtls_get_data_mtu,
     "Cryptography_HAS_SSL_COOKIE": cryptography_has_ssl_cookie,
     "Cryptography_HAS_PRIME_CHECKS": cryptography_has_prime_checks,

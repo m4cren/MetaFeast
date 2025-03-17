@@ -1,6 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import useServerAddress from "./useServerAddress";
+
+const { host } = useServerAddress();
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,7 +13,7 @@ export default defineConfig({
     //paltan to katulad ng sa backend ip address pero dapat magkaiba sila ng port
 
     server: {
-        host: "192.168.1.35",
+        host: host,
         port: 1555,
     },
 });

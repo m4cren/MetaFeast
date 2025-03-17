@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import useServerAddress from "../../hooks/useServerAddress";
+import useServerAddress from "../../../useServerAddress";
 import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
 
 interface FormType {
@@ -16,10 +16,10 @@ interface Props {
 }
 
 const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
-    console.log(setIsName);
     const { server } = useServerAddress();
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const [warningContent, setWarningContent] = useState<string>("");
+
     const { afterName_Frames, selTable1stF_Frames } =
         useCostumerFrameProvider();
 

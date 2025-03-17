@@ -108,9 +108,7 @@ class TableDDLTest(fixtures.TestBase):
         table.comment = "a comment"
         connection.execute(schema.SetTableComment(table))
         connection.execute(schema.DropTableComment(table))
-        eq_(
-            inspect(connection).get_table_comment("test_table"), {"text": None}
-        )
+        eq_(inspect(connection).get_table_comment("test_table"), {"text": None})
 
     @requirements.table_ddl_if_exists
     @util.provide_metadata
@@ -131,20 +129,14 @@ class TableDDLTest(fixtures.TestBase):
         is_true(inspect(connection).has_table("test_table"))
         is_false(
             "test_index"
-            in [
-                ix["name"]
-                for ix in inspect(connection).get_indexes("test_table")
-            ]
+            in [ix["name"] for ix in inspect(connection).get_indexes("test_table")]
         )
 
         connection.execute(schema.CreateIndex(idx, if_not_exists=True))
 
         is_true(
             "test_index"
-            in [
-                ix["name"]
-                for ix in inspect(connection).get_indexes("test_table")
-            ]
+            in [ix["name"] for ix in inspect(connection).get_indexes("test_table")]
         )
 
         connection.execute(schema.CreateIndex(idx, if_not_exists=True))
@@ -173,20 +165,14 @@ class TableDDLTest(fixtures.TestBase):
 
         is_true(
             "test_index"
-            in [
-                ix["name"]
-                for ix in inspect(connection).get_indexes("test_table")
-            ]
+            in [ix["name"] for ix in inspect(connection).get_indexes("test_table")]
         )
 
         connection.execute(schema.DropIndex(idx, if_exists=True))
 
         is_false(
             "test_index"
-            in [
-                ix["name"]
-                for ix in inspect(connection).get_indexes("test_table")
-            ]
+            in [ix["name"] for ix in inspect(connection).get_indexes("test_table")]
         )
 
         connection.execute(schema.DropIndex(idx, if_exists=True))
@@ -372,9 +358,7 @@ class LongNameBlowoutTest(fixtures.TestBase):
         argnames="type_",
     )
     def test_long_convention_name(self, type_, metadata, connection):
-        actual_name, reflected_name = getattr(self, type_)(
-            metadata, connection
-        )
+        actual_name, reflected_name = getattr(self, type_)(metadata, connection)
 
         assert len(actual_name) > 255
 

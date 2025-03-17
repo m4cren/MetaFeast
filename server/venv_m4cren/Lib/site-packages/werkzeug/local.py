@@ -207,8 +207,9 @@ class LocalManager:
 
     def __init__(
         self,
-        locals: None
-        | (Local | LocalStack[t.Any] | t.Iterable[Local | LocalStack[t.Any]]) = None,
+        locals: None | (
+            Local | LocalStack[t.Any] | t.Iterable[Local | LocalStack[t.Any]]
+        ) = None,
     ) -> None:
         if locals is None:
             self.locals = []

@@ -13,7 +13,7 @@ import h11
 
 @contextmanager
 def socket_server(
-    handler: Callable[..., socketserver.BaseRequestHandler]
+    handler: Callable[..., socketserver.BaseRequestHandler],
 ) -> Generator[socketserver.TCPServer, None, None]:
     httpd = socketserver.TCPServer(("127.0.0.1", 0), handler)
     thread = threading.Thread(

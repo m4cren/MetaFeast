@@ -145,9 +145,9 @@ class Response(_SansIOResponse):
         self,
         response: t.Iterable[bytes] | bytes | t.Iterable[str] | str | None = None,
         status: int | str | HTTPStatus | None = None,
-        headers: t.Mapping[str, str | t.Iterable[str]]
-        | t.Iterable[tuple[str, str]]
-        | None = None,
+        headers: (
+            t.Mapping[str, str | t.Iterable[str]] | t.Iterable[tuple[str, str]] | None
+        ) = None,
         mimetype: str | None = None,
         content_type: str | None = None,
         direct_passthrough: bool = False,

@@ -31,7 +31,6 @@ const MainCostumer = () => {
 
     const [phase, setPhase] = useState<number>(0);
     const [isName, setIsName] = useState<boolean>(false);
-    console.log(setIsName);
 
     useEffect(() => {
         let get_phase = localStorage.getItem("current_phase");

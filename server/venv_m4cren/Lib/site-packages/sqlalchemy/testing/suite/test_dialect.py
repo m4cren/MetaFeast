@@ -42,9 +42,7 @@ class PingTest(fixtures.TestBase):
 
     def test_do_ping(self):
         with testing.db.connect() as conn:
-            is_true(
-                testing.db.dialect.do_ping(conn.connection.dbapi_connection)
-            )
+            is_true(testing.db.dialect.do_ping(conn.connection.dbapi_connection))
 
 
 class ArgSignatureTest(fixtures.TestBase):
@@ -117,9 +115,7 @@ class ExceptionTest(fixtures.TablesTest):
     def test_integrity_error(self):
         with config.db.connect() as conn:
             trans = conn.begin()
-            conn.execute(
-                self.tables.manual_pk.insert(), {"id": 1, "data": "d1"}
-            )
+            conn.execute(self.tables.manual_pk.insert(), {"id": 1, "data": "d1"})
 
             assert_raises(
                 exc.IntegrityError,
@@ -183,9 +179,7 @@ class IsolationLevelTest(fixtures.TestBase):
 
             eq_(conn.get_isolation_level(), non_default)
 
-            conn.dialect.reset_isolation_level(
-                conn.connection.dbapi_connection
-            )
+            conn.dialect.reset_isolation_level(conn.connection.dbapi_connection)
 
             eq_(conn.get_isolation_level(), existing)
 
@@ -223,9 +217,7 @@ class IsolationLevelTest(fixtures.TestBase):
             % (
                 "FOO",
                 connection.dialect.name,
-                ", ".join(
-                    requirements.get_isolation_levels(config)["supported"]
-                ),
+                ", ".join(requirements.get_isolation_levels(config)["supported"]),
             ),
         ):
             connection.execution_options(isolation_level="FOO")
@@ -246,9 +238,7 @@ class IsolationLevelTest(fixtures.TestBase):
             % (
                 "FOO",
                 eng.dialect.name,
-                ", ".join(
-                    requirements.get_isolation_levels(config)["supported"]
-                ),
+                ", ".join(requirements.get_isolation_levels(config)["supported"]),
             ),
         ):
             eng.connect()
@@ -258,9 +248,7 @@ class IsolationLevelTest(fixtures.TestBase):
         levels = requirements.get_isolation_levels(config)
         default = levels["default"]
         supported = (
-            sorted(
-                set(levels["supported"]).difference([default, "AUTOCOMMIT"])
-            )
+            sorted(set(levels["supported"]).difference([default, "AUTOCOMMIT"]))
         )[0]
 
         e = testing_engine(options={"isolation_level": supported})
@@ -295,9 +283,7 @@ class AutocommitIsolationTest(fixtures.TablesTest):
 
     def _test_conn_autocommits(self, conn, autocommit):
         trans = conn.begin()
-        conn.execute(
-            self.tables.some_table.insert(), {"id": 1, "data": "some data"}
-        )
+        conn.execute(self.tables.some_table.insert(), {"id": 1, "data": "some data"})
         trans.rollback()
 
         eq_(
@@ -322,33 +308,25 @@ class AutocommitIsolationTest(fixtures.TablesTest):
         conn = connection_no_trans
         self._test_conn_autocommits(conn, False)
 
-    def test_turn_autocommit_off_via_default_iso_level(
-        self, connection_no_trans
-    ):
+    def test_turn_autocommit_off_via_default_iso_level(self, connection_no_trans):
         conn = connection_no_trans
         conn = conn.execution_options(isolation_level="AUTOCOMMIT")
         self._test_conn_autocommits(conn, True)
 
         conn.execution_options(
-            isolation_level=requirements.get_isolation_levels(config)[
-                "default"
-            ]
+            isolation_level=requirements.get_isolation_levels(config)["default"]
         )
         self._test_conn_autocommits(conn, False)
 
     @testing.requires.independent_readonly_connections
     @testing.variation("use_dialect_setting", [True, False])
-    def test_dialect_autocommit_is_restored(
-        self, testing_engine, use_dialect_setting
-    ):
+    def test_dialect_autocommit_is_restored(self, testing_engine, use_dialect_setting):
         """test #10147"""
 
         if use_dialect_setting:
             e = testing_engine(options={"isolation_level": "AUTOCOMMIT"})
         else:
-            e = testing_engine().execution_options(
-                isolation_level="AUTOCOMMIT"
-            )
+            e = testing_engine().execution_options(isolation_level="AUTOCOMMIT")
 
         levels = requirements.get_isolation_levels(config)
 
@@ -381,9 +359,7 @@ class EscapingTest(fixtures.TestBase):
 
             eq_(
                 conn.scalar(
-                    select(t.c.data).where(
-                        t.c.data == literal_column("'some % value'")
-                    )
+                    select(t.c.data).where(t.c.data == literal_column("'some % value'"))
                 ),
                 "some % value",
             )
@@ -501,9 +477,7 @@ class DifficultParametersTest(fixtures.TestBase):
 
     @tough_parameters
     @config.requirements.unusual_column_name_characters
-    def test_round_trip_same_named_column(
-        self, paramname, connection, metadata
-    ):
+    def test_round_trip_same_named_column(self, paramname, connection, metadata):
         name = paramname
 
         t = Table(
@@ -533,9 +507,7 @@ class DifficultParametersTest(fixtures.TestBase):
         eq_(row._mapping[name], "some name")
 
         # use expanding IN
-        stmt = select(t.c[name]).where(
-            t.c[name].in_(["some name", "some other_name"])
-        )
+        stmt = select(t.c[name]).where(t.c[name].in_(["some name", "some other_name"]))
 
         row = connection.execute(stmt).first()
 
@@ -563,13 +535,9 @@ class DifficultParametersTest(fixtures.TestBase):
         yield mytable
 
     @tough_parameters
-    def test_standalone_bindparam_escape(
-        self, paramname, connection, multirow_fixture
-    ):
+    def test_standalone_bindparam_escape(self, paramname, connection, multirow_fixture):
         tbl1 = multirow_fixture
-        stmt = select(tbl1.c.myid).where(
-            tbl1.c.name == bindparam(paramname, value="x")
-        )
+        stmt = select(tbl1.c.myid).where(tbl1.c.name == bindparam(paramname, value="x"))
         res = connection.scalar(stmt, {paramname: "c"})
         eq_(res, 3)
 
@@ -644,13 +612,9 @@ class ReturningGuardsTest(fixtures.TablesTest):
                     # for RETURNING execute(), we pass all the way to the DB
                     # and let it fail
                     with expect_raises(exc.DBAPIError):
-                        connection.execute(
-                            stmt, {id_param_name: 1, "data": "d1"}
-                        )
+                        connection.execute(stmt, {id_param_name: 1, "data": "d1"})
                 else:
-                    result = connection.execute(
-                        stmt, {id_param_name: 1, "data": "d1"}
-                    )
+                    result = connection.execute(stmt, {id_param_name: 1, "data": "d1"})
                     eq_(result.all(), [(1,)])
 
         return go
@@ -667,9 +631,7 @@ class ReturningGuardsTest(fixtures.TablesTest):
 
         stmt = t.insert()
 
-        run_stmt(
-            stmt, True, "id", connection.dialect.insert_executemany_returning
-        )
+        run_stmt(stmt, True, "id", connection.dialect.insert_executemany_returning)
 
     def test_update_single(self, connection, run_stmt):
         t = self.tables.t
@@ -701,9 +663,7 @@ class ReturningGuardsTest(fixtures.TablesTest):
 
         stmt = t.update().where(t.c.id == bindparam("b_id"))
 
-        run_stmt(
-            stmt, True, "b_id", connection.dialect.update_executemany_returning
-        )
+        run_stmt(stmt, True, "b_id", connection.dialect.update_executemany_returning)
 
     def test_delete_single(self, connection, run_stmt):
         t = self.tables.t
@@ -735,6 +695,4 @@ class ReturningGuardsTest(fixtures.TablesTest):
 
         stmt = t.delete().where(t.c.id == bindparam("b_id"))
 
-        run_stmt(
-            stmt, True, "b_id", connection.dialect.delete_executemany_returning
-        )
+        run_stmt(stmt, True, "b_id", connection.dialect.delete_executemany_returning)

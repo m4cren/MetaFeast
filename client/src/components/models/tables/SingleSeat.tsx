@@ -2,8 +2,9 @@ import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
+import useTableRequest from "../../../hooks/useTableRequest";
 
-const TABLE_ID = ["A1", "A2", "A3", "A4", "A5", "A6"];
+const TABLE_ID = ["A-1", "A-2", "A-3", "A-4", "A-5", "A-6"];
 
 const TABLE_POSITION = [
     [14.2, 0.76, -18.3],
@@ -17,6 +18,8 @@ const TABLE_POSITION = [
 const SingleSeat = () => {
     const { scene } = useGLTF("/models/single_seat.glb");
     const meshRef = useRef<THREE.InstancedMesh>(null);
+
+    const { sendData } = useTableRequest();
 
     const [meshes, setMeshes] = useState<THREE.Mesh[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -55,7 +58,9 @@ const SingleSeat = () => {
 
     const handleClick = (event: ThreeEvent<PointerEvent>) => {
         if (event.instanceId !== undefined) {
-            console.log(`TABLE ID: ${TABLE_ID[event.instanceId]}`);
+            let table_id: string = TABLE_ID[event.instanceId];
+
+            sendData(table_id);
         }
     };
 

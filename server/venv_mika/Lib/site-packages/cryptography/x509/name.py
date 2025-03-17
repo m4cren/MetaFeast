@@ -124,9 +124,7 @@ class NameAttribute:
         _validate: bool = True,
     ) -> None:
         if not isinstance(oid, ObjectIdentifier):
-            raise TypeError(
-                "oid argument must be an ObjectIdentifier instance."
-            )
+            raise TypeError("oid argument must be an ObjectIdentifier instance.")
         if _type == _ASN1Type.BitString:
             if oid != NameOID.X500_UNIQUE_IDENTIFIER:
                 raise TypeError(
@@ -185,18 +183,14 @@ class NameAttribute:
         """
         return _NAMEOID_TO_NAME.get(self.oid, self.oid.dotted_string)
 
-    def rfc4514_string(
-        self, attr_name_overrides: _OidNameMap | None = None
-    ) -> str:
+    def rfc4514_string(self, attr_name_overrides: _OidNameMap | None = None) -> str:
         """
         Format as RFC4514 Distinguished Name string.
 
         Use short attribute name if available, otherwise fall back to OID
         dotted string.
         """
-        attr_name = (
-            attr_name_overrides.get(self.oid) if attr_name_overrides else None
-        )
+        attr_name = attr_name_overrides.get(self.oid) if attr_name_overrides else None
         if attr_name is None:
             attr_name = self.rfc4514_attribute_name
 
@@ -230,14 +224,10 @@ class RelativeDistinguishedName:
         if len(self._attribute_set) != len(attributes):
             raise ValueError("duplicate attributes are not allowed")
 
-    def get_attributes_for_oid(
-        self, oid: ObjectIdentifier
-    ) -> list[NameAttribute]:
+    def get_attributes_for_oid(self, oid: ObjectIdentifier) -> list[NameAttribute]:
         return [i for i in self if i.oid == oid]
 
-    def rfc4514_string(
-        self, attr_name_overrides: _OidNameMap | None = None
-    ) -> str:
+    def rfc4514_string(self, attr_name_overrides: _OidNameMap | None = None) -> str:
         """
         Format as RFC4514 Distinguished Name string.
 
@@ -245,8 +235,7 @@ class RelativeDistinguishedName:
         used in certificates.
         """
         return "+".join(
-            attr.rfc4514_string(attr_name_overrides)
-            for attr in self._attributes
+            attr.rfc4514_string(attr_name_overrides) for attr in self._attributes
         )
 
     def __eq__(self, other: object) -> bool:
@@ -305,9 +294,7 @@ class Name:
     ) -> Name:
         return _RFC4514NameParser(data, attr_name_overrides or {}).parse()
 
-    def rfc4514_string(
-        self, attr_name_overrides: _OidNameMap | None = None
-    ) -> str:
+    def rfc4514_string(self, attr_name_overrides: _OidNameMap | None = None) -> str:
         """
         Format as RFC4514 Distinguished Name string.
         For example 'CN=foobar.com,O=Foo Corp,C=US'
@@ -323,9 +310,7 @@ class Name:
             for attr in reversed(self._attributes)
         )
 
-    def get_attributes_for_oid(
-        self, oid: ObjectIdentifier
-    ) -> list[NameAttribute]:
+    def get_attributes_for_oid(self, oid: ObjectIdentifier) -> list[NameAttribute]:
         return [i for i in self if i.oid == oid]
 
     @property
@@ -446,9 +431,7 @@ class _RFC4514NameParser:
             oid_value = self._read_re(self._OID_RE)
         except ValueError:
             name = self._read_re(self._DESCR_RE)
-            oid = self._attr_name_overrides.get(
-                name, _NAME_TO_NAMEOID.get(name)
-            )
+            oid = self._attr_name_overrides.get(name, _NAME_TO_NAMEOID.get(name))
             if oid is None:
                 raise ValueError
         else:

@@ -51,8 +51,7 @@ class DeprecatedCompoundSelectTest(fixtures.TablesTest):
 
         u1 = union(s1, s2)
         with testing.expect_deprecated(
-            "The SelectBase.c and SelectBase.columns "
-            "attributes are deprecated"
+            "The SelectBase.c and SelectBase.columns " "attributes are deprecated"
         ):
             self._assert_result(
                 connection, u1.order_by(u1.c.id), [(2, 2, 3), (3, 3, 4)]
@@ -72,8 +71,7 @@ class DeprecatedCompoundSelectTest(fixtures.TablesTest):
 
         u1 = union(s1, s2).alias().select()
         with testing.expect_deprecated(
-            "The SelectBase.c and SelectBase.columns "
-            "attributes are deprecated"
+            "The SelectBase.c and SelectBase.columns " "attributes are deprecated"
         ):
             self._assert_result(
                 connection, u1.order_by(u1.c.id), [(2, 2, 3), (3, 3, 4)]
@@ -88,8 +86,7 @@ class DeprecatedCompoundSelectTest(fixtures.TablesTest):
 
         u1 = union(s1, s2).limit(2)
         with testing.expect_deprecated(
-            "The SelectBase.c and SelectBase.columns "
-            "attributes are deprecated"
+            "The SelectBase.c and SelectBase.columns " "attributes are deprecated"
         ):
             self._assert_result(
                 connection, u1.order_by(u1.c.id), [(2, 2, 3), (3, 3, 4)]
@@ -103,8 +100,7 @@ class DeprecatedCompoundSelectTest(fixtures.TablesTest):
 
         u1 = union(s1, s2).limit(2)
         with testing.expect_deprecated(
-            "The SelectBase.c and SelectBase.columns "
-            "attributes are deprecated"
+            "The SelectBase.c and SelectBase.columns " "attributes are deprecated"
         ):
             self._assert_result(
                 connection, u1.order_by(u1.c.id), [(2, 2, 3), (3, 3, 4)]
@@ -117,8 +113,7 @@ class DeprecatedCompoundSelectTest(fixtures.TablesTest):
 
         u1 = union(s1, s2).limit(2)
         with testing.expect_deprecated(
-            "The SelectBase.c and SelectBase.columns "
-            "attributes are deprecated"
+            "The SelectBase.c and SelectBase.columns " "attributes are deprecated"
         ):
             self._assert_result(
                 connection, u1.order_by(u1.c.id), [(2, 2, 3), (3, 3, 4)]
@@ -145,8 +140,7 @@ class DeprecatedCompoundSelectTest(fixtures.TablesTest):
 
         u1 = union(s1, s2).limit(2)
         with testing.expect_deprecated(
-            "The SelectBase.c and SelectBase.columns "
-            "attributes are deprecated"
+            "The SelectBase.c and SelectBase.columns " "attributes are deprecated"
         ):
             self._assert_result(
                 connection, u1.order_by(u1.c.id), [(2, 2, 3), (3, 3, 4)]

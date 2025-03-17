@@ -81,13 +81,9 @@ class CTETest(fixtures.TablesTest):
         st1 = some_table.alias()
         # note that SQL Server requires this to be UNION ALL,
         # can't be UNION
-        cte = cte.union_all(
-            select(st1).where(st1.c.id == cte_alias.c.parent_id)
-        )
+        cte = cte.union_all(select(st1).where(st1.c.id == cte_alias.c.parent_id))
         result = connection.execute(
-            select(cte.c.data)
-            .where(cte.c.data != "d2")
-            .order_by(cte.c.data.desc())
+            select(cte.c.data).where(cte.c.data != "d2").order_by(cte.c.data.desc())
         )
         eq_(
             result.fetchall(),
@@ -168,9 +164,7 @@ class CTETest(fixtures.TablesTest):
             .cte("some_cte")
         )
         connection.execute(
-            some_other_table.delete().where(
-                some_other_table.c.data == cte.c.data
-            )
+            some_other_table.delete().where(some_other_table.c.data == cte.c.data)
         )
         eq_(
             connection.execute(

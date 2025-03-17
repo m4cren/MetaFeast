@@ -37,9 +37,7 @@ class Fernet:
                 "Fernet key must be 32 url-safe base64-encoded bytes."
             ) from exc
         if len(key) != 32:
-            raise ValueError(
-                "Fernet key must be 32 url-safe base64-encoded bytes."
-            )
+            raise ValueError("Fernet key must be 32 url-safe base64-encoded bytes.")
 
         self._signing_key = key[:16]
         self._encryption_key = key[16:]
@@ -55,9 +53,7 @@ class Fernet:
         iv = os.urandom(16)
         return self._encrypt_from_parts(data, current_time, iv)
 
-    def _encrypt_from_parts(
-        self, data: bytes, current_time: int, iv: bytes
-    ) -> bytes:
+    def _encrypt_from_parts(self, data: bytes, current_time: int, iv: bytes) -> bytes:
         utils._check_bytes("data", data)
 
         padder = padding.PKCS7(algorithms.AES.block_size).padder()
@@ -69,10 +65,7 @@ class Fernet:
         ciphertext = encryptor.update(padded_data) + encryptor.finalize()
 
         basic_parts = (
-            b"\x80"
-            + current_time.to_bytes(length=8, byteorder="big")
-            + iv
-            + ciphertext
+            b"\x80" + current_time.to_bytes(length=8, byteorder="big") + iv + ciphertext
         )
 
         h = HMAC(self._signing_key, hashes.SHA256())
@@ -88,13 +81,9 @@ class Fernet:
             time_info = (ttl, int(time.time()))
         return self._decrypt_data(data, timestamp, time_info)
 
-    def decrypt_at_time(
-        self, token: bytes | str, ttl: int, current_time: int
-    ) -> bytes:
+    def decrypt_at_time(self, token: bytes | str, ttl: int, current_time: int) -> bytes:
         if ttl is None:
-            raise ValueError(
-                "decrypt_at_time() can only be used with a non-None ttl"
-            )
+            raise ValueError("decrypt_at_time() can only be used with a non-None ttl")
         timestamp, data = Fernet._get_unverified_token_data(token)
         return self._decrypt_data(data, timestamp, (ttl, current_time))
 
@@ -171,9 +160,7 @@ class MultiFernet:
     def __init__(self, fernets: typing.Iterable[Fernet]):
         fernets = list(fernets)
         if not fernets:
-            raise ValueError(
-                "MultiFernet requires at least one Fernet instance"
-            )
+            raise ValueError("MultiFernet requires at least one Fernet instance")
         self._fernets = fernets
 
     def encrypt(self, msg: bytes) -> bytes:
@@ -204,9 +191,7 @@ class MultiFernet:
                 pass
         raise InvalidToken
 
-    def decrypt_at_time(
-        self, msg: bytes | str, ttl: int, current_time: int
-    ) -> bytes:
+    def decrypt_at_time(self, msg: bytes | str, ttl: int, current_time: int) -> bytes:
         for f in self._fernets:
             try:
                 return f.decrypt_at_time(msg, ttl, current_time)

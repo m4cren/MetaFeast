@@ -8,13 +8,22 @@ class AdminCredentials(db.Model):
 
 
 class Costumer(db.Model):
-    __tablename__ = 'costumer'
-    id = db.Column(db.Integer, primary_key = True)
-    costumer_name = db.Column(db.String(126), nullable= False)
+    __tablename__ = "costumer"
+    id = db.Column(db.Integer, primary_key=True)
+    costumer_name = db.Column(db.String(126), nullable=False)
+
+    current_table = db.relationship("Table", backref="costumer")
 
     def to_dict(self):
-        return{
-            'costumer_id': self.id,
-            'costumer_name': self.costumer_name
-        }
-       
+        return {"costumer_id": self.id, "costumer_name": self.costumer_name}
+
+
+class Table(db.Model):
+    __tablename__ = "table_status"
+    id = db.Column(db.Integer, primary_key=True)
+    table_name = db.Column(db.String(10), nullable=False, unique = True)
+    isAvailable = db.Column(db.Boolean, default=True)
+    current_costumer_name = db.Column(db.String(56), nullable=True, default="AVAILABLE")
+    current_costumer_id = db.Column(
+        db.Integer, db.ForeignKey("costumer.id"), nullable=True
+    )

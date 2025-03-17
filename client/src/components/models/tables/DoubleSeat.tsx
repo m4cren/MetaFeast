@@ -2,23 +2,24 @@ import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import useTableRequest from "../../../hooks/useTableRequest";
 
 const TABLE_ID = [
-    "B2",
-    "B6",
-    "B7",
-    "B8",
-    "B9",
-    "B10",
-    "B11",
-    "B12",
-    "B13",
-    "A9",
-    "A10",
-    "A11",
-    "A12",
-    "A13",
-    "A14",
+    "B-2",
+    "B-6",
+    "B-7",
+    "B-8",
+    "B-9",
+    "B-10",
+    "B-11",
+    "B-12",
+    "B-13",
+    "A-9",
+    "A-10",
+    "A-11",
+    "A-12",
+    "A-13",
+    "A-14",
 ];
 
 const TABLE_POSITION = [
@@ -40,6 +41,7 @@ const TABLE_POSITION = [
 ];
 
 const DoubleSeat = () => {
+    const { sendData } = useTableRequest();
     const { scene } = useGLTF("/models/double_seat.glb");
     const meshRef = useRef<THREE.InstancedMesh>(null);
 
@@ -80,7 +82,9 @@ const DoubleSeat = () => {
 
     const handleClick = (event: ThreeEvent<PointerEvent>) => {
         if (event.instanceId !== undefined) {
-            console.log(`TABLE ID: ${TABLE_ID[event.instanceId]}`);
+            let table_id: string = TABLE_ID[event.instanceId];
+
+            sendData(table_id);
         }
     };
 

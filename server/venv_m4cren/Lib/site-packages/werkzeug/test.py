@@ -429,7 +429,7 @@ class EnvironBuilder:
     def _add_file_from_data(
         self,
         key: str,
-        value: (t.IO[bytes] | tuple[t.IO[bytes], str] | tuple[t.IO[bytes], str, str]),
+        value: t.IO[bytes] | tuple[t.IO[bytes], str] | tuple[t.IO[bytes], str, str],
     ) -> None:
         """Called in the EnvironBuilder to add files from the data dict."""
         if isinstance(value, tuple):
