@@ -5,6 +5,7 @@ import { io, Socket } from "socket.io-client";
 const { server } = useServerAddress();
 
 export const SocketContext = createContext<Socket | null>(null);
+
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     const [socket, setSocket] = useState<Socket | null>(null);
 

@@ -1,48 +1,38 @@
 import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import useTableRequest from "../../../hooks/useTableRequest";
+import useCostumerFrameProvider from "../../../frames/useCostumerFrameProvider";
 
-const TABLE_ID = [
-    "B-2",
-    "B-6",
-    "B-7",
-    "B-8",
-    "B-9",
-    "B-10",
-    "B-11",
-    "B-12",
-    "B-13",
-    "A-9",
-    "A-10",
-    "A-11",
-    "A-12",
-    "A-13",
-    "A-14",
-];
+interface TableStatus {
+    table_name: string;
+    table_status: "Available" | "Occupied";
+    table_type: "Single_seat" | "Double_seat" | "Quad_seat";
+    table_position: [number, number, number];
+}
 
-const TABLE_POSITION = [
-    [14.3, 3.98, -20.2],
-    [19, 3.98, -17.5],
-    [19, 3.98, -20.25],
-    [19, 3.98, -23],
-    [21, 3.98, -17.5],
-    [21, 3.98, -20.25],
-    [21, 3.98, -23],
-    [23.7, 3.98, -21.4],
-    [23.7, 3.98, -23.8],
-    [17.75, 0.76, -18.5],
-    [17.75, 0.76, -21],
-    [17.75, 0.76, -23.5],
-    [19.4, 0.76, -18.5],
-    [19.4, 0.76, -21],
-    [19.4, 0.76, -23.5],
-];
+interface AvailableTable {
+    availableTable: TableStatus[];
+}
 
-const DoubleSeat = () => {
+interface Props {
+    transitionToTable: (table_id: string) => void;
+}
+
+const DoubleSeat: React.FC<AvailableTable & Props> = ({
+    availableTable,
+    transitionToTable,
+}) => {
+    const TABLE_POSITION = availableTable.map((table) => {
+        return table.table_position;
+    });
+    const TABLE_ID = availableTable.map((table) => {
+        return table.table_name;
+    });
     const { sendData } = useTableRequest();
     const { scene } = useGLTF("/models/double_seat.glb");
+    const { select_table_Frames } = useCostumerFrameProvider();
     const meshRef = useRef<THREE.InstancedMesh>(null);
 
     const [meshes, setMeshes] = useState<THREE.Mesh[]>([]);
@@ -85,6 +75,7 @@ const DoubleSeat = () => {
             let table_id: string = TABLE_ID[event.instanceId];
 
             sendData(table_id);
+            transitionToTable(table_id);
         }
     };
 

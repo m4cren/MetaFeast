@@ -3,8 +3,10 @@ import useServerAddress from "../../useServerAddress";
 import axios from "axios";
 
 interface TableStatus {
-    table_id: string;
+    table_name: string;
     table_status: "Available" | "Occupied";
+    table_type: "Single_seat" | "Double_seat" | "Quad_seat";
+    table_position: [number, number, number];
 }
 const { server } = useServerAddress();
 
@@ -34,7 +36,6 @@ export const TableStatusProvider = ({
                     withCredentials: false,
                 });
                 setTables(response.data.tables as TableStatus[]);
-                console.log(response.data.tables);
             };
             getTableStatus();
         } catch (error) {

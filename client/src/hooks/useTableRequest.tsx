@@ -8,9 +8,7 @@ const useTableRequest = () => {
     useEffect(() => {
         if (!socket) return;
         socket.on("table-status-feedback", (data) => {
-            setMessage(data);
-
-            console.log(message);
+            setMessage(data.status);
         });
 
         return () => {

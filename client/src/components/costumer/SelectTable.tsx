@@ -9,9 +9,17 @@ interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setIsPicking: React.Dispatch<React.SetStateAction<boolean>>;
+    isPicking: boolean;
 }
 
-const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
+const SelectTable = ({
+    setPhase,
+    setCamPos,
+    setCamRot,
+    isPicking,
+    setIsPicking,
+}: Props) => {
     const { server } = useServerAddress();
     const [name, setName] = useState<string>("...Loading");
     const [isLeftClicked, setIsLeftClicked] = useState<boolean>(false);
@@ -208,78 +216,113 @@ const SelectTable = ({ setPhase, setCamPos, setCamRot }: Props) => {
         }, 700);
     };
 
+    const handleChangeTable = () => {
+        setIsPicking(false);
+        setIsLeftClicked(false);
+        setIsRightClicked(false);
+        if (floor === 1) {
+            setCamPos(selTable1stF_Frames.mid.pos);
+            setCamRot(selTable1stF_Frames.mid.rot);
+        } else if (floor === 2) {
+            setCamPos(selTable2ndF_Frames.mid.pos);
+            setCamRot(selTable2ndF_Frames.mid.rot);
+        }
+    };
+
     return (
         <>
             <div className="w-full flex justify-center items-center p-6 bg-white/10 backdrop-blur-[10px] border-b-2 border-b-white/20">
-                <h1 className="text-white text-3xl font-medium text-shadow-lg">
-                    Select Table, {name}
-                </h1>
+                {isPicking ? (
+                    <h1 className="text-white text-3xl font-medium text-shadow-lg">
+                        Confirm Table?
+                    </h1>
+                ) : (
+                    <h1 className="text-white text-3xl font-medium text-shadow-lg">
+                        Select Table, {name}
+                    </h1>
+                )}
             </div>
 
-            {!isTransitioning ? (
-                <button
-                    onClick={
-                        floor === 1
-                            ? handleNextFloor
-                            : floor === 2
-                              ? handleDownFloor
-                              : doNothing
-                    }
-                    className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 fixed top-[95%] left-1/2 translate-x-[-50%] translate-y-[-50%] hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
-                >
-                    <Gi3dStairs />
-                    <p className="text-[1.25rem] w-max">
-                        {floor === 1
-                            ? "Go up stairs"
-                            : floor === 2
-                              ? "Go down stairs"
-                              : null}
-                    </p>
-                </button>
-            ) : null}
+            {isPicking ? (
+                <div className="flex flex-row w-full fixed bottom-4 gap-3 justify-center items-center">
+                    <button className="w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20  hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto">
+                        Confirm
+                    </button>
+                    <button
+                        className="w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20  hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
+                        onClick={handleChangeTable}
+                    >
+                        Change
+                    </button>
+                </div>
+            ) : (
+                <div>
+                    {!isTransitioning ? (
+                        <button
+                            onClick={
+                                floor === 1
+                                    ? handleNextFloor
+                                    : floor === 2
+                                      ? handleDownFloor
+                                      : doNothing
+                            }
+                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 fixed top-[95%] left-1/2 translate-x-[-50%] translate-y-[-50%] hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
+                        >
+                            <Gi3dStairs />
+                            <p className="text-[1.25rem] w-max">
+                                {floor === 1
+                                    ? "Go up stairs"
+                                    : floor === 2
+                                      ? "Go down stairs"
+                                      : null}
+                            </p>
+                        </button>
+                    ) : null}
 
-            {!isLeftClicked && !isRightClicked ? (
-                <>
-                    <div className="fixed h-screen right-2 top-1/2">
-                        <button
-                            className="text-white text-shadow-lg text-5xl opacity-60 pointer-events-auto"
-                            onClick={handleRightClick}
-                        >
-                            <FaGreaterThan />
-                        </button>
-                    </div>
-                    <div className="fixed h-screen text-shadow-lg left-2 top-1/2">
-                        <button
-                            className="text-white text-5xl opacity-60 pointer-events-auto"
-                            onClick={handleLeftClick}
-                        >
-                            <FaLessThan />
-                        </button>
-                    </div>
-                </>
-            ) : isLeftClicked && !isRightClicked ? (
-                <>
-                    <div className="fixed h-screen text-shadow-lg right-2 top-1/2">
-                        <button
-                            className="text-white text-5xl opacity-60 pointer-events-auto"
-                            onClick={handleMidClick}
-                        >
-                            <FaGreaterThan />
-                        </button>
-                    </div>
-                </>
-            ) : !isLeftClicked && isRightClicked ? (
-                <>
-                    <div className="fixed h-screen text-shadow-lg left-2 top-1/2">
-                        <button
-                            className="text-white text-5xl opacity-60 pointer-events-auto"
-                            onClick={handleMidClick}
-                        >
-                            <FaLessThan />
-                        </button>
-                    </div>
-                </>
-            ) : null}
+                    {!isLeftClicked && !isRightClicked ? (
+                        <>
+                            <div className="fixed h-screen right-2 top-1/2">
+                                <button
+                                    className="text-white text-shadow-lg text-5xl opacity-60 pointer-events-auto"
+                                    onClick={handleRightClick}
+                                >
+                                    <FaGreaterThan />
+                                </button>
+                            </div>
+                            <div className="fixed h-screen text-shadow-lg left-2 top-1/2">
+                                <button
+                                    className="text-white text-5xl opacity-60 pointer-events-auto"
+                                    onClick={handleLeftClick}
+                                >
+                                    <FaLessThan />
+                                </button>
+                            </div>
+                        </>
+                    ) : isLeftClicked && !isRightClicked ? (
+                        <>
+                            <div className="fixed h-screen text-shadow-lg right-2 top-1/2">
+                                <button
+                                    className="text-white text-5xl opacity-60 pointer-events-auto"
+                                    onClick={handleMidClick}
+                                >
+                                    <FaGreaterThan />
+                                </button>
+                            </div>
+                        </>
+                    ) : !isLeftClicked && isRightClicked ? (
+                        <>
+                            <div className="fixed h-screen text-shadow-lg left-2 top-1/2">
+                                <button
+                                    className="text-white text-5xl opacity-60 pointer-events-auto"
+                                    onClick={handleMidClick}
+                                >
+                                    <FaLessThan />
+                                </button>
+                            </div>
+                        </>
+                    ) : null}
+                </div>
+            )}
         </>
     );
 };

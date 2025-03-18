@@ -16,12 +16,17 @@ def table_status(data):
 
     tableID = data.get('table_id')
 
-    table_selected = Table.query.filter_by(table_name = tableID).first()
+    table = Table.query.filter_by(table_name = tableID).first()
 
-    if(table_selected.isAvailable):
-        print(f'Table {table_selected.table_name} is Available')
-    else:
-         print(f'Table {table_selected.table_name} is Occupied')
+    response = None
+
+    if table.isAvailable:
+        response = {'status': 'Available'}
+    elif not table.isAvailable:
+        response = {'status': 'Occupied'}
+
+    emit('table-status-feedback', response)
+        
 
 
     

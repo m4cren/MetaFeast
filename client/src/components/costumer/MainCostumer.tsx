@@ -9,6 +9,7 @@ import SelectTable from "./SelectTable";
 import { loader_timer } from "../../App";
 import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
 import useCameraControl from "../../hooks/useCameraControl";
+import { useTableStatus } from "../../contexts/TableStatusContext";
 
 const MainCostumer = () => {
     // const { camPos, camRot, cameraFunctions } = useCameraControl();
@@ -31,6 +32,7 @@ const MainCostumer = () => {
 
     const [phase, setPhase] = useState<number>(0);
     const [isName, setIsName] = useState<boolean>(false);
+    const [isPicking, setIsPicking] = useState<boolean>(false);
 
     useEffect(() => {
         let get_phase = localStorage.getItem("current_phase");
@@ -60,7 +62,13 @@ const MainCostumer = () => {
         <>
             <div className="relative w-full h-screen">
                 <div className="absolute top-0 left-0 w-full h-screen">
-                    <CostumerScene camPos={camPos} camRot={camRot} />
+                    <CostumerScene
+                        camPos={camPos}
+                        camRot={camRot}
+                        setCamPos={setCamPos}
+                        setCamRot={setCamRot}
+                        setIsPicking={setIsPicking}
+                    />
                 </div>
 
                 {phase === 0 && !isName && (
@@ -74,11 +82,15 @@ const MainCostumer = () => {
                     </div>
                 )}
                 {phase === 1 && (
-                    <div className="absolute top-0 left-0 z-1 w-full h-screen pointer-events-none">
+                    <div
+                        className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"}`}
+                    >
                         <SelectTable
                             setPhase={setPhase}
                             setCamPos={setCamPos}
                             setCamRot={setCamRot}
+                            isPicking={isPicking}
+                            setIsPicking={setIsPicking}
                         />
                     </div>
                 )}

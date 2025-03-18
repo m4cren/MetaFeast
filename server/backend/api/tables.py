@@ -16,7 +16,9 @@ def table_status():
 
      tables_status = [
           {'table_name': table.table_name,
-          'table_status': 'Available' if table.isAvailable else 'Occupied'
+          'table_status': 'Available' if table.isAvailable else 'Occupied',
+          'table_type': table.table_type,
+          'table_position': table.get_position()
           } for table in tables
      ]
 

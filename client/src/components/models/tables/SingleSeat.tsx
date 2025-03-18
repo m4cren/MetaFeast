@@ -4,18 +4,32 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import useTableRequest from "../../../hooks/useTableRequest";
 
-const TABLE_ID = ["A-1", "A-2", "A-3", "A-4", "A-5", "A-6"];
+interface TableStatus {
+    table_name: string;
+    table_status: "Available" | "Occupied";
+    table_type: "Single_seat" | "Double_seat" | "Quad_seat";
+    table_position: [number, number, number];
+}
 
-const TABLE_POSITION = [
-    [14.2, 0.76, -18.3],
-    [14.2, 0.76, -19.6],
-    [14.2, 0.76, -20.9],
-    [14.2, 0.76, -22.2],
-    [14.2, 0.76, -23.5],
-    [14.2, 0.76, -24.8],
-];
+interface AvailableTable {
+    availableTable: TableStatus[];
+}
 
-const SingleSeat = () => {
+interface Props {
+    transitionToTable: (table_id: string) => void;
+}
+
+const SingleSeat: React.FC<AvailableTable & Props> = ({
+    availableTable,
+    transitionToTable,
+}) => {
+    const TABLE_POSITION = availableTable.map((table) => {
+        return table.table_position;
+    });
+    const TABLE_ID = availableTable.map((table) => {
+        return table.table_name;
+    });
+
     const { scene } = useGLTF("/models/single_seat.glb");
     const meshRef = useRef<THREE.InstancedMesh>(null);
 
@@ -61,6 +75,7 @@ const SingleSeat = () => {
             let table_id: string = TABLE_ID[event.instanceId];
 
             sendData(table_id);
+            transitionToTable(table_id);
         }
     };
 

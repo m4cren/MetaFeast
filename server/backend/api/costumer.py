@@ -20,6 +20,9 @@ def phase_1():
     return jsonify({"message": "ok", "costumer_name": current_costumer.costumer_name})
 
 
+
+
+
 @costumer.route("/costumer-exit", methods=["POST", "GET"])
 @jwt_required()
 def exit_costumer():
