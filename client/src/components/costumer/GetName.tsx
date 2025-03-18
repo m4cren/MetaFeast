@@ -86,13 +86,15 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (name.costumer_name.length <= 0) {
+        if (name.costumer_name.length == 0) {
             setWarningContent("Please enter your name :<");
             setIsWarning(true);
 
             setTimeout(() => {
                 setIsWarning(false);
             }, 5000);
+
+            return;
         }
 
         submitToServer();

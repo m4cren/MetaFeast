@@ -8,7 +8,6 @@ import SelectTable from "./SelectTable";
 
 import { loader_timer } from "../../App";
 import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
-// import useCameraControl from "../../hooks/useCameraControl";
 
 const MainCostumer = () => {
     // const { camPos, camRot, cameraFunctions } = useCameraControl();
