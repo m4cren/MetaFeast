@@ -69,7 +69,7 @@ const QuadSeat: React.FC<AvailableTable & Props> = ({
     if (!isLoaded || meshes.length === 0) return null;
 
     const handleClick = (event: ThreeEvent<PointerEvent>) => {
-        event.stopPropagation(); // Prevent clicks from passing through
+        event.stopPropagation();
 
         if (event.instanceId !== undefined) {
             let table_id: string = TABLE_ID[event.instanceId];

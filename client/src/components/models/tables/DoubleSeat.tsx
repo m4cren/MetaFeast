@@ -3,7 +3,6 @@ import { ThreeEvent } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import useTableRequest from "../../../hooks/useTableRequest";
-import useCostumerFrameProvider from "../../../frames/useCostumerFrameProvider";
 
 interface TableStatus {
     table_name: string;
@@ -32,7 +31,7 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
     });
     const { sendData } = useTableRequest();
     const { scene } = useGLTF("/models/double_seat.glb");
-    const { select_table_Frames } = useCostumerFrameProvider();
+
     const meshRef = useRef<THREE.InstancedMesh>(null);
 
     const [meshes, setMeshes] = useState<THREE.Mesh[]>([]);

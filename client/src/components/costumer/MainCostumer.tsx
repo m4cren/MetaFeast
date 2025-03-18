@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import SceneCameraController from "./SceneCameraController";
+// import SceneCameraController from "./SceneCameraController";
 // import useCameraControl from "../../hooks/useCameraControl";
 import CostumerScene from "./scenes/CostumerScene";
 import GetName from "./GetName";
@@ -8,8 +8,7 @@ import SelectTable from "./SelectTable";
 
 import { loader_timer } from "../../App";
 import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
-import useCameraControl from "../../hooks/useCameraControl";
-import { useTableStatus } from "../../contexts/TableStatusContext";
+// import useCameraControl from "../../hooks/useCameraControl";
 
 const MainCostumer = () => {
     // const { camPos, camRot, cameraFunctions } = useCameraControl();

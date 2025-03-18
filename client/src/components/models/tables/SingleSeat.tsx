@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import useTableRequest from "../../../hooks/useTableRequest";
 
