@@ -1,7 +1,29 @@
 from .extensions import db
 from .db_config import save_data, delete_all_data, delete_data
-from .db_models import Table
+from .db_models import Table, AdminCredentials
+from werkzeug.security import generate_password_hash
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+
+def create_admin(app):
+
+     with app.app_context():
+
+          password = os.getenv('ADMIN_PASSWORD')
+          hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+          is_admin = AdminCredentials.query.first()
+
+          if not is_admin:
+
+               new_admin = AdminCredentials(admin_password = hashed_password)
+               save_data(new_admin)
+
+               print('Admin Created')
+          else:
+               print('Admin already created')
 
 
 

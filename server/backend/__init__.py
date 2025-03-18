@@ -11,7 +11,7 @@ import pymysql
 from flask_cors import CORS
 from datetime import timedelta
 from dotenv import load_dotenv
-from .SQL_QUERY import create_table
+from .SQL_QUERY import create_table, create_admin
 
 load_dotenv()
 
@@ -62,12 +62,14 @@ def create_website():
     from .api.order import order
     from .api.costumer import costumer
     from .api.tables import tables
+    from .api.admin import admin
  
 
     app.register_blueprint(order)
     app.register_blueprint(auth)
     app.register_blueprint(costumer)
     app.register_blueprint(tables)
+    app.register_blueprint(admin)
     
     from .db_models import Table
 
@@ -82,6 +84,7 @@ def create_website():
     
 
     create_table(app)
+    create_admin(app)
 
     
     return app

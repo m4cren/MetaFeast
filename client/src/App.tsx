@@ -8,7 +8,7 @@ import { TableStatusProvider } from "./contexts/TableStatusContext";
 const MainCostumer = lazy(() => import("./components/costumer/MainCostumer"));
 const MainAdmin = lazy(() => import("./components/admin/MainAdmin"));
 
-export const loader_timer = 19000;
+export const loader_timer = 500;
 
 const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -34,12 +34,11 @@ const App = () => {
                             <LoadingScreen />
                         </div>
                     )}
-
                     <Routes>
                         <Route
                             path="/admin"
                             element={
-                                <Suspense fallback={<LoadingScreen />}>
+                                <Suspense fallback={null}>
                                     <MainAdmin />
                                 </Suspense>
                             }
