@@ -97,6 +97,28 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
             return;
         }
 
+        if (name.costumer_name.length < 3) {
+            setWarningContent("Name must be greater than 3 characters");
+            setIsWarning(true);
+
+            setTimeout(() => {
+                setIsWarning(false);
+            }, 5000);
+
+            return;
+        }
+
+        if (name.costumer_name.length > 15) {
+            setWarningContent("Name must be less than 15 characters");
+            setIsWarning(true);
+
+            setTimeout(() => {
+                setIsWarning(false);
+            }, 5000);
+
+            return;
+        }
+
         submitToServer();
 
         setName({ costumer_name: "" });
@@ -123,6 +145,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
                             </p>
                         ) : null}
                         <input
+                            required
                             type="text"
                             className="text-center border-1 outline-none border-white w-[90%] h-[2.4rem] rounded-2xl text-white text-shadow-lg"
                             name="costumer_name"
