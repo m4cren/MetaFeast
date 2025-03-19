@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import useServerAddress from "../../../useServerAddress";
-import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
+
+import useFrameProvider from "../../frames/useFrameProvider";
 
 interface FormType {
     costumer_name: string;
@@ -20,8 +21,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const [warningContent, setWarningContent] = useState<string>("");
 
-    const { afterName_Frames, selTable1stF_Frames } =
-        useCostumerFrameProvider();
+    const { afterName_Frames, selTable1stF_Frames } = useFrameProvider();
 
     const setFrameOne = () => {
         setCamPos(afterName_Frames.frame1.pos);
@@ -132,7 +132,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
         <div className="fixed w-full h-screen flex items-center justify-center">
             <div className="w-[90vw]  flex flex-col justify-center items-center h-[30rem] gap-16 bg-white/10 backdrop-blur-[5px] border-1 rounded-2xl border-white/20">
                 <h1 className="text-[1.4rem] text-white font-[500] phone:text-[1.6rem] text-shadow-lg">
-                    What do we want to call you?
+                    What do you want us to call you?
                 </h1>
                 <form
                     className="flex flex-col items-center gap-8 w-full"

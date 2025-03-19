@@ -4,7 +4,8 @@ import useServerAddress from "../../../useServerAddress";
 import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
 import { Gi3dStairs } from "react-icons/gi";
-import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
+import useCostumerFrameProvider from "../../frames/useFrameProvider";
+import useFrameProvider from "../../frames/useFrameProvider";
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -31,7 +32,7 @@ const SelectTable = ({
         to_2nd_Frames,
         selTable1stF_Frames,
         selTable2ndF_Frames,
-    } = useCostumerFrameProvider();
+    } = useFrameProvider();
     useEffect(() => {
         const fetchCostumer = async () => {
             try {

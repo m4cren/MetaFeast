@@ -1,15 +1,12 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useServerAddress from "../../../useServerAddress";
+import { useNavigate } from "react-router-dom";
 type FormType = {
     password: string;
 };
 
-interface Props {
-    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const AdminLogin = ({ setIsAuthenticated }: Props) => {
+const AdminLogin = () => {
     const [input, setInput] = useState<FormType>({
         password: "",
     });
@@ -18,14 +15,29 @@ const AdminLogin = ({ setIsAuthenticated }: Props) => {
     const inputRef = useRef(null);
     const { server } = useServerAddress();
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const authentication = localStorage.getItem("authenticated");
+
+        if (authentication && authentication === "true") {
+            navigate("/admin");
+        }
+    }, []);
+
     const submitToServer = async () => {
         try {
             const response = await axios.post(`${server}/admin-login`, input);
 
             if (response.data.status) {
-                setIsAuthenticated(true);
                 localStorage.setItem("authenticated", "true");
                 setWarningMessage("Sucess, please wait...");
+                setIsWarning(true);
+
+                setTimeout(() => {
+                    setIsWarning(false);
+                    navigate("/admin");
+                }, 3000);
             } else {
                 setWarningMessage("Incorrect password");
                 setIsWarning(true);
@@ -62,7 +74,9 @@ const AdminLogin = ({ setIsAuthenticated }: Props) => {
                         onSubmit={handleSubmit}
                     >
                         {isWarning && (
-                            <p className="text-red-800 text-[0.9rem]">
+                            <p
+                                className={` text-[0.9rem] ${warningMessage === "Sucess, please wait..." ? "text-green-500" : "text-red-800"} `}
+                            >
                                 {warningMessage}
                             </p>
                         )}

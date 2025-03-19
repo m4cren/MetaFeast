@@ -25,6 +25,7 @@ body {
 @utility cam-ctrl-btn {
     @apply text-white/60 font-semibold text-[0.9rem] p-3 border-1 border-white/50 rounded-md;
 }
+
 @layer utilities {
     .text-shadow-sm {
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -35,4 +36,18 @@ body {
     .text-shadow-lg {
         text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
     }
+    .custom-scrollbar {
+        scrollbar-width: none; /* For Firefox */
+        scrollbar-color: #6b7280 #e5e7eb; /* Thumb and track color */
+    }
+}
+
+.pending-list-shadow {
+    box-shadow: -2px 2px 2px rgba(255, 255, 255, 0.3);
+}
+.pending-list-shadow:hover {
+    box-shadow:
+        -2px 2px 5px rgba(255, 255, 255, 0.3),
+        -3px 3px 0 rgba(255, 255, 255, 0.1),
+        -4px 4px 5px rgba(255, 255, 255, 0.3) !important;
 }

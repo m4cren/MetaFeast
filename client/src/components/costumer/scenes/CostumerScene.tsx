@@ -7,8 +7,9 @@ import QuadSeat from "../../models/tables/QuadSeat";
 import SingleSeat from "../../models/tables/SingleSeat";
 import DoubleSeat from "../../models/tables/DoubleSeat";
 import { useTableStatus } from "../../../contexts/TableStatusContext";
-import useCostumerFrameProvider from "../../../frames/useCostumerFrameProvider";
+import useCostumerFrameProvider from "../../../frames/useFrameProvider";
 import BackgroundScene from "../../BackgroundScene";
+import useFrameProvider from "../../../frames/useFrameProvider";
 
 const Restaurant = lazy(() => import("../../models/Restaurant"));
 const Stairs = lazy(() => import("../../models/Stairs"));
@@ -36,7 +37,8 @@ const CostumerScene = ({
 }: CameraControl) => {
     const uniqueKey = Date.now();
     const tables: TableStatus[] = useTableStatus() ?? [];
-    const { select_table_Frames } = useCostumerFrameProvider();
+    const { select_table_Frames } = useFrameProvider();
+
     const availableSingleTable: TableStatus[] = tables?.filter(
         (table) => table.table_type === "Single_seat",
     );

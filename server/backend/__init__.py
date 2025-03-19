@@ -48,7 +48,7 @@ def create_website():
 
 
             print('Mika virtual environment is activated')
-            app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///mikaela.db'
+            app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///mikaela.db'
             
            
         else:

@@ -1,26 +1,19 @@
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-import useServerAddress from "../../../useServerAddress";
-import AdminLogin from "./AdminLogin";
-import AdminScene from "./scenes/AdminScene";
+import { useEffect } from "react";
+
 import AdminView from "./AdminView";
+import { useNavigate } from "react-router-dom";
 
-const MainAdmin = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
+const MainAdmin = ({}) => {
+    const navigate = useNavigate();
     useEffect(() => {
         const authentication = localStorage.getItem("authenticated");
 
-        if (authentication === "true" && authentication) {
-            setIsAuthenticated(true);
+        if (!authentication) {
+            navigate("admin-login");
         }
     }, []);
 
-    return isAuthenticated ? (
-        <AdminView />
-    ) : (
-        <AdminLogin setIsAuthenticated={setIsAuthenticated} />
-    );
+    return <AdminView />;
 };
 
 export default MainAdmin;

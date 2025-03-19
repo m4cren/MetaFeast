@@ -4,11 +4,12 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import { SocketProvider } from "./contexts/SocketContext";
 import { TableStatusProvider } from "./contexts/TableStatusContext";
+import AdminLogin from "./components/admin/AdminLogin";
 
 const MainCostumer = lazy(() => import("./components/costumer/MainCostumer"));
 const MainAdmin = lazy(() => import("./components/admin/MainAdmin"));
 
-export const loader_timer = 500;
+export const loader_timer = 2000;
 
 const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -16,6 +17,7 @@ const App = () => {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
+            console.log("There is no token");
             localStorage.removeItem("current_phase");
         }
         const timer = setTimeout(() => {
@@ -42,6 +44,10 @@ const App = () => {
                                     <MainAdmin />
                                 </Suspense>
                             }
+                        />
+                        <Route
+                            path="/admin/admin-login"
+                            element={<AdminLogin />}
                         />
 
                         <Route

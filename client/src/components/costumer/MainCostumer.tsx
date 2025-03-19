@@ -7,7 +7,8 @@ import GetName from "./GetName";
 import SelectTable from "./SelectTable";
 
 import { loader_timer } from "../../App";
-import useCostumerFrameProvider from "../../frames/useCostumerFrameProvider";
+import useCostumerFrameProvider from "../../frames/useFrameProvider";
+import useFrameProvider from "../../frames/useFrameProvider";
 
 const MainCostumer = () => {
     // const { camPos, camRot, cameraFunctions } = useCameraControl();
@@ -19,7 +20,7 @@ const MainCostumer = () => {
     // );
 
     const { init_Frame, pickName_Frame, selTable1stF_Frames } =
-        useCostumerFrameProvider();
+        useFrameProvider();
 
     const [camPos, setCamPos] = useState<[number, number, number]>(
         init_Frame.pos,

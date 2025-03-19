@@ -8,14 +8,40 @@ type TablePickTransition = {
     frame2: CameraType;
 };
 
-const useCostumerFrameProvider = () => {
+const useFrameProvider = () => {
     const init_Frame: CameraType = {
         pos: [32.60000000000017, 6.999999999999989, -10.899999999999977],
         rot: [0.10140000000000005, 0.7800000000000002, 0.3200000000000002],
     };
+    const admin_init_Frame: CameraType = {
+        pos: [25.39000000000095, 2.120000000000033, -24.460000000001056],
+        rot: [0.10520000000000015, 1.710000000000001, 1.5500000000000012],
+    };
     const pickName_Frame: CameraType = {
         pos: [33.500000000000185, 1.8999999999999977, -26.100000000000104],
         rot: [0.10040000000000002, 2.199999999999997, 0.09999999999999999],
+    };
+
+    const admin_1F_Frames: { left: CameraType; right: CameraType } = {
+        left: {
+            pos: [18.829999999999924, 3.6799999999999997, -22.330000000000723],
+            rot: [0.10520000000000015, 0.54, 1.5400000000000011],
+        },
+        right: {
+            pos: [19.530000000000033, 3.6799999999999997, -21.010000000000517],
+            rot: [
+                0.10520000000000015, -0.5200000000000006, -1.5500000000000012,
+            ],
+        },
+    };
+    const admin_2F_Frames: { center: CameraType } = {
+        center: {
+            pos: [19.279999999999994, 7.559999999999917, -18.16000000000007],
+            rot: [
+                0.10370000000000011, -0.010000000000000309,
+                -0.010000000000000087,
+            ],
+        },
     };
 
     const afterName_Frames: {
@@ -784,7 +810,10 @@ const useCostumerFrameProvider = () => {
         to_2nd_Frames,
         to_1st_Frames,
         select_table_Frames,
+        admin_1F_Frames,
+        admin_2F_Frames,
+        admin_init_Frame,
     };
 };
 
-export default useCostumerFrameProvider;
+export default useFrameProvider;

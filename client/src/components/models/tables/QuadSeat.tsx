@@ -16,12 +16,12 @@ interface AvailableTable {
 }
 
 interface Props {
-    transitionToTable: (table_id: string) => void;
+    transitionToTable?: (table_id: string) => void;
 }
 
 const QuadSeat: React.FC<AvailableTable & Props> = ({
     availableTable,
-    transitionToTable,
+    transitionToTable = () => {},
 }) => {
     const TABLE_POSITION = availableTable.map((table) => {
         return table.table_position;
