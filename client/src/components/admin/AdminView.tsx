@@ -9,6 +9,7 @@ import ViewControl from "./ViewControl";
 
 const AdminView = () => {
     const { admin_init_Frame } = useCostumerFrameProvider();
+    const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
     const [camPos, setCamPos] = useState<[number, number, number]>(
         admin_init_Frame.pos,
     );
@@ -32,9 +33,14 @@ const AdminView = () => {
             </div>
 
             <div className="fixed w-full h-screen">
-                <PendingOrderTab />
-                <NavBar />
-                <ViewControl setCamPos={setCamPos} setCamRot={setCamRot} />
+                <PendingOrderTab isTransitioning={isTransitioning} />
+                <NavBar isTransitioning={isTransitioning} />
+                <ViewControl
+                    setCamPos={setCamPos}
+                    setCamRot={setCamRot}
+                    isTransitioning={isTransitioning}
+                    setIsTransitioning={setIsTransitioning}
+                />
             </div>
 
             {/* <div className="fixed bottom-4">

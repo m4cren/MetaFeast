@@ -6,9 +6,16 @@ import useFrameProvider from "../../frames/useFrameProvider";
 interface Props {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    isTransitioning: boolean;
+    setIsTransitioning: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ViewControl = ({ setCamPos, setCamRot }: Props) => {
+const ViewControl = ({
+    setCamPos,
+    setCamRot,
+    isTransitioning,
+    setIsTransitioning,
+}: Props) => {
     const {
         admin_1F_Frames,
         admin_2F_Frames,
@@ -18,7 +25,7 @@ const ViewControl = ({ setCamPos, setCamRot }: Props) => {
     } = useFrameProvider();
     useCostumerFrameProvider;
     const [floor, setFloor] = useState<number>(1);
-    const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+
     const frame_sec = 300;
 
     const handleViewOne = () => {

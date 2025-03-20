@@ -13,9 +13,9 @@ export const loader_timer = 2000;
 
 const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [token] = useState<string | null>(localStorage.getItem("token"));
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
         if (!token) {
             console.log("There is no token");
             localStorage.removeItem("current_phase");

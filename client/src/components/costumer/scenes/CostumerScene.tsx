@@ -40,13 +40,19 @@ const CostumerScene = ({
     const { select_table_Frames } = useFrameProvider();
 
     const availableSingleTable: TableStatus[] = tables?.filter(
-        (table) => table.table_type === "Single_seat",
+        (table) =>
+            table.table_type === "Single_seat" &&
+            table.table_status === "Available",
     );
     const availableDoubleTable: TableStatus[] = tables?.filter(
-        (table) => table.table_type === "Double_seat",
+        (table) =>
+            table.table_type === "Double_seat" &&
+            table.table_status === "Available",
     );
     const availableQuadTable: TableStatus[] = tables?.filter(
-        (table) => table.table_type === "Quad_seat",
+        (table) =>
+            table.table_type === "Quad_seat" &&
+            table.table_status === "Available",
     );
 
     const transitionToTable = (table_id: string) => {

@@ -1,6 +1,10 @@
 import { FaCheck } from "react-icons/fa";
 import { IoMdListBox } from "react-icons/io";
-const PendingOrderTab = () => {
+interface Props {
+    isTransitioning: boolean;
+}
+const PendingOrderTab = ({ isTransitioning }: Props) => {
+    console.log(`Pending Order component ${isTransitioning}`);
     const costumer = [
         {
             table: "A-1",
@@ -60,7 +64,9 @@ const PendingOrderTab = () => {
         },
     ];
     return (
-        <div className="w-[20vw] h-screen fixed right-0 flex flex-col  space-y-4">
+        <div
+            className={`w-[20vw] h-screen fixed right-0 flex flex-col  space-y-4 ${isTransitioning && "translate-x-[25rem]"} transition duration-500`}
+        >
             <div className="rounded-bl-2xl bg-white/10 backdrop-blur-2xl flex justify-center items-center h-[10%]">
                 <h1 className="text-white/90 text-3xl font-bold p-5 text-shadow-md">
                     Pending Orders
@@ -68,8 +74,11 @@ const PendingOrderTab = () => {
             </div>
 
             <ul className="bg-white/10 backdrop-blur-2xl rounded-tl-2xl h-[90%] p-4 space-y-3 overflow-y-scroll custom-scrollbar">
-                {costumer.map(({ name, table }) => (
-                    <li className="bg-white/85 rounded-2xl p-2 flex flex-row justify-between px-5 transition duration-200 pending-list-shadow  hover:translate-y-[-3px] hover:translate-x-[5px] cursor-pointer ">
+                {costumer.map(({ name, table }, index) => (
+                    <li
+                        className="bg-white/85 rounded-2xl p-2 flex flex-row justify-between px-5 transition duration-200 pending-list-shadow  hover:translate-y-[-3px] hover:translate-x-[5px] cursor-pointer "
+                        key={index}
+                    >
                         <div className="flex flex-col items-start justify-center">
                             <h2 className="text-xl font-medium">
                                 Costumer {table}
