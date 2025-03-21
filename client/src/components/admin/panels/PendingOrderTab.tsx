@@ -4,7 +4,6 @@ interface Props {
     isTransitioning: boolean;
 }
 const PendingOrderTab = ({ isTransitioning }: Props) => {
-    console.log(`Pending Order component ${isTransitioning}`);
     const costumer = [
         {
             table: "A-1",

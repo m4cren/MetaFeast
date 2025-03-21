@@ -58,7 +58,7 @@ def create_website():
     
 
     
-    from .api.auth import auth
+
     from .api.order import order
     from .api.costumer import costumer
     from .api.tables import tables
@@ -66,7 +66,6 @@ def create_website():
  
 
     app.register_blueprint(order)
-    app.register_blueprint(auth)
     app.register_blueprint(costumer)
     app.register_blueprint(tables)
     app.register_blueprint(admin)

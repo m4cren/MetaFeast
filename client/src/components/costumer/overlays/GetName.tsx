@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-
-import useServerAddress from "../../../useServerAddress";
-
-import useFrameProvider from "../../frames/useFrameProvider";
+import useServerAddress from "../../../../useServerAddress";
+import useFrameProvider from "../../../frames/useFrameProvider";
 
 interface FormType {
     costumer_name: string;
@@ -14,9 +12,16 @@ interface Props {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setIsName: React.Dispatch<React.SetStateAction<boolean>>;
+    setCostumerName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
+const GetName = ({
+    setPhase,
+    setCamPos,
+    setCamRot,
+    setIsName,
+    setCostumerName,
+}: Props) => {
     const { server } = useServerAddress();
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const [warningContent, setWarningContent] = useState<string>("");
@@ -59,7 +64,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
     const submitToServer = async () => {
         try {
             const response = await axios.post(
-                `${server}/get-costumer-name`,
+                `${server}/costumer/register`,
                 name,
             );
             const token = response.data.access_token;
@@ -77,6 +82,7 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
                 localStorage.setItem("token", token);
                 setIsName(true);
                 setFrameOne();
+                setCostumerName(name.costumer_name);
             }
         } catch (error) {
             console.error(error);
@@ -130,8 +136,8 @@ const GetName = ({ setPhase, setCamPos, setCamRot, setIsName }: Props) => {
 
     return (
         <div className="fixed w-full h-screen flex items-center justify-center">
-            <div className="w-[90vw]  flex flex-col justify-center items-center h-[30rem] gap-16 bg-white/10 backdrop-blur-[5px] border-1 rounded-2xl border-white/20">
-                <h1 className="text-[1.4rem] text-white font-[500] phone:text-[1.6rem] text-shadow-lg">
+            <div className="w-[90vw]  flex flex-col justify-center items-center h-[30rem] gap-16 bg-white/10 backdrop-blur-[10px] border-1 rounded-2xl border-white/20">
+                <h1 className="text-[1.4rem] text-white font-[500] phone:text-[1.6rem] text-shadow-lg text-center">
                     What do you want us to call you?
                 </h1>
                 <form

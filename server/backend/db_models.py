@@ -35,3 +35,21 @@ class Table(db.Model):
 
     def get_position(self):
         return [self.table_position_x, self.table_position_y, self.table_position_z]
+    
+class TableRequest(db.Model):
+    __tablename__ = 'table_request'
+    id = db.Column(db.Integer, primary_key=True)
+    costumer_name = db.Column(db.String(56))
+    table_id = db.Column(db.String(5))
+
+    def to_dict(self):
+        return{
+            'costumer_name': self.costumer_name,
+            'table_id': self.table_id,
+        }
+    
+    def to_msg(self):
+        return f'{self.costumer_name} is requesting to seat on table {self.table_id}'
+           
+        
+    

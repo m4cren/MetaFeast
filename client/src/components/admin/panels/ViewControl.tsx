@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Gi3dStairs } from "react-icons/gi";
-import useCostumerFrameProvider from "../../frames/useFrameProvider";
-import useFrameProvider from "../../frames/useFrameProvider";
+import useFrameProvider from "../../../frames/useFrameProvider";
 
 interface Props {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -23,7 +22,7 @@ const ViewControl = ({
         to_1st_Frames,
         to_2nd_Frames,
     } = useFrameProvider();
-    useCostumerFrameProvider;
+    useFrameProvider;
     const [floor, setFloor] = useState<number>(1);
 
     const frame_sec = 300;

@@ -2,7 +2,7 @@ from .extensions import db, socketio
 from .db_config import save_data
 from sqlalchemy import desc
 from flask_socketio import SocketIO, emit
-from .db_models import Table
+from .db_models import Table, TableRequest
 
 
 @socketio.on("connect")
@@ -11,22 +11,29 @@ def connect():
     print("client connected")
 
 
-@socketio.on('check-table-status')
+@socketio.on('request-table')
 def table_status(data):
 
     tableID = data.get('table_id')
+    costumerName = data.get('costumer_name')
 
-    table = Table.query.filter_by(table_name = tableID).first()
+    new_table_request = TableRequest(costumer_name = costumerName, table_id = tableID)
+    save_data(new_table_request)
 
-    response = None
+    response = {
+        'message':f'{costumerName} is requesting to seat on table {tableID}',
+        'costumerName': costumerName,
+        'tableID': tableID
+    }
 
-    if table.isAvailable:
-        response = {'status': 'Available'}
-    elif not table.isAvailable:
-        response = {'status': 'Occupied'}
+    print(response)
 
-    emit('table-status-feedback', response)
-        
+    emit('notify-admin', response, broadcast=True)
+
+ 
+
+
+    
 
 
     

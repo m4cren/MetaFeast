@@ -2,26 +2,15 @@ import { useEffect, useState } from "react";
 import { useSocket } from "../contexts/SocketContext";
 
 const useTableRequest = () => {
-    const [message, setMessage] = useState<string>("");
     const socket = useSocket();
 
-    useEffect(() => {
-        if (!socket) return;
-        socket.on("table-status-feedback", (data) => {
-            setMessage(data.status);
-        });
-
-        return () => {
-            socket.off("table-status-feedback");
-        };
-    });
-
-    const sendData = (table_id: string) => {
+    const sendData = (table_id: string, costumer_name: string) => {
         if (!socket) return;
         const data_to_send = {
             table_id: table_id,
+            costumer_name: costumer_name,
         };
-        socket.emit("check-table-status", data_to_send);
+        socket.emit("request-table", data_to_send);
     };
 
     return { sendData };

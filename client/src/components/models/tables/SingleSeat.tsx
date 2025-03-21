@@ -2,7 +2,6 @@ import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import useTableRequest from "../../../hooks/useTableRequest";
 
 interface TableStatus {
     table_name: string;
@@ -32,8 +31,6 @@ const SingleSeat: React.FC<AvailableTable & Props> = ({
 
     const { scene } = useGLTF("/models/single_seat.glb");
     const meshRef = useRef<THREE.InstancedMesh>(null);
-
-    const { sendData } = useTableRequest();
 
     const [meshes, setMeshes] = useState<THREE.Mesh[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -74,7 +71,6 @@ const SingleSeat: React.FC<AvailableTable & Props> = ({
         if (event.instanceId !== undefined) {
             let table_id: string = TABLE_ID[event.instanceId];
 
-            sendData(table_id);
             transitionToTable(table_id);
         }
     };

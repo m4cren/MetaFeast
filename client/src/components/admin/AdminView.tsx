@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useCostumerFrameProvider from "../../frames/useFrameProvider";
 import AdminScene from "./scenes/AdminScene";
-import useCameraControl from "../../hooks/useCameraControl";
-import SceneCameraController from "../SceneCameraController";
-import PendingOrderTab from "./PendingOrderTab";
-import NavBar from "./NavBar";
-import ViewControl from "./ViewControl";
+
+import NavBar from "./panels/NavBar";
+import ViewControl from "./panels/ViewControl";
+import PendingOrderTab from "./panels/PendingOrderTab";
+import TableRequestPopup from "./popups/TableRequestPopup";
+import { useSocket } from "../../contexts/SocketContext";
 
 const AdminView = () => {
     const { admin_init_Frame } = useCostumerFrameProvider();
@@ -17,14 +18,19 @@ const AdminView = () => {
         admin_init_Frame.rot,
     );
 
-    // const { camPos, camRot, cameraFunctions } = useCameraControl();
+    const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
 
-    // console.log(
-    //     `Cam Pos: PX - ${camPos[0]}    PY - ${camPos[1]}    PZ - ${camPos[2]}`,
-    // );
-    // console.log(
-    //     `Cam Rot: RX - ${camRot[0]}    RY - ${camRot[1]}    RZ - ${camRot[2]}`,
-    // );
+    const socket = useSocket();
+
+    useEffect(() => {
+        socket?.on("notify-admin", (data) => {
+            console.log(data.message);
+        });
+
+        return () => {
+            socket?.off("notify-admin");
+        };
+    }, []);
 
     return (
         <>
@@ -34,18 +40,21 @@ const AdminView = () => {
 
             <div className="fixed w-full h-screen">
                 <PendingOrderTab isTransitioning={isTransitioning} />
-                <NavBar isTransitioning={isTransitioning} />
+                <NavBar
+                    isTransitioning={isTransitioning}
+                    setIsTableRequest={setIsTableRequest}
+                />
                 <ViewControl
                     setCamPos={setCamPos}
                     setCamRot={setCamRot}
                     isTransitioning={isTransitioning}
                     setIsTransitioning={setIsTransitioning}
                 />
-            </div>
 
-            {/* <div className="fixed bottom-4">
-                <SceneCameraController cameraFunctions={cameraFunctions} />
-            </div> */}
+                {isTableRequest && (
+                    <TableRequestPopup setIsTableRequest={setIsTableRequest} />
+                )}
+            </div>
         </>
     );
 };

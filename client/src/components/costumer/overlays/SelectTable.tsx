@@ -1,17 +1,23 @@
-import axios from "axios";
 import { memo, useCallback, useEffect, useState } from "react";
-import useServerAddress from "../../../useServerAddress";
+
 import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
 import { Gi3dStairs } from "react-icons/gi";
-import useCostumerFrameProvider from "../../frames/useFrameProvider";
-import useFrameProvider from "../../frames/useFrameProvider";
+import { FaClock } from "react-icons/fa";
+
+import useFrameProvider from "../../../frames/useFrameProvider";
+
+import useTableRequest from "../../../hooks/useTableRequest";
+
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setIsPicking: React.Dispatch<React.SetStateAction<boolean>>;
     isPicking: boolean;
+    costumerName: string;
+    selectedTable: string;
+    transitionToTable: (table_id: string) => void;
 }
 
 const SelectTable = ({
@@ -20,9 +26,11 @@ const SelectTable = ({
     setCamRot,
     isPicking,
     setIsPicking,
+    costumerName,
+    selectedTable,
 }: Props) => {
-    const { server } = useServerAddress();
-    const [name, setName] = useState<string>("...Loading");
+    const { sendData } = useTableRequest();
+    const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
     const [isLeftClicked, setIsLeftClicked] = useState<boolean>(false);
     const [isRightClicked, setIsRightClicked] = useState<boolean>(false);
     const [floor, setFloor] = useState<number>(1);
@@ -33,34 +41,19 @@ const SelectTable = ({
         selTable1stF_Frames,
         selTable2ndF_Frames,
     } = useFrameProvider();
+
     useEffect(() => {
-        const fetchCostumer = async () => {
-            try {
-                const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
+        const table_picked = localStorage.getItem("table-picked");
 
-                if (!token) {
-                    setPhase(0);
-                }
+        if (table_picked) {
+            setIsConfirmed(true);
+        }
 
-                const headers = {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                };
-
-                const response = await axios.get(`${server}/phase-1`, {
-                    headers,
-                    withCredentials: false,
-                });
-
-                setName(response.data.costumer_name);
-            } catch (error) {
-                localStorage.removeItem("token");
-                setPhase(0);
-            }
-        };
-
-        fetchCostumer();
-    });
+        if (!token) {
+            setPhase(0);
+        }
+    }, []);
 
     const handleLeftClick = () => {
         setIsLeftClicked(true);
@@ -115,6 +108,7 @@ const SelectTable = ({
         setTimeout(() => {
             setCamPos(to_1st_Frames.frame2.pos);
             setCamRot(to_1st_Frames.frame2.rot);
+
             setTimeout(() => {
                 setCamPos(to_1st_Frames.frame3.pos);
                 setCamRot(to_1st_Frames.frame3.rot);
@@ -230,8 +224,27 @@ const SelectTable = ({
         }
     };
 
+    const handleConfirm = () => {
+        sendData(selectedTable, costumerName);
+        setIsConfirmed(true);
+
+        localStorage.setItem("table-picked", selectedTable.toString());
+    };
+
     return (
         <>
+            {isConfirmed && (
+                <div className="fixed w-full h-screen bg-black/40 flex justify-center items-center z-10 ">
+                    <div className="bg-white/90 rounded-2xl w-[80vw] h-[20rem] flex items-center justify-center gap-5 flex-col pop-up-animation">
+                        <h1 className="text-2xl text-center">
+                            Wait for the owner to confirm your request
+                        </h1>
+                        <span className="text-5xl">
+                            <FaClock />
+                        </span>
+                    </div>
+                </div>
+            )}
             <div className="w-full flex justify-center items-center p-6 bg-white/10 backdrop-blur-[10px] border-b-2 border-b-white/20">
                 {isPicking ? (
                     <h1 className="text-white text-3xl font-medium text-shadow-lg">
@@ -239,14 +252,17 @@ const SelectTable = ({
                     </h1>
                 ) : (
                     <h1 className="text-white text-3xl font-medium text-shadow-lg">
-                        Select Table, {name}
+                        Select Table, {costumerName}
                     </h1>
                 )}
             </div>
 
             {isPicking ? (
                 <div className="flex flex-row w-full fixed bottom-4 gap-3 justify-center items-center">
-                    <button className="w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20  hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto">
+                    <button
+                        onClick={handleConfirm}
+                        className="w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20  hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
+                    >
                         Confirm
                     </button>
                     <button

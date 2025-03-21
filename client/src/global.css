@@ -51,3 +51,16 @@ body {
         -3px 3px 0 rgba(255, 255, 255, 0.1),
         -4px 4px 5px rgba(255, 255, 255, 0.3) !important;
 }
+
+.pop-up-animation {
+    animation: popUp 0.1s ease-in-out;
+}
+
+@keyframes popUp {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
+}
