@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from ..extensions import db
 from ..db_models import AdminCredentials, TableRequest
 from sqlalchemy import desc
+from ..db_config import time_ago
 
 admin = Blueprint("admin", __name__)
 
@@ -27,10 +28,17 @@ def admin_table_request():
 
      table_requests = TableRequest.query.order_by(desc(TableRequest.id)).all()
 
-     for i in table_requests:
-          print(i.to_dict())
+    
 
-     response = [request.to_msg() for request in table_requests]
+
+
+     response = [{
+          'message':request.to_msg(),
+          'time_ago':time_ago(request.date_time)  
+     } for request in table_requests 
+       ]
+
+
 
      return jsonify({'status': True, 'response': response})
 

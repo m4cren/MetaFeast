@@ -6,6 +6,7 @@ from .extensions import db
 from dotenv import load_dotenv
 import os
 import urllib
+from datetime import datetime, timezone
 
 load_dotenv()
 
@@ -63,3 +64,17 @@ def delete_all_data(data):
     except:
         db.session.rollback()
         return "failed"
+    
+
+def time_ago(time):
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
+    delta = now - time
+
+    if delta.days > 0:
+        return f"{delta.days} days ago"
+    elif delta.seconds >= 3600:
+        return f"{delta.seconds // 3600} hours ago"
+    elif delta.seconds >= 60:
+        return f"{delta.seconds // 60} minutes ago"
+    else:
+        return f"{delta.seconds} seconds ago"

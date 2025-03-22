@@ -1,4 +1,5 @@
 from .extensions import db
+from datetime import datetime
 
 
 class AdminCredentials(db.Model):
@@ -41,6 +42,7 @@ class TableRequest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     costumer_name = db.Column(db.String(56))
     table_id = db.Column(db.String(5))
+    date_time = db.Column(db.DateTime, default = datetime.utcnow)
 
     def to_dict(self):
         return{

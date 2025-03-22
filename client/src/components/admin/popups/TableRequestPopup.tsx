@@ -3,14 +3,18 @@ import { FaCheckCircle } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
-import { data } from "react-router-dom";
 
 interface Props {
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+type MessageType = {
+    message: string;
+    time_ago: string;
+};
+
 const TableRequestPopup = ({ setIsTableRequest }: Props) => {
-    const [requestMessage, setRequestMessage] = useState<string[]>([]);
+    const [requestMessage, setRequestMessage] = useState<MessageType[]>([]);
     const { server } = useServerAddress();
 
     useEffect(() => {
@@ -54,15 +58,19 @@ const TableRequestPopup = ({ setIsTableRequest }: Props) => {
                         <h1 className="text-center text-2xl">Table Requests</h1>
                     </div>
                     <div>
-                        {requestMessage.map((msg, index) => (
+                        {requestMessage.map(({ message, time_ago }, index) => (
                             <li
                                 className="list-none flex flex-row items-center justify-between px-8 py-3 border-b-1 border-black/10"
                                 key={index}
                             >
-                                <p className="text-lg">{msg}</p>
-                                <button className="text-3xl text-green-500 cursor-pointer">
-                                    <FaCheckCircle />
-                                </button>
+                                <p className="text-lg">{message}</p>
+
+                                <div className="flex flex-row items-center gap-2">
+                                    <p className="text-sm">{time_ago}</p>
+                                    <button className="text-3xl text-green-500 cursor-pointer">
+                                        <FaCheckCircle />
+                                    </button>
+                                </div>
                             </li>
                         ))}
                     </div>
