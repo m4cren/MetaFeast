@@ -30,7 +30,8 @@ def table_status(data):
 
     emit('notify-admin', response, broadcast=True)
 
- 
+
+
 
 
     

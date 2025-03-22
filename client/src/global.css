@@ -56,11 +56,24 @@ body {
     animation: popUp 0.1s ease-in-out;
 }
 
+.notification-animation {
+    animation: notification 0.2s ease-out;
+}
+
 @keyframes popUp {
     from {
         scale: 0;
     }
     to {
         scale: 1;
+    }
+}
+
+@keyframes notification {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
     }
 }

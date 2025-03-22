@@ -8,6 +8,7 @@ import { FaClock } from "react-icons/fa";
 import useFrameProvider from "../../../frames/useFrameProvider";
 
 import useTableRequest from "../../../hooks/useTableRequest";
+import { useSocket } from "../../../contexts/SocketContext";
 
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;

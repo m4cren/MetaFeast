@@ -45,7 +45,7 @@ const TableRequestPopup = ({ setIsTableRequest }: Props) => {
 
     return (
         <div className="fixed bg-black/45 w-full h-screen flex justify-center items-center">
-            <div className="bg-white/80 rounded-2xl w-1/2 h-[40rem] relative pop-up-animation">
+            <div className="bg-white/80 rounded-2xl w-1/2 h-[40rem] relative pop-up-animation overflow-y-scroll custom-scrollbar">
                 <button
                     onClick={() => setIsTableRequest(false)}
                     className="text-black cursor-pointer text-4xl absolute right-2 top-5"
@@ -53,11 +53,11 @@ const TableRequestPopup = ({ setIsTableRequest }: Props) => {
                     <IoMdExit />
                 </button>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col ">
                     <div className="flex justify-center items-center py-5 border-b-2 border-black/10">
                         <h1 className="text-center text-2xl">Table Requests</h1>
                     </div>
-                    <div>
+                    <div className="">
                         {requestMessage.map(({ message, time_ago }, index) => (
                             <li
                                 className="list-none flex flex-row items-center justify-between px-8 py-3 border-b-1 border-black/10"
@@ -66,7 +66,7 @@ const TableRequestPopup = ({ setIsTableRequest }: Props) => {
                                 <p className="text-lg">{message}</p>
 
                                 <div className="flex flex-row items-center gap-2">
-                                    <p className="text-sm">{time_ago}</p>
+                                    <p>{time_ago}</p>
                                     <button className="text-3xl text-green-500 cursor-pointer">
                                         <FaCheckCircle />
                                     </button>

@@ -7,6 +7,7 @@ import ViewControl from "./panels/ViewControl";
 import PendingOrderTab from "./panels/PendingOrderTab";
 import TableRequestPopup from "./popups/TableRequestPopup";
 import { useSocket } from "../../contexts/SocketContext";
+import RequestNotification from "./popups/RequestNotification";
 
 const AdminView = () => {
     const { admin_init_Frame } = useCostumerFrameProvider();
@@ -20,11 +21,18 @@ const AdminView = () => {
 
     const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
 
+    const [notifications, setNotifications] = useState<string[]>([]);
+
+    console.log(notifications);
+
     const socket = useSocket();
 
     useEffect(() => {
         socket?.on("notify-admin", (data) => {
-            console.log(data.message);
+            setNotifications((prevNotifications) => [
+                ...prevNotifications,
+                data.message,
+            ]);
         });
 
         return () => {
@@ -39,6 +47,14 @@ const AdminView = () => {
             </div>
 
             <div className="fixed w-full h-screen">
+                {notifications && (
+                    <div className="absolute w-[30rem] h-fit z-10 top-5 left-2 flex gap-2 flex-col-reverse">
+                        {notifications.map((msg, index) => (
+                            <RequestNotification key={index} message={msg} />
+                        ))}
+                    </div>
+                )}
+
                 <PendingOrderTab isTransitioning={isTransitioning} />
                 <NavBar
                     isTransitioning={isTransitioning}
