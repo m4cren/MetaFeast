@@ -4,10 +4,11 @@ import { TiDelete } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
-import { useSocket } from "../../../contexts/SocketContext";
 
 interface Props {
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
+    handleAccept: (tableSelected: string, costumerName: string) => void;
+    handleDeny: (tableSelected: string, costumerName: string) => void;
 }
 
 type RequestType = {
@@ -17,10 +18,14 @@ type RequestType = {
     time_ago: string;
 };
 
-const TableRequestPopup = ({ setIsTableRequest }: Props) => {
+const TableRequestPopup = ({
+    setIsTableRequest,
+    handleAccept,
+    handleDeny,
+}: Props) => {
     const [requestMessage, setRequestMessage] = useState<RequestType[]>([]);
     const { server } = useServerAddress();
-    const socket = useSocket();
+
     useEffect(() => {
         const fetchRequestMessage = async () => {
             try {
@@ -46,23 +51,6 @@ const TableRequestPopup = ({ setIsTableRequest }: Props) => {
 
         fetchRequestMessage();
     }, []);
-
-    const handleAccept = (tableSelected: string, costumerName: string) => {
-        const costumerToAccept = {
-            costumer_name: costumerName,
-            table_selected: tableSelected,
-        };
-
-        socket?.emit("accept-request", costumerToAccept);
-    };
-    const handleDeny = (tableSelected: string, costumerName: string) => {
-        const costumerToDeny = {
-            costumer_name: costumerName,
-            table_selected: tableSelected,
-        };
-
-        socket?.emit("deny-request", costumerToDeny);
-    };
 
     return (
         <div className="fixed bg-black/45 w-full h-screen flex justify-center items-center">

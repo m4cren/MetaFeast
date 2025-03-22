@@ -9,7 +9,6 @@ import DoubleSeat from "../../models/tables/DoubleSeat";
 import { useTableStatus } from "../../../contexts/TableStatusContext";
 
 import BackgroundScene from "../../BackgroundScene";
-import useFrameProvider from "../../../frames/useFrameProvider";
 
 const Restaurant = lazy(() => import("../../models/Restaurant"));
 const Stairs = lazy(() => import("../../models/Stairs"));
