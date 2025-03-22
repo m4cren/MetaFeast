@@ -20,6 +20,7 @@ const App = () => {
             console.log("There is no token");
             localStorage.removeItem("current_phase");
             localStorage.removeItem("table-picked");
+            localStorage.removeItem("costumer_name");
         }
         const timer = setTimeout(() => {
             setIsLoading(false);

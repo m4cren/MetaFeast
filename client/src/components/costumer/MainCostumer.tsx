@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // import SceneCameraController from "./SceneCameraController";
 // import useCameraControl from "../../hooks/useCameraControl";
@@ -9,7 +9,11 @@ import { loader_timer } from "../../App";
 import useFrameProvider from "../../frames/useFrameProvider";
 import GetName from "./overlays/GetName";
 import SelectTable from "./overlays/SelectTable";
+
+import { useSocket } from "../../contexts/SocketContext";
 import useCostumerName from "../../hooks/useCostumerName";
+import Order from "./overlays/Order";
+import Denied from "./overlays/Denied";
 
 const MainCostumer = () => {
     // const { camPos, camRot, cameraFunctions } = useCameraControl();
@@ -21,7 +25,9 @@ const MainCostumer = () => {
     // );
 
     const { costumerName, setCostumerName } = useCostumerName();
+
     const [selectedTable, setSelectedTable] = useState<string>("");
+    const [isDenied, setIsDenied] = useState<boolean>(false);
 
     const {
         init_Frame,
@@ -36,7 +42,7 @@ const MainCostumer = () => {
     const [camRot, setCamRot] = useState<[number, number, number]>(
         init_Frame.rot,
     );
-
+    const socket = useSocket();
     const [phase, setPhase] = useState<number>(0);
     const [isName, setIsName] = useState<boolean>(false);
     const [isPicking, setIsPicking] = useState<boolean>(false);
@@ -67,6 +73,17 @@ const MainCostumer = () => {
                         }, loader_timer - 500);
                     }
 
+                    break;
+                case "phase_2":
+                    setPhase(2);
+                    if (table_picked) {
+                        transitionToTable(table_picked);
+                    } else {
+                        setTimeout(() => {
+                            setCamPos(selTable1stF_Frames.mid.pos);
+                            setCamRot(selTable1stF_Frames.mid.rot);
+                        }, loader_timer - 500);
+                    }
                     break;
             }
         }
@@ -424,10 +441,39 @@ const MainCostumer = () => {
                 break;
         }
     };
+    useEffect(() => {
+        socket?.on("is-costumer-accepted", (data) => {
+            const accepted_costumer_name = data.costumer_name;
+
+            if (
+                accepted_costumer_name === localStorage.getItem("costumer_name")
+            ) {
+                setPhase(2);
+                localStorage.setItem("current_phase", "phase_2");
+            }
+        });
+        socket?.on("is-costumer-denied", (data) => {
+            const denied_costumer_name = data.costumer_name;
+
+            if (
+                denied_costumer_name === localStorage.getItem("costumer_name")
+            ) {
+                localStorage.removeItem("token");
+                setIsPicking(false);
+                setIsDenied(true);
+            }
+        });
+
+        return () => {
+            socket?.off("is-costumer-accepted");
+            socket?.off("is-costumer-denied");
+        };
+    }, []);
 
     return (
         <>
             <div className="relative w-full h-screen">
+                {isDenied && <Denied />}
                 <div className="absolute top-0 left-0 w-full h-screen">
                     <CostumerScene
                         camPos={camPos}
@@ -465,6 +511,13 @@ const MainCostumer = () => {
                             selectedTable={selectedTable}
                             transitionToTable={transitionToTable}
                         />
+                    </div>
+                )}
+                {phase === 2 && (
+                    <div
+                        className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"}`}
+                    >
+                        <Order />
                     </div>
                 )}
             </div>

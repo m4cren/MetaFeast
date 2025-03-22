@@ -31,6 +31,7 @@ const SelectTable = ({
     selectedTable,
 }: Props) => {
     const { sendData } = useTableRequest();
+
     const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
     const [isLeftClicked, setIsLeftClicked] = useState<boolean>(false);
     const [isRightClicked, setIsRightClicked] = useState<boolean>(false);
@@ -42,6 +43,7 @@ const SelectTable = ({
         selTable1stF_Frames,
         selTable2ndF_Frames,
     } = useFrameProvider();
+    const socket = useSocket();
 
     useEffect(() => {
         const token = localStorage.getItem("token");

@@ -28,17 +28,7 @@ def costumer_register():
 
 
 
-@costumer.route("/costumer/get-name", methods=["POST", "GET"])
-@jwt_required()
-def costumer_get_name():
-    current_costumer_id = get_jwt_identity()
 
-    current_costumer = Costumer.query.filter_by(id=current_costumer_id).first()
-
-    if not current_costumer:
-        return jsonify({"message": "Costumer not found", "status": False})
-
-    return jsonify({"message": "ok", "costumer_name": current_costumer.costumer_name})
 
 
 

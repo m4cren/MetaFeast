@@ -48,7 +48,7 @@ const AdminView = () => {
 
             <div className="fixed w-full h-screen">
                 {notifications && (
-                    <div className="absolute w-[30rem] h-fit z-10 top-5 left-2 flex gap-2 flex-col-reverse">
+                    <div className="absolute w-[35rem] h-fit z-10 top-5 left-2 flex gap-2 flex-col-reverse">
                         {notifications.map((msg, index) => (
                             <RequestNotification key={index} message={msg} />
                         ))}

@@ -30,6 +30,34 @@ def table_status(data):
 
     emit('notify-admin', response, broadcast=True)
 
+@socketio.on('accept-request')
+def accept_request(data):
+
+    costumer_name = data.get('costumer_name')
+    selected_table = data.get('table_selected')
+
+    print(f'{costumer_name} is accepted to seat on table {selected_table}')
+
+    response = {
+        'costumer_name': costumer_name,
+        'selected_table': selected_table
+    }
+
+    emit('is-costumer-accepted', response, broadcast=True)
+
+@socketio.on('deny-request')
+def accept_request(data):
+
+    costumer_name = data.get('costumer_name')
+    selected_table = data.get('table_selected')
+
+    print(f'{costumer_name} is denied to seat on table {selected_table}')
+    response = {
+        'costumer_name': costumer_name,
+        'selected_table': selected_table
+    }
+
+    emit('is-costumer-denied', response, broadcast=True)
 
 
 

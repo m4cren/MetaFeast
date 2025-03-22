@@ -28,11 +28,10 @@ def admin_table_request():
 
      table_requests = TableRequest.query.order_by(desc(TableRequest.id)).all()
 
-    
-
-
 
      response = [{
+          'costumer_name': request.costumer_name,
+          'table_selected': request.table_id,
           'message':request.to_msg(),
           'time_ago':time_ago(request.date_time)  
      } for request in table_requests 

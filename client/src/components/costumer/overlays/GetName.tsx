@@ -83,6 +83,7 @@ const GetName = ({
                 setIsName(true);
                 setFrameOne();
                 setCostumerName(name.costumer_name);
+                localStorage.setItem("costumer_name", name.costumer_name);
             }
         } catch (error) {
             console.error(error);
