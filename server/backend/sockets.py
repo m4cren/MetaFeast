@@ -1,8 +1,8 @@
 from .extensions import db, socketio
-from .db_config import save_data
+from .db_config import save_data, delete_all_data, delete_data
 from sqlalchemy import desc
 from flask_socketio import SocketIO, emit
-from .db_models import Table, TableRequest
+from .db_models import Table, TableRequest, Costumer
 
 
 @socketio.on("connect")
@@ -36,7 +36,19 @@ def accept_request(data):
     costumer_name = data.get('costumer_name')
     selected_table = data.get('table_selected')
 
+    current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
+    costumerID = current_costumer.id
+
     print(f'{costumer_name} is accepted to seat on table {selected_table}')
+
+    change_table_status = Table.query.filter_by(table_name = selected_table).first()
+    change_table_status.isAvailable = False
+    change_table_status.current_costumer_name = current_costumer.costumer_name
+    change_table_status.current_costumer_id = costumerID
+
+    remove_table_request = TableRequest.query.filter(TableRequest.table_id == selected_table and TableRequest.costumer_name == costumer_name).first()
+    delete_data(remove_table_request)
+    
 
     response = {
         'costumer_name': costumer_name,
@@ -50,6 +62,12 @@ def accept_request(data):
 
     costumer_name = data.get('costumer_name')
     selected_table = data.get('table_selected')
+
+    remove_table_request = TableRequest.query.filter(TableRequest.table_id == selected_table and TableRequest.costumer_name == costumer_name).first()
+    delete_data(remove_table_request)
+
+    current_costumer_to_deny = Costumer.query.filter_by(costumer_name = costumer_name).first()
+    delete_data(current_costumer_to_deny)
 
     print(f'{costumer_name} is denied to seat on table {selected_table}')
     response = {

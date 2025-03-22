@@ -40,9 +40,10 @@ def create_website():
             print('Rainier virtual environment is activated')
 
           
-            app.config["SQLALCHEMY_DATABASE_URI"] = (
-                f"mysql+pymysql://{m4cren_username}:{m4cren_password}@{m4cren_host}/{m4cren_schema}?charset=utf8"
-            )
+            # app.config["SQLALCHEMY_DATABASE_URI"] = (
+            #     f"mysql+pymysql://{m4cren_username}:{m4cren_password}@{m4cren_host}/{m4cren_schema}?charset=utf8"
+            # )
+            app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///rainier.db'
             
         elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
 

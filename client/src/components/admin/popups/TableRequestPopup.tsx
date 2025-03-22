@@ -87,23 +87,43 @@ const TableRequestPopup = ({
                                         <p>{time_ago}</p>
                                         <button
                                             className="scale-260 text-red-500 cursor-pointer"
-                                            onClick={() =>
+                                            onClick={() => {
                                                 handleDeny(
                                                     table_selected,
                                                     costumer_name,
-                                                )
-                                            }
+                                                );
+
+                                                setRequestMessage((prev) =>
+                                                    prev.filter(
+                                                        (item) =>
+                                                            item.table_selected !==
+                                                                table_selected ||
+                                                            item.costumer_name !==
+                                                                costumer_name,
+                                                    ),
+                                                );
+                                            }}
                                         >
                                             <TiDelete />
                                         </button>
                                         <button
                                             className="text-3xl text-green-500 cursor-pointer"
-                                            onClick={() =>
+                                            onClick={() => {
                                                 handleAccept(
                                                     table_selected,
                                                     costumer_name,
-                                                )
-                                            }
+                                                );
+
+                                                setRequestMessage((prev) =>
+                                                    prev.filter(
+                                                        (item) =>
+                                                            item.table_selected !==
+                                                                table_selected ||
+                                                            item.costumer_name !==
+                                                                costumer_name,
+                                                    ),
+                                                );
+                                            }}
                                         >
                                             <FaCheckCircle />
                                         </button>
