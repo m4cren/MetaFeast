@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface Props {
     isTransitioning: boolean;
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,4 +29,4 @@ const NavBar = ({ isTransitioning, setIsTableRequest }: Props) => {
     );
 };
 
-export default NavBar;
+export default memo(NavBar);

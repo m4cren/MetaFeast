@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { Gi3dStairs } from "react-icons/gi";
 import useFrameProvider from "../../../frames/useFrameProvider";
 
@@ -186,4 +186,4 @@ const ViewControl = ({
     );
 };
 
-export default ViewControl;
+export default memo(ViewControl);

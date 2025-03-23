@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { FaCheck } from "react-icons/fa";
 import { IoMdListBox } from "react-icons/io";
 interface Props {
@@ -102,4 +103,4 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
     );
 };
 
-export default PendingOrderTab;
+export default memo(PendingOrderTab);
