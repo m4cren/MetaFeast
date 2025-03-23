@@ -4,11 +4,6 @@ import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
 import { Gi3dStairs } from "react-icons/gi";
 import { FaClock } from "react-icons/fa";
-
-import useFrameProvider from "../../../frames/useFrameProvider";
-
-import useTableRequest from "../../../hooks/useTableRequest";
-import { useSocket } from "../../../contexts/SocketContext";
 import useSelectTableControl from "../../../hooks/useSelectTableControl";
 
 interface Props {

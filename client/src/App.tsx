@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import { SocketProvider } from "./contexts/SocketContext";
 import { TableStatusProvider } from "./contexts/TableStatusContext";
@@ -9,11 +9,10 @@ import AdminLogin from "./components/admin/AdminLogin";
 const MainCostumer = lazy(() => import("./components/costumer/MainCostumer"));
 const MainAdmin = lazy(() => import("./components/admin/MainAdmin"));
 
-export const loader_timer = 2000;
-
 const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [token] = useState<string | null>(localStorage.getItem("token"));
+    const [isStart, setIsStart] = useState<boolean>(false);
 
     useEffect(() => {
         if (!token) {
@@ -22,30 +21,24 @@ const App = () => {
             localStorage.removeItem("table-picked");
             localStorage.removeItem("costumer_name");
         }
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, loader_timer);
-
-        return () => clearTimeout(timer);
     }, []);
 
     return (
         <SocketProvider>
             <TableStatusProvider>
                 <Router>
-                    {isLoading && (
+                    {!isStart && (
                         <div className="fixed w-full h-screen z-10">
-                            <LoadingScreen />
+                            <LoadingScreen
+                                isLoading={isLoading}
+                                setIsStart={setIsStart}
+                            />
                         </div>
                     )}
                     <Routes>
                         <Route
                             path="/admin"
-                            element={
-                                <Suspense fallback={null}>
-                                    <MainAdmin />
-                                </Suspense>
-                            }
+                            element={<MainAdmin setIsLoading={setIsLoading} />}
                         />
                         <Route
                             path="/admin/admin-login"
@@ -55,9 +48,10 @@ const App = () => {
                         <Route
                             path="/"
                             element={
-                                <Suspense fallback={<LoadingScreen />}>
-                                    <MainCostumer />
-                                </Suspense>
+                                <MainCostumer
+                                    setIsLoading={setIsLoading}
+                                    isStart={isStart}
+                                />
                             }
                         />
                     </Routes>

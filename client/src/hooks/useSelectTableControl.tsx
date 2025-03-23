@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import useFrameProvider from "../frames/useFrameProvider";
 import useTableRequest from "./useTableRequest";
 import { SelectTableControl } from "../types/types";
@@ -16,6 +16,7 @@ const useSelectTableControl = ({
     setIsConfirmed,
     setIsPicking,
 }: SelectTableControl) => {
+    const [swoosh] = useState(new Audio("/audios/Woosh Effect 2.wav"));
     const { sendData } = useTableRequest();
     const {
         to_1st_Frames,
@@ -25,6 +26,7 @@ const useSelectTableControl = ({
     } = useFrameProvider();
 
     const handleLeftClick = () => {
+        swoosh.play();
         setIsLeftClicked(true);
         setIsRightClicked(false);
 
@@ -37,6 +39,7 @@ const useSelectTableControl = ({
         }
     };
     const handleRightClick = () => {
+        swoosh.play();
         setIsLeftClicked(false);
         setIsRightClicked(true);
 
@@ -49,6 +52,7 @@ const useSelectTableControl = ({
         }
     };
     const handleMidClick = () => {
+        swoosh.play();
         setIsLeftClicked(false);
         setIsRightClicked(false);
 
@@ -68,6 +72,7 @@ const useSelectTableControl = ({
     }, []);
 
     const handleDownFloor = () => {
+        swoosh.play();
         setIsTransitioning(true);
         setIsRightClicked(true);
         setIsLeftClicked(true);
@@ -114,6 +119,7 @@ const useSelectTableControl = ({
     };
 
     const handleNextFloor = () => {
+        swoosh.play();
         setIsRightClicked(true);
         setIsTransitioning(true);
         setIsLeftClicked(true);

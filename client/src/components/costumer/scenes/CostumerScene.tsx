@@ -17,17 +17,15 @@ const Stairs = lazy(() => import("../../models/Stairs"));
 interface CameraControl {
     camPos: number[];
     camRot: number[];
-    setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
-    setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
-    setIsPicking: React.Dispatch<React.SetStateAction<boolean>>;
-    setSelectedTable: React.Dispatch<React.SetStateAction<string>>;
     transitionToTable: (table_id: string) => void;
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CostumerScene = ({
     camPos,
     camRot,
     transitionToTable,
+    setIsLoading,
 }: CameraControl) => {
     const socket = useSocket();
     const uniqueKey = Date.now();
@@ -84,7 +82,7 @@ const CostumerScene = ({
             <PerspectiveCamera makeDefault fov={95} />
 
             <Suspense fallback={null}>
-                <Restaurant />
+                <Restaurant onLoadComplete={() => setIsLoading(false)} />
                 <Stairs />
                 <BackgroundScene />
                 <QuadSeat

@@ -23,7 +23,6 @@ export const TableStatusProvider = ({
     const token = localStorage.getItem("token");
 
     const getTableStatus = async () => {
-        console.log("updated");
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };

@@ -25,10 +25,11 @@ const GetName = ({
     const { server } = useServerAddress();
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const [warningContent, setWarningContent] = useState<string>("");
-
+    const [swoosh] = useState(new Audio("/audios/Woosh Effect 2.wav"));
     const { afterName_Frames, selTable1stF_Frames } = useFrameProvider();
 
     const setFrameOne = () => {
+        swoosh.play();
         setCamPos(afterName_Frames.frame1.pos);
         setCamRot(afterName_Frames.frame1.rot);
 

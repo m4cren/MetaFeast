@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 import AdminScene from "./scenes/AdminScene";
 
@@ -11,7 +11,11 @@ import RequestNotification from "./popups/RequestNotification";
 import useFrameProvider from "../../frames/useFrameProvider";
 import { NotificationType } from "../../types/types";
 
-const AdminView = () => {
+interface AdminViewProps {
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const { admin_init_Frame } = useFrameProvider();
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
     const [camPos, setCamPos] = useState<[number, number, number]>(
@@ -60,7 +64,11 @@ const AdminView = () => {
     return (
         <>
             <div className="w-full, h-screen fixed left-0 right-0 top-0 bottom-0">
-                <AdminScene camPos={camPos} camRot={camRot} />
+                <AdminScene
+                    camPos={camPos}
+                    camRot={camRot}
+                    setIsLoading={setIsLoading}
+                />
             </div>
 
             <div className="fixed w-full h-screen pointer-events-none">

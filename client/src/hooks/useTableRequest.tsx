@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useSocket } from "../contexts/SocketContext";
 
 const useTableRequest = () => {

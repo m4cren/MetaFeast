@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 // import useCameraControl from "../../hooks/useCameraControl";
 import CostumerScene from "./scenes/CostumerScene";
 
-import { loader_timer } from "../../App";
-
 import useFrameProvider from "../../frames/useFrameProvider";
 import GetName from "./overlays/GetName";
 import SelectTable from "./overlays/SelectTable";
@@ -16,7 +14,15 @@ import Order from "./overlays/Order";
 import Denied from "./overlays/Denied";
 import useTableTransition from "../../hooks/useTableTransition";
 
-const MainCostumer = () => {
+interface MainCostumerProps {
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    isStart: boolean;
+}
+
+const MainCostumer: React.FC<MainCostumerProps> = ({
+    setIsLoading,
+    isStart,
+}) => {
     // const { camPos, camRot, cameraFunctions } = useCameraControl();
     // console.log(
     //     `Cam Pos: PX - ${camPos[0]}    PY - ${camPos[1]}    PZ - ${camPos[2]}`,
@@ -46,6 +52,7 @@ const MainCostumer = () => {
     const [table_picked] = useState<string | null>(
         localStorage.getItem("table-picked"),
     );
+    const [swoosh] = useState(new Audio("/audios/Woosh Effect 2.wav"));
 
     const transitionToTable = useTableTransition({
         setIsPicking,
@@ -59,11 +66,12 @@ const MainCostumer = () => {
 
         if (!get_phase) {
             setPhase(0);
-            const timer_initial = setTimeout(() => {
+
+            if (isStart) {
+                swoosh.play();
                 setCamPos(pickName_Frame.pos);
                 setCamRot(pickName_Frame.rot);
-            }, loader_timer - 500);
-            return () => clearTimeout(timer_initial);
+            }
         } else {
             switch (get_phase) {
                 case "phase_1":
@@ -71,10 +79,10 @@ const MainCostumer = () => {
                     if (table_picked) {
                         transitionToTable(table_picked);
                     } else {
-                        setTimeout(() => {
+                        if (isStart) {
                             setCamPos(selTable1stF_Frames.mid.pos);
                             setCamRot(selTable1stF_Frames.mid.rot);
-                        }, loader_timer - 500);
+                        }
                     }
 
                     break;
@@ -83,15 +91,15 @@ const MainCostumer = () => {
                     if (table_picked) {
                         transitionToTable(table_picked);
                     } else {
-                        setTimeout(() => {
+                        if (isStart) {
                             setCamPos(selTable1stF_Frames.mid.pos);
                             setCamRot(selTable1stF_Frames.mid.rot);
-                        }, loader_timer - 500);
+                        }
                     }
                     break;
             }
         }
-    }, []);
+    }, [isStart]);
 
     useEffect(() => {
         socket?.on("is-costumer-accepted", (data) => {
@@ -130,11 +138,8 @@ const MainCostumer = () => {
                     <CostumerScene
                         camPos={camPos}
                         camRot={camRot}
-                        setCamPos={setCamPos}
-                        setCamRot={setCamRot}
-                        setIsPicking={setIsPicking}
-                        setSelectedTable={setSelectedTable}
                         transitionToTable={transitionToTable}
+                        setIsLoading={setIsLoading}
                     />
                 </div>
 

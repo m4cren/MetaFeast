@@ -15,9 +15,10 @@ const Stairs = lazy(() => import("../../models/Stairs"));
 interface CameraControl {
     camPos: number[];
     camRot: number[];
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AdminScene = ({ camPos, camRot }: CameraControl) => {
+const AdminScene = ({ camPos, camRot, setIsLoading }: CameraControl) => {
     const { tables } = useTableStatus() ?? { tables: [] };
 
     const singleTable: TableStatus[] = tables?.filter(
@@ -38,7 +39,7 @@ const AdminScene = ({ camPos, camRot }: CameraControl) => {
             <PerspectiveCamera makeDefault fov={103} />
             <Suspense fallback={null}>
                 <BackgroundScene />
-                <Restaurant />
+                <Restaurant onLoadComplete={() => setIsLoading(false)} />
                 <Stairs />
 
                 <SingleSeat availableTable={singleTable} role="admin" />
