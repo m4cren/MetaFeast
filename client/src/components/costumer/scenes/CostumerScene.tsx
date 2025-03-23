@@ -7,7 +7,7 @@ import QuadSeat from "../../models/tables/QuadSeat";
 import SingleSeat from "../../models/tables/SingleSeat";
 import DoubleSeat from "../../models/tables/DoubleSeat";
 import { useTableStatus } from "../../../contexts/TableStatusContext";
-
+import { TableStatus } from "../../../types/types";
 import BackgroundScene from "../../BackgroundScene";
 import { useSocket } from "../../../contexts/SocketContext";
 
@@ -22,14 +22,6 @@ interface CameraControl {
     setIsPicking: React.Dispatch<React.SetStateAction<boolean>>;
     setSelectedTable: React.Dispatch<React.SetStateAction<string>>;
     transitionToTable: (table_id: string) => void;
-}
-interface TableStatus {
-    table_name: string;
-    table_status: "Available" | "Occupied";
-    table_type: "Single_seat" | "Double_seat" | "Quad_seat";
-    table_position: [number, number, number];
-    costumer_status: "Ordering" | "Eating" | "Billing";
-    costumer_name: string;
 }
 
 const CostumerScene = ({
@@ -99,16 +91,19 @@ const CostumerScene = ({
                     key={`quad-${uniqueKey}`}
                     availableTable={availableQuadTable}
                     transitionToTable={transitionToTable}
+                    role="costumer"
                 />
                 <SingleSeat
                     key={`single-${uniqueKey}`}
                     availableTable={availableSingleTable}
                     transitionToTable={transitionToTable}
+                    role="costumer"
                 />
                 <DoubleSeat
                     key={`double-${uniqueKey}`}
                     availableTable={availableDoubleTable}
                     transitionToTable={transitionToTable}
+                    role="costumer"
                 />
             </Suspense>
         </Canvas>

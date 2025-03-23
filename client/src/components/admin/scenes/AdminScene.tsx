@@ -8,17 +8,9 @@ import { useTableStatus } from "../../../contexts/TableStatusContext";
 import DoubleSeat from "../../models/tables/DoubleSeat";
 import SingleSeat from "../../models/tables/SingleSeat";
 import QuadSeat from "../../models/tables/QuadSeat";
+import { TableStatus } from "../../../types/types";
 const Restaurant = lazy(() => import("../../models/Restaurant"));
 const Stairs = lazy(() => import("../../models/Stairs"));
-
-interface TableStatus {
-    table_name: string;
-    table_status: "Available" | "Occupied";
-    table_type: "Single_seat" | "Double_seat" | "Quad_seat";
-    table_position: [number, number, number];
-    costumer_status: "Ordering" | "Eating" | "Billing";
-    costumer_name: string;
-}
 
 interface CameraControl {
     camPos: number[];
@@ -49,9 +41,9 @@ const AdminScene = ({ camPos, camRot }: CameraControl) => {
                 <Restaurant />
                 <Stairs />
 
-                <SingleSeat availableTable={singleTable} />
-                <DoubleSeat availableTable={doubleTable} />
-                <QuadSeat availableTable={quadTable} />
+                <SingleSeat availableTable={singleTable} role="admin" />
+                <DoubleSeat availableTable={doubleTable} role="admin" />
+                <QuadSeat availableTable={quadTable} role="admin" />
             </Suspense>
         </Canvas>
     );

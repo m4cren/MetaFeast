@@ -9,12 +9,7 @@ import TableRequestPopup from "./popups/TableRequestPopup";
 import { useSocket } from "../../contexts/SocketContext";
 import RequestNotification from "./popups/RequestNotification";
 import useFrameProvider from "../../frames/useFrameProvider";
-
-type NotificationType = {
-    message: string;
-    costumerName: string;
-    tableID: string;
-};
+import { NotificationType } from "../../types/types";
 
 const AdminView = () => {
     const { admin_init_Frame } = useFrameProvider();

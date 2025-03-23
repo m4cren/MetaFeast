@@ -33,10 +33,13 @@ class Table(db.Model):
     current_costumer_id = db.Column(
         db.Integer, db.ForeignKey("costumer.id"), nullable=True
     )
-    current_costumer_status = db.Column(db.String(56), default='Ordering')
+    current_costumer_status = db.Column(db.String(56), default='Available')
 
     def get_position(self):
         return [self.table_position_x, self.table_position_y, self.table_position_z]
+
+    def update_to_ordering(self):
+        self.current_costumer_status = 'Ordering'
     
     def update_to_eating(self):
         self.current_costumer_status = 'Eating'

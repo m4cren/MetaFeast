@@ -2,15 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-
-interface TableStatus {
-    table_name: string;
-    table_status: "Available" | "Occupied";
-    table_type: "Single_seat" | "Double_seat" | "Quad_seat";
-    table_position: [number, number, number];
-    costumer_status: "Ordering" | "Eating" | "Billing";
-    costumer_name: string;
-}
+import { TableStatus } from "../../../types/types";
 
 interface AvailableTable {
     availableTable: TableStatus[];
@@ -18,11 +10,13 @@ interface AvailableTable {
 
 interface Props {
     transitionToTable?: (table_id: string) => void;
+    role: string;
 }
 
 const DoubleSeat: React.FC<AvailableTable & Props> = ({
     availableTable,
     transitionToTable = () => {},
+    role,
 }) => {
     const TABLE_POSITION = availableTable.map((table) => {
         return table.table_position;
@@ -59,14 +53,41 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
     useEffect(() => {
         if (!meshRef.current || meshes.length === 0) return;
 
+        const colorArray = new Float32Array(TABLE_POSITION.length * 3);
+
         TABLE_POSITION.forEach((pos, index) => {
             const instanceMatrix = new THREE.Matrix4();
             instanceMatrix.setPosition(new THREE.Vector3(...pos));
             meshRef.current!.setMatrixAt(index, instanceMatrix);
+
+            if (role === "admin") {
+                const table = availableTable[index];
+                const color = new THREE.Color(
+                    table.costumer_status === "Available"
+                        ? "springgreen"
+                        : table.costumer_status === "Ordering"
+                          ? "yellow"
+                          : table.costumer_status === "Eating"
+                            ? "blue"
+                            : table.costumer_status === "Billing"
+                              ? "pink"
+                              : "brown",
+                );
+
+                color.toArray(colorArray, index * 3);
+            }
         });
 
         meshRef.current!.instanceMatrix.needsUpdate = true;
-    }, [meshes]);
+
+        if (role === "admin") {
+            const colorAttribute = new THREE.InstancedBufferAttribute(
+                colorArray,
+                3,
+            );
+            meshRef.current!.geometry.setAttribute("color", colorAttribute);
+        }
+    }, [meshes, availableTable]);
 
     if (!isLoaded || meshes.length === 0) return null;
 
@@ -75,10 +96,6 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
             let table_id: string = TABLE_ID[event.instanceId];
 
             transitionToTable(table_id);
-
-            console.log(
-                availableTable.filter((table) => table.table_name === table_id),
-            );
         }
     };
 
@@ -91,7 +108,9 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
                 TABLE_POSITION.length,
             ]}
             onClick={handleClick}
-        />
+        >
+            {role === "admin" && <meshStandardMaterial vertexColors />}
+        </instancedMesh>
     );
 };
 

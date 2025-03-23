@@ -1,22 +1,6 @@
 import { useEffect } from "react";
 
-interface Props {
-    cameraFunctions: {
-        addPosX: () => void;
-        addPosY: () => void;
-        addPosZ: () => void;
-        addRotX: () => void;
-        addRotY: () => void;
-        addRotZ: () => void;
-
-        minusPosX: () => void;
-        minusPosY: () => void;
-        minusPosZ: () => void;
-        minusRotX: () => void;
-        minusRotY: () => void;
-        minusRotZ: () => void;
-    };
-}
+import { Props } from "../types/types";
 
 const SceneCameraController = ({ cameraFunctions }: Props) => {
     useEffect(() => {

@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { Gi3dStairs } from "react-icons/gi";
 import useFrameProvider from "../../../frames/useFrameProvider";
+import { Cctv } from "lucide-react";
 
 interface Props {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -165,18 +166,21 @@ const ViewControl = ({
                             onClick={handleViewOne}
                             className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
+                            <Cctv />
                             <p className="text-[1.25rem] w-max">View 1</p>
                         </button>
                         <button
                             onClick={handleViewTwo}
                             className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
+                            <Cctv />
                             <p className="text-[1.25rem] w-max">View 2</p>
                         </button>
                         <button
                             onClick={handleDefaultView}
                             className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
+                            <Cctv />
                             <p className="text-[1.25rem] w-max">Default</p>
                         </button>
                     </>

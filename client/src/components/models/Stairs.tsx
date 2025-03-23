@@ -3,12 +3,8 @@ import { useGLTF } from "@react-three/drei";
 const Stairs = () => {
     const model = useGLTF("/models/stairs.glb");
 
-    const handleClick = () => {
-        console.log("Go upstairs?");
-    };
-
     return (
-        <object3D onClick={handleClick}>
+        <object3D>
             <primitive object={model.scene} />
         </object3D>
     );

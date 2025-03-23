@@ -22,46 +22,6 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
             table: "A-16",
             name: "Will",
         },
-        {
-            table: "A-5",
-            name: "Jonathan",
-        },
-        {
-            table: "B-1",
-            name: "Eleven",
-        },
-        {
-            table: "B-5",
-            name: "Hopper",
-        },
-        {
-            table: "A-9",
-            name: "Papa",
-        },
-        {
-            table: "A-11",
-            name: "Henry",
-        },
-        {
-            table: "A-6",
-            name: "Lucas",
-        },
-        {
-            table: "A-10",
-            name: "Max",
-        },
-        {
-            table: "A-2",
-            name: "Nancy",
-        },
-        {
-            table: "B-13",
-            name: "Argyle",
-        },
-        {
-            table: "B-8",
-            name: "Joyce",
-        },
     ];
     return (
         <div

@@ -45,6 +45,7 @@ def accept_request(data):
     change_table_status.isAvailable = False
     change_table_status.current_costumer_name = current_costumer.costumer_name
     change_table_status.current_costumer_id = costumerID
+    change_table_status.update_to_ordering()
 
     remove_table_request = TableRequest.query.filter(TableRequest.table_id == selected_table and TableRequest.costumer_name == costumer_name).first()
     delete_data(remove_table_request)
