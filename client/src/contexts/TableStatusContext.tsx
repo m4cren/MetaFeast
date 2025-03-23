@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useServerAddress from "../../useServerAddress";
 import axios from "axios";
+import { useSocket } from "./SocketContext";
 
 interface TableStatus {
     table_name: string;
@@ -8,9 +9,16 @@ interface TableStatus {
     table_type: "Single_seat" | "Double_seat" | "Quad_seat";
     table_position: [number, number, number];
 }
+
+interface TableStatusContextType {
+    tables: TableStatus[];
+    getTableStatus: () => void;
+}
 const { server } = useServerAddress();
 
-export const TableStatusContext = createContext<TableStatus[] | null>(null);
+export const TableStatusContext = createContext<TableStatusContextType | null>(
+    null,
+);
 
 export const TableStatusProvider = ({
     children,
@@ -19,9 +27,9 @@ export const TableStatusProvider = ({
 }) => {
     const [tables, setTables] = useState<TableStatus[]>([]);
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
+    const getTableStatus = async () => {
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };
@@ -30,21 +38,22 @@ export const TableStatusProvider = ({
         }
 
         try {
-            const getTableStatus = async () => {
-                const response = await axios.get(`${server}/get-table-status`, {
-                    headers,
-                    withCredentials: false,
-                });
-                setTables(response.data.tables as TableStatus[]);
-            };
-            getTableStatus();
         } catch (error) {
             console.log("error");
         }
+        const response = await axios.get(`${server}/get-table-status`, {
+            headers,
+            withCredentials: false,
+        });
+        setTables(response.data.tables as TableStatus[]);
+    };
+
+    useEffect(() => {
+        getTableStatus();
     }, []);
 
     return (
-        <TableStatusContext.Provider value={tables}>
+        <TableStatusContext.Provider value={{ tables, getTableStatus }}>
             {children}
         </TableStatusContext.Provider>
     );

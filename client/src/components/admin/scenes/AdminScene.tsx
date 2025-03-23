@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import BackgroundScene from "../../BackgroundScene";
 import { lazy, Suspense } from "react";
-import LoadingScreen from "../../LoadingScreen";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+
+import { PerspectiveCamera } from "@react-three/drei";
 import CameraController from "../../CameraController";
 import { useTableStatus } from "../../../contexts/TableStatusContext";
 import DoubleSeat from "../../models/tables/DoubleSeat";
@@ -24,7 +24,7 @@ interface CameraControl {
 }
 
 const AdminScene = ({ camPos, camRot }: CameraControl) => {
-    const tables: TableStatus[] = useTableStatus() ?? [];
+    const { tables } = useTableStatus() ?? { tables: [] };
 
     const singleTable: TableStatus[] = tables?.filter(
         (table) => table.table_type === "Single_seat",

@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 
 import { PerspectiveCamera } from "@react-three/drei";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import CameraController from "../../CameraController";
 import QuadSeat from "../../models/tables/QuadSeat";
 import SingleSeat from "../../models/tables/SingleSeat";
@@ -9,6 +9,7 @@ import DoubleSeat from "../../models/tables/DoubleSeat";
 import { useTableStatus } from "../../../contexts/TableStatusContext";
 
 import BackgroundScene from "../../BackgroundScene";
+import { useSocket } from "../../../contexts/SocketContext";
 
 const Restaurant = lazy(() => import("../../models/Restaurant"));
 const Stairs = lazy(() => import("../../models/Stairs"));
@@ -34,9 +35,13 @@ const CostumerScene = ({
     camRot,
     transitionToTable,
 }: CameraControl) => {
+    const socket = useSocket();
     const uniqueKey = Date.now();
-    const tables: TableStatus[] = useTableStatus() ?? [];
-
+    const { tables, getTableStatus } = useTableStatus() ?? {
+        tables: [],
+        getTableStatus: () => {},
+    };
+    const selectedTable = localStorage.getItem("table-picked");
     const availableSingleTable: TableStatus[] = tables?.filter(
         (table) =>
             table.table_type === "Single_seat" &&
@@ -52,6 +57,29 @@ const CostumerScene = ({
             table.table_type === "Quad_seat" &&
             table.table_status === "Available",
     );
+
+    const selected_table = tables.find(
+        (table) => table.table_name === selectedTable,
+    );
+
+    if (selected_table) {
+        availableSingleTable.push(selected_table);
+        availableDoubleTable.push(selected_table);
+        availableQuadTable.push(selected_table);
+    }
+    useEffect(() => {
+        socket?.on("is-costumer-accepted", (_) => {
+            getTableStatus();
+        });
+        socket?.on("is-costumer-denied", (_) => {
+            getTableStatus();
+        });
+
+        return () => {
+            socket?.off("is-table-accepted");
+            socket?.off("is-table-denied");
+        };
+    }, []);
 
     return (
         <Canvas gl={{ powerPreference: "high-performance" }}>
