@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTableStatus } from "../../../contexts/TableStatusContext";
 
 interface Props {
     message: string;
@@ -16,9 +17,18 @@ const RequestNotification = ({
     costumer_name,
 }: Props) => {
     const [isClick, setIsClick] = useState<boolean>(false);
+    const { getTableStatus } = useTableStatus() ?? {
+        getTableStatus: () => {},
+    };
+
+    const refetchData = () => {
+        setTimeout(() => {
+            getTableStatus();
+        }, 850);
+    };
     return (
         <div
-            className={`h-[4rem] rounded-2xl bg-white flex flex-row items-center justify-between px-2 w-full notification-animation ${isClick && "hidden"}`}
+            className={`h-[4rem] rounded-2xl bg-white flex flex-row items-center justify-between px-2 pointer-events-auto w-full notification-animation ${isClick && "hidden"}`}
         >
             <p className="text-black">{message}</p>
 
@@ -28,6 +38,7 @@ const RequestNotification = ({
                     onClick={() => {
                         setIsClick(true);
                         handleDeny(tableID, costumer_name);
+                        refetchData();
                     }}
                 >
                     Deny
@@ -37,6 +48,8 @@ const RequestNotification = ({
                     onClick={() => {
                         setIsClick(true);
                         handleAccept(tableID, costumer_name);
+
+                        refetchData();
                     }}
                 >
                     Accept

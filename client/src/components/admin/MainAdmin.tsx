@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import LoadingScreen from "../LoadingScreen";
 
-const MainAdmin = ({}) => {
+const MainAdmin = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const navigate = useNavigate();
     useEffect(() => {

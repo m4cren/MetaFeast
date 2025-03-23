@@ -8,6 +8,8 @@ interface TableStatus {
     table_status: "Available" | "Occupied";
     table_type: "Single_seat" | "Double_seat" | "Quad_seat";
     table_position: [number, number, number];
+    costumer_status: "Ordering" | "Eating" | "Billing";
+    costumer_name: string;
 }
 
 interface AvailableTable {
@@ -74,6 +76,10 @@ const QuadSeat: React.FC<AvailableTable & Props> = ({
             let table_id: string = TABLE_ID[event.instanceId];
 
             transitionToTable(table_id);
+
+            console.log(
+                availableTable.filter((table) => table.table_name === table_id),
+            );
         }
     };
 

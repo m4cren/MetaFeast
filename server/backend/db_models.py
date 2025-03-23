@@ -33,9 +33,16 @@ class Table(db.Model):
     current_costumer_id = db.Column(
         db.Integer, db.ForeignKey("costumer.id"), nullable=True
     )
+    current_costumer_status = db.Column(db.String(56), default='Ordering')
 
     def get_position(self):
         return [self.table_position_x, self.table_position_y, self.table_position_z]
+    
+    def update_to_eating(self):
+        self.current_costumer_status = 'Eating'
+
+    def update_to_billing(self):
+        self.current_costumer_status = 'Billing'
     
 class TableRequest(db.Model):
     __tablename__ = 'table_request'

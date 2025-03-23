@@ -65,7 +65,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
     ];
     return (
         <div
-            className={`w-[20vw] h-screen fixed right-0 flex flex-col  space-y-4 ${isTransitioning && "translate-x-[25rem]"} transition duration-500`}
+            className={`w-[20vw] pointer-events-auto h-screen fixed right-0 flex flex-col  space-y-4 ${isTransitioning && "translate-x-[25rem]"} transition duration-500`}
         >
             <div className="rounded-bl-2xl bg-white/10 backdrop-blur-2xl flex justify-center items-center h-[10%]">
                 <h1 className="text-white/90 text-3xl font-bold p-5 text-shadow-md">

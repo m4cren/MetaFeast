@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 // import SceneCameraController from "./SceneCameraController";
 // import useCameraControl from "../../hooks/useCameraControl";

@@ -144,7 +144,7 @@ const ViewControl = ({
     };
     return (
         !isTransitioning && (
-            <div className="fixed w-[90vw] h-[5.5rem]  bottom-0 flex flex-row  items-center px-10 space-x-5">
+            <div className="fixed pointer-events-auto w-[90vw] h-[5.5rem]  bottom-0 flex flex-row  items-center px-10 space-x-5">
                 <button
                     onClick={floor === 1 ? handleUpFloor : handleDownFloor}
                     className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"

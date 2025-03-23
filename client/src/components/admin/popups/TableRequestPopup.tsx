@@ -4,6 +4,7 @@ import { TiDelete } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
+import { useTableStatus } from "../../../contexts/TableStatusContext";
 
 interface Props {
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,6 +26,14 @@ const TableRequestPopup = ({
 }: Props) => {
     const [requestMessage, setRequestMessage] = useState<RequestType[]>([]);
     const { server } = useServerAddress();
+    const { getTableStatus } = useTableStatus() ?? {
+        getTableStatus: () => {},
+    };
+    const refetchData = () => {
+        setTimeout(() => {
+            getTableStatus();
+        }, 850);
+    };
 
     useEffect(() => {
         const fetchRequestMessage = async () => {
@@ -53,7 +62,7 @@ const TableRequestPopup = ({
     }, []);
 
     return (
-        <div className="fixed bg-black/45 w-full h-screen flex justify-center items-center">
+        <div className="fixed bg-black/45 w-full h-screen flex justify-center items-center pointer-events-auto">
             <div className="bg-white/80 rounded-2xl w-1/2 h-[40rem] relative pop-up-animation overflow-y-scroll custom-scrollbar">
                 <button
                     onClick={() => setIsTableRequest(false)}
@@ -88,6 +97,7 @@ const TableRequestPopup = ({
                                         <button
                                             className="scale-260 text-red-500 cursor-pointer"
                                             onClick={() => {
+                                                refetchData();
                                                 handleDeny(
                                                     table_selected,
                                                     costumer_name,
@@ -109,6 +119,7 @@ const TableRequestPopup = ({
                                         <button
                                             className="text-3xl text-green-500 cursor-pointer"
                                             onClick={() => {
+                                                refetchData();
                                                 handleAccept(
                                                     table_selected,
                                                     costumer_name,

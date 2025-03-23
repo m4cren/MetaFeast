@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import useCostumerFrameProvider from "../../frames/useFrameProvider";
+import { memo, useEffect, useState } from "react";
+
 import AdminScene from "./scenes/AdminScene";
 
 import NavBar from "./panels/NavBar";
@@ -8,6 +8,7 @@ import PendingOrderTab from "./panels/PendingOrderTab";
 import TableRequestPopup from "./popups/TableRequestPopup";
 import { useSocket } from "../../contexts/SocketContext";
 import RequestNotification from "./popups/RequestNotification";
+import useFrameProvider from "../../frames/useFrameProvider";
 
 type NotificationType = {
     message: string;
@@ -16,7 +17,7 @@ type NotificationType = {
 };
 
 const AdminView = () => {
-    const { admin_init_Frame } = useCostumerFrameProvider();
+    const { admin_init_Frame } = useFrameProvider();
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
     const [camPos, setCamPos] = useState<[number, number, number]>(
         admin_init_Frame.pos,
@@ -28,8 +29,6 @@ const AdminView = () => {
     const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
 
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
-
-    console.log(notifications);
 
     const socket = useSocket();
 
@@ -69,7 +68,7 @@ const AdminView = () => {
                 <AdminScene camPos={camPos} camRot={camRot} />
             </div>
 
-            <div className="fixed w-full h-screen">
+            <div className="fixed w-full h-screen pointer-events-none">
                 {notifications && (
                     <div className="absolute w-[35rem] h-fit z-10 top-5 left-2 flex gap-2 flex-col-reverse">
                         {notifications.map((data, index) => (
@@ -109,4 +108,4 @@ const AdminView = () => {
     );
 };
 
-export default AdminView;
+export default memo(AdminView);

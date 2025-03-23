@@ -1,13 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useServerAddress from "../../useServerAddress";
 import axios from "axios";
-import { useSocket } from "./SocketContext";
 
 interface TableStatus {
     table_name: string;
     table_status: "Available" | "Occupied";
     table_type: "Single_seat" | "Double_seat" | "Quad_seat";
     table_position: [number, number, number];
+    costumer_status: "Ordering" | "Eating" | "Billing";
+    costumer_name: string;
 }
 
 interface TableStatusContextType {
@@ -30,6 +31,7 @@ export const TableStatusProvider = ({
     const token = localStorage.getItem("token");
 
     const getTableStatus = async () => {
+        console.log("updated");
         const headers: Record<string, string> = {
             "Content-Type": "application/json",
         };
@@ -41,6 +43,7 @@ export const TableStatusProvider = ({
         } catch (error) {
             console.log("error");
         }
+
         const response = await axios.get(`${server}/get-table-status`, {
             headers,
             withCredentials: false,

@@ -16,6 +16,8 @@ interface TableStatus {
     table_status: "Available" | "Occupied";
     table_type: "Single_seat" | "Double_seat" | "Quad_seat";
     table_position: [number, number, number];
+    costumer_status: "Ordering" | "Eating" | "Billing";
+    costumer_name: string;
 }
 
 interface CameraControl {
