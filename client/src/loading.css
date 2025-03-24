@@ -1,22 +1,87 @@
-@import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+@import "tailwindcss";
 
-.title-loading {
-    color: #f3f3f3;
-    opacity: 0.6;
-    animation: pulse 2.5s linear infinite;
+@font-face {
+    font-family: "Space Grotesk";
+    src: url("/fonts/SpaceGrotesk-VariableFont_wght.ttf");
+    font-weight: 100 900;
+    font-style: normal;
 }
 
-@keyframes pulse {
+.loading-animation {
+    animation: loading 2s infinite ease-in-out;
+}
+
+.title-animation {
+    animation: title 0.7s ease-in;
+}
+
+.background-animation {
+    background: linear-gradient(90deg, rgb(240, 240, 240), rgb(200, 200, 200));
+    background-size: 400% 400%;
+    animation: backgroundAnimation 5s infinite alternate ease-in-out;
+}
+
+@keyframes backgroundAnimation {
     0% {
-        transform: scale(1, 1);
-        opacity: 0.25;
+        background-position: 0% 0%;
+    }
+    25% {
+        background-position: 100% 50%;
     }
     50% {
-        transform: scale(1.1, 1);
-        opacity: 1;
+        background-position: 50% 100%;
+    }
+    75% {
+        background-position: 0% 50%;
     }
     100% {
-        transform: scale(1, 1);
-        opacity: 0.25;
+        background-position: 50% 0%;
+    }
+}
+
+@keyframes title {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.loader {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    border: 4px solid rgba(0, 0, 0, 0.75);
+    top: 20%;
+    animation: loader 2s infinite ease;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

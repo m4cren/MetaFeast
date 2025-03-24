@@ -54,7 +54,6 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     );
     const swoosh = new Audio("/audios/swoosh.wav");
     const [denyMessage, setDenyMessage] = useState<string>("");
-    console.log(denyMessage, setDenyMessage);
 
     const transitionToTable = useTableTransition({
         setIsPicking,
@@ -159,7 +158,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                 )}
                 {phase === 1 && (
                     <div
-                        className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"}`}
+                        className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"} `}
                     >
                         <SelectTable
                             setPhase={setPhase}

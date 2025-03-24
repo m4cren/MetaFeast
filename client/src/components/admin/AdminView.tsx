@@ -34,14 +34,6 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
     const [costumerName, setCostumerName] = useState<string>("");
     const [tableSelected, setTableSelected] = useState<string>("");
-    console.log(
-        isDenyConfirm,
-        setIsDenyConfirm,
-        costumerName,
-        setCostumerName,
-        tableSelected,
-        setTableSelected,
-    );
 
     const socket = useSocket();
     const notif_sound = new Audio("/audios/admin_notif.mp3");

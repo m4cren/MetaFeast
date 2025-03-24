@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import useFrameProvider from "../../../frames/useFrameProvider";
+import { UtensilsCrossed } from "lucide-react";
+import { CircleHelp } from "lucide-react";
 
 interface FormType {
     costumer_name: string;
@@ -136,40 +138,58 @@ const GetName = ({
     };
 
     return (
-        <div className="fixed w-full h-screen flex items-center justify-center">
-            <div className="w-[90vw]  flex flex-col justify-center items-center h-[30rem] gap-16 bg-white/10 backdrop-blur-[10px] border-1 rounded-2xl border-white/20">
-                <h1 className="text-[1.4rem] text-white font-[500] phone:text-[1.6rem] text-shadow-lg text-center">
-                    What do you want us to call you?
-                </h1>
-                <form
-                    className="flex flex-col items-center gap-8 w-full"
-                    onSubmit={handleSubmit}
-                >
-                    <div className="flex w-full justify-center flex-col items-center">
-                        {isWarning ? (
-                            <p className="text-white text-[0.8rem] mb-2 phone:text-[1rem]">
-                                {warningContent}
-                            </p>
-                        ) : null}
-                        <input
-                            required
-                            type="text"
-                            className="text-center border-1 outline-none border-white w-[90%] h-[2.4rem] rounded-2xl text-white text-shadow-lg"
-                            name="costumer_name"
-                            onChange={handleChange}
-                            value={name.costumer_name}
-                        />
-                    </div>
+        <>
+            <div className="bg-gradient-to-t to-[#dedede00] from-[#adadad] w-full h-[13rem] fixed bottom-0 opacity-60"></div>
 
-                    <button
-                        type="submit"
-                        className="text-white text-shadow-lg border-1 p-4 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-2xl"
+            <div className="w-full h-screen flex flex-col items-center justify-center bg-black/25 backdrop-blur-[15px]">
+                <div className="fixed flex justify-between right-6 items-center top-4 left-6 ">
+                    <div className="flex items-center space-x-1.5 text-xl">
+                        <span className="text-white/75">
+                            <UtensilsCrossed />
+                        </span>
+
+                        <p className="text-white/75">Metafeast</p>
+                    </div>
+                    <span className="text-white/75">
+                        <CircleHelp />
+                    </span>
+                </div>
+
+                <div className="flex flex-col items-center gap-8">
+                    <h1 className="text-[1.4rem] text-white/75 font-[500] phone:text-[1.6rem] text-shadow-lg text-center">
+                        What do you want us to call you?
+                    </h1>
+                    <form
+                        className="flex flex-col items-center gap-8 w-full"
+                        onSubmit={handleSubmit}
                     >
-                        Proceed
-                    </button>
-                </form>
+                        <div className="flex w-full justify-center flex-col items-center">
+                            {isWarning ? (
+                                <p className="text-white text-[0.8rem] mb-2 phone:text-[1rem]">
+                                    {warningContent}
+                                </p>
+                            ) : null}
+                            <input
+                                required
+                                type="text"
+                                className="text-center border-1 outline-none border-white/40 w-[90%] h-[2.4rem] rounded-2xl text-white text-shadow-lg"
+                                name="costumer_name"
+                                onChange={handleChange}
+                                value={name.costumer_name}
+                                placeholder="...Nickname"
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="text-white/75  border-white/40 text-shadow-lg border-1 p-3 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-lg proceed-btn-shadow"
+                        >
+                            Proceed
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

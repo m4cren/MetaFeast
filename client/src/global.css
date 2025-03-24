@@ -59,6 +59,12 @@ body {
 .notification-animation {
     animation: notification 0.2s ease-out;
 }
+.proceed-btn-shadow {
+    box-shadow:
+        -2px 2px 4px rgba(255, 255, 255, 0.2),
+        -3px 3px 0 rgba(255, 255, 255, 0.05),
+        -4px 4px 4px rgba(255, 255, 255, 0.2) !important;
+}
 
 @keyframes popUp {
     from {

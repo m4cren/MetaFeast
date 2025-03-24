@@ -63,7 +63,7 @@ const AdminLogin = () => {
         submitToServer();
     };
     return (
-        <div className="w-full h-screen bg-[url('/images/admin_bg.gif')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+        <div className="w-full h-screen bg-[url('/images/admin_bg.gif')] bg-no-repeat bg-center bg-cover flex items-center justify-center fixed z-20">
             <div className="bg-white/10 backdrop-blur-[9px] w-full h-screen flex flex-col justify-center items-center">
                 <div className="flex flex-col items-center justify-center bg-white/60 rounded-2xl p-25 gap-8 backdrop-blur-[30px]">
                     <h1 className="text-black/70 font-bold text-3xl">
