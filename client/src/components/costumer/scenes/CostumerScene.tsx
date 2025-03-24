@@ -61,9 +61,11 @@ const CostumerScene = ({
     }
     useEffect(() => {
         socket?.on("is-costumer-accepted", (_) => {
+            console.log("hello");
             getTableStatus();
         });
         socket?.on("is-costumer-denied", (_) => {
+            console.log("hello");
             getTableStatus();
         });
 
@@ -71,7 +73,7 @@ const CostumerScene = ({
             socket?.off("is-table-accepted");
             socket?.off("is-table-denied");
         };
-    }, []);
+    }, [socket]);
 
     return (
         <Canvas gl={{ powerPreference: "high-performance" }}>

@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";

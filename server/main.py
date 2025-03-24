@@ -3,7 +3,6 @@ from backend.db_config import m4cren_host, m4cren_port
 from backend.extensions import upgrade
 import os
 
-
 venv_path = os.environ.get('VIRTUAL_ENV')
 
 # ITO MAIN FILE, TYPE 'cd client' KUNG ASA ROOT FOLDER KA 'METAFEAST' TAS 'python main.py' ALWAYS BUKSAN TO BEFORE BUKSAN YUNG FRONTEND
@@ -22,7 +21,7 @@ if venv_path:
         
        if __name__ == "__main__":
            
-            socketio.run(app, debug=True,  host=m4cren_host, port=m4cren_port)
+            socketio.run(app, debug=True,  host=m4cren_host, port=8080)
          
     elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
        

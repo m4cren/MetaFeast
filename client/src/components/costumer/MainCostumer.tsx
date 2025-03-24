@@ -52,7 +52,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     const [table_picked] = useState<string | null>(
         localStorage.getItem("table-picked"),
     );
-    const [swoosh] = useState(new Audio("/audios/Woosh Effect 2.wav"));
+    const swoosh = new Audio("/audios/swoosh.wav");
 
     const transitionToTable = useTableTransition({
         setIsPicking,
@@ -128,7 +128,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
             socket?.off("is-costumer-accepted");
             socket?.off("is-costumer-denied");
         };
-    }, []);
+    }, [socket]);
 
     return (
         <>

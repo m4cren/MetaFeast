@@ -42,7 +42,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
         return () => {
             socket?.off("notify-admin");
         };
-    }, []);
+    }, [socket]);
 
     const handleAccept = (tableSelected: string, costumerName: string) => {
         const costumerToAccept = {
