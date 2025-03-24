@@ -1,7 +1,7 @@
 import { IoMdExit } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import { useTableStatus } from "../../../contexts/TableStatusContext";
@@ -9,7 +9,9 @@ import { useTableStatus } from "../../../contexts/TableStatusContext";
 interface Props {
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
     handleAccept: (tableSelected: string, costumerName: string) => void;
-    handleDeny: (tableSelected: string, costumerName: string) => void;
+    setIsDenyConfirm: React.Dispatch<React.SetStateAction<boolean>>;
+    setCostumerName: React.Dispatch<React.SetStateAction<string>>;
+    setTableSelected: React.Dispatch<React.SetStateAction<string>>;
 }
 
 type RequestType = {
@@ -22,7 +24,9 @@ type RequestType = {
 const TableRequestPopup = ({
     setIsTableRequest,
     handleAccept,
-    handleDeny,
+    setIsDenyConfirm,
+    setCostumerName,
+    setTableSelected,
 }: Props) => {
     const [requestMessage, setRequestMessage] = useState<RequestType[]>([]);
     const { server } = useServerAddress();
@@ -98,11 +102,11 @@ const TableRequestPopup = ({
                                             className="scale-260 text-red-500 cursor-pointer"
                                             onClick={() => {
                                                 refetchData();
-                                                handleDeny(
+                                                setIsDenyConfirm(true);
+                                                setCostumerName(costumer_name);
+                                                setTableSelected(
                                                     table_selected,
-                                                    costumer_name,
                                                 );
-
                                                 setRequestMessage((prev) =>
                                                     prev.filter(
                                                         (item) =>

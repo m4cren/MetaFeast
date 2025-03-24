@@ -63,6 +63,7 @@ def accept_request(data):
 
     costumer_name = data.get('costumer_name')
     selected_table = data.get('table_selected')
+    message = data.get('message')
 
     remove_table_request = TableRequest.query.filter(TableRequest.table_id == selected_table and TableRequest.costumer_name == costumer_name).first()
     delete_data(remove_table_request)
@@ -70,10 +71,11 @@ def accept_request(data):
     current_costumer_to_deny = Costumer.query.filter_by(costumer_name = costumer_name).first()
     delete_data(current_costumer_to_deny)
 
-    print(f'{costumer_name} is denied to seat on table {selected_table}')
+    print(message)
     response = {
         'costumer_name': costumer_name,
-        'selected_table': selected_table
+        'selected_table': selected_table,
+        'message': message
     }
 
     emit('is-costumer-denied', response, broadcast=True)

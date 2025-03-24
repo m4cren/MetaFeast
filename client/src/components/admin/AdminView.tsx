@@ -10,6 +10,7 @@ import { useSocket } from "../../contexts/SocketContext";
 import RequestNotification from "./popups/RequestNotification";
 import useFrameProvider from "../../frames/useFrameProvider";
 import { NotificationType } from "../../types/types";
+import DenyConfirmation from "./popups/DenyConfirmation";
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,10 +30,25 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
+    const [isDenyConfirm, setIsDenyConfirm] = useState<boolean>(false);
+
+    const [costumerName, setCostumerName] = useState<string>("");
+    const [tableSelected, setTableSelected] = useState<string>("");
+    console.log(
+        isDenyConfirm,
+        setIsDenyConfirm,
+        costumerName,
+        setCostumerName,
+        tableSelected,
+        setTableSelected,
+    );
+
     const socket = useSocket();
+    const notif_sound = new Audio("/audios/admin_notif.mp3");
 
     useEffect(() => {
         socket?.on("notify-admin", (data) => {
+            notif_sound.play();
             setNotifications((prevNotifications) => [
                 ...prevNotifications,
                 data,
@@ -52,10 +68,15 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
         socket?.emit("accept-request", costumerToAccept);
     };
-    const handleDeny = (tableSelected: string, costumerName: string) => {
+    const handleDeny = (
+        tableSelected: string,
+        costumerName: string,
+        message: string,
+    ) => {
         const costumerToDeny = {
             costumer_name: costumerName,
             table_selected: tableSelected,
+            message: message,
         };
 
         socket?.emit("deny-request", costumerToDeny);
@@ -81,7 +102,9 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                                 costumer_name={data.costumerName}
                                 tableID={data.tableID}
                                 handleAccept={handleAccept}
-                                handleDeny={handleDeny}
+                                setIsDenyConfirm={setIsDenyConfirm}
+                                setCostumerName={setCostumerName}
+                                setTableSelected={setTableSelected}
                             />
                         ))}
                     </div>
@@ -99,11 +122,22 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                     setIsTransitioning={setIsTransitioning}
                 />
 
+                {isDenyConfirm && (
+                    <DenyConfirmation
+                        setIsDenyConfirm={setIsDenyConfirm}
+                        handleDeny={handleDeny}
+                        costumer_name={costumerName}
+                        table_selected={tableSelected}
+                    />
+                )}
+
                 {isTableRequest && (
                     <TableRequestPopup
                         setIsTableRequest={setIsTableRequest}
                         handleAccept={handleAccept}
-                        handleDeny={handleDeny}
+                        setIsDenyConfirm={setIsDenyConfirm}
+                        setCostumerName={setCostumerName}
+                        setTableSelected={setTableSelected}
                     />
                 )}
             </div>

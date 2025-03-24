@@ -6,15 +6,19 @@ interface Props {
     costumer_name: string;
     tableID: string;
     handleAccept: (tableSelected: string, costumerName: string) => void;
-    handleDeny: (tableSelected: string, costumerName: string) => void;
+    setIsDenyConfirm: React.Dispatch<React.SetStateAction<boolean>>;
+    setCostumerName: React.Dispatch<React.SetStateAction<string>>;
+    setTableSelected: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const RequestNotification = ({
     message,
     handleAccept,
-    handleDeny,
+    setIsDenyConfirm,
     tableID,
     costumer_name,
+    setCostumerName,
+    setTableSelected,
 }: Props) => {
     const [isClick, setIsClick] = useState<boolean>(false);
     const { getTableStatus } = useTableStatus() ?? {
@@ -37,8 +41,10 @@ const RequestNotification = ({
                     className="bg-red-400 p-2 rounded-2xl cursor-pointer"
                     onClick={() => {
                         setIsClick(true);
-                        handleDeny(tableID, costumer_name);
+                        setIsDenyConfirm(true);
                         refetchData();
+                        setTableSelected(tableID);
+                        setCostumerName(costumer_name);
                     }}
                 >
                     Deny

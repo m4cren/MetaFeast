@@ -61,11 +61,9 @@ const CostumerScene = ({
     }
     useEffect(() => {
         socket?.on("is-costumer-accepted", (_) => {
-            console.log("hello");
             getTableStatus();
         });
         socket?.on("is-costumer-denied", (_) => {
-            console.log("hello");
             getTableStatus();
         });
 

@@ -53,6 +53,8 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
         localStorage.getItem("table-picked"),
     );
     const swoosh = new Audio("/audios/swoosh.wav");
+    const [denyMessage, setDenyMessage] = useState<string>("");
+    console.log(denyMessage, setDenyMessage);
 
     const transitionToTable = useTableTransition({
         setIsPicking,
@@ -118,6 +120,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
             if (
                 denied_costumer_name === localStorage.getItem("costumer_name")
             ) {
+                setDenyMessage(data.message);
                 localStorage.removeItem("token");
                 setIsPicking(false);
                 setIsDenied(true);
@@ -133,7 +136,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     return (
         <>
             <div className="relative w-full h-screen">
-                {isDenied && <Denied />}
+                {isDenied && <Denied denyMessage={denyMessage} />}
                 <div className="absolute top-0 left-0 w-full h-screen">
                     <CostumerScene
                         camPos={camPos}
