@@ -34,6 +34,7 @@ const CostumerScene = ({
         getTableStatus: () => {},
     };
     const selectedTable = localStorage.getItem("table-picked");
+
     const availableSingleTable: TableStatus[] = tables?.filter(
         (table) =>
             table.table_type === "Single_seat" &&
@@ -55,9 +56,13 @@ const CostumerScene = ({
     );
 
     if (selected_table) {
-        availableSingleTable.push(selected_table);
-        availableDoubleTable.push(selected_table);
-        availableQuadTable.push(selected_table);
+        if (selected_table.table_type === "Single_seat") {
+            availableSingleTable.push(selected_table);
+        } else if (selected_table.table_type === "Double_seat") {
+            availableDoubleTable.push(selected_table);
+        } else if (selected_table.table_type === "Quad_seat") {
+            availableQuadTable.push(selected_table);
+        }
     }
     useEffect(() => {
         socket?.on("is-costumer-accepted", (_) => {

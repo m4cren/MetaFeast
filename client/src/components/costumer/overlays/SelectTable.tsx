@@ -61,7 +61,18 @@ const SelectTable = ({
         "Did you know that egg contains 6-7 grams of protein?",
         "Banana are rich in magnesium and potassium",
         "You look good, you feel good, you do good",
+        "Hello world",
     ];
+
+    const [triviaIndex, setTriviaIndex] = useState<number>(0);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTriviaIndex((prev) => (prev + 1) % triviaMessage.length);
+        }, 3500);
+
+        return () => clearInterval(intervalId); // Cleanup to prevent memory leaks
+    }, []); // Runs once on mount
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -212,7 +223,9 @@ const SelectTable = ({
                 Wait for the owner to confirm your request
             </h1>
 
-            <p className="text-secondary text-sm">{triviaMessage[0]}</p>
+            <p className="text-secondary text-sm">
+                {triviaMessage[triviaIndex]}
+            </p>
         </div>
     ) : null;
 };
