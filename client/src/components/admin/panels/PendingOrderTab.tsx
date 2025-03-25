@@ -22,18 +22,46 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
             table: "A-16",
             name: "Will",
         },
+        {
+            table: "A-16",
+            name: "Will",
+        },
+        {
+            table: "A-16",
+            name: "Will",
+        },
+        {
+            table: "A-16",
+            name: "Will",
+        },
+        {
+            table: "A-16",
+            name: "Will",
+        },
+        {
+            table: "A-16",
+            name: "Will",
+        },
+        {
+            table: "A-16",
+            name: "Will",
+        },
+        {
+            table: "A-16",
+            name: "Will",
+        },
     ];
     return (
         <div
-            className={`w-[20vw] pointer-events-auto h-screen fixed right-0 flex flex-col  space-y-4 ${isTransitioning && "translate-x-[25rem]"} transition duration-500`}
+            className={` pointer-events-auto  flex flex-col space-y-[2vh] ${isTransitioning && "translate-x-[25rem]"} transition duration-500`}
         >
-            <div className="rounded-bl-2xl bg-white/10 backdrop-blur-2xl flex justify-center items-center h-[10%]">
+            <div className="rounded-bl-2xl bg-white/10 backdrop-blur-2xl flex justify-center items-center h-[10vh]">
                 <h1 className="text-white/90 text-3xl font-bold p-5 text-shadow-md">
                     Pending Orders
                 </h1>
             </div>
 
-            <ul className="bg-white/10 backdrop-blur-2xl rounded-tl-2xl h-[90%] p-4 space-y-3 overflow-y-scroll custom-scrollbar">
+            <ul className="bg-white/10 backdrop-blur-2xl rounded-tl-2xl h-[88vh] p-4 space-y-3  overflow-y-auto custom-scrollbar">
                 {costumer.map(({ name, table }, index) => (
                     <li
                         className="bg-white/85 rounded-2xl p-2 flex flex-row justify-between px-5 transition duration-200 pending-list-shadow  hover:translate-y-[-3px] hover:translate-x-[5px] cursor-pointer "

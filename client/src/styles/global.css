@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "./animations.css";
 @font-face {
     font-family: "Space Grotesk";
     src: url("/fonts/SpaceGrotesk-VariableFont_wght.ttf");
@@ -27,6 +27,28 @@ body {
 }
 
 @layer utilities {
+    .text-primary {
+        color: #f5f5f5;
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+    .text-secondary {
+        color: #c1c1c1;
+        font-size: 0.9rem;
+        font-weight: 250;
+    }
+
+    .text-primary-dark {
+        color: #1b1b1b;
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+    .text-primary-dark {
+        color: #242424;
+        font-size: 0.9rem;
+        font-weight: 250;
+    }
+
     .text-shadow-sm {
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
@@ -37,8 +59,8 @@ body {
         text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
     }
     .custom-scrollbar {
-        scrollbar-width: none; /* For Firefox */
-        scrollbar-color: #6b7280 #e5e7eb; /* Thumb and track color */
+        scrollbar-width: none;
+        scrollbar-color: #6b7280 #e5e7eb;
     }
 }
 
@@ -58,28 +80,4 @@ body {
 
 .notification-animation {
     animation: notification 0.2s ease-out;
-}
-.proceed-btn-shadow {
-    box-shadow:
-        -2px 2px 4px rgba(255, 255, 255, 0.2),
-        -3px 3px 0 rgba(255, 255, 255, 0.05),
-        -4px 4px 4px rgba(255, 255, 255, 0.2) !important;
-}
-
-@keyframes popUp {
-    from {
-        scale: 0;
-    }
-    to {
-        scale: 1;
-    }
-}
-
-@keyframes notification {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
 }

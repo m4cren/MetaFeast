@@ -44,3 +44,10 @@ export interface SelectTableControl {
     setIsConfirmed: React.Dispatch<React.SetStateAction<boolean>>;
     setIsPicking: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface AdminCameraControlProp {
+    setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setIsTransitioning: React.Dispatch<React.SetStateAction<boolean>>;
+    setFloor: React.Dispatch<React.SetStateAction<number>>;
+}

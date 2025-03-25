@@ -8,7 +8,7 @@ interface Props {
 const NavBar = ({ isTransitioning, setIsTableRequest }: Props) => {
     return (
         <div
-            className={`${isTransitioning && "translate-y-[-8rem]"} pointer-events-auto transition duration-500 fixed w-[79vw] h-[5.5rem] bg-white/10 backdrop-blur-2xl rounded-b-2xl top-0 flex flex-row justify-between px-10 items-center`}
+            className={`${isTransitioning && "translate-y-[-8rem]"} h-[10vh] mr-5 pointer-events-auto transition duration-500 bg-white/10 backdrop-blur-2xl rounded-b-2xl flex flex-row justify-between px-10 items-center`}
         >
             <button className="bg-white/90 rounded-2xl text-black/80 flex justify-center p-2 h-[3rem] items-center font-bold text-lg cursor-pointer">
                 Products

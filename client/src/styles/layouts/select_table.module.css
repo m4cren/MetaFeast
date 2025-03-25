@@ -1,0 +1,22 @@
+.main {
+    display: grid;
+    grid-template-columns: 5rem 1fr 5rem;
+    grid-template-rows: 5rem 75vh 5rem;
+    grid-template-areas:
+        "     head   head    head    "
+        "     left-btn    .    right-btn    "
+        "     footer    footer    footer    ";
+}
+
+.head {
+    grid-area: head;
+}
+.left-btn {
+    grid-area: left-btn;
+}
+.right-btn {
+    grid-area: right-btn;
+}
+.footer {
+    grid-area: footer;
+}

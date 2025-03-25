@@ -11,6 +11,7 @@ import RequestNotification from "./popups/RequestNotification";
 import useFrameProvider from "../../frames/useFrameProvider";
 import { NotificationType } from "../../types/types";
 import DenyConfirmation from "./popups/DenyConfirmation";
+import layout from "../../styles/layouts/admin_view.module.css";
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,6 +39,8 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const socket = useSocket();
     const notif_sound = new Audio("/audios/admin_notif.mp3");
 
+    console.log(notifications);
+
     useEffect(() => {
         socket?.on("notify-admin", (data) => {
             notif_sound.play();
@@ -53,6 +56,11 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     }, [socket]);
 
     const handleAccept = (tableSelected: string, costumerName: string) => {
+        const updatedNotificationList = notifications.filter(
+            (notif) => notif.costumerName !== costumerName,
+        );
+
+        setNotifications(updatedNotificationList);
         const costumerToAccept = {
             costumer_name: costumerName,
             table_selected: tableSelected,
@@ -65,6 +73,12 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
         costumerName: string,
         message: string,
     ) => {
+        const updatedNotificationList = notifications.filter(
+            (notif) => notif.costumerName !== costumerName,
+        );
+
+        setNotifications(updatedNotificationList);
+
         const costumerToDeny = {
             costumer_name: costumerName,
             table_selected: tableSelected,
@@ -84,9 +98,29 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                 />
             </div>
 
-            <div className="fixed w-full h-screen pointer-events-none">
-                {notifications && (
-                    <div className="absolute w-[35rem] h-fit z-10 top-5 left-2 flex gap-2 flex-col-reverse">
+            <div
+                className={`${layout.main} pointer-events-none overflow-hidden`}
+            >
+                <div className={`${layout.navbar}`}>
+                    <NavBar
+                        isTransitioning={isTransitioning}
+                        setIsTableRequest={setIsTableRequest}
+                    />
+                </div>
+                <div className={`${layout["pending-tab"]}`}>
+                    <PendingOrderTab isTransitioning={isTransitioning} />
+                </div>
+                <div className={`${layout.footer} flex items-center px-6`}>
+                    <ViewControl
+                        setCamPos={setCamPos}
+                        setCamRot={setCamRot}
+                        isTransitioning={isTransitioning}
+                        setIsTransitioning={setIsTransitioning}
+                    />
+                </div>
+
+                {notifications && !isTableRequest && (
+                    <div className="fixed w-[35rem] h-fit z-10 top-5 left-2 flex gap-2 flex-col-reverse">
                         {notifications.map((data, index) => (
                             <RequestNotification
                                 key={index}
@@ -101,19 +135,6 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         ))}
                     </div>
                 )}
-
-                <PendingOrderTab isTransitioning={isTransitioning} />
-                <NavBar
-                    isTransitioning={isTransitioning}
-                    setIsTableRequest={setIsTableRequest}
-                />
-                <ViewControl
-                    setCamPos={setCamPos}
-                    setCamRot={setCamRot}
-                    isTransitioning={isTransitioning}
-                    setIsTransitioning={setIsTransitioning}
-                />
-
                 {isDenyConfirm && (
                     <DenyConfirmation
                         setIsDenyConfirm={setIsDenyConfirm}
@@ -122,7 +143,6 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         table_selected={tableSelected}
                     />
                 )}
-
                 {isTableRequest && (
                     <TableRequestPopup
                         setIsTableRequest={setIsTableRequest}

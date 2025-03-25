@@ -1,0 +1,73 @@
+/* Loading Animations */
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    75% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 50% 0%;
+    }
+}
+
+@keyframes title {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Popup and notifications animation */
+@keyframes popUp {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes notification {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

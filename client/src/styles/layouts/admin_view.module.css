@@ -1,0 +1,21 @@
+.main {
+    display: grid;
+    grid-template-columns: 80vw 20vw;
+    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-areas:
+        "    navbar        pending-tab     "
+        "    .        pending-tab     "
+        "    footer        pending-tab     ";
+}
+
+.navbar {
+    grid-area: navbar;
+}
+
+.pending-tab {
+    grid-area: pending-tab;
+}
+
+.footer {
+    grid-area: footer;
+}

@@ -6,6 +6,8 @@ import { Gi3dStairs } from "react-icons/gi";
 import { FaClock } from "react-icons/fa";
 import useSelectTableControl from "../../../hooks/useSelectTableControl";
 
+import layout from "../../../styles/layouts/select_table.module.css";
+
 interface Props {
     setPhase: React.Dispatch<React.SetStateAction<number>>;
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -54,6 +56,13 @@ const SelectTable = ({
         setIsConfirmed,
         setIsPicking,
     });
+
+    const triviaMessage = [
+        "Did you know that egg contains 6-7 grams of protein?",
+        "Banana are rich in magnesium and potassium",
+        "You look good, you feel good, you do good",
+    ];
+
     useEffect(() => {
         const token = localStorage.getItem("token");
         const table_picked = localStorage.getItem("table-picked");
@@ -67,117 +76,145 @@ const SelectTable = ({
         }
     }, []);
 
-    return (
-        <>
-            {isConfirmed && (
-                <div className="fixed w-full h-screen bg-black/40 flex justify-center items-center z-10 ">
-                    <div className="bg-white/90 rounded-2xl w-[80vw] h-[20rem] flex items-center justify-center gap-5 flex-col pop-up-animation">
-                        <h1 className="text-2xl text-center">
-                            Wait for the owner to confirm your request
-                        </h1>
-                        <span className="text-5xl">
-                            <FaClock />
-                        </span>
-                    </div>
-                </div>
-            )}
-            <div className="w-full flex justify-center items-center p-6 bg-white/10 backdrop-blur-[10px] border-b-2 border-b-white/20">
-                {isPicking ? (
-                    <h1 className="text-white text-3xl font-medium text-shadow-lg">
-                        Confirm Table?
-                    </h1>
-                ) : (
-                    <h1 className="text-white text-3xl font-medium text-shadow-lg">
-                        Select Table, {costumerName}
-                    </h1>
-                )}
+    return !isTransitioning && !isConfirmed ? (
+        <div className={`${layout.main}`}>
+            <div
+                className={`${layout.head} flex justify-center items-center bg-transparent backdrop-blur-[15px] [-webkit-backdrop-filter:blur(15px)] border-b-1 border-white/10 `}
+            >
+                <h1 className="text-primary text-2xl text-center">
+                    {isPicking
+                        ? "Confirm Table?"
+                        : `Select Table, ${costumerName}`}
+                </h1>
             </div>
 
-            {isPicking ? (
-                <div className="flex flex-row w-full fixed bottom-4 gap-3 justify-center items-center">
-                    <button
-                        onClick={handleConfirm}
-                        className="w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20  hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
+            {!isRightClicked && !isLeftClicked && !isPicking ? (
+                <>
+                    <div
+                        className={`${layout["left-btn"]} flex items-center justify-center`}
                     >
-                        Confirm
-                    </button>
-                    <button
-                        className="w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20  hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
-                        onClick={handleChangeTable}
-                    >
-                        Change
-                    </button>
-                </div>
-            ) : (
-                <div>
-                    {!isTransitioning ? (
                         <button
-                            onClick={
-                                floor === 1
-                                    ? handleNextFloor
-                                    : floor === 2
-                                      ? handleDownFloor
-                                      : doNothing
-                            }
-                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 fixed top-[95%] left-1/2 translate-x-[-50%] translate-y-[-50%] hover:scale-105 transition-[0.2] active:scale-95 cursor-pointer pointer-events-auto"
+                            onClick={() => {
+                                setIsLeftClicked(true);
+                                handleLeftClick();
+                            }}
+                            className="text-primary opacity-50 text-4xl pointer-events-auto"
                         >
-                            <Gi3dStairs />
-                            <p className="text-[1.25rem] w-max">
-                                {floor === 1
-                                    ? "Go up stairs"
-                                    : floor === 2
-                                      ? "Go down stairs"
-                                      : null}
-                            </p>
+                            <FaLessThan />
                         </button>
-                    ) : null}
+                    </div>
 
-                    {!isLeftClicked && !isRightClicked ? (
-                        <>
-                            <div className="fixed h-screen right-2 top-1/2">
-                                <button
-                                    className="text-white text-shadow-lg text-5xl opacity-60 pointer-events-auto"
-                                    onClick={handleRightClick}
-                                >
-                                    <FaGreaterThan />
-                                </button>
-                            </div>
-                            <div className="fixed h-screen text-shadow-lg left-2 top-1/2">
-                                <button
-                                    className="text-white text-5xl opacity-60 pointer-events-auto"
-                                    onClick={handleLeftClick}
-                                >
-                                    <FaLessThan />
-                                </button>
-                            </div>
-                        </>
-                    ) : isLeftClicked && !isRightClicked ? (
-                        <>
-                            <div className="fixed h-screen text-shadow-lg right-2 top-1/2">
-                                <button
-                                    className="text-white text-5xl opacity-60 pointer-events-auto"
-                                    onClick={handleMidClick}
-                                >
-                                    <FaGreaterThan />
-                                </button>
-                            </div>
-                        </>
-                    ) : !isLeftClicked && isRightClicked ? (
-                        <>
-                            <div className="fixed h-screen text-shadow-lg left-2 top-1/2">
-                                <button
-                                    className="text-white text-5xl opacity-60 pointer-events-auto"
-                                    onClick={handleMidClick}
-                                >
-                                    <FaLessThan />
-                                </button>
-                            </div>
-                        </>
-                    ) : null}
-                </div>
-            )}
-        </>
-    );
+                    <div
+                        className={`${layout["right-btn"]} flex items-center justify-center`}
+                    >
+                        <button
+                            onClick={() => {
+                                setIsRightClicked(true);
+                                handleRightClick();
+                            }}
+                            className="text-primary opacity-50 text-4xl pointer-events-auto"
+                        >
+                            <FaGreaterThan />
+                        </button>
+                    </div>
+                </>
+            ) : isRightClicked && !isPicking ? (
+                <>
+                    <div
+                        className={`${layout["left-btn"]} flex items-center justify-center`}
+                    >
+                        <button
+                            onClick={() => {
+                                setIsLeftClicked(false);
+                                setIsRightClicked(false);
+                                handleMidClick();
+                            }}
+                            className="text-primary opacity-50 text-4xl pointer-events-auto"
+                        >
+                            <FaLessThan />
+                        </button>
+                    </div>
+                </>
+            ) : isLeftClicked && !isPicking ? (
+                <>
+                    <div
+                        className={`${layout["right-btn"]} flex items-center justify-center`}
+                    >
+                        <button
+                            onClick={() => {
+                                setIsRightClicked(false);
+                                setIsLeftClicked(false);
+                                handleMidClick();
+                            }}
+                            className="text-primary opacity-50 text-4xl pointer-events-auto"
+                        >
+                            <FaGreaterThan />
+                        </button>
+                    </div>
+                </>
+            ) : null}
+
+            <div
+                className={`${layout.footer} flex justify-center items-center space-x-8`}
+            >
+                {!isPicking ? (
+                    <>
+                        <button
+                            onClick={() => {
+                                floor === 1
+                                    ? handleNextFloor()
+                                    : floor === 2
+                                      ? handleDownFloor()
+                                      : doNothing();
+                            }}
+                            className="text-primary text-2xl flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-2 border-1 border-white/10 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(15px)]"
+                        >
+                            {floor === 1 ? (
+                                <>
+                                    <span>
+                                        <Gi3dStairs />
+                                    </span>
+
+                                    <p>Go upstairs</p>
+                                </>
+                            ) : floor === 2 ? (
+                                <>
+                                    <span className="scale-x-[-1]">
+                                        <Gi3dStairs />
+                                    </span>
+                                    <p>Go downstairs</p>
+                                </>
+                            ) : null}
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <button
+                            onClick={handleConfirm}
+                            className="text-primary text-2xl flex items-center space-x-1.5 pointer-events-auto  rounded-2xl p-2 border-1 border-white/10 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(15px)]"
+                        >
+                            <p>Confirm</p>
+                        </button>
+                        <button
+                            onClick={handleChangeTable}
+                            className="text-primary text-2xl flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-2 border-1 border-white/10 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(15px)]"
+                        >
+                            <p>Change</p>
+                        </button>
+                    </>
+                )}
+            </div>
+        </div>
+    ) : !isTransitioning ? (
+        <div className="fixed gap-4 w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] flex items-center justify-center flex-col">
+            <span className="loader-white translate-y-[-4rem] opacity-70"></span>
+            <h1 className="text-primary text-[1.7rem] text-center">
+                Wait for the owner to confirm your request
+            </h1>
+
+            <p className="text-secondary text-sm">{triviaMessage[0]}</p>
+        </div>
+    ) : null;
 };
 
 export default memo(SelectTable);
