@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 const useCameraControl = () => {
-    const [posX, setPosX] = useState<number>(19.279999999999994);
-    const [posY, setPosY] = useState<number>(7.559999999999917);
-    const [posZ, setPosZ] = useState<number>(-18.16000000000007);
+    const [posX, setPosX] = useState<number>(19.19999999999998);
+    const [posY, setPosY] = useState<number>(3.6999999999999993);
+    const [posZ, setPosZ] = useState<number>(-17.599999999999984);
 
-    const [rotX, setRotX] = useState<number>(0.10370000000000011);
-    const [rotY, setRotY] = useState<number>(-0.010000000000000309);
-    const [rotZ, setRotZ] = useState<number>(-0.010000000000000087);
+    const [rotX, setRotX] = useState<number>(0.10200000000000006);
+    const [rotY, setRotY] = useState<number>(0.029999999999999694);
+    const [rotZ, setRotZ] = useState<number>(0.019999999999999914);
 
     const camPos = [posX, posY, posZ];
     const camRot = [rotX, rotY, rotZ];

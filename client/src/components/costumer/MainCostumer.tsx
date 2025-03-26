@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-// import SceneCameraController from "./SceneCameraController";
 // import useCameraControl from "../../hooks/useCameraControl";
 import CostumerScene from "./scenes/CostumerScene";
 
@@ -13,6 +12,7 @@ import useCostumerName from "../../hooks/useCostumerName";
 import Order from "./overlays/Order";
 import Denied from "./overlays/Denied";
 import useTableTransition from "../../hooks/useTableTransition";
+// import SceneCameraController from "../SceneCameraController";
 
 interface MainCostumerProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;

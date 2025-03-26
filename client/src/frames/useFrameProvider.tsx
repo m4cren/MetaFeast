@@ -801,6 +801,24 @@ const useFrameProvider = () => {
         },
     };
 
+    const to_counter: {
+        frame1: CameraType;
+        frame2: CameraType;
+    } = {
+        frame1: {
+            pos: [22.58000000000051, 2.1300000000000328, -24.570000000001073],
+            rot: [
+                0.10370000000000011, -1.5400000000000014, -1.1200000000000008,
+            ],
+        },
+        frame2: {
+            pos: [23.86000000000071, 2.1300000000000328, -24.570000000001073],
+            rot: [
+                0.10370000000000011, -1.5400000000000014, -1.1200000000000008,
+            ],
+        },
+    };
+
     return {
         init_Frame,
         pickName_Frame,
@@ -813,6 +831,7 @@ const useFrameProvider = () => {
         admin_1F_Frames,
         admin_2F_Frames,
         admin_init_Frame,
+        to_counter,
     };
 };
 
