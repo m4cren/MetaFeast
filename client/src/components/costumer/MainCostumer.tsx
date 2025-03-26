@@ -9,9 +9,10 @@ import SelectTable from "./overlays/SelectTable";
 
 import { useSocket } from "../../contexts/SocketContext";
 import useCostumerName from "../../hooks/useCostumerName";
-import Order from "./overlays/Order";
+
 import Denied from "./overlays/Denied";
 import useTableTransition from "../../hooks/useTableTransition";
+import OrderMenu from "./overlays/order/OrderMenu";
 // import SceneCameraController from "../SceneCameraController";
 
 interface MainCostumerProps {
@@ -176,7 +177,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                     <div
                         className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"}`}
                     >
-                        <Order />
+                        <OrderMenu />
                     </div>
                 )}
             </div>

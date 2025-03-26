@@ -1,0 +1,16 @@
+.main {
+    display: grid;
+}
+
+.head {
+    grid-area: head;
+}
+.greet {
+    grid-area: greet;
+}
+.category {
+    grid-area: category;
+}
+.cuisine {
+    grid-area: cuisine;
+}

@@ -1,0 +1,19 @@
+.main {
+    display: grid;
+}
+
+.head {
+    grid-area: head;
+}
+.image-container {
+    grid-area: image-container;
+}
+.food-title {
+    grid-area: food-title;
+}
+.food-price {
+    grid-area: food-price;
+}
+.food-detail {
+    grid-area: food-detail;
+}
