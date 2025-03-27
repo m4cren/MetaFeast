@@ -1,3 +1,11 @@
 .main {
     display: grid;
 }
+
+.head {
+    grid-area: head;
+}
+
+.order-list {
+    grid-area: order-list;
+}

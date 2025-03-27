@@ -58,6 +58,16 @@ body {
     .text-shadow-lg {
         text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
     }
+    .text-inner-shadow-sm {
+        text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .text-inner-shadow-md {
+        text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .text-inner-shadow-lg {
+        text-shadow: -3px -3px 6px rgba(0, 0, 0, 0.7);
+    }
+
     .custom-scrollbar {
         scrollbar-width: none;
         scrollbar-color: #6b7280 #e5e7eb;
