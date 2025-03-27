@@ -62,6 +62,27 @@ class TableRequest(db.Model):
     
     def to_msg(self):
         return f'{self.costumer_name} is requesting to seat on table {self.table_id}'
+
+class Products(db.Model):
+    __tablename__ = 'products'
+    id = db.Column(db.Integer, primary_key = True)
+    category = db.Column(db.String(64), nullable = False)
+    quantity = db.Column(db.Integer, default = 0)
+    food_name = db.Column(db.String(64), nullable = False)
+    food_price = db.Column(db.String(64), nullable = False)
+    calories = db.Column(db.Integer, default = 0)
+    waiting_time = db.Column(db.String(64), nullable = False)
+
+    def increase_quantity(self):
+        self.quantity += 1
+
+    def decrease_quantity(self):
+        if self.quantity <= 0:
+            self.quantity = 0
+            return
+        
+        self.quantity -= 1
+
            
         
     

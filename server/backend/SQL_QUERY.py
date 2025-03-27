@@ -1,6 +1,6 @@
 from .extensions import db
 from .db_config import save_data, delete_all_data, delete_data
-from .db_models import Table, AdminCredentials
+from .db_models import Table, AdminCredentials, Products
 from werkzeug.security import generate_password_hash
 
 from dotenv import load_dotenv
@@ -8,6 +8,86 @@ import os
 load_dotenv()
 
 
+def create_products(app):
+     with app.app_context():
+
+#     category = db.Column(db.String(64), nullable = False)
+#     quantity = db.Column(db.Integer, default = 0)
+#     food_name = db.Column(db.String(64), nullable = False)
+#     food_price = db.Column(db.String(64), nullable = False)
+#     calories = db.Column(db.Integer, default = 0)
+#     waiting_time = db.Column(db.String(64), nullable = False)
+          existing_products = Products.query.first()
+
+          if not existing_products:
+               #Pastries
+               croissant = Products(category = 'Pastries', food_name = 'Croissant', food_price = 100, calories = 100, waiting_time = '20mins')
+               waffle = Products(category = 'Pastries', food_name = 'Waffle', food_price = 100, calories = 100, waiting_time = '20mins')
+               #Savory Breakfast
+             
+               smoke_salmon_bagel = Products(category = 'Savory Breakfast', food_name = 'Smoke Salmon Bagel', food_price = 100, calories = 100, waiting_time = '20mins')
+               avocado_bacon = Products(category = 'Savory Breakfast', food_name = 'Avocado Bacon & Egg Toast', food_price = 100, calories = 100, waiting_time = '20mins')
+               sushi = Products(category = 'Savory Breakfast', food_name = 'Sushi', food_price = 100, calories = 100, waiting_time = '20mins')
+               #Healthy Options
+               greek_yougart = Products(category = 'Healthy Options', food_name = 'Greek yougart parfait', food_price = 100, calories = 100, waiting_time = '20mins')
+               berry_bliss_smoothie = Products(category = 'Healthy Options', food_name = 'berry bliss smoothie bowl', food_price = 100, calories = 100, waiting_time = '20mins')
+               #Appetizers
+               pan_seared_cod = Products(category = 'Appetizers', food_name = 'Pan-Seared Cod with Beurre Blanc & Crispy Prosciutto', food_price = 100, calories = 100, waiting_time = '20mins')
+               kombu_cured_bream = Products(category = 'Appetizers', food_name = 'Kombu-Cured Bream with Shio Koji & Celeriac Dashi', food_price = 100, calories = 100, waiting_time = '20mins')
+               shrimp_and_crispy_vegetable = Products(category = 'Appetizers', food_name = 'Shrimp and Crispy Vegetable Nest', food_price = 100, calories = 100, waiting_time = '20mins')
+               foie_gras_terrine = Products(category = 'Appetizers', food_name = 'Foie Gras Terrine', food_price = 100, calories = 100, waiting_time = '20mins')
+               ceasar_salad = Products(category = 'Appetizers', food_name = 'Caesar Salad Croquettes', food_price = 100, calories = 100, waiting_time = '20mins')
+               chargrilled_octopus = Products(category = 'Appetizers', food_name = 'Chargrilled Octopus', food_price = 100, calories = 100, waiting_time = '20mins')
+               #Main Course
+
+               sirloin_steak = Products(category = 'Main Course', food_name = 'Sirloin Steak with Roasted Baby Potatoes & Fresh Salad', food_price = 100, calories = 100, waiting_time = '20mins')
+               salmon_fillet = Products(category = 'Main Course', food_name = 'Salmon Fillet', food_price = 100, calories = 100, waiting_time = '20mins')
+               wagyu_yakiniku = Products(category = 'Main Course', food_name = 'Wagyu Yakiniku Platter', food_price = 100, calories = 100, waiting_time = '20mins')
+               grilled_octopus = Products(category = 'Main Course', food_name = 'Grilled Octopus', food_price = 100, calories = 100, waiting_time = '20mins')
+               buttered_poached_king_crab = Products(category = 'Main Course', food_name = 'Butter-Poached King Crab with Caviar and Cream Sauce', food_price = 100, calories = 100, waiting_time = '20mins')
+               garlic_fennel_roast = Products(category = 'Main Course', food_name = 'Garlic Fennel Roast Rack of Lamb', food_price = 100, calories = 100, waiting_time = '20mins')
+               curried_cod = Products(category = 'Main Course', food_name = 'Curried Cod', food_price = 100, calories = 100, waiting_time = '20mins')
+               venison_steak = Products(category = 'Main Course', food_name = 'Venison steaks with celeriac mash and blackberry gravy', food_price = 100, calories = 100, waiting_time = '20mins')
+               honey_butter_pork = Products(category = 'Main Course', food_name = 'Honey Butter Pork Chop with Parmesan Broccoli', food_price = 100, calories = 100, waiting_time = '20mins')
+               #Desserts
+              
+               pistachio_cheesecake = Products(category = 'Desserts', food_name = 'Pistachio Cheesecake', food_price = 100, calories = 100, waiting_time = '20mins')
+               miso_caramel_pot = Products(category = 'Desserts', food_name = 'Miso Caramel Pot de Crème', food_price = 100, calories = 100, waiting_time = '20mins')
+               chocolate_mousse_verrine = Products(category = 'Desserts', food_name = 'Chocolate Mousse Verrine', food_price = 100, calories = 100, waiting_time = '20mins')
+               raspberry_glazed_cake = Products(category = 'Desserts', food_name = 'Raspberry Glazed Cake', food_price = 100, calories = 100, waiting_time = '20mins')
+               brown_sugar_pavlovas = Products(category = 'Desserts', food_name = 'Brown Sugar Pavlovas', food_price = 100, calories = 100, waiting_time = '20mins')
+               salted_caramel_chocolate = Products(category = 'Desserts', food_name = 'Salted Caramel Chocolate Mousse', food_price = 100, calories = 100, waiting_time = '20mins')
+               coffee_tiramisu = Products(category = 'Desserts', food_name = 'Coffee Tiramisu Cake', food_price = 100, calories = 100, waiting_time = '20mins')
+               #Soups and Salads
+
+               veloute_of_white_asparagus = Products(category = 'Soups & Salads', food_name = 'Velouté of White Asparagus', food_price = 100, calories = 100, waiting_time = '20mins')
+               vichyssoise = Products(category = 'Soups & Salads', food_name = 'Vichyssoise', food_price = 100, calories = 100, waiting_time = '20mins')
+               prosciutto = Products(category = 'Soups & Salads', food_name = 'Prosciutto Wrapped Figs and Feta Salad', food_price = 100, calories = 100, waiting_time = '20mins')
+               #Beverages
+               
+               rose_and_lychee = Products(category = 'Non-Alcoholic', food_name = 'Rose & Lychee Sparkling Lemonade', food_price = 100, calories = 100, waiting_time = '20mins')
+               sugar_free_mint_iced_matcha = Products(category = 'Non-Alcoholic', food_name = 'Sugar-Free Mint Iced Matcha Latte', food_price = 100, calories = 100, waiting_time = '20mins')
+               honey_fermented = Products(category = 'Non-Alcoholic', food_name = 'Honey-Fermented Cold Brew with Lavender Oat Foam', food_price = 100, calories = 100, waiting_time = '20mins')
+               rosemary_paloma = Products(category = 'Cocktail', food_name = 'Rosemary Paloma', food_price = 100, calories = 100, waiting_time = '20mins')
+               hibiscus_cocktail = Products(category = 'Cocktail', food_name = 'Hibiscus Cocktail', food_price = 100, calories = 100, waiting_time = '20mins')
+               cherry_blossom_cocktail = Products(category = 'Cocktail', food_name = 'Cherry Blossom Cocktail', food_price = 100, calories = 100, waiting_time = '20mins')
+               white_wine = Products(category = 'Champagne', food_name = 'White Wine', food_price = 100, calories = 100, waiting_time = '20mins')
+               red_wine = Products(category = 'Champagne', food_name = 'Red Wine', food_price = 100, calories = 100, waiting_time = '20mins')
+               for item in [
+                    croissant, waffle, smoke_salmon_bagel, avocado_bacon, sushi, 
+                    pan_seared_cod, kombu_cured_bream, shrimp_and_crispy_vegetable, foie_gras_terrine, 
+                    ceasar_salad, chargrilled_octopus, sirloin_steak, salmon_fillet, wagyu_yakiniku, 
+                    grilled_octopus, buttered_poached_king_crab, curried_cod, garlic_fennel_roast, 
+                    venison_steak, honey_butter_pork, pistachio_cheesecake, miso_caramel_pot, 
+                    chocolate_mousse_verrine, raspberry_glazed_cake, brown_sugar_pavlovas, 
+                    salted_caramel_chocolate, coffee_tiramisu, veloute_of_white_asparagus, vichyssoise, 
+                    prosciutto, rose_and_lychee, sugar_free_mint_iced_matcha, honey_fermented, 
+                    rosemary_paloma, hibiscus_cocktail, cherry_blossom_cocktail, white_wine, red_wine, greek_yougart, berry_bliss_smoothie ]:
+                    db.session.add(item)
+               db.session.commit()
+               print('Products Created!')
+          else:
+               print('Products already existing')
 def create_admin(app):
 
      with app.app_context():
