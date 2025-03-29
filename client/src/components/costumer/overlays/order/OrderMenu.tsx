@@ -1,16 +1,34 @@
 import layout from "../../../../styles/layouts/order_menu.module.css";
-import { ShoppingBasket } from "lucide-react";
-import { Utensils } from "lucide-react";
+import {
+    ShoppingBasket,
+    Sandwich,
+    Apple,
+    Utensils,
+    Cherry,
+    Beef,
+    Wine,
+    Croissant,
+    Salad,
+    Candy,
+} from "lucide-react";
+
 import Category from "../../products/Category";
-import { Cherry } from "lucide-react";
-import { Beef } from "lucide-react";
-import { Wine } from "lucide-react";
-import { Croissant } from "lucide-react";
-import { Soup } from "lucide-react";
-import { Salad } from "lucide-react";
-import { Candy } from "lucide-react";
+
+import Cuisine from "../../products/Cuisine";
+import { useState } from "react";
+import MainCourse from "../../products/SortedCuisine/MainCourse";
+import Appetizers from "../../products/SortedCuisine/Appetizers";
+import SavoryBreakfast from "../../products/SortedCuisine/SavoryBreakfast";
+import HealthyOptions from "../../products/SortedCuisine/HealthyOptions";
+import Desserts from "../../products/SortedCuisine/Desserts";
+import SoupsAndSalads from "../../products/SortedCuisine/SoupsAndSalads";
+import Beverages from "../../products/SortedCuisine/Beverages";
 
 const OrderMenu = () => {
+    const [name] = useState<string | null>(
+        localStorage.getItem("costumer_name"),
+    );
+
     return (
         <div
             className={`${layout.main} w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative `}
@@ -19,7 +37,7 @@ const OrderMenu = () => {
                 className={`${layout.head} flex  justify-between px-4 items-center`}
             >
                 <h1 className="text-primary font-medium text-4xl text-shadow-lg">
-                    Hi, Rainier
+                    Hi, {name}
                 </h1>
 
                 <p className="text-primary text-">
@@ -34,13 +52,30 @@ const OrderMenu = () => {
             <div
                 className={`${layout.category} flex items-center space-x-4  overflow-x-auto snap-proximity px-4`}
             >
-                <Category icon={Cherry} category="Appetizers" />
-                <Category icon={Beef} category="Main Course" />
-                <Category icon={Wine} category="Beverages" />
-                <Category icon={Croissant} category="Pastries" />
-                <Category icon={Soup} category="Soups" />
-                <Category icon={Salad} category="Salads" />
-                <Category icon={Candy} category="Desserts" />
+                <span>
+                    <Category icon={Cherry} category="Appetizers" />
+                </span>
+                <span>
+                    <Category icon={Beef} category="Main Course" />
+                </span>
+                <span>
+                    <Category icon={Wine} category="Beverages" />
+                </span>
+                <span>
+                    <Category icon={Croissant} category="Pastries" />
+                </span>
+                <span>
+                    <Category icon={Apple} category="Healthy Options" />
+                </span>
+                <span>
+                    <Category icon={Salad} category="Soups & Salads" />
+                </span>
+                <span>
+                    <Category icon={Candy} category="Desserts" />
+                </span>
+                <span>
+                    <Category icon={Sandwich} category="Savory" />
+                </span>
             </div>
             <div
                 className={`${layout.cuisine} flex flex-col items-center gap-4 mt-4`}
@@ -49,16 +84,7 @@ const OrderMenu = () => {
                 <div
                     className={`${layout["cuisine-container"]} overflow-y-scroll pb-80 scroll-smooth [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
                 >
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
-                    <div className="w-[10rem] h-[10rem] bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]"></div>
+                    <MainCourse />
                 </div>
             </div>
             <div className="absolute left-1/2 bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">

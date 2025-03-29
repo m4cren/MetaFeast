@@ -51,3 +51,12 @@ export interface AdminCameraControlProp {
     setIsTransitioning: React.Dispatch<React.SetStateAction<boolean>>;
     setFloor: React.Dispatch<React.SetStateAction<number>>;
 }
+
+export type CuisineDetailProps = {
+    name: string;
+    price: number;
+    quantity: number;
+    img: string;
+    height: number;
+    type?: "Non-Alcoholic" | "Cocktails" | "Champagne";
+};
