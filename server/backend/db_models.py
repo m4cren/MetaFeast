@@ -73,6 +73,16 @@ class Products(db.Model):
     calories = db.Column(db.Integer, default = 0)
     waiting_time = db.Column(db.String(64), nullable = False)
 
+    def to_dict(self):
+        return{
+            'category': self.category,
+            'quantity': self.quantity,
+            'food_name': self.food_name,
+            'food_price': self.food_price,
+            'calories': self.calories,
+            'waiting_time': self.waiting_time
+        }
+
     def increase_quantity(self):
         self.quantity += 1
 

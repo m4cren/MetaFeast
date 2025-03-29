@@ -1,19 +1,28 @@
 .main {
     display: grid;
     grid-template-columns: 100vw;
-    grid-template-rows: 12vh 8vh 10vh 70vh;
+    grid-template-rows: 12vh 7vh 15vh 66vh;
     grid-template-areas:
         "  head   "
         "  greet   "
         "  category   "
         "  cuisine   ";
+
+    @media (min-width: 390px) {
+        grid-template-rows: 12vh 8vh 10vh 70vh;
+    }
 }
 
 .cuisine-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: minmax(10rem, auto);
-    gap: 1.5rem;
+    grid-auto-rows: minmax(8.75rem, auto);
+    gap: 1.2rem;
+
+    @media (min-width: 390px) {
+        grid-auto-rows: minmax(10rem, auto);
+        gap: 1.5rem;
+    }
 }
 
 .head {

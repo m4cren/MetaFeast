@@ -21,58 +21,58 @@ def create_products(app):
 
           if not existing_products:
                #Pastries
-               croissant = Products(category = 'Pastries', food_name = 'Croissant', food_price = 200, calories = 230, waiting_time = '20mins')
-               waffle = Products(category = 'Pastries', food_name = 'Waffle', food_price = 250, calories = 300, waiting_time = '15mins')
+               croissant = Products(category = 'Pastries', food_name = 'Croissants', food_price = 199, calories = 230, waiting_time = '20mins')
+               waffle = Products(category = 'Pastries', food_name = 'Waffle', food_price = 249, calories = 300, waiting_time = '15mins')
                #Savory Breakfast
              
-               smoke_salmon_bagel = Products(category = 'Savory Breakfast', food_name = 'Smoke Salmon Bagel', food_price = 350, calories = 450, waiting_time = '15mins')
-               avocado_bacon = Products(category = 'Savory Breakfast', food_name = 'Avocado Bacon & Egg Toast', food_price = 300, calories = 400, waiting_time = '15mins')
-               sushi = Products(category = 'Savory Breakfast', food_name = 'Sushi', food_price = 500, calories = 300, waiting_time = '30mins')
+               smoke_salmon_bagel = Products(category = 'Savory Breakfast', food_name = 'Salmon Bagel', food_price = 349, calories = 450, waiting_time = '15mins')
+               avocado_bacon = Products(category = 'Savory Breakfast', food_name = 'Avocado Bacon', food_price = 299, calories = 400, waiting_time = '15mins')
+               sushi = Products(category = 'Savory Breakfast', food_name = 'Sushi', food_price = 499, calories = 300, waiting_time = '30mins')
                #Healthy Options
-               greek_yougart = Products(category = 'Healthy Options', food_name = 'Greek yougart parfait', food_price = 250, calories = 250, waiting_time = '10mins')
-               berry_bliss_smoothie = Products(category = 'Healthy Options', food_name = 'berry bliss smoothie bowl', food_price = 280, calories = 300, waiting_time = '10mins')
+               greek_yougart = Products(category = 'Healthy Options', food_name = 'Greek Yougart', food_price = 249, calories = 250, waiting_time = '10mins')
+               berry_bliss_smoothie = Products(category = 'Healthy Options', food_name = 'Berry Bliss', food_price = 279, calories = 300, waiting_time = '10mins')
                #Appetizers
-               pan_seared_cod = Products(category = 'Appetizers', food_name = 'Pan-Seared Cod with Beurre Blanc & Crispy Prosciutto', food_price = 350, calories = 250, waiting_time = '20mins')
-               kombu_cured_bream = Products(category = 'Appetizers', food_name = 'Kombu-Cured Bream with Shio Koji & Celeriac Dashi', food_price = 400, calories = 200, waiting_time = '25mins')
-               shrimp_and_crispy_vegetable = Products(category = 'Appetizers', food_name = 'Shrimp and Crispy Vegetable Nest', food_price = 300, calories = 200, waiting_time = '20mins')
-               foie_gras_terrine = Products(category = 'Appetizers', food_name = 'Foie Gras Terrine', food_price = 600, calories = 300, waiting_time = '25mins')
-               ceasar_salad = Products(category = 'Appetizers', food_name = 'Caesar Salad Croquettes', food_price = 250, calories = 150, waiting_time = '15mins')
-               chargrilled_octopus = Products(category = 'Appetizers', food_name = 'Chargrilled Octopus', food_price = 500, calories = 200, waiting_time = '25mins')
+               pan_seared_cod = Products(category = 'Appetizers', food_name = 'Pan-Seared Cod', food_price = 349, calories = 250, waiting_time = '20mins')
+               kombu_cured_bream = Products(category = 'Appetizers', food_name = 'Kombu-Cured Bream', food_price = 399, calories = 200, waiting_time = '25mins')
+               shrimp_and_crispy_vegetable = Products(category = 'Appetizers', food_name = 'Shrimp & Vegetable', food_price =299, calories = 200, waiting_time = '20mins')
+               foie_gras_terrine = Products(category = 'Appetizers', food_name = 'Foie Gras Terrine', food_price = 599, calories = 300, waiting_time = '25mins')
+               ceasar_salad = Products(category = 'Appetizers', food_name = 'Caesar Salad', food_price = 249, calories = 150, waiting_time = '15mins')
+               chargrilled_octopus = Products(category = 'Appetizers', food_name = 'Chargrilled Octopus', food_price = 499, calories = 200, waiting_time = '25mins')
                #Main Course
 
-               sirloin_steak = Products(category = 'Main Course', food_name = 'Sirloin Steak with Roasted Baby Potatoes & Fresh Salad', food_price = 700, calories = 600, waiting_time = '30mins')
-               salmon_fillet = Products(category = 'Main Course', food_name = 'Salmon Fillet', food_price = 600, calories = 350, waiting_time = '25mins')
-               wagyu_yakiniku = Products(category = 'Main Course', food_name = 'Wagyu Yakiniku Platter', food_price = 1200, calories = 700, waiting_time = '30mins')
-               grilled_octopus = Products(category = 'Main Course', food_name = 'Grilled Octopus', food_price = 700, calories = 300, waiting_time = '30mins')
-               buttered_poached_king_crab = Products(category = 'Main Course', food_name = 'Butter-Poached King Crab with Caviar and Cream Sauce', food_price = 1500, calories = 600, waiting_time = '40mins')
-               garlic_fennel_roast = Products(category = 'Main Course', food_name = 'Garlic Fennel Roast Rack of Lamb', food_price = 1200, calories = 600, waiting_time = '40mins')
-               curried_cod = Products(category = 'Main Course', food_name = 'Curried Cod', food_price = 600, calories = 400, waiting_time = '25mins')
-               venison_steak = Products(category = 'Main Course', food_name = 'Venison steaks with celeriac mash and blackberry gravy', food_price = 1000, calories = 500, waiting_time = '35mins')
-               honey_butter_pork = Products(category = 'Main Course', food_name = 'Honey Butter Pork Chop with Parmesan Broccoli', food_price = 600, calories = 500, waiting_time = '30mins')
+               sirloin_steak = Products(category = 'Main Course', food_name = 'Sirloin Steak', food_price = 699, calories = 600, waiting_time = '30mins')
+               salmon_fillet = Products(category = 'Main Course', food_name = 'Salmon Fillet', food_price = 599, calories = 350, waiting_time = '25mins')
+               wagyu_yakiniku = Products(category = 'Main Course', food_name = 'Wagyu Yakiniku', food_price = 1199, calories = 700, waiting_time = '30mins')
+               grilled_octopus = Products(category = 'Main Course', food_name = 'Grilled Octopus', food_price = 699, calories = 300, waiting_time = '30mins')
+               buttered_poached_king_crab = Products(category = 'Main Course', food_name = 'King Crab', food_price = 1499, calories = 600, waiting_time = '40mins')
+               garlic_fennel_roast = Products(category = 'Main Course', food_name = 'Roast Lamb', food_price = 1199, calories = 600, waiting_time = '40mins')
+               curried_cod = Products(category = 'Main Course', food_name = 'Curried Cod', food_price = 599, calories = 400, waiting_time = '25mins')
+               venison_steak = Products(category = 'Main Course', food_name = 'Venison Steak', food_price = 999, calories = 500, waiting_time = '35mins')
+               honey_butter_pork = Products(category = 'Main Course', food_name = 'Pork Chop', food_price = 599, calories = 500, waiting_time = '30mins')
                #Desserts
               
-               pistachio_cheesecake = Products(category = 'Desserts', food_name = 'Pistachio Cheesecake', food_price = 350, calories = 400, waiting_time = '15mins')
-               miso_caramel_pot = Products(category = 'Desserts', food_name = 'Miso Caramel Pot de Crème', food_price = 300, calories = 350, waiting_time = '20mins')
-               chocolate_mousse_verrine = Products(category = 'Desserts', food_name = 'Chocolate Mousse Verrine', food_price = 280, calories = 300, waiting_time = '15mins')
-               raspberry_glazed_cake = Products(category = 'Desserts', food_name = 'Raspberry Glazed Cake', food_price = 350, calories = 350, waiting_time = '15mins')
-               brown_sugar_pavlovas = Products(category = 'Desserts', food_name = 'Brown Sugar Pavlovas', food_price = 300, calories = 300, waiting_time = '20mins')
-               salted_caramel_chocolate = Products(category = 'Desserts', food_name = 'Salted Caramel Chocolate Mousse', food_price = 280, calories = 350, waiting_time = '15mins')
-               coffee_tiramisu = Products(category = 'Desserts', food_name = 'Coffee Tiramisu Cake', food_price = 350, calories = 400, waiting_time = '15mins')
+               pistachio_cheesecake = Products(category = 'Desserts', food_name = 'Pistachio Cheesecake', food_price = 349, calories = 400, waiting_time = '15mins')
+               miso_caramel_pot = Products(category = 'Desserts', food_name = 'Miso Caramel', food_price = 299, calories = 350, waiting_time = '20mins')
+               chocolate_mousse_verrine = Products(category = 'Desserts', food_name = 'Chocolate Mousse', food_price = 279, calories = 300, waiting_time = '15mins')
+               raspberry_glazed_cake = Products(category = 'Desserts', food_name = 'Raspberry Cake', food_price = 349, calories = 350, waiting_time = '15mins')
+               brown_sugar_pavlovas = Products(category = 'Desserts', food_name = 'Brown Pavlovas', food_price = 299, calories = 300, waiting_time = '20mins')
+               salted_caramel_chocolate = Products(category = 'Desserts', food_name = 'Salted Caramel', food_price = 279, calories = 350, waiting_time = '15mins')
+               coffee_tiramisu = Products(category = 'Desserts', food_name = 'Coffee Tiramisu', food_price = 349, calories = 400, waiting_time = '15mins')
                #Soups and Salads
 
-               veloute_of_white_asparagus = Products(category = 'Soups & Salads', food_name = 'Velouté of White Asparagus', food_price = 400, calories = 200, waiting_time = '25mins')
-               vichyssoise = Products(category = 'Soups & Salads', food_name = 'Vichyssoise', food_price = 350, calories = 200, waiting_time = '20mins')
-               prosciutto = Products(category = 'Soups & Salads', food_name = 'Prosciutto Wrapped Figs and Feta Salad', food_price = 450, calories = 300, waiting_time = '15mins')
+               veloute_of_white_asparagus = Products(category = 'Soups & Salads', food_name = 'White Asparagus', food_price = 399, calories = 200, waiting_time = '25mins')
+               vichyssoise = Products(category = 'Soups & Salads', food_name = 'Vichyssoise', food_price = 349, calories = 200, waiting_time = '20mins')
+               prosciutto = Products(category = 'Soups & Salads', food_name = 'Prosciutto Figs', food_price = 449, calories = 300, waiting_time = '15mins')
                #Beverages
                
-               rose_and_lychee = Products(category = 'Non-Alcoholic', food_name = 'Rose & Lychee Sparkling Lemonade', food_price = 200, calories = 100, waiting_time = '10mins')
-               sugar_free_mint_iced_matcha = Products(category = 'Non-Alcoholic', food_name = 'Sugar-Free Mint Iced Matcha Latte', food_price = 250, calories = 80, waiting_time = '10mins')
-               honey_fermented = Products(category = 'Non-Alcoholic', food_name = 'Honey-Fermented Cold Brew with Lavender Oat Foam', food_price = 300, calories = 150, waiting_time = '10mins')
-               rosemary_paloma = Products(category = 'Cocktail', food_name = 'Rosemary Paloma', food_price = 350, calories = 150, waiting_time = '10mins')
-               hibiscus_cocktail = Products(category = 'Cocktail', food_name = 'Hibiscus Cocktail', food_price = 350, calories = 150, waiting_time = '10mins')
-               cherry_blossom_cocktail = Products(category = 'Cocktail', food_name = 'Cherry Blossom Cocktail', food_price = 350, calories = 150, waiting_time = '10mins')
-               white_wine = Products(category = 'Champagne', food_name = 'White Wine', food_price = 400, calories = 120, waiting_time = 'Instant')
-               red_wine = Products(category = 'Champagne', food_name = 'Red Wine', food_price = 400, calories = 120, waiting_time = 'Instant')
+               rose_and_lychee = Products(category = 'Non-Alcoholic', food_name = 'Rose & Lychee', food_price = 199, calories = 100, waiting_time = '10mins')
+               sugar_free_mint_iced_matcha = Products(category = 'Non-Alcoholic', food_name = 'Iced Matcha', food_price = 249, calories = 80, waiting_time = '10mins')
+               honey_fermented = Products(category = 'Non-Alcoholic', food_name = 'Honey-Fermented', food_price = 299, calories = 150, waiting_time = '10mins')
+               rosemary_paloma = Products(category = 'Cocktail', food_name = 'Rosemary Paloma', food_price = 349, calories = 150, waiting_time = '10mins')
+               hibiscus_cocktail = Products(category = 'Cocktail', food_name = 'Hibiscus', food_price = 349, calories = 150, waiting_time = '10mins')
+               cherry_blossom_cocktail = Products(category = 'Cocktail', food_name = 'Cherry Blossom', food_price = 349, calories = 150, waiting_time = '10mins')
+               white_wine = Products(category = 'Champagne', food_name = 'White Wine', food_price = 399, calories = 120, waiting_time = 'Instant')
+               red_wine = Products(category = 'Champagne', food_name = 'Red Wine', food_price = 399, calories = 120, waiting_time = 'Instant')
                for item in [
                     croissant, waffle, smoke_salmon_bagel, avocado_bacon, sushi, 
                     pan_seared_cod, kombu_cured_bream, shrimp_and_crispy_vegetable, foie_gras_terrine, 

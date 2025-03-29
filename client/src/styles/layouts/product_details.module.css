@@ -1,12 +1,17 @@
 .main {
     display: grid;
     grid-template-columns: 55vw 45vw;
-    grid-template-rows: 11vh 35vh 13vh 41vh;
+    grid-template-rows: 11vh 35vh 15vh 39vh;
+
     grid-template-areas:
         "   head   head   "
         "   image-container   image-container   "
         "   food-title   food-price   "
         "   food-detail food-detail   ";
+
+    @media (min-width: 390px) {
+        grid-template-rows: 11vh 35vh 13vh 41vh;
+    }
 }
 
 .head {

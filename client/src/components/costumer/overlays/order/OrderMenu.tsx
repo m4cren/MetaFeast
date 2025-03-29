@@ -24,12 +24,15 @@ import SoupsAndSalads from "../../products/SortedCuisine/SoupsAndSalads";
 import Beverages from "../../products/SortedCuisine/Beverages";
 import Pastries from "../../products/SortedCuisine/Pastries";
 
-interface OrderMenuProps {
-    selected: string;
-    setSelected: React.Dispatch<React.SetStateAction<string>>;
+import { ProductDetailsType } from "../../../../types/types";
+
+interface Props {
+    setSelectedCuisine: React.Dispatch<React.SetStateAction<string>>;
+    productDetails: ProductDetailsType[];
 }
 
-const OrderMenu = ({ selected, setSelected }: OrderMenuProps) => {
+const OrderMenu = ({ setSelectedCuisine, productDetails }: Props) => {
+    const [selected, setSelected] = useState<string>("Appetizers");
     const [name] = useState<string | null>(
         localStorage.getItem("costumer_name"),
     );
@@ -41,7 +44,7 @@ const OrderMenu = ({ selected, setSelected }: OrderMenuProps) => {
             <div
                 className={`${layout.head} flex  justify-between px-4 items-center`}
             >
-                <h1 className="text-primary font-medium text-4xl text-shadow-lg">
+                <h1 className="text-primary font-medium text-3xl min-[390px]:text-4xl text-shadow-lg">
                     Hi, {name}
                 </h1>
 
@@ -50,7 +53,7 @@ const OrderMenu = ({ selected, setSelected }: OrderMenuProps) => {
                 </p>
             </div>
             <div className={`${layout.greet}`}>
-                <p className="text-primary opacity-80 text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
+                <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
                     What do you want for <br /> dinner?
                 </p>
             </div>
@@ -115,37 +118,63 @@ const OrderMenu = ({ selected, setSelected }: OrderMenuProps) => {
                 </span>
             </div>
             <div
-                className={`${layout.cuisine} flex flex-col items-center gap-4 mt-4`}
+                className={`${layout.cuisine} flex flex-col items-center gap-4 min-[390px]:mt-4`}
             >
-                <h1 className="text-primary text-shadow-lg">{selected}</h1>
+                <h1 className="text-[1.1rem] min-[390px]:text-[1.3rem] text-primary text-shadow-lg">
+                    {selected}
+                </h1>
                 <div
                     className={`${layout["cuisine-container"]} overflow-y-scroll pb-80 scroll-smooth [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
                 >
                     {selected === "Appetizers" ? (
-                        <Appetizers />
+                        <Appetizers
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : selected === "Main Course" ? (
-                        <MainCourse />
+                        <MainCourse
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : selected === "Beverages" ? (
-                        <Beverages />
+                        <Beverages
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : selected === "Pastries" ? (
-                        <Pastries />
+                        <Pastries
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : selected === "Healthy Options" ? (
-                        <HealthyOptions />
+                        <HealthyOptions
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : selected === "Soups & Salads" ? (
-                        <SoupsAndSalads />
+                        <SoupsAndSalads
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : selected === "Desserts" ? (
-                        <Desserts />
+                        <Desserts
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : selected === "Savory" ? (
-                        <SavoryBreakfast />
+                        <SavoryBreakfast
+                            setSelectedCuisine={setSelectedCuisine}
+                            productDetails={productDetails}
+                        />
                     ) : null}
                 </div>
             </div>
-            <div className="absolute left-1/2 bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">
-                <button className="text-primary px-30 py-3 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] border-1 border-white/10">
+            <div className="absolute left-1/2 bottom-[4%] min-[390px]:bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">
+                <button className="text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] border-1 border-white/10">
                     <ShoppingBasket size={30} />
                 </button>
             </div>
-            <div className="w-full h-1/3 bg-gradient-to-t from-[black] to-[#ffffff00] absolute bottom-0"></div>
+            <div className="w-full h-1/3 bg-gradient-to-t from-[black] to-[#ffffff00] absolute bottom-0 pointer-events-none"></div>
         </div>
     );
 };

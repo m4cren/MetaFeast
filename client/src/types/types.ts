@@ -54,9 +54,34 @@ export interface AdminCameraControlProp {
 
 export type CuisineDetailProps = {
     name: string;
-    price: number;
-    quantity: number;
+    price: number | undefined;
+    quantity: number | undefined;
     img: string;
     height: number;
     type?: "Non-Alcoholic" | "Cocktails" | "Champagne";
+};
+
+export type ProductProps = {
+    img: string;
+    name: string;
+    description: string;
+    price: number | undefined;
+    calorie: number | undefined;
+    waiting_time: string | undefined;
+    details: string;
+    height: number;
+};
+
+export interface SelectedCuisineProps {
+    setSelectedCuisine: React.Dispatch<React.SetStateAction<string>>;
+    productDetails: ProductDetailsType[];
+}
+
+export type ProductDetailsType = {
+    category: string;
+    quantity: number;
+    food_name: string;
+    food_price: number;
+    calories: number;
+    waiting_time: string;
 };

@@ -64,12 +64,14 @@ def create_website():
     from .api.costumer import costumer
     from .api.tables import tables
     from .api.admin import admin
+    from .api.products import products
  
 
     app.register_blueprint(order)
     app.register_blueprint(costumer)
     app.register_blueprint(tables)
     app.register_blueprint(admin)
+    app.register_blueprint(products)
     
     from .db_models import Table
 

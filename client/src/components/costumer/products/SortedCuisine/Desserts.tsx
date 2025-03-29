@@ -1,57 +1,90 @@
-import React from "react";
 import Cuisine from "../Cuisine";
-import { CuisineDetailProps } from "../../../../types/types";
+import {
+    CuisineDetailProps,
+    SelectedCuisineProps,
+} from "../../../../types/types";
 
-const Desserts = () => {
+const Desserts = ({
+    setSelectedCuisine,
+    productDetails,
+}: SelectedCuisineProps) => {
     const desserts_products: CuisineDetailProps[] = [
         {
             name: "Pistachio Cheesecake",
-            price: 299,
-            quantity: 25,
+            quantity: productDetails.find(
+                (product) => product.food_name === "Pistachio Cheesecake",
+            )?.quantity,
+            price: productDetails.find(
+                (product) => product.food_name === "Pistachio Cheesecake",
+            )?.food_price,
             img: "pistachio_cheesecake.png",
-            height: 35,
+            height: 30,
         },
         {
             name: "Miso Caramel",
-            price: 299,
-            quantity: 25,
+            quantity: productDetails.find(
+                (product) => product.food_name === "Miso Caramel",
+            )?.quantity,
+            price: productDetails.find(
+                (product) => product.food_name === "Miso Caramel",
+            )?.food_price,
             img: "miso_caramel.png",
-            height: 35,
+            height: 30,
         },
         {
-            name: "Chocolate Mousse ",
-            price: 299,
-            quantity: 25,
+            name: "Chocolate Mousse",
+            quantity: productDetails.find(
+                (product) => product.food_name === "Chocolate Mousse",
+            )?.quantity,
+            price: productDetails.find(
+                (product) => product.food_name === "Chocolate Mousse",
+            )?.food_price,
             img: "chocolate_mousse.png",
-            height: 33,
+            height: 30,
         },
         {
             name: "Raspberry Cake",
-            price: 299,
-            quantity: 25,
+            quantity: productDetails.find(
+                (product) => product.food_name === "Raspberry Cake",
+            )?.quantity,
+            price: productDetails.find(
+                (product) => product.food_name === "Raspberry Cake",
+            )?.food_price,
             img: "raspberry_glazed_cake.png",
-            height: 38,
+            height: 30,
         },
         {
             name: "Brown Pavlovas",
-            price: 299,
-            quantity: 25,
+            quantity: productDetails.find(
+                (product) => product.food_name === "Brown Pavlovas",
+            )?.quantity,
+            price: productDetails.find(
+                (product) => product.food_name === "Brown Pavlovas",
+            )?.food_price,
             img: "brown_sugar_pavlovas.png",
-            height: 35,
+            height: 30,
         },
         {
             name: "Salted Caramel",
-            price: 299,
-            quantity: 25,
+            quantity: productDetails.find(
+                (product) => product.food_name === "Salted Caramel",
+            )?.quantity,
+            price: productDetails.find(
+                (product) => product.food_name === "Salted Caramel",
+            )?.food_price,
             img: "salted_caramel.png",
-            height: 27,
+            height: 30,
         },
         {
             name: "Coffee Tiramisu",
-            price: 299,
-            quantity: 25,
+            quantity: productDetails.find(
+                (product) => product.food_name === "Coffee Tiramisu",
+            )?.quantity,
+            price: productDetails.find(
+                (product) => product.food_name === "Coffee Tiramisu",
+            )?.food_price,
             img: "coffee_tiramisu.png",
-            height: 33,
+            height: 30,
         },
     ];
 
@@ -59,14 +92,15 @@ const Desserts = () => {
         <>
             {desserts_products.map(
                 ({ name, img, price, quantity, height }, index) => (
-                    <Cuisine
-                        key={index}
-                        name={name}
-                        img={img}
-                        price={price}
-                        quantity={quantity}
-                        height={height}
-                    />
+                    <div key={index} onClick={() => setSelectedCuisine(name)}>
+                        <Cuisine
+                            name={name}
+                            img={img}
+                            quantity={quantity}
+                            price={price}
+                            height={height}
+                        />
+                    </div>
                 ),
             )}
         </>

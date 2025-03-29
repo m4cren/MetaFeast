@@ -16,15 +16,6 @@ body {
 }
 
 /* default is 390px and below when developing (small screen first) */
-@theme {
-    --breakpoint-*: initial;
-    --breakpoint-xs: 24rem;
-    --breakpoint-sm: 40rem;
-    --breakpoint-md: 48rem;
-    --breakpoint-lg: 64rem;
-    --breakpoint-xl: 80rem;
-    --breakpoint-2xl: 96rem;
-}
 
 @utility cam-ctrl-btn {
     @apply text-white/60 font-semibold text-[0.9rem] p-3 border-1 border-white/50 rounded-md;
