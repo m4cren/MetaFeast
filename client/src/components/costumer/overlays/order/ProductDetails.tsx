@@ -726,7 +726,10 @@ const ProductDetails = ({
                 </div>
                 <div className="flex flex-row text-white/60 text-[0.7rem] min-[390px]:text-[0.8rem] font-extralight justify-between h-[3.35rem]">
                     <p className="flex flex-row items-center">
-                        {selectedProduct?.calorie} <Flame size={17} />
+                        {selectedProduct?.calorie
+                            ? selectedProduct.calorie * orderQuantity
+                            : 0}
+                        <Flame size={17} />
                     </p>
                     <p className="flex flex-row items-center">
                         {selectedProduct?.waiting_time} <Hourglass size={17} />
