@@ -18,7 +18,7 @@ const Appetizers = () => {
             height: 26,
         },
         {
-            name: "Shrimp & Crispy Vegetable",
+            name: "Shrimp & Vegetable",
             img: "shrimp_and_crispy.png",
             quantity: 19,
             price: 189,
@@ -32,7 +32,7 @@ const Appetizers = () => {
             height: 30,
         },
         {
-            name: "Caesar Salad Croquettes",
+            name: "Caesar Salad ",
             img: "caesar_salad.png",
             quantity: 19,
             price: 189,

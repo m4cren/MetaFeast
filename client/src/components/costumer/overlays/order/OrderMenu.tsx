@@ -14,8 +14,7 @@ import {
 
 import Category from "../../products/Category";
 
-import Cuisine from "../../products/Cuisine";
-import { useState } from "react";
+import { memo, useState } from "react";
 import MainCourse from "../../products/SortedCuisine/MainCourse";
 import Appetizers from "../../products/SortedCuisine/Appetizers";
 import SavoryBreakfast from "../../products/SortedCuisine/SavoryBreakfast";
@@ -23,8 +22,14 @@ import HealthyOptions from "../../products/SortedCuisine/HealthyOptions";
 import Desserts from "../../products/SortedCuisine/Desserts";
 import SoupsAndSalads from "../../products/SortedCuisine/SoupsAndSalads";
 import Beverages from "../../products/SortedCuisine/Beverages";
+import Pastries from "../../products/SortedCuisine/Pastries";
 
-const OrderMenu = () => {
+interface OrderMenuProps {
+    selected: string;
+    setSelected: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const OrderMenu = ({ selected, setSelected }: OrderMenuProps) => {
     const [name] = useState<string | null>(
         localStorage.getItem("costumer_name"),
     );
@@ -52,39 +57,87 @@ const OrderMenu = () => {
             <div
                 className={`${layout.category} flex items-center space-x-4  overflow-x-auto snap-proximity px-4`}
             >
-                <span>
-                    <Category icon={Cherry} category="Appetizers" />
+                <span onClick={() => setSelected("Appetizers")}>
+                    <Category
+                        icon={Cherry}
+                        category="Appetizers"
+                        selected={selected}
+                    />
                 </span>
-                <span>
-                    <Category icon={Beef} category="Main Course" />
+                <span onClick={() => setSelected("Main Course")}>
+                    <Category
+                        icon={Beef}
+                        category="Main Course"
+                        selected={selected}
+                    />
                 </span>
-                <span>
-                    <Category icon={Wine} category="Beverages" />
+                <span onClick={() => setSelected("Beverages")}>
+                    <Category
+                        icon={Wine}
+                        category="Beverages"
+                        selected={selected}
+                    />
                 </span>
-                <span>
-                    <Category icon={Croissant} category="Pastries" />
+                <span onClick={() => setSelected("Pastries")}>
+                    <Category
+                        icon={Croissant}
+                        category="Pastries"
+                        selected={selected}
+                    />
                 </span>
-                <span>
-                    <Category icon={Apple} category="Healthy Options" />
+                <span onClick={() => setSelected("Healthy Options")}>
+                    <Category
+                        icon={Apple}
+                        category="Healthy Options"
+                        selected={selected}
+                    />
                 </span>
-                <span>
-                    <Category icon={Salad} category="Soups & Salads" />
+                <span onClick={() => setSelected("Soups & Salads")}>
+                    <Category
+                        icon={Salad}
+                        category="Soups & Salads"
+                        selected={selected}
+                    />
                 </span>
-                <span>
-                    <Category icon={Candy} category="Desserts" />
+                <span onClick={() => setSelected("Desserts")}>
+                    <Category
+                        icon={Candy}
+                        category="Desserts"
+                        selected={selected}
+                    />
                 </span>
-                <span>
-                    <Category icon={Sandwich} category="Savory" />
+                <span onClick={() => setSelected("Savory")}>
+                    <Category
+                        icon={Sandwich}
+                        category="Savory"
+                        selected={selected}
+                    />
                 </span>
             </div>
             <div
                 className={`${layout.cuisine} flex flex-col items-center gap-4 mt-4`}
             >
-                <h1 className="text-primary text-shadow-lg">Main Course</h1>
+                <h1 className="text-primary text-shadow-lg">{selected}</h1>
                 <div
                     className={`${layout["cuisine-container"]} overflow-y-scroll pb-80 scroll-smooth [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
                 >
-                    <MainCourse />
+                    {selected === "Appetizers" ? (
+                        <Appetizers />
+                    ) : selected === "Main Course" ? (
+                        <MainCourse />
+                    ) : selected === "Beverages" ? (
+                        <Beverages />
+                    ) : selected === "Pastries" ? (
+                        <Pastries />
+                    ) : selected === "Healthy Options" ? (
+                        <HealthyOptions />
+                    ) : selected === "Soups & Salads" ? (
+                        <SoupsAndSalads />
+                    ) : selected === "Desserts" ? (
+                        <Desserts />
+                    ) : selected === "Savory" ? (
+                        <SavoryBreakfast />
+                    ) : null}
                 </div>
             </div>
             <div className="absolute left-1/2 bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">
@@ -97,4 +150,4 @@ const OrderMenu = () => {
     );
 };
 
-export default OrderMenu;
+export default memo(OrderMenu);

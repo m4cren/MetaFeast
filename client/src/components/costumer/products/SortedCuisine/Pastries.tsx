@@ -1,33 +1,26 @@
 import { CuisineDetailProps } from "../../../../types/types";
 import Cuisine from "../Cuisine";
 
-const SoupsAndSalads = () => {
-    const soups_salads_products: CuisineDetailProps[] = [
+const Pastries = () => {
+    const pastries_products: CuisineDetailProps[] = [
         {
-            name: "White Asparagus",
-            img: "veloute.png",
+            name: "Croissants",
+            img: "croissants.png",
             quantity: 19,
             price: 189,
-            height: 30,
+            height: 20,
         },
         {
-            name: "Vichyssoise",
-            img: "vichyssoise.png",
+            name: "Waffle",
+            img: "waffle.png",
             quantity: 19,
             price: 189,
             height: 26,
         },
-        {
-            name: "Prosciutto Figs",
-            img: "prosciutto_wrapped.png",
-            quantity: 19,
-            price: 189,
-            height: 30,
-        },
     ];
     return (
         <>
-            {soups_salads_products.map(
+            {pastries_products.map(
                 ({ name, img, quantity, price, height }, index) => (
                     <Cuisine
                         key={index}
@@ -43,4 +36,4 @@ const SoupsAndSalads = () => {
     );
 };
 
-export default SoupsAndSalads;
+export default Pastries;

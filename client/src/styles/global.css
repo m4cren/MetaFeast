@@ -15,11 +15,15 @@ body {
     background-color: #1e1e1e;
 }
 
-/* default is 400px and below when developing (small screen first) */
+/* default is 390px and below when developing (small screen first) */
 @theme {
-    --breakpoint-phone: 400px;
-    --breakpoint-tablet: 600px;
-    --breakpoint-desktop: 1000px;
+    --breakpoint-*: initial;
+    --breakpoint-xs: 24rem;
+    --breakpoint-sm: 40rem;
+    --breakpoint-md: 48rem;
+    --breakpoint-lg: 64rem;
+    --breakpoint-xl: 80rem;
+    --breakpoint-2xl: 96rem;
 }
 
 @utility cam-ctrl-btn {
@@ -90,4 +94,12 @@ body {
 
 .notification-animation {
     animation: notification 0.2s ease-out;
+}
+
+.category-btn {
+    box-shadow:
+        -2px 2px 3px rgba(255, 255, 255, 0.2),
+        -3px 3px 0 rgba(255, 255, 255, 0.1),
+        -4px 4px 3px rgba(255, 255, 255, 0.2) !important;
+    transform: translate(5px, -3px);
 }

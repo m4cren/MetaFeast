@@ -32,14 +32,14 @@ const MainCourse = () => {
             height: 30,
         },
         {
-            name: "Butter-Poached King Crab",
+            name: "King Crab",
             price: 299,
             quantity: 25,
             img: "butter_poached.png",
             height: 30,
         },
         {
-            name: "Garlic Fennel Roast Lamb",
+            name: "Roast Lamb",
             price: 299,
             quantity: 25,
             img: "garlic_fennel.png",
@@ -60,7 +60,7 @@ const MainCourse = () => {
             height: 30,
         },
         {
-            name: "Honey Butter Pork Chop",
+            name: "Pork Chop",
             price: 299,
             quantity: 25,
             img: "honey_butter_pork.png",

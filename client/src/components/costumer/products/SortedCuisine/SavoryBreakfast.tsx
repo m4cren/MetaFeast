@@ -5,7 +5,7 @@ import { CuisineDetailProps } from "../../../../types/types";
 const SavoryBreakfast = () => {
     const savory_breakfast_products: CuisineDetailProps[] = [
         {
-            name: "Smoke Salmon Bagel",
+            name: "Salmon Bagel",
             img: "smoke_salmon.png",
             quantity: 19,
             price: 189,

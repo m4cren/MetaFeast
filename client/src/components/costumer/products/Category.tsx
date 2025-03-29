@@ -1,11 +1,17 @@
+import { memo } from "react";
+
 interface Props {
     category: string;
     icon: React.ComponentType<{ size?: number }>;
+    selected: string;
 }
 
-const Category: React.FC<Props> = ({ icon: Icon, category }) => {
+const Category: React.FC<Props> = ({ icon: Icon, category, selected }) => {
+    const isSelected = selected == category;
     return (
-        <div className="gap-[0.1rem] min-w-[8rem] h-[4rem] bg-gradient-to-t to-[#9A7E57] from-[#665237] flex flex-col justify-center rounded-xl items-center">
+        <div
+            className={`${isSelected && "category-btn "} transition duration-200 gap-[0.1rem] min-w-[8rem] h-[4rem] bg-gradient-to-t to-[#9A7E57] from-[#665237] flex flex-col justify-center rounded-xl items-center `}
+        >
             <p className="text-primary text-shadow-lg">
                 <Icon size={30} />
             </p>
@@ -16,4 +22,4 @@ const Category: React.FC<Props> = ({ icon: Icon, category }) => {
     );
 };
 
-export default Category;
+export default memo(Category);
