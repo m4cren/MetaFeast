@@ -1,25 +1,105 @@
 import layout from "../../../../styles/layouts/product_details.module.css";
-import { ArrowBigLeft, ShoppingBasket, Flame, Hourglass } from "lucide-react";
+import {
+    ArrowBigLeft,
+    ShoppingBasket,
+    Flame,
+    Hourglass,
+    MessageCircleWarning,
+} from "lucide-react";
 
 import { ProductDetailsType } from "../../../../types/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { OrderType } from "../../../../types/types";
 
 interface Props {
     selectedCuisine: string;
     setSelectedCuisine: React.Dispatch<React.SetStateAction<string>>;
     productDetails: ProductDetailsType[];
+
+    orders: OrderType[];
+    setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>;
+    setIsPlaceBasket: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsBasket: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProductDetails = ({
     selectedCuisine,
     setSelectedCuisine,
     productDetails,
+    orders,
+    setOrders,
+    setIsPlaceBasket,
+    setIsBasket,
 }: Props) => {
     const [orderQuantity, setOrderQuantity] = useState<number>(0);
+    const [isDenied, setIsDenied] = useState<boolean>(false);
 
     const selectedProduct = productDetails.find(
         (item) => item.food_name === selectedCuisine,
     );
+
+    const [placeOrders, setPlaceOrders] = useState<OrderType>({
+        category: "",
+        food_name: "",
+        price: 0,
+        quantity: 0,
+        calories: 0,
+        waiting_time: 0,
+    });
+
+    const handlePlaceOrder = () => {
+        if (orderQuantity != 0) {
+            localStorage.setItem(
+                "last-product-placed",
+                selectedProduct?.img ? selectedProduct.img : "",
+            );
+            setOrders([...orders, placeOrders]);
+            setOrderQuantity(0);
+            setSelectedCuisine("");
+            setIsPlaceBasket(true);
+
+            setTimeout(() => {
+                setIsPlaceBasket(false);
+            }, 1450);
+        }
+
+        setIsDenied(true);
+
+        setTimeout(() => {
+            setIsDenied(false);
+        }, 2000);
+    };
+
+    const handleDecreaseQuantity = () => {
+        orderQuantity > 0
+            ? setOrderQuantity((prev) => prev - 1)
+            : setOrderQuantity(0);
+    };
+
+    const handleIncreaseQuantity = () => {
+        setOrderQuantity((prev) => prev + 1);
+    };
+
+    useEffect(() => {
+        setPlaceOrders({
+            category: selectedProduct?.category ? selectedProduct.category : "",
+            food_name: selectedProduct?.food_name
+                ? selectedProduct.food_name
+                : "",
+            quantity: orderQuantity,
+            price: selectedProduct?.food_price
+                ? selectedProduct.food_price * orderQuantity
+                : 0,
+            calories: selectedProduct?.calories
+                ? selectedProduct.calories * orderQuantity
+                : 0,
+            waiting_time: selectedProduct?.waiting_time
+                ? selectedProduct.waiting_time
+                : 0,
+        });
+    }, [orderQuantity]);
+
     return (
         <div
             className={`${layout.main} w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative`}
@@ -33,7 +113,10 @@ const ProductDetails = ({
                 >
                     <ArrowBigLeft size={45} />
                 </button>
-                <button className="text-primary text-shadow-md">
+                <button
+                    onClick={() => setIsBasket(true)}
+                    className="text-primary text-shadow-md"
+                >
                     <ShoppingBasket size={45} />
                 </button>
             </div>
@@ -79,24 +162,26 @@ const ProductDetails = ({
                         : 0}
                 </h1>
 
-                <div className="[box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-4xl shadow-md  w-[7rem] h-[2.5rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.35rem] to-[#9A7E57] from-[#665237] flex flex-row items-center justify-between px-4 text-primary">
+                <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-4xl shadow-md  w-[7rem] h-[2.5rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.35rem] to-[#9A7E57] from-[#665237] flex flex-row items-center justify-between px-4 text-primary">
                     <button
                         className="text-shadow-md text-4xl min-[390px]:text-5xl"
-                        onClick={() => {
-                            orderQuantity > 0
-                                ? setOrderQuantity((prev) => prev - 1)
-                                : setOrderQuantity(0);
-                        }}
+                        onClick={handleDecreaseQuantity}
                     >
                         -
                     </button>
                     <p className="text-shadow-md">{orderQuantity}</p>
                     <button
                         className="text-shadow-md text-4xl min-[390px]:text-5xl"
-                        onClick={() => setOrderQuantity((prev) => prev + 1)}
+                        onClick={handleIncreaseQuantity}
                     >
                         +
                     </button>
+
+                    {isDenied && (
+                        <div className="pop-up-animation absolute top-1/2 left-1/2 translate-y-[-120%] translate-x-[-0%] w-fit text-white/78 text-shadow-md">
+                            <MessageCircleWarning size={40} />
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={`${layout["food-detail"]} px-6`}>
@@ -116,7 +201,10 @@ const ProductDetails = ({
                 </p>
             </div>
             <div className="absolute bottom-10 min-[390px]:bottom-20 w-full h-15 flex items-center justify-center z-20 ">
-                <button className="text-primary  px-20 py-2 bg-transparent backdrop-blur-[50px] [-webkit-backdrop-filter:blur(50px)] rounded-[10rem] border-1 border-white/10 shadow-lg">
+                <button
+                    onClick={handlePlaceOrder}
+                    className={`${isDenied && "button-shake-animation"} text-primary  px-20 py-2 bg-transparent backdrop-blur-[50px] [-webkit-backdrop-filter:blur(50px)] rounded-[10rem] border-1 border-white/10 shadow-lg`}
+                >
                     Add to basket
                 </button>
             </div>

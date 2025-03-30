@@ -71,3 +71,41 @@
         transform: translateX(0);
     }
 }
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveToBasket {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    60% {
+        transform: translateY(0) scale(0.9);
+        opacity: 0.9;
+    }
+    70% {
+        transform: translateY(40%) scale(0.8);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(90%) scale(0);
+        opacity: 0;
+    }
+}

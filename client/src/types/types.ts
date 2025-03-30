@@ -85,3 +85,12 @@ export type ProductDetailsType = {
     details: string;
     type?: "Non-Alcoholic" | "Cocktail" | "Champagne";
 };
+
+export type OrderType = {
+    category: string;
+    food_name: string;
+    quantity: number;
+    price: number;
+    calories: number;
+    waiting_time: number;
+};

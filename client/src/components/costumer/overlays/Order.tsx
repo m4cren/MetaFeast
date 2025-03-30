@@ -3,14 +3,20 @@ import OrderMenu from "./order/OrderMenu";
 import ProductDetails from "./order/ProductDetails";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
-import { ProductDetailsType } from "../../../types/types";
+import { ProductDetailsType, OrderType } from "../../../types/types";
+import OrderList from "./order/OrderList";
 
 const Order = () => {
+    const [orders, setOrders] = useState<OrderType[]>([]);
     const [selectedCuisine, setSelectedCusine] = useState<string>("");
     const { server } = useServerAddress();
     const [productDetails, setProducDetails] = useState<ProductDetailsType[]>(
         [],
     );
+
+    const [isPlaceBasket, setIsPlaceBasket] = useState<boolean>(false);
+
+    const [isBasket, setIsBasket] = useState<boolean>(false);
 
     const fetchProductDetails = async () => {
         const headers = {
@@ -31,19 +37,50 @@ const Order = () => {
     useEffect(() => {
         fetchProductDetails();
     }, []);
+    const mergeOrders = (orders: OrderType[]): OrderType[] => {
+        const merged = orders.reduce<Record<string, OrderType>>((acc, item) => {
+            if (!acc[item.food_name]) {
+                acc[item.food_name] = { ...item };
+            } else {
+                acc[item.food_name].quantity += item.quantity;
+                acc[item.food_name].price += item.price;
+                acc[item.food_name].calories += item.calories; // If needed
+            }
+            return acc;
+        }, {});
+
+        return Object.values(merged);
+    };
+
+    const mergedOrders = mergeOrders(orders);
+
+    useEffect(() => {
+        console.log(mergedOrders);
+    }, [orders]);
 
     return (
         <>
-            {selectedCuisine.length !== 0 ? (
+            {isBasket ? (
+                <OrderList
+                    setSelectedCuisine={setSelectedCusine}
+                    setIsBasket={setIsBasket}
+                />
+            ) : selectedCuisine.length !== 0 ? (
                 <ProductDetails
                     selectedCuisine={selectedCuisine}
                     setSelectedCuisine={setSelectedCusine}
                     productDetails={productDetails}
+                    orders={orders}
+                    setOrders={setOrders}
+                    setIsPlaceBasket={setIsPlaceBasket}
+                    setIsBasket={setIsBasket}
                 />
             ) : (
                 <OrderMenu
                     setSelectedCuisine={setSelectedCusine}
                     productDetails={productDetails}
+                    isPlaceBasket={isPlaceBasket}
+                    setIsBasket={setIsBasket}
                 />
             )}
         </>

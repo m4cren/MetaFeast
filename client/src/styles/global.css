@@ -87,6 +87,14 @@ body {
     animation: notification 0.2s ease-out;
 }
 
+.button-shake-animation {
+    animation: shake 0.5s ease-in-out;
+}
+
+.place-order-animation {
+    animation: moveToBasket 1.5s ease-in-out;
+}
+
 .category-btn {
     box-shadow:
         -2px 2px 3px rgba(255, 255, 255, 0.2),

@@ -14,7 +14,7 @@ import {
 
 import Category from "../../products/Category";
 
-import { memo, useState } from "react";
+import React, { memo, useState } from "react";
 import MainCourse from "../../products/SortedCuisine/MainCourse";
 import Appetizers from "../../products/SortedCuisine/Appetizers";
 import SavoryBreakfast from "../../products/SortedCuisine/SavoryBreakfast";
@@ -29,9 +29,16 @@ import { ProductDetailsType } from "../../../../types/types";
 interface Props {
     setSelectedCuisine: React.Dispatch<React.SetStateAction<string>>;
     productDetails: ProductDetailsType[];
+    isPlaceBasket: boolean;
+    setIsBasket: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const OrderMenu = ({ setSelectedCuisine, productDetails }: Props) => {
+const OrderMenu = ({
+    setSelectedCuisine,
+    productDetails,
+    isPlaceBasket,
+    setIsBasket,
+}: Props) => {
     const [selected, setSelected] = useState<string>("Appetizers");
     const [name] = useState<string | null>(
         localStorage.getItem("costumer_name"),
@@ -41,6 +48,14 @@ const OrderMenu = ({ setSelectedCuisine, productDetails }: Props) => {
         <div
             className={`${layout.main} w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative `}
         >
+            {isPlaceBasket && (
+                <div className="fixed z-20 place-order-animation top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] scale-160 min-[390px]:scale-190">
+                    <img
+                        src={`/images/products/${localStorage.getItem("last-product-placed")}`}
+                        alt=""
+                    />
+                </div>
+            )}
             <div
                 className={`${layout.head} flex  justify-between px-4 items-center`}
             >
@@ -48,7 +63,7 @@ const OrderMenu = ({ setSelectedCuisine, productDetails }: Props) => {
                     Hi, {name}
                 </h1>
 
-                <p className="text-primary text-">
+                <p className="text-primary ">
                     <Utensils size={40} />
                 </p>
             </div>
@@ -170,7 +185,10 @@ const OrderMenu = ({ setSelectedCuisine, productDetails }: Props) => {
                 </div>
             </div>
             <div className="absolute left-1/2 bottom-[4%] min-[390px]:bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">
-                <button className="text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] border-1 border-white/10">
+                <button
+                    onClick={() => setIsBasket(true)}
+                    className="text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] border-1 border-white/10"
+                >
                     <ShoppingBasket size={30} />
                 </button>
             </div>
