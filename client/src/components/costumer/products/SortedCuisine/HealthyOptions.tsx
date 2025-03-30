@@ -1,48 +1,26 @@
-import {
-    CuisineDetailProps,
-    SelectedCuisineProps,
-} from "../../../../types/types";
+import { SelectedCuisineProps } from "../../../../types/types";
 import Cuisine from "../Cuisine";
 
 const HealthyOptions = ({
     setSelectedCuisine,
     productDetails,
 }: SelectedCuisineProps) => {
-    const healthy_products: CuisineDetailProps[] = [
-        {
-            name: "Greek Yougart",
-            img: "greek_yougart.png",
-            quantity: productDetails.find(
-                (product) => product.food_name === "Greek Yougart",
-            )?.quantity,
-            price: productDetails.find(
-                (product) => product.food_name === "Greek Yougart",
-            )?.food_price,
-            height: 30,
-        },
-        {
-            name: "Berry Bliss",
-            img: "berry_bliss.png",
-            quantity: productDetails.find(
-                (product) => product.food_name === "Berry Bliss",
-            )?.quantity,
-            price: productDetails.find(
-                (product) => product.food_name === "Berry Bliss",
-            )?.food_price,
-            height: 30,
-        },
-    ];
+    const healthy_products = productDetails.filter(
+        (product) => product.category === "Healthy Options",
+    );
     return (
         <>
             {healthy_products.map(
-                ({ name, img, quantity, price, height }, index) => (
-                    <div key={index} onClick={() => setSelectedCuisine(name)}>
+                ({ food_name, img, quantity, food_price }, index) => (
+                    <div
+                        key={index}
+                        onClick={() => setSelectedCuisine(food_name)}
+                    >
                         <Cuisine
-                            name={name}
+                            name={food_name}
                             img={img}
                             quantity={quantity}
-                            price={price}
-                            height={height}
+                            price={food_price}
                         />
                     </div>
                 ),

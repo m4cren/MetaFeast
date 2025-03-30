@@ -5,13 +5,12 @@ const Cuisine: React.FC<CuisineProps> = ({
     name,
     price,
     quantity,
-    height,
     type,
 }) => {
     return (
         <div className="flex flex-col items-center w-[8.75rem] h-[8.75rem] min-[390px]:w-[10rem] relative min-[390px]:h-[10rem] overflow-y-hidden bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237]">
             <div
-                className={`absolute top-0 translate-y-[-${height}px] scale-80 min-[390px]:scale-100`}
+                className={`absolute top-0 translate-y-[-30px] scale-80 min-[390px]:scale-100`}
             >
                 <img
                     className="drop-shadow-lg"

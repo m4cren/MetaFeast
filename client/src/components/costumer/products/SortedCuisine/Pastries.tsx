@@ -1,48 +1,26 @@
-import {
-    CuisineDetailProps,
-    SelectedCuisineProps,
-} from "../../../../types/types";
+import { SelectedCuisineProps } from "../../../../types/types";
 import Cuisine from "../Cuisine";
 
 const Pastries = ({
     setSelectedCuisine,
     productDetails,
 }: SelectedCuisineProps) => {
-    const pastries_products: CuisineDetailProps[] = [
-        {
-            name: "Croissants",
-            img: "croissants.png",
-            quantity: productDetails.find(
-                (product) => product.food_name === "Croissants",
-            )?.quantity,
-            price: productDetails.find(
-                (product) => product.food_name === "Croissants",
-            )?.food_price,
-            height: 20,
-        },
-        {
-            name: "Waffle",
-            img: "waffle.png",
-            quantity: productDetails.find(
-                (product) => product.food_name === "Waffle",
-            )?.quantity,
-            price: productDetails.find(
-                (product) => product.food_name === "Waffle",
-            )?.food_price,
-            height: 30,
-        },
-    ];
+    const pastries_products = productDetails.filter(
+        (product) => product.category === "Pastries",
+    );
     return (
         <>
             {pastries_products.map(
-                ({ name, img, quantity, price, height }, index) => (
-                    <div key={index} onClick={() => setSelectedCuisine(name)}>
+                ({ food_name, img, quantity, food_price }, index) => (
+                    <div
+                        key={index}
+                        onClick={() => setSelectedCuisine(food_name)}
+                    >
                         <Cuisine
-                            name={name}
+                            name={food_name}
                             img={img}
                             quantity={quantity}
-                            price={price}
-                            height={height}
+                            price={food_price}
                         />
                     </div>
                 ),

@@ -1,59 +1,26 @@
 import Cuisine from "../Cuisine";
-import {
-    CuisineDetailProps,
-    SelectedCuisineProps,
-} from "../../../../types/types";
+import { SelectedCuisineProps } from "../../../../types/types";
 
 const SavoryBreakfast = ({
     setSelectedCuisine,
     productDetails,
 }: SelectedCuisineProps) => {
-    const savory_breakfast_products: CuisineDetailProps[] = [
-        {
-            name: "Salmon Bagel",
-            img: "smoke_salmon.png",
-            quantity: productDetails.find(
-                (product) => product.food_name === "Salmon Bagel",
-            )?.quantity,
-            price: productDetails.find(
-                (product) => product.food_name === "Salmon Bagel",
-            )?.food_price,
-            height: 20,
-        },
-        {
-            name: "Avocado Bacon",
-            img: "avocado_bacon.png",
-            quantity: productDetails.find(
-                (product) => product.food_name === "Avocado Bacon",
-            )?.quantity,
-            price: productDetails.find(
-                (product) => product.food_name === "Avocado Bacon",
-            )?.food_price,
-            height: 30,
-        },
-        {
-            name: "Sushi",
-            img: "sushi.png",
-            quantity: productDetails.find(
-                (product) => product.food_name === "Sushi",
-            )?.quantity,
-            price: productDetails.find(
-                (product) => product.food_name === "Sushi",
-            )?.food_price,
-            height: 30,
-        },
-    ];
+    const savory_breakfast_products = productDetails.filter(
+        (product) => product.category === "Savory Breakfast",
+    );
     return (
         <>
             {savory_breakfast_products.map(
-                ({ name, img, quantity, price, height }, index) => (
-                    <div key={index} onClick={() => setSelectedCuisine(name)}>
+                ({ food_name, img, quantity, food_price }, index) => (
+                    <div
+                        key={index}
+                        onClick={() => setSelectedCuisine(food_name)}
+                    >
                         <Cuisine
-                            name={name}
+                            name={food_name}
                             img={img}
                             quantity={quantity}
-                            price={price}
-                            height={height}
+                            price={food_price}
                         />
                     </div>
                 ),

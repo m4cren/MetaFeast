@@ -69,9 +69,14 @@ class Products(db.Model):
     category = db.Column(db.String(64), nullable = False)
     quantity = db.Column(db.Integer, default = 0)
     food_name = db.Column(db.String(64), nullable = False)
-    food_price = db.Column(db.String(64), nullable = False)
+    food_price = db.Column(db.Integer, nullable = False)
     calories = db.Column(db.Integer, default = 0)
-    waiting_time = db.Column(db.String(64), nullable = False)
+    waiting_time = db.Column(db.Integer, nullable = False)
+    img = db.Column(db.String(124), nullable = False)
+    description = db.Column(db.String(246), nullable = False)
+    details = db.Column(db.Text, nullable = False)
+    type = db.Column(db.String(64), nullable = True)
+
 
     def to_dict(self):
         return{
@@ -80,7 +85,11 @@ class Products(db.Model):
             'food_name': self.food_name,
             'food_price': self.food_price,
             'calories': self.calories,
-            'waiting_time': self.waiting_time
+            'waiting_time': self.waiting_time,
+            'img': self.img,
+            'description': self.description,
+            'details': self.details
+            
         }
 
     def increase_quantity(self):

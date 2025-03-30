@@ -57,19 +57,7 @@ export type CuisineDetailProps = {
     price: number | undefined;
     quantity: number | undefined;
     img: string;
-    height: number;
-    type?: "Non-Alcoholic" | "Cocktails" | "Champagne";
-};
-
-export type ProductProps = {
-    img: string;
-    name: string;
-    description: string;
-    price: number | undefined;
-    calorie: number | undefined;
-    waiting_time: string | undefined;
-    details: string;
-    height: number;
+    type?: "Non-Alcoholic" | "Cocktail" | "Champagne";
 };
 
 export interface SelectedCuisineProps {
@@ -78,10 +66,22 @@ export interface SelectedCuisineProps {
 }
 
 export type ProductDetailsType = {
-    category: string;
+    category:
+        | "Appetizers"
+        | "Main Course"
+        | "Beverages"
+        | "Desserts"
+        | "Healthy Options"
+        | "Soups & Salads"
+        | "Pastries"
+        | "Savory Breakfast";
     quantity: number;
     food_name: string;
     food_price: number;
     calories: number;
-    waiting_time: string;
+    waiting_time: number;
+    img: string;
+    description: string;
+    details: string;
+    type?: "Non-Alcoholic" | "Cocktail" | "Champagne";
 };
