@@ -12,7 +12,7 @@ import useCostumerName from "../../hooks/useCostumerName";
 
 import Denied from "./overlays/Denied";
 import useTableTransition from "../../hooks/useTableTransition";
-import OrderMenu from "./overlays/order/OrderMenu";
+
 import Order from "./overlays/Order";
 // import SceneCameraController from "../SceneCameraController";
 
@@ -178,7 +178,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                     <div
                         className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"}`}
                     >
-                        <Order />
+                        <Order setCamPos={setCamPos} setCamRot={setCamRot} />
                     </div>
                 )}
             </div>

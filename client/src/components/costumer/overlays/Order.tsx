@@ -5,8 +5,14 @@ import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import { ProductDetailsType, OrderType } from "../../../types/types";
 import OrderList from "./order/OrderList";
-
-const Order = () => {
+import OrderConfirmation from "./order/OrderConfirmation";
+import useFrameProvider from "../../../frames/useFrameProvider";
+interface OrderProps {
+    setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+}
+const Order = ({ setCamPos, setCamRot }: OrderProps) => {
+    const { to_counter, to_1st_Frames } = useFrameProvider();
     const [orders, setOrders] = useState<OrderType[]>([]);
     const [selectedCuisine, setSelectedCusine] = useState<string>("");
     const { server } = useServerAddress();
@@ -17,6 +23,9 @@ const Order = () => {
     const [isPlaceBasket, setIsPlaceBasket] = useState<boolean>(false);
 
     const [isBasket, setIsBasket] = useState<boolean>(false);
+
+    const [isCheckout, setIsCheckout] = useState<boolean>(false);
+    const [isTransitionDone, setIsTransitionDone] = useState<boolean>(false);
 
     const fetchProductDetails = async () => {
         const headers = {
@@ -56,17 +65,84 @@ const Order = () => {
     const mergedOrders: OrderType[] = mergeOrders(orders);
 
     useEffect(() => {
-        console.log(mergedOrders);
-    }, [orders]);
+        const floorCheck = localStorage.getItem("table-picked");
 
+        const frame_sec = 200;
+        if (isCheckout && floorCheck?.includes("A", 0)) {
+            setCamPos(to_counter.frame1.pos);
+            setCamRot(to_counter.frame1.rot);
+
+            const timer = setTimeout(() => {
+                setIsTransitionDone(true);
+                setCamPos(to_counter.frame2.pos);
+                setCamRot(to_counter.frame2.rot);
+            }, 750);
+            return () => clearTimeout(timer);
+        } else if (isCheckout && floorCheck?.includes("B", 0)) {
+            setCamPos(to_1st_Frames.frame1.pos);
+            setCamRot(to_1st_Frames.frame1.rot);
+
+            setTimeout(() => {
+                setCamPos(to_1st_Frames.frame2.pos);
+                setCamRot(to_1st_Frames.frame2.rot);
+
+                setTimeout(() => {
+                    setCamPos(to_1st_Frames.frame3.pos);
+                    setCamRot(to_1st_Frames.frame3.rot);
+                    setTimeout(() => {
+                        setCamPos(to_1st_Frames.frame4.pos);
+                        setCamRot(to_1st_Frames.frame4.rot);
+                        setTimeout(() => {
+                            setCamPos(to_1st_Frames.frame5.pos);
+                            setCamRot(to_1st_Frames.frame5.rot);
+                            setTimeout(() => {
+                                setCamPos(to_1st_Frames.frame6.pos);
+                                setCamRot(to_1st_Frames.frame6.rot);
+                                setTimeout(() => {
+                                    setCamPos(to_1st_Frames.frame7.pos);
+                                    setCamRot(to_1st_Frames.frame7.rot);
+                                    setTimeout(() => {
+                                        setCamPos(to_1st_Frames.frame8.pos);
+                                        setCamRot(to_1st_Frames.frame8.rot);
+                                        setTimeout(() => {
+                                            setCamRot(to_counter.frame1.rot);
+                                            setCamPos(to_counter.frame1.pos);
+
+                                            setTimeout(() => {
+                                                setIsTransitionDone(true);
+                                                setCamRot(
+                                                    to_counter.frame2.rot,
+                                                );
+                                                setCamPos(
+                                                    to_counter.frame2.pos,
+                                                );
+                                            }, 1500);
+                                        }, 800);
+                                    }, frame_sec);
+                                }, frame_sec);
+                            }, frame_sec);
+                        }, frame_sec);
+                    }, frame_sec);
+                }, frame_sec);
+            }, 700);
+        }
+        return;
+    }, [isCheckout]);
+    console.log(isTransitionDone);
     return (
         <>
-            {isBasket ? (
+            {isCheckout ? (
+                <OrderConfirmation
+                    orders={mergedOrders}
+                    isTransitionDone={isTransitionDone}
+                />
+            ) : isBasket ? (
                 <OrderList
                     setSelectedCuisine={setSelectedCusine}
                     setIsBasket={setIsBasket}
                     setOrders={setOrders}
                     orders={mergedOrders}
+                    setIsCheckout={setIsCheckout}
                 />
             ) : selectedCuisine.length !== 0 ? (
                 <ProductDetails

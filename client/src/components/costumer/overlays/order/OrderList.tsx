@@ -8,17 +8,21 @@ interface OrderListProps {
     setIsBasket: React.Dispatch<React.SetStateAction<boolean>>;
     orders: OrderType[];
     setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>;
+    setIsCheckout: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const OrderList = ({
     setSelectedCuisine,
     setIsBasket,
     orders,
     setOrders,
+    setIsCheckout,
 }: OrderListProps) => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [totalEnergy, setTotalEnergy] = useState<number>(0);
     const [totalWaitingTime, setTotalWaitingTime] = useState<number>(0);
     const [isTrash, setTrash] = useState<boolean>(false);
+    const [isCheckoutConfirmation, setIsCheckoutConfirmation] =
+        useState<boolean>(false);
 
     const handleDecreaseQuantity = (foodName: string) => {
         setOrders((prevOrder) =>
@@ -95,11 +99,34 @@ const OrderList = ({
         <div
             className={`${layout.main}  w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative`}
         >
+            {isCheckoutConfirmation && (
+                <div className="fixed w-full h-screen bg-black/40 z-20 flex items-center justify-center">
+                    <div className="pop-up-animation flex flex-col justify-center gap-4 w-[85vw] h-[10rem] bg-white/20 backdrop-blur-[20px] [-webkit-backdrop-blur:20px] rounded-2xl [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset]">
+                        <h1 className="text-center text-primary font-medium text-3xl text-shadow-md">
+                            Go to counter?
+                        </h1>
+                        <div className=" text-primary flex place-items-center justify-around">
+                            <button
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237] p-3"
+                                onClick={() => setIsCheckoutConfirmation(false)}
+                            >
+                                Continue ordering
+                            </button>
+                            <button
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-b p-3 from-[#1F8400] to-[#075500] rounded-2xl"
+                                onClick={() => setIsCheckout(true)}
+                            >
+                                Let's Go
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <div
                 className={`${layout.head} px-6 flex flex-row items-center justify-between`}
             >
                 <button
-                    className="text-primary text-shadow-md"
+                    className="text-primary text-shadow-md active:scale-95 transition duration-150 active:opacity-95"
                     onClick={() => {
                         setSelectedCuisine("");
                         setIsBasket(false);
@@ -107,10 +134,12 @@ const OrderList = ({
                 >
                     <ArrowBigLeft size={45} />
                 </button>
-                <h1 className="text-primary text-3xl text-shadow-md">Basket</h1>
+                <h1 className="text-primary text-3xl text-shadow-md ">
+                    Basket
+                </h1>
                 <p
                     onClick={() => setTrash(!isTrash)}
-                    className="text-primary text-shadow-md"
+                    className="text-primary text-shadow-md active:scale-95 transition duration-150 active:opacity-95"
                 >
                     {!isTrash ? <Trash2 size={40} /> : <Ban size={40} />}
                 </p>
@@ -135,7 +164,7 @@ const OrderList = ({
                                 {food_name}
                             </h1>
                             <div
-                                className={`${isTrash ? "justify-center" : "justify-between"} flex flex-row items-center w-full`}
+                                className={`${isTrash ? "justify-center active:scale-95 active:opacity-95 transition duration-150" : "justify-between"}  flex flex-row items-center w-full`}
                             >
                                 {!isTrash ? (
                                     <>
@@ -150,7 +179,7 @@ const OrderList = ({
                                                         food_name,
                                                     )
                                                 }
-                                                className="text-shadow-md text-3xl min-[390px]:text-4xl"
+                                                className="text-shadow-md text-3xl min-[390px]:text-4xl active:scale-95 transition active:opacity-95 duration-150"
                                             >
                                                 -
                                             </button>
@@ -163,7 +192,7 @@ const OrderList = ({
                                                         food_name,
                                                     )
                                                 }
-                                                className="text-shadow-md text-3xl min-[390px]:text-4xl"
+                                                className="text-shadow-md text-3xl min-[390px]:text-4xl active:scale-95 active:opacity-95 transition duration-150"
                                             >
                                                 +
                                             </button>
@@ -206,7 +235,10 @@ const OrderList = ({
                     </h2>
                 </div>
                 <div className="flex w-full justify-center items-center">
-                    <button className="bg-gradient-to-b px-20 from-[#1F8400] to-[#075500] p-2 rounded-4xl text-primary text-shadow-md shadow-2xl">
+                    <button
+                        onClick={() => setIsCheckoutConfirmation(true)}
+                        className="active:scale-95 transition active:opacity-95 duration-150 bg-gradient-to-b px-20 from-[#1F8400] to-[#075500] p-2 rounded-4xl text-primary text-shadow-md shadow-2xl"
+                    >
                         Checkout
                     </button>
                 </div>

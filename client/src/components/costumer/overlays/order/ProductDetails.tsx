@@ -118,14 +118,14 @@ const ProductDetails = ({
                 className={`${layout.head} flex flex-row justify-between px-6`}
             >
                 <button
-                    className="text-primary text-shadow-md"
+                    className="text-primary text-shadow-md active:scale-95 active:opacity-95 transition duration-150"
                     onClick={() => setSelectedCuisine("")}
                 >
                     <ArrowBigLeft size={45} />
                 </button>
                 <button
                     onClick={() => setIsBasket(true)}
-                    className="text-primary text-shadow-md"
+                    className="text-primary text-shadow-md active:scale-95 active:opacity-95 transition duration-150"
                 >
                     <ShoppingBasket size={45} />
                 </button>
@@ -174,14 +174,14 @@ const ProductDetails = ({
 
                 <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-4xl shadow-md  w-[7rem] h-[2.5rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.35rem] to-[#9A7E57] from-[#665237] flex flex-row items-center justify-between px-4 text-primary">
                     <button
-                        className="text-shadow-md text-4xl min-[390px]:text-5xl"
+                        className="text-shadow-md text-4xl min-[390px]:text-5xl active:scale-95 active:opacity-95 transition duration-150"
                         onClick={handleDecreaseQuantity}
                     >
                         -
                     </button>
                     <p className="text-shadow-md">{orderQuantity}</p>
                     <button
-                        className="text-shadow-md text-4xl min-[390px]:text-5xl"
+                        className="text-shadow-md text-4xl min-[390px]:text-5xl active:scale-95 active:opacity-95 transition duration-150"
                         onClick={handleIncreaseQuantity}
                     >
                         +
@@ -213,7 +213,7 @@ const ProductDetails = ({
             <div className="absolute bottom-10 min-[390px]:bottom-20 w-full h-15 flex items-center justify-center z-20 ">
                 <button
                     onClick={handlePlaceOrder}
-                    className={`${isDenied && "button-shake-animation"} text-primary  px-20 py-2 bg-transparent backdrop-blur-[50px] [-webkit-backdrop-filter:blur(50px)] rounded-[10rem] border-1 border-white/10 shadow-lg`}
+                    className={`${isDenied && "button-shake-animation"} active:scale-95 active:opacity-95 transition duration-150 text-primary  px-20 py-2 bg-transparent backdrop-blur-[50px] [-webkit-backdrop-filter:blur(50px)] rounded-[10rem] border-1 border-white/10 shadow-lg`}
                 >
                     Add to basket
                 </button>

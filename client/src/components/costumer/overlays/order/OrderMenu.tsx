@@ -187,7 +187,7 @@ const OrderMenu = ({
             <div className="absolute left-1/2 bottom-[4%] min-[390px]:bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">
                 <button
                     onClick={() => setIsBasket(true)}
-                    className="text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] border-1 border-white/10"
+                    className="active:scale-95 active:opacity-95 transition duration-150 text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] border-1 border-white/10"
                 >
                     <ShoppingBasket size={30} />
                 </button>
