@@ -37,6 +37,7 @@ const Order = () => {
     useEffect(() => {
         fetchProductDetails();
     }, []);
+
     const mergeOrders = (orders: OrderType[]): OrderType[] => {
         const merged = orders.reduce<Record<string, OrderType>>((acc, item) => {
             if (!acc[item.food_name]) {
@@ -44,7 +45,7 @@ const Order = () => {
             } else {
                 acc[item.food_name].quantity += item.quantity;
                 acc[item.food_name].price += item.price;
-                acc[item.food_name].calories += item.calories; // If needed
+                acc[item.food_name].calories += item.calories;
             }
             return acc;
         }, {});
@@ -52,7 +53,7 @@ const Order = () => {
         return Object.values(merged);
     };
 
-    const mergedOrders = mergeOrders(orders);
+    const mergedOrders: OrderType[] = mergeOrders(orders);
 
     useEffect(() => {
         console.log(mergedOrders);
@@ -64,6 +65,8 @@ const Order = () => {
                 <OrderList
                     setSelectedCuisine={setSelectedCusine}
                     setIsBasket={setIsBasket}
+                    setOrders={setOrders}
+                    orders={mergedOrders}
                 />
             ) : selectedCuisine.length !== 0 ? (
                 <ProductDetails

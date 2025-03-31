@@ -42,10 +42,13 @@ const ProductDetails = ({
     const [placeOrders, setPlaceOrders] = useState<OrderType>({
         category: "",
         food_name: "",
+        img: "",
         price: 0,
         quantity: 0,
         calories: 0,
         waiting_time: 0,
+        base_price: 0,
+        base_calories: 0,
     });
 
     const handlePlaceOrder = () => {
@@ -87,6 +90,7 @@ const ProductDetails = ({
             food_name: selectedProduct?.food_name
                 ? selectedProduct.food_name
                 : "",
+            img: selectedProduct?.img ? selectedProduct.img : "",
             quantity: orderQuantity,
             price: selectedProduct?.food_price
                 ? selectedProduct.food_price * orderQuantity
@@ -96,6 +100,12 @@ const ProductDetails = ({
                 : 0,
             waiting_time: selectedProduct?.waiting_time
                 ? selectedProduct.waiting_time
+                : 0,
+            base_price: selectedProduct?.food_price
+                ? selectedProduct.food_price
+                : 0,
+            base_calories: selectedProduct?.calories
+                ? selectedProduct.calories
                 : 0,
         });
     }, [orderQuantity]);
@@ -139,7 +149,7 @@ const ProductDetails = ({
                         {selectedProduct?.description}
                     </p>
                 </div>
-                <div className="flex flex-row text-white/60 text-[0.7rem] min-[390px]:text-[0.8rem] font-extralight justify-between h-[3.35rem]">
+                <div className="pr-2 flex flex-row text-white/60 text-[0.7rem] min-[390px]:text-[0.8rem] font-extralight justify-between h-[3.35rem]">
                     <p className="flex flex-row items-center">
                         {selectedProduct?.calories
                             ? selectedProduct.calories * orderQuantity

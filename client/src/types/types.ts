@@ -88,9 +88,12 @@ export type ProductDetailsType = {
 
 export type OrderType = {
     category: string;
+    img: string;
     food_name: string;
     quantity: number;
     price: number;
     calories: number;
     waiting_time: number;
+    base_price: number;
+    base_calories: number;
 };

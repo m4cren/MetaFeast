@@ -16,5 +16,5 @@
 
     display: grid;
     grid-template-columns: 100vw;
-    grid-auto-rows: minmax(8rem, auto);
+    grid-auto-rows: fit-content(100%);
 }
