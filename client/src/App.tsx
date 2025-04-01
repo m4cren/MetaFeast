@@ -5,6 +5,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import { SocketProvider } from "./contexts/SocketContext";
 import { TableStatusProvider } from "./contexts/TableStatusContext";
 import AdminLogin from "./components/admin/AdminLogin";
+import QrCode from "./components/QrCode";
 
 const MainCostumer = lazy(() => import("./components/costumer/MainCostumer"));
 const MainAdmin = lazy(() => import("./components/admin/MainAdmin"));
@@ -54,6 +55,7 @@ const App = () => {
                                 />
                             }
                         />
+                        <Route path="/qr-code" element={<QrCode />} />
                     </Routes>
                 </Router>
             </TableStatusProvider>

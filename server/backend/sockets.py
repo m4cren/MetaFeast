@@ -2,7 +2,7 @@ from .extensions import db, socketio
 from .db_config import save_data, delete_all_data, delete_data
 from sqlalchemy import desc
 from flask_socketio import SocketIO, emit
-from .db_models import Table, TableRequest, Costumer
+from .db_models import Table, TableRequest, Costumer, Orders
 
 
 @socketio.on("connect")
@@ -81,6 +81,49 @@ def accept_request(data):
     emit('is-costumer-denied', response, broadcast=True)
 
 
+# export type OrderType = {
+#     category: string;
+#     img: string;
+#     food_name: string;
+#     quantity: number;
+#     price: number;
+#     calories: number;
+#     waiting_time: number;
+#     base_price: number;
+#     base_calories: number;
+# };
+
+@socketio.on('send-order')
+def send_order(data):
+
+    costumer_name = data.get('costumer_name')
+    table_picked = data.get('table_picked')
+    food_names = data.get('food_name')
+    quantity = data.get('quantity')
+    total_price = data.get('total_price')
+    total_calories = data.get('total_calories')
+
+  
+
+    current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
+
+
+
+    
+
+    print('------------------------')
+    
+    for fn, q, tp, tc in zip(food_names, quantity, total_price, total_calories):
+
+        print(f'Food: {fn}, Quantity: {q}, Price: {tp}, Calories: {tc}')
+
+
+   
+
+        
+
+   
+    
 
 
     

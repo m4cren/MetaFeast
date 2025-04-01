@@ -95,6 +95,7 @@ const OrderList = ({
         setTotalEnergy(total_energy);
         setTotalWaitingTime(total_waiting_time);
     }, [orders]);
+
     return (
         <div
             className={`${layout.main}  w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative`}

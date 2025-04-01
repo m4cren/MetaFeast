@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import useServerAddress from "./useServerAddress";
 
-const { host } = useServerAddress();
+const { host, port } = useServerAddress();
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,6 +14,6 @@ export default defineConfig({
 
     server: {
         host: host,
-        port: 1555,
+        port: port,
     },
 });

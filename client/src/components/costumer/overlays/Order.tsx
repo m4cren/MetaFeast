@@ -10,8 +10,9 @@ import useFrameProvider from "../../../frames/useFrameProvider";
 interface OrderProps {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setPhase: React.Dispatch<React.SetStateAction<number>>;
 }
-const Order = ({ setCamPos, setCamRot }: OrderProps) => {
+const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
     const { to_counter, to_1st_Frames } = useFrameProvider();
     const [orders, setOrders] = useState<OrderType[]>([]);
     const [selectedCuisine, setSelectedCusine] = useState<string>("");
@@ -128,13 +129,14 @@ const Order = ({ setCamPos, setCamRot }: OrderProps) => {
         }
         return;
     }, [isCheckout]);
-    console.log(isTransitionDone);
+    console.log(setPhase);
     return (
         <>
             {isCheckout ? (
                 <OrderConfirmation
                     orders={mergedOrders}
                     isTransitionDone={isTransitionDone}
+                    setPhase={setPhase}
                 />
             ) : isBasket ? (
                 <OrderList

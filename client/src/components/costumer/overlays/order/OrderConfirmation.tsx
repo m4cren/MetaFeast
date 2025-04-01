@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { OrderType } from "../../../../types/types";
+import { useSocket } from "../../../../contexts/SocketContext";
 interface OrderConfirmationProps {
     orders: OrderType[];
     isTransitionDone: boolean;
+    setPhase: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const OrderConfirmation = ({
     orders,
     isTransitionDone,
+    setPhase,
 }: OrderConfirmationProps) => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
+    const socket = useSocket();
 
     useEffect(() => {
         let accumulated_price = 0;
@@ -19,6 +23,30 @@ const OrderConfirmation = ({
 
         setTotalPrice(accumulated_price);
     }, []);
+
+    const handleConfirm = () => {
+        setPhase(3);
+        localStorage.setItem("current_phase", "phase_3");
+
+        const data = {
+            costumer_name: localStorage.getItem("costumer_name"),
+            table_picked: localStorage.getItem("table-picked"),
+            food_name: orders.map(({ food_name }) => {
+                return food_name;
+            }),
+            quantity: orders.map(({ quantity }) => {
+                return quantity;
+            }),
+            total_price: orders.map(({ price }) => {
+                return price;
+            }),
+            total_calories: orders.map(({ calories }) => {
+                return calories;
+            }),
+        };
+
+        socket?.emit("send-order", data);
+    };
     return (
         <div className="fixed w-full h-screen flex items-center justify-center">
             {isTransitionDone && (
@@ -58,7 +86,10 @@ const OrderConfirmation = ({
                         </div>
                     </div>
                     <div className="h-[15%] flex items-center justify-center flex-col gap-3">
-                        <button className="px-8 shadow-3xl text-shadow-md py-2 text-primary border-1 border-white/10 rounded-2xl bg-gradient-to-b  from-[#1F8400] to-[#075500]">
+                        <button
+                            onClick={handleConfirm}
+                            className="px-8 shadow-3xl text-shadow-md py-2 text-primary border-1 border-white/10 rounded-2xl bg-gradient-to-b  from-[#1F8400] to-[#075500]"
+                        >
                             Confirm
                         </button>
                         <p className="text-[0.75rem] text-white/60 font-extralight text-shadow-md">

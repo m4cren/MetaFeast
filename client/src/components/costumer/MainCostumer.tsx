@@ -14,6 +14,7 @@ import Denied from "./overlays/Denied";
 import useTableTransition from "../../hooks/useTableTransition";
 
 import Order from "./overlays/Order";
+import WaitingOrder from "./overlays/WaitingOrder";
 // import SceneCameraController from "../SceneCameraController";
 
 interface MainCostumerProps {
@@ -51,6 +52,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     const [phase, setPhase] = useState<number>(0);
     const [isName, setIsName] = useState<boolean>(false);
     const [isPicking, setIsPicking] = useState<boolean>(false);
+    const [isOrderConfirmed, setIsOrderConfirmed] = useState<boolean>(false);
     const [table_picked] = useState<string | null>(
         localStorage.getItem("table-picked"),
     );
@@ -100,10 +102,16 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                         }
                     }
                     break;
+                case "phase_3":
+                    setPhase(3);
+                    if (table_picked) {
+                        transitionToTable(table_picked);
+                    }
+                    break;
             }
         }
     }, [isStart]);
-
+    console.log(setPhase, transitionToTable);
     useEffect(() => {
         socket?.on("is-costumer-accepted", (data) => {
             const accepted_costumer_name = data.costumer_name;
@@ -178,8 +186,16 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                     <div
                         className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"}`}
                     >
-                        <Order setCamPos={setCamPos} setCamRot={setCamRot} />
+                        <Order
+                            setCamPos={setCamPos}
+                            setCamRot={setCamRot}
+                            setPhase={setPhase}
+                        />
                     </div>
+                )}
+
+                {phase === 3 && (
+                    <WaitingOrder transitionToTable={transitionToTable} />
                 )}
             </div>
 

@@ -102,6 +102,33 @@ class Products(db.Model):
         
         self.quantity -= 1
 
+
+class Orders(db.Model):
+    __tablename__ = 'orders'
+    id = db.Column(db.Integer, primary_key = True)
+    status = db.Column(db.String(64), nullable =False, default = 'Pending')
+    costumer_name = db.Column(db.String(126), nullable = False)
+    current_costumer_id = db.Column(db.Integer, db.ForeignKey("costumer.id"), nullable=True)
+    current_table = db.Column(db.String(10), nullable = False)
+    food_name = db.Column(db.String(56), nullable = False)
+    quantity = db.Column(db.Integer)
+    total_price = db.Column(db.Integer)
+    total_calories = db.Column(db.Integer)
+
+    def to_dict(self):
+        return{
+            'status': self.status,
+            'costumer_name': self.costumer_name,
+            'current_table': self.current_table,
+            'food_name': self.food_name,
+            'quantity': self.quantity,
+            'total_price': self.total_price,
+            'total_calories': self.total_calories
+        }
+    
+    def serve(self):
+        self.status = 'Served'
+
            
         
     
