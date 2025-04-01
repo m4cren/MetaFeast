@@ -114,6 +114,7 @@ class Orders(db.Model):
     quantity = db.Column(db.Integer)
     total_price = db.Column(db.Integer)
     total_calories = db.Column(db.Integer)
+    order_time = db.Column(db.DateTime, default = datetime.utcnow)
 
     def to_dict(self):
         return{

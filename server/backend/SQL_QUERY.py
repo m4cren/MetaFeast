@@ -421,10 +421,10 @@ def create_products(app):
                 description='Delicate and floral cherry blossom cocktail with a hint of citrus.',
                 details='The Cherry Blossom Cocktail is a beautifully light and fragrant drink inspired by the elegance of sakura (cherry blossoms). It blends floral notes with a touch of sweetness, often featuring ingredients like cherry liqueur, sake or gin, and a splash of citrus juice for brightness. A hint of almond or vanilla adds depth, complementing the delicate cherry essence. Served in a chilled glass and garnished with edible cherry blossoms or a twist of citrus peel, this cocktail is a refreshing and visually stunning choice for springtime or special occasions.'
             )
-            white_wine = Products(
+            red_wine = Products(
                 category="Beverages",
                 type='Champagne',
-                food_name="White Wine",
+                food_name="Red Wine",
                 food_price=399,
                 calories=120,
                 waiting_time=0,
@@ -432,10 +432,10 @@ def create_products(app):
                 description='Bold and rich red wine with deep, complex flavors.',
                 details='Red wine is a timeless and elegant beverage made from fermented dark grapes, offering a wide range of flavors from fruity and jammy to earthy and spicy. Depending on the grape variety and aging process, it can have notes of blackberries, cherries, plums, or even hints of vanilla, oak, and pepper. Popular types include Cabernet Sauvignon, Merlot, Pinot Noir, and Syrah, each with its own unique character. Best enjoyed at a slightly cool temperature, red wine pairs well with red meats, cheeses, and rich pasta dishes, making it a staple in fine dining and casual gatherings alike.'
             )
-            red_wine = Products(
+            white_wine = Products(
                 category="Beverages",
                 type='Champagne',
-                food_name="Red Wine",
+                food_name="White Wine",
                 food_price=399,
                 calories=120,
                 waiting_time=0,

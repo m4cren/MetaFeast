@@ -109,13 +109,30 @@ def send_order(data):
 
 
 
-    
+    #     id = db.Column(db.Integer, primary_key = True)
+    # status = db.Column(db.String(64), nullable =False, default = 'Pending')
+    # costumer_name = db.Column(db.String(126), nullable = False)
+    # current_costumer_id = db.Column(db.Integer, db.ForeignKey("costumer.id"), nullable=True)
+    # current_table = db.Column(db.String(10), nullable = False)
+    # food_name = db.Column(db.String(56), nullable = False)
+    # quantity = db.Column(db.Integer)
+    # total_price = db.Column(db.Integer)
+    # total_calories = db.Column(db.Integer)
 
-    print('------------------------')
     
     for fn, q, tp, tc in zip(food_names, quantity, total_price, total_calories):
 
-        print(f'Food: {fn}, Quantity: {q}, Price: {tp}, Calories: {tc}')
+        new_order = Orders(costumer_name = current_costumer.costumer_name,
+                           current_costumer_id = current_costumer.id,
+                           current_table = table_picked,
+                           food_name = fn,
+                           quantity = q,
+                           total_price = tp,
+                           total_calories = tc
+                           )
+        db.session.add(new_order)
+
+    db.session.commit()
 
 
    
