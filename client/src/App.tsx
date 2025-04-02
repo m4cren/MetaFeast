@@ -21,6 +21,7 @@ const App = () => {
             localStorage.removeItem("current_phase");
             localStorage.removeItem("table-picked");
             localStorage.removeItem("costumer_name");
+            localStorage.removeItem("last-product-placed");
         }
     }, []);
 

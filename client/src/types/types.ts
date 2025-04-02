@@ -97,3 +97,16 @@ export type OrderType = {
     base_price: number;
     base_calories: number;
 };
+
+export type PendingOrderType = {
+    status: string;
+    costumer_name: string;
+    current_table: string;
+    orders: [
+        {
+            food_name: string;
+            price: number;
+            quantity: number;
+        },
+    ];
+};

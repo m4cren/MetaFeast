@@ -52,7 +52,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     const [phase, setPhase] = useState<number>(0);
     const [isName, setIsName] = useState<boolean>(false);
     const [isPicking, setIsPicking] = useState<boolean>(false);
-    const [isOrderConfirmed, setIsOrderConfirmed] = useState<boolean>(false);
+
     const [table_picked] = useState<string | null>(
         localStorage.getItem("table-picked"),
     );

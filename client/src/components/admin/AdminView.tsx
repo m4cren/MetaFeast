@@ -39,8 +39,6 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const socket = useSocket();
     const notif_sound = new Audio("/audios/admin_notif.mp3");
 
-    console.log(notifications);
-
     useEffect(() => {
         socket?.on("notify-admin", (data) => {
             notif_sound.play();

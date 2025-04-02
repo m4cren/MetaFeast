@@ -107,32 +107,21 @@ def send_order(data):
 
     current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
 
-
-
-    #     id = db.Column(db.Integer, primary_key = True)
-    # status = db.Column(db.String(64), nullable =False, default = 'Pending')
-    # costumer_name = db.Column(db.String(126), nullable = False)
-    # current_costumer_id = db.Column(db.Integer, db.ForeignKey("costumer.id"), nullable=True)
-    # current_table = db.Column(db.String(10), nullable = False)
-    # food_name = db.Column(db.String(56), nullable = False)
-    # quantity = db.Column(db.Integer)
-    # total_price = db.Column(db.Integer)
-    # total_calories = db.Column(db.Integer)
-
     
-    for fn, q, tp, tc in zip(food_names, quantity, total_price, total_calories):
-
-        new_order = Orders(costumer_name = current_costumer.costumer_name,
-                           current_costumer_id = current_costumer.id,
-                           current_table = table_picked,
-                           food_name = fn,
-                           quantity = q,
-                           total_price = tp,
-                           total_calories = tc
-                           )
-        db.session.add(new_order)
+    new_order = Orders(costumer_name = current_costumer.costumer_name,
+                       current_costumer_id = current_costumer.id,
+                       current_table = table_picked,
+                       orders = [{'food_name': fn,
+                                  'quantity': q,
+                                  'price': p
+                                  } for fn, q, p in zip(food_names, quantity, total_price)]
+                       )
+    
+    db.session.add(new_order)
 
     db.session.commit()
+
+    emit('push-to-admin', broadcast=True)
 
 
    
