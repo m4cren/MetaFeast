@@ -110,7 +110,9 @@ class Orders(db.Model):
     costumer_name = db.Column(db.String(126), nullable = False)
     current_costumer_id = db.Column(db.Integer, db.ForeignKey("costumer.id"), nullable=True)
     current_table = db.Column(db.String(10), nullable = False)
-    orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '', 'quantity': 0, 'price': 0.0}])
+    orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0}])
+    order_time = db.Column(db.DateTime, default = datetime.utcnow)
+
 
     def to_dict(self):
         return{
@@ -119,8 +121,11 @@ class Orders(db.Model):
             'current_table': self.current_table,
             'orders':[{
                 'food_name': order['food_name'],
+                'food_category': order['food_category'],
+                'img': order['img'],
                 'quantity': order['quantity'],
                 'price': order['price'],
+                
             } for order in self.orders]
         }
     

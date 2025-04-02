@@ -111,7 +111,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
             }
         }
     }, [isStart]);
-    console.log(setPhase, transitionToTable);
+
     useEffect(() => {
         socket?.on("is-costumer-accepted", (data) => {
             const accepted_costumer_name = data.costumer_name;

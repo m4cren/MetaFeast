@@ -34,14 +34,17 @@ const OrderConfirmation = ({
             food_name: orders.map(({ food_name }) => {
                 return food_name;
             }),
+            food_category: orders.map(({ category }) => {
+                return category;
+            }),
             quantity: orders.map(({ quantity }) => {
                 return quantity;
             }),
             total_price: orders.map(({ price }) => {
                 return price;
             }),
-            total_calories: orders.map(({ calories }) => {
-                return calories;
+            img: orders.map(({ img }) => {
+                return img;
             }),
         };
 

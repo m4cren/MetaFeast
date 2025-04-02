@@ -6,16 +6,50 @@ import { SocketProvider } from "./contexts/SocketContext";
 import { TableStatusProvider } from "./contexts/TableStatusContext";
 import AdminLogin from "./components/admin/AdminLogin";
 import QrCode from "./components/QrCode";
+import axios from "axios";
+import useServerAddress from "../useServerAddress";
 
 const MainCostumer = lazy(() => import("./components/costumer/MainCostumer"));
 const MainAdmin = lazy(() => import("./components/admin/MainAdmin"));
 
 const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const { server } = useServerAddress();
     const [token] = useState<string | null>(localStorage.getItem("token"));
     const [isStart, setIsStart] = useState<boolean>(false);
 
+    const fetchCostumerData = async () => {
+        let current_name = {
+            name: localStorage.getItem("costumer_name"),
+        };
+
+        if (!current_name) {
+            current_name = {
+                name: "not_existing__404",
+            };
+        }
+        try {
+            const response = await axios.post(
+                `${server}/costumer/get-name`,
+                current_name,
+            );
+
+            if (response.data.status) {
+                return;
+            } else {
+                localStorage.removeItem("token");
+                localStorage.removeItem("current_phase");
+                localStorage.removeItem("table-picked");
+                localStorage.removeItem("costumer_name");
+                localStorage.removeItem("last-product-placed");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
+        fetchCostumerData();
         if (!token) {
             console.log("There is no token");
             localStorage.removeItem("current_phase");

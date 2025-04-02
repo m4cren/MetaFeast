@@ -102,9 +102,12 @@ export type PendingOrderType = {
     status: string;
     costumer_name: string;
     current_table: string;
+
     orders: [
         {
             food_name: string;
+            food_category: string;
+            img: string;
             price: number;
             quantity: number;
         },

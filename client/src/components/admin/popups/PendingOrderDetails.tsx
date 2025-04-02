@@ -23,12 +23,17 @@ const PendingOrderDetails = ({
             </h1>
             <ul>
                 {pendingOrderDetails?.orders.map(
-                    ({ food_name, price, quantity }, index) => (
+                    (
+                        { food_name, price, quantity, food_category, img },
+                        index,
+                    ) => (
                         <li key={index}>
                             <h1>{food_name}</h1>
+                            <h1></h1>
                             <div>
                                 <p>{quantity}</p>
                                 <p>₱ {price}</p>
+                                <p></p>
                             </div>
                         </li>
                     ),

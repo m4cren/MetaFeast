@@ -26,6 +26,20 @@ def costumer_register():
     access_token = create_access_token(identity=str(new_costumer.id))
     return jsonify({"message": "ok", "status": True, "access_token": access_token})
 
+@costumer.route('/costumer/get-name', methods=['POST'])
+def get_name():
+
+    data = request.json
+
+    name = data.get('name')
+
+    current_costumer = Costumer.query.filter_by(costumer_name = name).first()
+
+    if current_costumer:
+        return jsonify({'msg':'success', 'status':True})
+    else:
+        return jsonify({'msg':'not existing', 'status':False})
+
 
 
 

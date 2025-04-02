@@ -99,9 +99,11 @@ def send_order(data):
     costumer_name = data.get('costumer_name')
     table_picked = data.get('table_picked')
     food_names = data.get('food_name')
+    food_category = data.get('food_category')
+    img = data.get('img')
     quantity = data.get('quantity')
     total_price = data.get('total_price')
-    total_calories = data.get('total_calories')
+
 
   
 
@@ -112,9 +114,11 @@ def send_order(data):
                        current_costumer_id = current_costumer.id,
                        current_table = table_picked,
                        orders = [{'food_name': fn,
-                                  'quantity': q,
+                                  'food_category': cat,
+                                  'img': img
+,                                  'quantity': q,
                                   'price': p
-                                  } for fn, q, p in zip(food_names, quantity, total_price)]
+                                  } for fn, q, p, cat, img in zip(food_names, quantity, total_price, food_category, img)]
                        )
     
     db.session.add(new_order)
