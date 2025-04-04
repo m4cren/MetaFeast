@@ -36,7 +36,7 @@ const ViewControl = ({
             <div className="pointer-events-auto  flex flex-row  items-center space-x-5">
                 <button
                     onClick={floor === 1 ? handleUpFloor : handleDownFloor}
-                    className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
+                    className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-3 bg-gradient-to-t from-[#665237] to-[#9A7E57] [box-shadow:0_0_3px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-[10px] rounded-2xl  hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                 >
                     <Gi3dStairs />
 
@@ -52,21 +52,21 @@ const ViewControl = ({
                     <>
                         <button
                             onClick={handleViewOne}
-                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
+                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-3 bg-gradient-to-t from-[#665237] to-[#9A7E57] [box-shadow:0_0_3px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-[10px] rounded-2xl hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
                             <Cctv />
                             <p className="text-[1.25rem] w-max">View 1</p>
                         </button>
                         <button
                             onClick={handleViewTwo}
-                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
+                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-3 backdrop-blur-[10px] rounded-2xl bg-gradient-to-t from-[#665237] to-[#9A7E57] [box-shadow:0_0_3px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)] hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
                             <Cctv />
                             <p className="text-[1.25rem] w-max">View 2</p>
                         </button>
                         <button
                             onClick={handleDefaultView}
-                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-2 border-1 bg-white/10 backdrop-blur-[10px] rounded-2xl border-white/20 hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
+                            className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-3 bg-gradient-to-t from-[#665237] to-[#9A7E57] [box-shadow:0_0_3px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-[10px] rounded-2xl  hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
                             <Cctv />
                             <p className="text-[1.25rem] w-max">Default</p>

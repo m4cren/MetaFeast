@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { UtensilsCrossed } from "lucide-react";
 
 interface Props {
     isTransitioning: boolean;
@@ -8,23 +9,34 @@ interface Props {
 const NavBar = ({ isTransitioning, setIsTableRequest }: Props) => {
     return (
         <div
-            className={`${isTransitioning && "translate-y-[-8rem]"} h-[10vh] mr-5 pointer-events-auto transition duration-500 bg-white/10 backdrop-blur-2xl rounded-b-2xl flex flex-row justify-between px-10 items-center`}
+            className={`${isTransitioning && "translate-y-[-8rem]"} h-[10vh] mr-5 pointer-events-auto transition duration-500  bg-gradient-to-b from-[#665237] to-[#9A7E57] backdrop-blur-lg rounded-br-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.5)] flex flex-row justify-between px-10 items-center`}
         >
-            <button className="bg-white/90 rounded-2xl text-black/80 flex justify-center p-2 h-[3rem] items-center font-bold text-lg cursor-pointer">
-                Products
-            </button>
-            <button className="bg-white/90 rounded-2xl text-black/80 flex justify-center p-2 h-[3rem] items-center font-bold text-lg cursor-pointer">
-                Pending Payment
-            </button>
-            <button
-                onClick={() => setIsTableRequest(true)}
-                className="bg-white/90 rounded-2xl text-black/80 flex justify-center p-2 h-[3rem] items-center font-bold text-lg cursor-pointer"
-            >
-                Table Request
-            </button>
-            <button className="bg-white/90 rounded-2xl text-black/80 flex justify-center p-2 h-[3rem] items-center font-bold text-lg cursor-pointer">
-                Ratings
-            </button>
+            <div className="text-primary flex gap-2 flex-row items-center text-shadow-md">
+                <p className="drop-shadow-xl">
+                    <UtensilsCrossed size={40} />
+                </p>
+
+                <p className="text-[1.5rem]">Metafeast</p>
+            </div>
+
+            <div className="text-primary flex flex-row items-center justify-around w-[60%] text-shadow-md ">
+                <p
+                    onClick={() => setIsTableRequest(true)}
+                    className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80"
+                >
+                    Table Request
+                </p>
+
+                <p className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80">
+                    Pending Payment
+                </p>
+                <p className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80">
+                    Products
+                </p>
+                <p className="cursor-pointer grow-1 text-center hover:text-white transition duration-100 hover:opacity-80">
+                    Ratings
+                </p>
+            </div>
         </div>
     );
 };

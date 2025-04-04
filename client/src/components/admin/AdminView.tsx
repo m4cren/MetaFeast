@@ -118,7 +118,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                 </div>
 
                 {notifications && !isTableRequest && (
-                    <div className="fixed w-[35rem] h-fit z-10 top-5 left-2 flex gap-2 flex-col-reverse">
+                    <div className="fixed w-[35rem] h-fit z-10 top-27 left-0 flex gap-2 flex-col-reverse">
                         {notifications.map((data, index) => (
                             <RequestNotification
                                 key={index}

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { memo, useEffect, useState } from "react";
-import { FaCheck } from "react-icons/fa";
-import { IoMdListBox } from "react-icons/io";
+import { ScrollText } from "lucide-react";
 import useServerAddress from "../../../../useServerAddress";
 import { PendingOrderType } from "../../../types/types";
 import PendingOrderDetails from "../popups/PendingOrderDetails";
@@ -62,44 +61,37 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
         <div
             className={` pointer-events-auto  flex flex-col space-y-[2vh] ${isTransitioning && "translate-x-[25rem]"} transition duration-500`}
         >
-            <div className="rounded-bl-2xl bg-white/10 backdrop-blur-2xl flex justify-center items-center h-[10vh]">
+            <div className="rounded-bl-2xl  bg-gradient-to-b from-[#665237] to-[#9A7E57] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset] backdrop-blur-2xl flex justify-center items-center h-[10vh]">
                 <h1 className="text-white/90 text-3xl font-bold p-5 text-shadow-md">
                     Pending Orders
                 </h1>
             </div>
 
-            <ul className="bg-white/10 backdrop-blur-2xl rounded-tl-2xl h-[88vh] p-4 space-y-3  overflow-y-auto custom-scrollbar">
+            <ul className="text-primary bg-gradient-to-t from-[#665237] to-[#9A7E57] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-2xl rounded-tl-2xl h-[88vh] p-4 space-y-3  overflow-y-auto custom-scrollbar">
                 {pendingOrders.map(
                     ({ costumer_name, current_table }, index) => (
-                        <>
-                            <li
-                                className="bg-white/85 rounded-2xl p-2 flex flex-row justify-between px-5 transition duration-200 pending-list-shadow  hover:translate-y-[-3px] hover:translate-x-[5px] cursor-pointer "
-                                key={index}
-                            >
-                                <div className="flex flex-col items-start justify-center">
-                                    <h2 className="text-xl font-medium">
-                                        Table {current_table}
-                                    </h2>
-                                    <p>{costumer_name}</p>
-                                </div>
-                                <div className="flex flex-col items-end justify-center">
-                                    <button className="rounded-3xl bg-green-500 text-white w-[5rem] p-2 flex justify-center items-center cursor-pointer hover:scale-107 transition duration-250">
-                                        <FaCheck />
-                                    </button>
-                                    <button
-                                        onClick={() =>
-                                            selectOrderOf(current_table)
-                                        }
-                                        className="flex flex-row items-center cursor-pointer hover:underline"
-                                    >
-                                        <span className="text-xl">
-                                            <IoMdListBox />
-                                        </span>
-                                        View orders
-                                    </button>
-                                </div>
-                            </li>
-                        </>
+                        <li
+                            className="bg-gradient-to-b from-[#ffffff0b] to-[#0000000b] border-1 border-white/20  rounded-2xl p-2 flex flex-row justify-between px-5 transition duration-200 pending-list-shadow  hover:translate-y-[-3px] hover:translate-x-[5px] cursor-pointer "
+                            key={index}
+                        >
+                            <div className="flex flex-col items-start justify-center">
+                                <h2 className="text-xl font-medium text-shadow-md">
+                                    Table {current_table}
+                                </h2>
+                                <p className="text-sm font-extralight text-white/70 text-shadow-md">
+                                    {costumer_name}
+                                </p>
+                            </div>
+                            <div className="flex flex-col items-end justify-center text-shadow-md">
+                                <button
+                                    onClick={() => selectOrderOf(current_table)}
+                                    className="gap-1 font-extralight text-[1rem] flex flex-row items-center cursor-pointer hover:underline"
+                                >
+                                    <ScrollText />
+                                    View orders
+                                </button>
+                            </div>
+                        </li>
                     ),
                 )}
             </ul>
