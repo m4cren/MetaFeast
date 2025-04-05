@@ -91,7 +91,7 @@ const OrderConfirmation = ({
                     <div className="h-[15%] flex items-center justify-center flex-col gap-3">
                         <button
                             onClick={handleConfirm}
-                            className="px-8 shadow-3xl text-shadow-md py-2 text-primary border-1 border-white/10 rounded-2xl bg-gradient-to-b  from-[#1F8400] to-[#075500]"
+                            className="px-8 shadow-3xl text-shadow-md py-2 text-primary border-1 border-white/10 rounded-2xl bg-gradient-to-b  from-lightgreen to-darkgreen"
                         >
                             Confirm
                         </button>

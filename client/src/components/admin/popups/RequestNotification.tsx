@@ -41,7 +41,7 @@ const RequestNotification = ({
 
             <div className="flex flex-row items-center space-x-2 text-primary">
                 <button
-                    className="flex items-center justify-center bg-gradient-to-l translate-x-[12px]  from-[#7A1A00] to-[#AD2500] p-2 w-[3.25rem] h-[2rem] rounded-tl-2xl rounded-bl-2xl cursor-pointer"
+                    className="flex items-center justify-center bg-gradient-to-l translate-x-[12px]  from-darkred to-lightred p-2 w-[3.25rem] h-[2rem] rounded-tl-2xl rounded-bl-2xl cursor-pointer"
                     onClick={() => {
                         setIsClick(true);
                         setIsDenyConfirm(true);
@@ -53,7 +53,7 @@ const RequestNotification = ({
                     <CircleX size={20} />
                 </button>
                 <button
-                    className="flex items-center justify-center z-2 bg-gradient-to-r from-[#075500] to-[#1F8400] w-[4.5rem] h-[2.75rem] rounded-tr-2xl rounded-br-2xl rounded-tl-md rounded-bl-md p-2 rounded-2xl cursor-pointer"
+                    className="flex items-center justify-center z-2 bg-gradient-to-r from-darkgreen to-lightgreen w-[4.5rem] h-[2.75rem] rounded-tr-2xl rounded-br-2xl rounded-tl-md rounded-bl-md p-2 rounded-2xl cursor-pointer"
                     onClick={() => {
                         setIsClick(true);
                         handleAccept(tableID, costumer_name);

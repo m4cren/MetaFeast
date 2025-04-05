@@ -61,13 +61,13 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
         <div
             className={` pointer-events-auto  flex flex-col space-y-[2vh] ${isTransitioning && "translate-x-[25rem]"} transition duration-500`}
         >
-            <div className="rounded-bl-2xl  bg-gradient-to-b from-[#665237] to-[#9A7E57] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset] backdrop-blur-2xl flex justify-center items-center h-[10vh]">
+            <div className="rounded-bl-2xl  bg-gradient-to-b from-darkbrown to-lightbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-2xl flex justify-center items-center h-[10vh]">
                 <h1 className="text-white/90 text-3xl font-bold p-5 text-shadow-md">
                     Pending Orders
                 </h1>
             </div>
 
-            <ul className="text-primary bg-gradient-to-t from-[#665237] to-[#9A7E57] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-2xl rounded-tl-2xl h-[88vh] p-4 space-y-3  overflow-y-auto custom-scrollbar">
+            <ul className="text-primary bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-2xl rounded-tl-2xl h-[88vh] p-4 space-y-3  overflow-y-auto custom-scrollbar">
                 {pendingOrders.map(
                     ({ costumer_name, current_table }, index) => (
                         <li

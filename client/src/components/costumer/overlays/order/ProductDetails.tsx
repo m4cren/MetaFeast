@@ -172,7 +172,7 @@ const ProductDetails = ({
                         : 0}
                 </h1>
 
-                <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-4xl shadow-md  w-[7rem] h-[2.5rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.35rem] to-[#9A7E57] from-[#665237] flex flex-row items-center justify-between px-4 text-primary">
+                <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-4xl shadow-md  w-[7rem] h-[2.5rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.35rem] to-lightbrown from-darkbrown flex flex-row items-center justify-between px-4 text-primary">
                     <button
                         className="text-shadow-md text-4xl min-[390px]:text-5xl active:scale-95 active:opacity-95 transition duration-150"
                         onClick={handleDecreaseQuantity}

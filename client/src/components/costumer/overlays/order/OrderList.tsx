@@ -108,13 +108,13 @@ const OrderList = ({
                         </h1>
                         <div className=" text-primary flex place-items-center justify-around">
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-t rounded-2xl shadow-md to-[#9A7E57] from-[#665237] p-3"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-t rounded-2xl shadow-md to-lightbrown from-darkbrown p-3"
                                 onClick={() => setIsCheckoutConfirmation(false)}
                             >
                                 Continue ordering
                             </button>
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-b p-3 from-[#1F8400] to-[#075500] rounded-2xl"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-b p-3 from-lightgreen to-darkgreen rounded-2xl"
                                 onClick={() => setIsCheckout(true)}
                             >
                                 Let's Go
@@ -151,7 +151,7 @@ const OrderList = ({
                 {orders.map(({ food_name, price, quantity, img }, index) => (
                     <div
                         key={index}
-                        className="px-2 bg-gradient-to-t rounded-3xl shadow-md to-[#9A7E57] from-[#665237] w-[90%] h-30 mx-auto flex flex-row items-center"
+                        className="px-2 bg-gradient-to-t rounded-3xl shadow-md to-lightbrown from-darkbrown w-[90%] h-30 mx-auto flex flex-row items-center"
                     >
                         <div className="w-1/2">
                             <img
@@ -173,7 +173,7 @@ const OrderList = ({
                                         <p className="text-white/65 text-[1rem] text-shadow-md font-extralight">
                                             ₱ {price}
                                         </p>
-                                        <div className="[box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-white  rounded-4xl shadow-md  w-[6rem] h-[2.25rem] min-[390px]:w-[7rem] min-[390px]:h-[2.5rem] flex flex-row items-center justify-between min-[390px]:px-4 px-2 text-[#665237]">
+                                        <div className="[box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-white  rounded-4xl shadow-md  w-[6rem] h-[2.25rem] min-[390px]:w-[7rem] min-[390px]:h-[2.5rem] flex flex-row items-center justify-between min-[390px]:px-4 px-2 text-darkbrown">
                                             <button
                                                 onClick={() =>
                                                     handleDecreaseQuantity(
@@ -238,7 +238,7 @@ const OrderList = ({
                 <div className="flex w-full justify-center items-center">
                     <button
                         onClick={() => setIsCheckoutConfirmation(true)}
-                        className="active:scale-95 transition active:opacity-95 duration-150 bg-gradient-to-b px-20 from-[#1F8400] to-[#075500] p-2 rounded-4xl text-primary text-shadow-md shadow-2xl"
+                        className="active:scale-95 transition active:opacity-95 duration-150 bg-gradient-to-b px-20 from-lightgreen to-darkgreen p-2 rounded-4xl text-primary text-shadow-md shadow-2xl"
                     >
                         Checkout
                     </button>

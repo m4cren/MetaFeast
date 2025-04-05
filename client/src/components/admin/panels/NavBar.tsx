@@ -9,7 +9,7 @@ interface Props {
 const NavBar = ({ isTransitioning, setIsTableRequest }: Props) => {
     return (
         <div
-            className={`${isTransitioning && "translate-y-[-8rem]"} h-[10vh] mr-5 pointer-events-auto transition duration-500  bg-gradient-to-b from-[#665237] to-[#9A7E57] backdrop-blur-lg rounded-br-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.5)] flex flex-row justify-between px-10 items-center`}
+            className={`${isTransitioning && "translate-y-[-8rem]"} h-[10vh] mr-5 pointer-events-auto transition duration-500  bg-gradient-to-b from-darkbrown to-lightbrown backdrop-blur-lg rounded-br-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] flex flex-row justify-between px-10 items-center`}
         >
             <div className="text-primary flex gap-2 flex-row items-center text-shadow-md">
                 <p className="drop-shadow-xl">
