@@ -57,9 +57,18 @@ const OrderList = ({
                 order.food_name === foodName
                     ? {
                           ...order,
-                          quantity: order.quantity + 1,
-                          price: order.price + order.base_price,
-                          calories: order.calories + order.base_calories,
+                          quantity:
+                              order.quantity < order.available_quantity
+                                  ? order.quantity + 1
+                                  : order.quantity,
+                          price:
+                              order.quantity < order.available_quantity
+                                  ? order.price + order.base_price
+                                  : order.price,
+                          calories:
+                              order.quantity < order.available_quantity
+                                  ? order.calories + order.base_calories
+                                  : order.calories,
                       }
                     : order,
             ),

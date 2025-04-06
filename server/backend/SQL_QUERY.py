@@ -25,6 +25,7 @@ def create_products(app):
             croissant = Products(
                 category="Pastries",
                 food_name="Croissants",
+                quantity=38,
                 food_price=199,
                 calories=230,
                 waiting_time=15,
@@ -35,6 +36,7 @@ def create_products(app):
             waffle = Products(
                 category="Pastries",
                 food_name="Waffle",
+                quantity=38,
                 food_price=249,
                 calories=300,
                 waiting_time=10,
@@ -47,6 +49,7 @@ def create_products(app):
             smoke_salmon_bagel = Products(
                 category="Savory Breakfast",
                 food_name="Salmon Bagel",
+                quantity=38,
                 food_price=349,
                 calories=450,
                 waiting_time=10,
@@ -57,6 +60,7 @@ def create_products(app):
             avocado_bacon = Products(
                 category="Savory Breakfast",
                 food_name="Avocado Bacon",
+                quantity=38,
                 food_price=299,
                 calories=400,
                 waiting_time=10,
@@ -67,6 +71,7 @@ def create_products(app):
             sushi = Products(
                 category="Savory Breakfast",
                 food_name="Sushi",
+                quantity=38,
                 food_price=499,
                 calories=300,
                 waiting_time=20,
@@ -78,6 +83,7 @@ def create_products(app):
             greek_yougart = Products(
                 category="Healthy Options",
                 food_name="Greek Yougart",
+                quantity=38,
                 food_price=249,
                 calories=250,
                 waiting_time=5,
@@ -88,6 +94,7 @@ def create_products(app):
             berry_bliss_smoothie = Products(
                 category="Healthy Options",
                 food_name="Berry Bliss",
+                quantity=38,
                 food_price=279,
                 calories=300,
                 waiting_time=5,
@@ -99,6 +106,7 @@ def create_products(app):
             pan_seared_cod = Products(
                 category="Appetizers",
                 food_name="Pan-Seared Cod",
+                quantity=38,
                 food_price=349,
                 calories=250,
                 waiting_time=15,
@@ -109,6 +117,7 @@ def create_products(app):
             kombu_cured_bream = Products(
                 category="Appetizers",
                 food_name="Kombu-Cured Bream",
+                quantity=38,
                 food_price=399,
                 calories=200,
                 waiting_time=15,
@@ -119,6 +128,7 @@ def create_products(app):
             shrimp_and_crispy_vegetable = Products(
                 category="Appetizers",
                 food_name="Shrimp & Vegetable",
+                quantity=38,
                 food_price=299,
                 calories=200,
                 waiting_time=15,
@@ -129,6 +139,7 @@ def create_products(app):
             foie_gras_terrine = Products(
                 category="Appetizers",
                 food_name="Foie Gras Terrine",
+                quantity=38,
                 food_price=599,
                 calories=300,
                 waiting_time=15,
@@ -139,6 +150,7 @@ def create_products(app):
             ceasar_salad = Products(
                 category="Appetizers",
                 food_name="Caesar Salad",
+                quantity=38,
                 food_price=249,
                 calories=150,
                 waiting_time=10,
@@ -149,6 +161,7 @@ def create_products(app):
             chargrilled_octopus = Products(
                 category="Appetizers",
                 food_name="Chargrilled Octopus",
+                quantity=38,
                 food_price=499,
                 calories=200,
                 waiting_time=15,
@@ -161,6 +174,7 @@ def create_products(app):
             sirloin_steak = Products(
                 category="Main Course",
                 food_name="Sirloin Steak",
+                quantity=38,
                 food_price=699,
                 calories=600,
                 waiting_time=20,
@@ -171,6 +185,7 @@ def create_products(app):
             salmon_fillet = Products(
                 category="Main Course",
                 food_name="Salmon Fillet",
+                quantity=38,
                 food_price=599,
                 calories=350,
                 waiting_time=15,
@@ -181,6 +196,7 @@ def create_products(app):
             wagyu_yakiniku = Products(
                 category="Main Course",
                 food_name="Wagyu Yakiniku",
+                quantity=38,
                 food_price=1199,
                 calories=700,
                 waiting_time=20,
@@ -191,6 +207,7 @@ def create_products(app):
             grilled_octopus = Products(
                 category="Main Course",
                 food_name="Grilled Octopus",
+                quantity=38,
                 food_price=699,
                 calories=300,
                 waiting_time=20,
@@ -201,6 +218,7 @@ def create_products(app):
             buttered_poached_king_crab = Products(
                 category="Main Course",
                 food_name="King Crab",
+                quantity=38,
                 food_price=1499,
                 calories=600,
                 waiting_time=25,
@@ -212,6 +230,7 @@ def create_products(app):
             garlic_fennel_roast = Products(
                 category="Main Course",
                 food_name="Roast Lamb",
+                quantity=38,
                 food_price=1199,
                 calories=600,
                 waiting_time=25,
@@ -222,6 +241,7 @@ def create_products(app):
             curried_cod = Products(
                 category="Main Course",
                 food_name="Curried Cod",
+                quantity=38,
                 food_price=599,
                 calories=400,
                 waiting_time=15,
@@ -232,6 +252,7 @@ def create_products(app):
             venison_steak = Products(
                 category="Main Course",
                 food_name="Venison Steak",
+                quantity=38,
                 food_price=999,
                 calories=500,
                 waiting_time=20,
@@ -242,6 +263,7 @@ def create_products(app):
             honey_butter_pork = Products(
                 category="Main Course",
                 food_name="Pork Chop",
+                quantity=38,
                 food_price=599,
                 calories=500,
                 waiting_time=20,
@@ -254,6 +276,7 @@ def create_products(app):
             pistachio_cheesecake = Products(
                 category="Desserts",
                 food_name="Pistachio Cheesecake",
+                quantity=38,
                 food_price=349,
                 calories=400,
                 waiting_time=10,
@@ -264,6 +287,7 @@ def create_products(app):
             miso_caramel_pot = Products(
                 category="Desserts",
                 food_name="Miso Caramel",
+                quantity=38,
                 food_price=299,
                 calories=350,
                 waiting_time=15,
@@ -274,6 +298,7 @@ def create_products(app):
             chocolate_mousse_verrine = Products(
                 category="Desserts",
                 food_name="Chocolate Mousse",
+                quantity=38,
                 food_price=279,
                 calories=300,
                 waiting_time=10,
@@ -284,6 +309,7 @@ def create_products(app):
             raspberry_glazed_cake = Products(
                 category="Desserts",
                 food_name="Raspberry Cake",
+                quantity=38,
                 food_price=349,
                 calories=350,
                 waiting_time=10,
@@ -294,6 +320,7 @@ def create_products(app):
             brown_sugar_pavlovas = Products(
                 category="Desserts",
                 food_name="Brown Pavlovas",
+                quantity=38,
                 food_price=299,
                 calories=300,
                 waiting_time=15,
@@ -304,6 +331,7 @@ def create_products(app):
             salted_caramel_chocolate = Products(
                 category="Desserts",
                 food_name="Salted Caramel",
+                quantity=38,
                 food_price=279,
                 calories=350,
                 waiting_time=10,
@@ -314,6 +342,7 @@ def create_products(app):
             coffee_tiramisu = Products(
                 category="Desserts",
                 food_name="Coffee Tiramisu",
+                quantity=38,
                 food_price=349,
                 calories=400,
                 waiting_time=10,
@@ -326,6 +355,7 @@ def create_products(app):
             veloute_of_white_asparagus = Products(
                 category="Soups & Salads",
                 food_name="White Asparagus",
+                quantity=38,
                 food_price=399,
                 calories=200,
                 waiting_time=15,
@@ -337,6 +367,7 @@ def create_products(app):
                 category="Soups & Salads",
                 food_name="Vichyssoise",
                 food_price=349,
+                quantity=38,
                 calories=200,
                 waiting_time=15,
                 img='vichyssoise.png',
@@ -349,6 +380,7 @@ def create_products(app):
                 food_price=449,
                 calories=300,
                 waiting_time=10,
+                quantity=38,
                 img='prosciutto_wrapped.png',
                 description='Sweet and savory prosciutto-wrapped figs with feta salad.',
                 details='Prosciutto-wrapped figs and feta salad is a delightful blend of sweet, salty, and tangy flavors. Juicy figs are wrapped in thin, savory prosciutto, then either served fresh or lightly grilled for a caramelized touch. They are paired with crisp greens, crumbled feta cheese, and a drizzle of honey or balsamic glaze, enhancing the contrast of flavors. Toasted nuts, such as walnuts or almonds, add a crunchy texture, making this salad a sophisticated yet simple dish perfect for any occasion.'
@@ -362,6 +394,7 @@ def create_products(app):
                 food_price=199,
                 calories=100,
                 waiting_time=5,
+                quantity=38,
                 img='rose_and_lychee.png',
                 description='Floral rose & lychee sparkling lemonade.',
                 details='Rose & lychee sparkling lemonade is a delightful, fragrant beverage that combines the floral elegance of rose with the sweet, tropical essence of lychee. Freshly squeezed lemon juice adds a bright citrusy tang, perfectly balancing the drink’s sweetness. Sparkling water provides a refreshing effervescence, making it light and crisp with every sip. Often garnished with rose petals or lychee fruit, this drink is a beautifully aromatic and refreshing choice for any occasion.'
@@ -369,6 +402,7 @@ def create_products(app):
             sugar_free_mint_iced_matcha = Products(
                 category="Beverages",
                 type='Non-Alcoholic',
+                quantity=38,
                 food_name="Iced Matcha",
                 food_price=249,
                 calories=80,
@@ -380,6 +414,7 @@ def create_products(app):
             honey_fermented = Products(
                 category="Beverages",
                 type='Non-Alcoholic',
+                quantity=38,
                 food_name="Honey-Fermented",
                 food_price=299,
                 calories=150,
@@ -391,6 +426,7 @@ def create_products(app):
             rosemary_paloma = Products(
                 category="Beverages",
                 type='Cocktail',
+                quantity=38,
                 food_name="Rosemary Paloma",
                 food_price=349,
                 calories=150,
@@ -403,6 +439,7 @@ def create_products(app):
                 category="Beverages",
                 type='Cocktail',
                 food_name="Hibiscus",
+                quantity=38,
                 food_price=349,
                 calories=150,
                 waiting_time=5,
@@ -414,6 +451,7 @@ def create_products(app):
                 category="Beverages",
                 type='Cocktail',
                 food_name="Cherry Blossom",
+                quantity=38,
                 food_price=349,
                 calories=150,
                 waiting_time=5,
@@ -426,6 +464,7 @@ def create_products(app):
                 type='Champagne',
                 food_name="Red Wine",
                 food_price=399,
+                quantity=38,
                 calories=120,
                 waiting_time=0,
                 img='red_wine.png',
@@ -436,6 +475,7 @@ def create_products(app):
                 category="Beverages",
                 type='Champagne',
                 food_name="White Wine",
+                quantity=38,
                 food_price=399,
                 calories=120,
                 waiting_time=0,

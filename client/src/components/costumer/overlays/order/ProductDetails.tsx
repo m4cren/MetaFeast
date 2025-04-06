@@ -49,6 +49,7 @@ const ProductDetails = ({
         waiting_time: 0,
         base_price: 0,
         base_calories: 0,
+        available_quantity: 0,
     });
 
     const handlePlaceOrder = () => {
@@ -81,7 +82,10 @@ const ProductDetails = ({
     };
 
     const handleIncreaseQuantity = () => {
-        setOrderQuantity((prev) => prev + 1);
+        if (selectedProduct) {
+            if (orderQuantity < selectedProduct?.quantity)
+                setOrderQuantity((prev) => prev + 1);
+        }
     };
 
     useEffect(() => {
@@ -106,6 +110,9 @@ const ProductDetails = ({
                 : 0,
             base_calories: selectedProduct?.calories
                 ? selectedProduct.calories
+                : 0,
+            available_quantity: selectedProduct?.quantity
+                ? selectedProduct.quantity
                 : 0,
         });
     }, [orderQuantity]);
@@ -199,10 +206,11 @@ const ProductDetails = ({
                     {" "}
                     <h1 className="text-primary text-lg">Details</h1>
                     <p className="text-white/40 text-[0.8rem]">
-                        stock:{" "}
                         {selectedProduct?.quantity
-                            ? selectedProduct.quantity
-                            : 0}
+                            ? `stock: ${selectedProduct.quantity}`
+                            : selectedProduct?.quantity === 0
+                              ? "Unavailable"
+                              : null}
                     </p>
                 </div>
 

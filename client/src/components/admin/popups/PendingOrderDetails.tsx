@@ -45,7 +45,6 @@ const PendingOrderDetails = ({
         }
     };
     console.log(adjust);
-
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex justify-center items-center pointer-events-auto">
             <div className="w-[40vw] h-[55vh] relative">
@@ -141,7 +140,7 @@ const PendingOrderDetails = ({
                             </p>
                         </div>
                         <div
-                            className={`${layout.main} flex flex-row px-5 max-w-fit items-center ${isClose && "text-close-animation"} text-drop-animation `}
+                            className={`${layout.main} flex flex-row  relative px-5 max-w-fit items-center ${isClose && "text-close-animation"} text-drop-animation `}
                         >
                             {pendingOrderDetails?.orders.map(
                                 ({ img }, index, orders) => (

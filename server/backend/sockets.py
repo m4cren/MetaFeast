@@ -2,7 +2,7 @@ from .extensions import db, socketio
 from .db_config import save_data, delete_all_data, delete_data
 from sqlalchemy import desc
 from flask_socketio import SocketIO, emit
-from .db_models import Table, TableRequest, Costumer, Orders
+from .db_models import Table, TableRequest, Costumer, Orders, Products
 
 
 @socketio.on("connect")
@@ -98,6 +98,9 @@ def send_order(data):
     total_price = data.get('total_price')
 
 
+    for order in range(len(food_names)):
+        product_to_update = Products.query.filter_by(food_name = food_names[order]).first()
+        product_to_update.quantity -= quantity[order]
     
 
     current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()

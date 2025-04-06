@@ -90,6 +90,7 @@ export type OrderType = {
     category: string;
     img: string;
     food_name: string;
+    available_quantity: number;
     quantity: number;
     price: number;
     calories: number;
