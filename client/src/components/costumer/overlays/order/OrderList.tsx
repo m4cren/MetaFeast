@@ -9,6 +9,8 @@ interface OrderListProps {
     orders: OrderType[];
     setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>;
     setIsCheckout: React.Dispatch<React.SetStateAction<boolean>>;
+    setTotalWaitingTime: React.Dispatch<React.SetStateAction<number>>;
+    totalWaitingTime: number;
 }
 const OrderList = ({
     setSelectedCuisine,
@@ -16,10 +18,12 @@ const OrderList = ({
     orders,
     setOrders,
     setIsCheckout,
+    setTotalWaitingTime,
+    totalWaitingTime,
 }: OrderListProps) => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [totalEnergy, setTotalEnergy] = useState<number>(0);
-    const [totalWaitingTime, setTotalWaitingTime] = useState<number>(0);
+
     const [isTrash, setTrash] = useState<boolean>(false);
     const [isCheckoutConfirmation, setIsCheckoutConfirmation] =
         useState<boolean>(false);

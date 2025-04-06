@@ -5,16 +5,18 @@ interface OrderConfirmationProps {
     orders: OrderType[];
     isTransitionDone: boolean;
     setPhase: React.Dispatch<React.SetStateAction<number>>;
+    totalWaitingTime: number;
 }
 
 const OrderConfirmation = ({
     orders,
     isTransitionDone,
     setPhase,
+    totalWaitingTime,
 }: OrderConfirmationProps) => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const socket = useSocket();
-
+    console.log(totalWaitingTime);
     useEffect(() => {
         let accumulated_price = 0;
         orders.forEach(({ price }) => {
@@ -31,6 +33,7 @@ const OrderConfirmation = ({
         const data = {
             costumer_name: localStorage.getItem("costumer_name"),
             table_picked: localStorage.getItem("table-picked"),
+            total_waiting_time: totalWaitingTime,
             food_name: orders.map(({ food_name }) => {
                 return food_name;
             }),

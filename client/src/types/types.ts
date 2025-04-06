@@ -100,6 +100,8 @@ export type OrderType = {
 
 export type PendingOrderType = {
     status: string;
+    order_time: string;
+    total_waiting_time: string;
     costumer_name: string;
     current_table: string;
 

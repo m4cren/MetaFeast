@@ -90,6 +90,7 @@ def send_order(data):
 
     costumer_name = data.get('costumer_name')
     table_picked = data.get('table_picked')
+    total_waiting_time = data.get('total_waiting_time')
     food_names = data.get('food_name')
     food_category = data.get('food_category')
     img = data.get('img')
@@ -97,12 +98,13 @@ def send_order(data):
     total_price = data.get('total_price')
 
 
-  
+    
 
     current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
 
     
     new_order = Orders(costumer_name = current_costumer.costumer_name,
+                       total_waiting_time = total_waiting_time,
                        current_costumer_id = current_costumer.id,
                        current_table = table_picked,
                        orders = [{'food_name': fn,

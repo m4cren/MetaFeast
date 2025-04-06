@@ -104,6 +104,19 @@ body {
     animation: moveToBasket 1.5s ease-in-out;
 }
 
+.left-scroll-animation {
+    animation: scrollDropLeft 0.5s ease-in-out;
+}
+.right-scroll-animation {
+    animation: scrollDropRight 0.5s ease-in-out;
+}
+.left-scroll-close-animation {
+    animation: scrollDropLeftClose 0.5s ease-in-out;
+}
+.right-scroll-close-animation {
+    animation: scrollDropRightClose 0.5s ease-in-out;
+}
+
 .category-btn {
     box-shadow:
         -2px 2px 3px rgba(255, 255, 255, 0.2),

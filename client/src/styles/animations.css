@@ -109,3 +109,37 @@
         opacity: 0;
     }
 }
+@keyframes scrollDropLeft {
+    from {
+        height: 0;
+    }
+    to {
+        height: 33rem;
+    }
+}
+
+@keyframes scrollDropRight {
+    from {
+        height: 0;
+    }
+    to {
+        height: 25rem;
+    }
+}
+@keyframes scrollDropLeftClose {
+    from {
+        max-height: 33rem;
+    }
+    to {
+        max-height: 0rem;
+    }
+}
+
+@keyframes scrollDropRightClose {
+    from {
+        max-height: 25rem;
+    }
+    to {
+        max-height: 0rem;
+    }
+}

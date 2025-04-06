@@ -1,5 +1,6 @@
 from .extensions import db
 from datetime import datetime
+from .db_config import time_ago
 
 
 class AdminCredentials(db.Model):
@@ -121,6 +122,7 @@ class Orders(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     status = db.Column(db.String(64), nullable =False, default = 'Pending')
     costumer_name = db.Column(db.String(126), nullable = False)
+    total_waiting_time = db.Column(db.String(64), nullable = False)
     current_costumer_id = db.Column(db.Integer, db.ForeignKey("costumer.id"), nullable=True)
     current_table = db.Column(db.String(10), nullable = False)
     orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0}])
@@ -131,6 +133,8 @@ class Orders(db.Model):
         return{
             'status': self.status,
             'costumer_name': self.costumer_name,
+            'total_waiting_time': self.total_waiting_time,
+            'order_time': time_ago(self.order_time),
             'current_table': self.current_table,
             'orders':[{
                 'food_name': order['food_name'],

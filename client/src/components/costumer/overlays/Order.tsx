@@ -27,7 +27,7 @@ const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
 
     const [isCheckout, setIsCheckout] = useState<boolean>(false);
     const [isTransitionDone, setIsTransitionDone] = useState<boolean>(false);
-
+    const [totalWaitingTime, setTotalWaitingTime] = useState<number>(0);
     const fetchProductDetails = async () => {
         const headers = {
             "Content-Type": "json/application",
@@ -129,7 +129,7 @@ const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
         }
         return;
     }, [isCheckout]);
-    console.log(setPhase);
+
     return (
         <>
             {isCheckout ? (
@@ -137,6 +137,7 @@ const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
                     orders={mergedOrders}
                     isTransitionDone={isTransitionDone}
                     setPhase={setPhase}
+                    totalWaitingTime={totalWaitingTime}
                 />
             ) : isBasket ? (
                 <OrderList
@@ -144,6 +145,8 @@ const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
                     setIsBasket={setIsBasket}
                     setOrders={setOrders}
                     orders={mergedOrders}
+                    totalWaitingTime={totalWaitingTime}
+                    setTotalWaitingTime={setTotalWaitingTime}
                     setIsCheckout={setIsCheckout}
                 />
             ) : selectedCuisine.length !== 0 ? (
