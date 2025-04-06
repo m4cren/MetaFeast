@@ -13,11 +13,24 @@ class Costumer(db.Model):
     __tablename__ = "costumer"
     id = db.Column(db.Integer, primary_key=True)
     costumer_name = db.Column(db.String(126), nullable=False)
-
-    current_table = db.relationship("Table", backref="costumer")
+    status = db.Column(db.String(64), nullable = False, default = 'Picking')
+    current_table = db.Column(db.String(64), nullable = True, default = 'Undecided')
+    date_time = db.Column(db.DateTime, default = datetime.utcnow)
 
     def to_dict(self):
-        return {"costumer_id": self.id, "costumer_name": self.costumer_name}
+        return {"costumer_id": self.id,
+                 "costumer_name": self.costumer_name,
+                 'current_table': self.current_table
+                 
+                 }
+    def update_to_ordering(self):
+        self.status = 'Ordering'
+    
+    def update_to_eating(self):
+        self.status = 'Eating'
+
+    def update_to_billing(self):
+        self.status = 'Billing'
 
 
 class Table(db.Model):

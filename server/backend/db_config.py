@@ -71,12 +71,17 @@ def time_ago(time):
     delta = now - time
 
     if delta.days > 0:
+        if delta.days == 1:
+            return f"{delta.days} day ago"
         return f"{delta.days} days ago"
     elif delta.seconds >= 3600:
         if delta.seconds // 3600 == 1:
             return f"{delta.seconds // 3600} hour ago"
         return f"{delta.seconds // 3600} hours ago"
     elif delta.seconds >= 60:
+
+        if delta.seconds // 60 == 1:
+            return f"{delta.seconds // 60} minute ago"
         return f"{delta.seconds // 60} minutes ago"
     else:
         return f"{delta.seconds} seconds ago"

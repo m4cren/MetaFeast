@@ -37,6 +37,8 @@ def accept_request(data):
     selected_table = data.get('table_selected')
 
     current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
+    current_costumer.current_table = selected_table
+    current_costumer.update_to_ordering()
     costumerID = current_costumer.id
 
     print(f'{costumer_name} is accepted to seat on table {selected_table}')
@@ -81,17 +83,7 @@ def accept_request(data):
     emit('is-costumer-denied', response, broadcast=True)
 
 
-# export type OrderType = {
-#     category: string;
-#     img: string;
-#     food_name: string;
-#     quantity: number;
-#     price: number;
-#     calories: number;
-#     waiting_time: number;
-#     base_price: number;
-#     base_calories: number;
-# };
+
 
 @socketio.on('send-order')
 def send_order(data):

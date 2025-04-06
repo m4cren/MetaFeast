@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..extensions import db
-from ..db_models import AdminCredentials, TableRequest
+from ..db_models import AdminCredentials, TableRequest, Costumer
 from sqlalchemy import desc
 from ..db_config import time_ago
 
@@ -40,5 +40,27 @@ def admin_table_request():
 
 
      return jsonify({'status': True, 'response': response})
+
+
+@admin.route('/admin/current-costumers', methods=['GET'])
+def get_current_costumers():
+
+     
+
+     try:
+          current_costumers = Costumer.query.filter(Costumer.current_table != 'Undecided').order_by(desc(Costumer.id)).all()
+          print(current_costumers)
+          response = [{
+               'costumer_name': costumer.costumer_name,
+               'current_table': costumer.current_table,
+               'status': costumer.status,
+               'time': time_ago(costumer.date_time)
+          }for costumer in current_costumers]
+
+          return jsonify({'msg': 'Success', 'current_costumers': response})
+     
+     except:
+          print('error')
+          return jsonify({'msg': 'error'})
 
      

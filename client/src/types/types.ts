@@ -113,3 +113,10 @@ export type PendingOrderType = {
         },
     ];
 };
+
+export type CurrentCostumerType = {
+    status: "Ordering" | "Eating" | "Billing";
+    costumer_name: string;
+    current_table: string;
+    time: string;
+};

@@ -3,7 +3,7 @@ import { memo, useEffect, useState } from "react";
 import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
 import { Gi3dStairs } from "react-icons/gi";
-import { FaClock } from "react-icons/fa";
+
 import useSelectTableControl from "../../../hooks/useSelectTableControl";
 
 import layout from "../../../styles/layouts/select_table.module.css";
