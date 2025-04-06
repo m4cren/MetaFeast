@@ -116,6 +116,12 @@ body {
 .right-scroll-close-animation {
     animation: scrollDropRightClose 0.5s ease-in-out;
 }
+.text-drop-animation {
+    animation: textStartDrop 0.3s ease-in-out 0.35s forwards;
+}
+.text-close-animation {
+    animation: textClose 0.3s ease-in-out forwards;
+}
 
 .category-btn {
     box-shadow:

@@ -1,0 +1,29 @@
+.right-aside {
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+    grid-template-rows: 25% 50% 10% 15%;
+    grid-template-areas:
+        "     head    head    head    "
+        "     left-btn    main    right-btn    "
+        "     left-btn    quantity-container    right-btn    "
+        "     available-container available-container available-container    ";
+}
+
+.head {
+    grid-area: head;
+}
+.main {
+    grid-area: main;
+}
+.left-btn {
+    grid-area: left-btn;
+}
+.right-btn {
+    grid-area: right-btn;
+}
+.quantity-container {
+    grid-area: quantity-container;
+}
+.available-container {
+    grid-area: available-container;
+}
