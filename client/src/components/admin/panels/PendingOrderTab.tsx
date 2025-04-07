@@ -50,7 +50,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
 
     useEffect(() => {
         getPendingOrders();
-    }, []);
+    }, [isToggle]);
 
     useEffect(() => {
         socket?.on("push-to-admin", (_) => {
@@ -101,6 +101,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
                     <PendingOrderDetails
                         pendingOrderDetails={selectedPendingOrder}
                         setIsToggle={setIsToggle}
+                        getPendingOrders={getPendingOrders}
                     />
                 </div>
             )}

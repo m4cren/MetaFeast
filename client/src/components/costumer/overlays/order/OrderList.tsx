@@ -114,20 +114,20 @@ const OrderList = ({
             className={`${layout.main}  w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative`}
         >
             {isCheckoutConfirmation && (
-                <div className="fixed w-full h-screen bg-black/40 z-20 flex items-center justify-center">
-                    <div className="pop-up-animation flex flex-col justify-center gap-4 w-[85vw] h-[10rem] bg-white/20 backdrop-blur-[20px] [-webkit-backdrop-blur:20px] rounded-2xl [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset]">
-                        <h1 className="text-center text-primary font-medium text-3xl text-shadow-md">
-                            Go to counter?
+                <div className="fixed w-full h-screen bg-black/40  z-20 flex items-center justify-center">
+                    <div className="pop-up-animation flex flex-col justify-center gap-4 w-[85vw] h-[10rem] bg-gradient-to-b from-lightbrown to-darkbrown rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)]">
+                        <h1 className="text-center text-primary font-normal text-3xl text-shadow-md">
+                            Proceed to counter?
                         </h1>
-                        <div className=" text-primary flex place-items-center justify-around">
+                        <div className=" text-primary flex place-items-center justify-center gap-4">
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-t rounded-2xl shadow-md to-lightbrown from-darkbrown p-3"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light border-1 border-white/20 rounded-xl shadow-md p-3"
                                 onClick={() => setIsCheckoutConfirmation(false)}
                             >
                                 Continue ordering
                             </button>
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-b p-3 from-lightgreen to-darkgreen rounded-2xl"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-b p-3 from-lightgreen to-darkgreen rounded-xl"
                                 onClick={() => setIsCheckout(true)}
                             >
                                 Let's Go

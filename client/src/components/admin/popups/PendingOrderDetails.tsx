@@ -9,21 +9,35 @@ import {
 } from "lucide-react";
 import { Check } from "lucide-react";
 import layout from "../../../styles/layouts/pending_orders.module.css";
+import { useSocket } from "../../../contexts/SocketContext";
+import { useTableStatus } from "../../../contexts/TableStatusContext";
 
 interface PendingOrderDetailProps {
     pendingOrderDetails?: PendingOrderType | null;
+    getPendingOrders: () => void;
     setIsToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PendingOrderDetails = ({
     pendingOrderDetails,
     setIsToggle,
+    getPendingOrders,
 }: PendingOrderDetailProps) => {
     const [isClose, setIsClose] = useState<boolean>(false);
     const [adjust, setAdjust] = useState<number>(0);
     const [maxLenght, setMaxLength] = useState<number>(0);
-
+    const socket = useSocket();
     const [selected, setSelected] = useState<number>(0);
+    const { getTableStatus } = useTableStatus() ?? {
+        getTableStatus: () => {},
+    };
+
+    const refetchData = () => {
+        setTimeout(() => {
+            getTableStatus();
+            getPendingOrders();
+        }, 850);
+    };
 
     useEffect(() => {
         if (pendingOrderDetails) {
@@ -33,7 +47,7 @@ const PendingOrderDetails = ({
     const handleNext = () => {
         if (selected < maxLenght) {
             setSelected((prev) => prev + 1);
-            setAdjust((prev) => prev - 100);
+            setAdjust((prev) => prev - 80);
         }
     };
     const handlePrev = () => {
@@ -41,10 +55,18 @@ const PendingOrderDetails = ({
             setSelected(0);
         } else {
             setSelected((prev) => prev - 1);
-            setAdjust((prev) => prev + 100);
+            setAdjust((prev) => prev + 80);
         }
     };
-    console.log(adjust);
+    const handleDeliverOrder = (costumer_name?: string, table_id?: string) => {
+        if (!costumer_name && !table_id) return;
+        const data_to_send = {
+            costumer_name: costumer_name,
+            table_id: table_id,
+        };
+
+        socket?.emit("deliver-order", data_to_send);
+    };
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex justify-center items-center pointer-events-auto">
             <div className="w-[40vw] h-[55vh] relative">
@@ -61,7 +83,7 @@ const PendingOrderDetails = ({
                         </div>
                         <div className="flex flex-row items-center text-primary gap-2 opacity-65">
                             <History size={15} />
-                            <p className="text-[0.8rem] font-extralight ">
+                            <p className={` text-[0.8rem] font-extralight `}>
                                 {pendingOrderDetails?.order_time}
                             </p>
                         </div>
@@ -114,7 +136,17 @@ const PendingOrderDetails = ({
                                 </h1>
                             </div>
                             <div className="w-[25%] drop-shadow-sm ">
-                                <button className="text-primary cursor-pointer flex items-center justify-center rounded-tr-2xl w-full h-10 rounded-br-2xl bg-gradient-to-b from-darkgreen to-lightgreen">
+                                <button
+                                    onClick={() => {
+                                        setIsToggle(false);
+                                        refetchData();
+                                        handleDeliverOrder(
+                                            pendingOrderDetails?.costumer_name,
+                                            pendingOrderDetails?.current_table,
+                                        );
+                                    }}
+                                    className="text-primary cursor-pointer flex items-center justify-center rounded-tr-2xl w-full h-10 rounded-br-2xl bg-gradient-to-b from-darkgreen to-lightgreen"
+                                >
                                     <Check size={30} />
                                 </button>
                             </div>
@@ -140,13 +172,16 @@ const PendingOrderDetails = ({
                             </p>
                         </div>
                         <div
-                            className={`${layout.main} flex flex-row  relative px-5 max-w-fit items-center ${isClose && "text-close-animation"} text-drop-animation `}
+                            className={`${layout.main} flex flex-row px-5 max-w-fit  items-center ${isClose && "text-close-animation"} text-drop-animation `}
                         >
                             {pendingOrderDetails?.orders.map(
                                 ({ img }, index, orders) => (
                                     <img
                                         key={index}
-                                        className={`${orders[selected].img !== img ? "scale-50 opacity-30 blur-[2px]" : "scale-125"} transition duration-150 drop-shadow-md translate-x-[${adjust}%]`}
+                                        style={{
+                                            transform: `translateX(${adjust}%)`,
+                                        }}
+                                        className={`${orders[selected].img !== img ? "scale-50 opacity-20 blur-[2.5px]" : "scale-125"} transition duration-150 drop-shadow-md`}
                                         src={`/images/products/${img}`}
                                     />
                                 ),

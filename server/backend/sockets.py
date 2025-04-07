@@ -125,6 +125,26 @@ def send_order(data):
     emit('push-to-admin', broadcast=True)
 
 
+@socketio.on('deliver-order')
+def deliver_order(data):
+    costumer_name = data.get('costumer_name')
+    table_id = data.get('table_id')
+
+    response = {
+        'costumer_name': costumer_name,
+        'table_id': table_id
+    }
+
+    costumer_to_update = Costumer.query.filter_by(costumer_name = costumer_name).first()
+    costumer_to_update.update_to_eating()
+    table_to_update = Table.query.filter_by(table_name = table_id).first()
+    table_to_update.update_to_eating()
+
+    order_finished = Orders.query.filter(Orders.costumer_name == costumer_name and Orders.current_table == table_id).first()
+    delete_data(order_finished)
+    db.session.commit()
+
+    emit('accept-order', response, broadcast=True )
    
 
         

@@ -6,6 +6,7 @@ import {
     ShoppingBasket,
     Drumstick,
     HandCoins,
+    ListFilter,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -39,6 +40,8 @@ const TableRequestPopup = ({
     const [currentCostumers, setCurrentCostumers] = useState<
         CurrentCostumerType[]
     >([]);
+    const [isFilter, setIsFilter] = useState<boolean>(false);
+    const [filter, setFilter] = useState<string>("all");
     const { server } = useServerAddress();
     const { getTableStatus } = useTableStatus() ?? {
         getTableStatus: () => {},
@@ -54,6 +57,17 @@ const TableRequestPopup = ({
         fetchCurrentCostumers();
         fetchRequestMessage();
     }, []);
+
+    const filterCurrentCostumer = (filter: string) => {
+        if (filter === "all") return currentCostumers;
+
+        const filteredCurrentCostumer = currentCostumers.filter(
+            ({ current_table, status }) =>
+                current_table.includes(filter, 0) || status === filter,
+        );
+        return filteredCurrentCostumer;
+    };
+
     const fetchRequestMessage = async () => {
         try {
             const headers = {
@@ -96,13 +110,87 @@ const TableRequestPopup = ({
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex justify-center items-center pointer-events-auto">
             <div className="pop-up-animation px-8 py-2 w-[28rem] translate-x-[1rem] h-[55vh] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]">
-                <div className="w-full border-b-3 border-white/20 p-4">
-                    <h1 className="text-primary text-[1.3rem] text-center text-shadow-md">
+                <div className="w-full border-b-3 border-white/20 p-4 flex flex-row items-center justify-center relative">
+                    <h1 className="text-primary text-[1.3rem] text-center text-shadow-md ">
                         Current Costumers
                     </h1>
+                    <i className="text-primary cursor-pointer absolute left-2">
+                        {" "}
+                        <span onClick={() => setIsFilter(!isFilter)}>
+                            <ListFilter />
+                        </span>
+                        {isFilter && (
+                            <div className="absolute text-shadow-md flex flex-col gap-1 right-[100%] top-[100%] w-40 h-fit px-4 pt-1 pb-4 bg-gradient-to-t [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] from-darkbrown to-lightbrown rounded-b-2xl rounded-tl-2xl z-10">
+                                <div className="border-b-2 border-white/20">
+                                    <h1 className="text-center text-[1.15rem] not-italic font-medium py-1">
+                                        Filter
+                                    </h1>
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                    <p
+                                        onClick={() => setFilter("all")}
+                                        className={`${filter === "all" && "underline"} font-extralight text-[1rem]  not-italic hover:underline`}
+                                    >
+                                        All
+                                    </p>
+
+                                    <details>
+                                        <summary className="font-light not-italic text-[1rem]">
+                                            Floor
+                                        </summary>
+                                        <ul className="pl-4 font-extralight text-[0.9rem] not-italic text-white/75">
+                                            <li
+                                                onClick={() => setFilter("A")}
+                                                className={`${filter === "A" && "underline"} hover:underline`}
+                                            >
+                                                1st Floor
+                                            </li>
+                                            <li
+                                                onClick={() => setFilter("B")}
+                                                className={`${filter === "B" && "underline"} hover:underline`}
+                                            >
+                                                2nd Floor
+                                            </li>
+                                        </ul>
+                                    </details>
+                                    <details>
+                                        <summary className="font-light not-italic text-[1rem]">
+                                            Status
+                                        </summary>
+                                        <ul className="pl-4 font-extralight text-[0.9rem] not-italic text-white/75">
+                                            <li
+                                                onClick={() =>
+                                                    setFilter("Ordering")
+                                                }
+                                                className={`${filter === "Ordering" && "underline"} hover:underline`}
+                                            >
+                                                Ordering
+                                            </li>
+                                            <li
+                                                onClick={() =>
+                                                    setFilter("Eating")
+                                                }
+                                                className={`${filter === "Eating" && "underline"} hover:underline`}
+                                            >
+                                                Eating
+                                            </li>
+                                            <li
+                                                onClick={() =>
+                                                    setFilter("Billing")
+                                                }
+                                                className={`${filter === "Billing" && "underline"} hover:underline`}
+                                            >
+                                                Billing
+                                            </li>
+                                        </ul>
+                                    </details>
+                                </div>
+                            </div>
+                        )}
+                    </i>
                 </div>
                 <ul className="py-8 flex flex-col gap-2 h-[25rem] overflow-y-scroll custom-scrollbar px-3">
-                    {currentCostumers.map(
+                    {filterCurrentCostumer(filter).map(
                         (
                             { costumer_name, current_table, status, time },
                             index,
@@ -152,6 +240,7 @@ const TableRequestPopup = ({
                         <LogOut size={25} />
                     </button>
                 </div>
+
                 <ul className="py-8 flex flex-col gap-2 h-[33rem] overflow-y-scroll custom-scrollbar px-3">
                     {requestMessage.map(
                         (

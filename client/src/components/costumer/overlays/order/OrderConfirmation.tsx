@@ -16,7 +16,7 @@ const OrderConfirmation = ({
 }: OrderConfirmationProps) => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const socket = useSocket();
-    console.log(totalWaitingTime);
+
     useEffect(() => {
         let accumulated_price = 0;
         orders.forEach(({ price }) => {

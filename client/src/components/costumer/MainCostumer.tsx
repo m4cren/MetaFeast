@@ -15,6 +15,7 @@ import useTableTransition from "../../hooks/useTableTransition";
 
 import Order from "./overlays/Order";
 import WaitingOrder from "./overlays/WaitingOrder";
+import Eating from "./overlays/Eating";
 // import SceneCameraController from "../SceneCameraController";
 
 interface MainCostumerProps {
@@ -108,6 +109,11 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                         transitionToTable(table_picked);
                     }
                     break;
+                case "phase_4":
+                    setPhase(4);
+                    if (table_picked) {
+                        transitionToTable(table_picked);
+                    }
             }
         }
     }, [isStart]);
@@ -133,6 +139,18 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                 localStorage.removeItem("token");
                 setIsPicking(false);
                 setIsDenied(true);
+            }
+        });
+
+        socket?.on("accept-order", (data) => {
+            if (
+                data.costumer_name === localStorage.getItem("costumer_name") &&
+                data.table_id === localStorage.getItem("table-picked")
+            ) {
+                setPhase(4);
+                localStorage.setItem("current_phase", "phase_4");
+            } else {
+                return;
             }
         });
 
@@ -195,8 +213,14 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                 )}
 
                 {phase === 3 && (
-                    <WaitingOrder transitionToTable={transitionToTable} />
+                    <WaitingOrder
+                        transitionToTable={transitionToTable}
+                        setCamPos={setCamPos}
+                        setCamRot={setCamRot}
+                        setPhase={setPhase}
+                    />
                 )}
+                {phase === 4 && <Eating />}
             </div>
 
             {/* <div className="fixed bottom-4">
