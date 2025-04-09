@@ -6,7 +6,7 @@ An interactive three dimensional user interface for dining restaurant
 ## Technology Stacks
 
 - **Frontend**: ReactJs, Typescript, Tailwindcss, React Three Fiber (ThreeJs)
-- **Backend**: Python, Flask (Python Web Framework), Socket.io (Websockets), JWT (Token-based Authentication), Gcash API, MySQL (Database)
+- **Backend**: Python, Flask (Python Web Framework), Socket.io (Websockets), JWT (Token-based Authentication), MySQL (Database)
 - **Others**: Figma, Sketch Up, Blender, Adobe Photoshop
 
 
@@ -14,15 +14,15 @@ An interactive three dimensional user interface for dining restaurant
 ---- ACCOMPLISH ----
 
 1. Start repository --done
-2. Landing Page
-3. Set up scene and tables Costumer View
-4. Admin View
-5. Interactive table and table status including table confirmation
-6. Costumer request to change table while the order is not delivered
-7. Order Menu
-8. Recieve Order from costumers to the admin
-9. Order deliver to the costumer
-10. More table updates status like 'pending orders', 'order delivered', 'done eating'
+2. Landing Page --done
+3. Set up scene and tables Costumer View --done
+4. Admin View --done
+5. Interactive table and table status including table confirmation --done
+6. Costumer request to change table while the order is not delivered --excluded
+7. Order Menu --done
+8. Recieve Order from costumers to the admin --done
+9. Order deliver to the costumer --done
+10. More table updates status like 'pending orders', 'order delivered', 'done eating' --done
 11. Costumer payment logic
 12. Admin confirming the payment
 13. Costumer can make a review
@@ -32,12 +32,12 @@ An interactive three dimensional user interface for dining restaurant
 
     ---- Must Have ----
 
-**Scene and Tables 3D Models**
+**Scene and Tables 3D Models** --done
 
-**Products**
+**Products** --done
 
 **Reciepts Creation**
 
-**Saving costumer's stage when they accidentally exit the browser**
+**Saving costumer's stage when they accidentally exit the browser** --done
 
 ---------------------------------------- enjoy coding :> --------------------------------------------
