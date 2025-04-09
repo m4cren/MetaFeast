@@ -56,14 +56,14 @@ const OrderConfirmation = ({
     return (
         <div className="fixed w-full h-screen flex items-center justify-center">
             {isTransitionDone && (
-                <div className="pop-up-animation overflow-hidden relative py-6 w-[75vw] h-[75vh] backdrop-blur-[10px] [-webkit-backdrop-blur:10px] border-1 border-white/20 rounded-4xl">
+                <div className="pop-up-animation overflow-hidden relative py-6 w-[75vw] h-[75vh] bg-black/10 backdrop-blur-[20px] [-webkit-backdrop-blur:20px] border-2 border-white/15 rounded-3xl">
                     <div className="h-[15%] flex justify-center items-center">
-                        <h1 className="text-center text-primary text-3xl font-medium text-shadow-lg">
+                        <h1 className="text-center text-primary text-[1.7rem] min-[390px]:text-[1.85rem] font-medium text-shadow-md">
                             Confirm Order
                         </h1>
                     </div>
                     <div className="h-[70%] px-6 ">
-                        <div className="h-[15%] flex items-center justify-between text-primary text-2xl">
+                        <div className="h-[15%] flex items-center justify-between text-primary text-[1.2rem] min-[390px]:text-[1.35rem] font-light">
                             <p className="text-shadow-sm">Orders</p>
                             <p className="text-shadow-sm">Quantity</p>
                         </div>
@@ -71,22 +71,22 @@ const OrderConfirmation = ({
                             {orders.map(({ food_name, quantity }, index) => (
                                 <div
                                     key={index}
-                                    className="flex items-center justify-between text-primary"
+                                    className="flex items-center justify-between"
                                 >
-                                    <p className="text-[0.9rem] text-shadow-md font-extralight text-white/80">
+                                    <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
                                         {food_name}
                                     </p>
-                                    <p className="text-[0.9rem] text-shadow-md font-extralight text-white/80">
+                                    <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
                                         {quantity}x
                                     </p>
                                 </div>
                             ))}
                         </div>
                         <div className="h-[15%] flex items-center justify-between">
-                            <p className="text-primary text-shadow-sm">
+                            <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm">
                                 Total Price:
                             </p>
-                            <p className="text-primary text-shadow-sm text-white/80 font-extralight">
+                            <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm text-white/80 font-extralight">
                                 ₱ {totalPrice}
                             </p>
                         </div>
@@ -94,11 +94,11 @@ const OrderConfirmation = ({
                     <div className="h-[15%] flex items-center justify-center flex-col gap-3">
                         <button
                             onClick={handleConfirm}
-                            className="px-8 shadow-3xl text-shadow-md py-2 text-primary border-1 border-white/10 rounded-2xl bg-gradient-to-b  from-lightgreen to-darkgreen"
+                            className="px-5 min-[390px]:px-8 shadow-3xl text-shadow-md py-1 min-[390px]:py-2 text-primary border-1 border-white/10 rounded-2xl bg-gradient-to-b  from-lightbrown to-darkbrown"
                         >
                             Confirm
                         </button>
-                        <p className="text-[0.75rem] text-white/60 font-extralight text-shadow-md">
+                        <p className="text-[0.65rem] min-[390px]:text-[0.75rem] text-white/60 font-extralight text-shadow-md">
                             You can add order later while waiting or dining
                         </p>
                     </div>

@@ -140,7 +140,7 @@ const GetName = ({
 
     return (
         <>
-            <div className="bg-gradient-to-t to-[#dedede00] from-[#8f8f8f] w-full h-[13rem] fixed bottom-0 opacity-60"></div>
+            <div className="bg-gradient-to-t to-lightbrown/40 from-darkbrown/40 w-full h-[13rem] fixed bottom-0 opacity-60"></div>
 
             <div
                 className={`${layout.main} w-full h-screen  bg-black/25 backdrop-blur-[15px] [-webkit-backdrop-filter:blur(15px)]`}
@@ -153,7 +153,7 @@ const GetName = ({
                             <UtensilsCrossed />
                         </span>
 
-                        <p className="text-primary text-[1rem] phone:text-[5rem] text-shadow-md">
+                        <p className="text-primary text-[1.2rem] phone:text-[5rem] text-shadow-md">
                             Metafeast
                         </p>
                     </div>
@@ -163,10 +163,10 @@ const GetName = ({
                 </div>
 
                 <div
-                    className={`${layout.body} flex flex-col items-center gap-8 justify-center`}
+                    className={`${layout.body} flex flex-col items-center gap-3 justify-center`}
                 >
                     <h1 className="text-primary text-[5.5vw] text-shadow-lg text-center">
-                        What do you want us to call you?
+                        Got a nickname we can use?
                     </h1>
                     <form
                         className="flex flex-col items-center gap-8 w-full"
@@ -185,7 +185,7 @@ const GetName = ({
                                 name="costumer_name"
                                 onChange={handleChange}
                                 value={name.costumer_name}
-                                placeholder="...Nickname"
+                                placeholder="e.x. John"
                             />
                         </div>
 

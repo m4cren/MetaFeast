@@ -163,7 +163,6 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     return (
         <>
             <div className="relative w-full h-screen">
-                {isDenied && <Denied denyMessage={denyMessage} />}
                 <div className="absolute top-0 left-0 w-full h-screen">
                     <CostumerScene
                         camPos={camPos}
@@ -184,7 +183,8 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                         />
                     </div>
                 )}
-                {phase === 1 && (
+                {isDenied && <Denied denyMessage={denyMessage} />}
+                {phase === 1 && !isDenied && (
                     <div
                         className={`absolute top-0 left-0 z-1 w-full h-screen ${!isPicking && "pointer-events-none"} `}
                     >

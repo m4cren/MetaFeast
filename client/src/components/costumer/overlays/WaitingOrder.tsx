@@ -71,11 +71,14 @@ const WaitingOrder = ({
         }
     }, []);
     return (
-        <div className="fixed gap-4 w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] flex items-center justify-center flex-col">
+        <div className="fixed gap-2 w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] flex items-center justify-center flex-col">
             <span className="loader-white translate-y-[-4rem] opacity-70"></span>
-            <h1 className="text-primary text-[1.7rem] text-center">
-                Wait for your order
+            <h1 className="text-primary text-[1.5rem] min-[390px]:text-[1.7rem] text-center text-shadow-md">
+                We're cooking up something delicious for you!
             </h1>
+            <p className="text-white/60 text-[0.75rem] min-[390px]:text-[0.85rem] font-extralight text-shadow-md">
+                Did you know that egg contains 6-7grams of protein
+            </p>
         </div>
     );
 };

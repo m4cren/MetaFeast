@@ -1,11 +1,23 @@
 .main {
     display: grid;
-    grid-template-columns: 5rem 1fr 5rem;
-    grid-template-rows: 5rem 75vh 5rem;
+    grid-template-columns: 5rem 10px 1fr 10px 5rem;
+    grid-template-rows: 2.5rem 5rem 69vh 5rem;
     grid-template-areas:
-        "     head   head    head    "
-        "     left-btn    .    right-btn    "
-        "     footer    footer    footer    ";
+        "   .   left-hang   .   right-hang   .   "
+        "     head  head head  head  head    "
+        "     left-btn .   . .   right-btn    "
+        "     footer   footer footer footer   footer    ";
+
+    @media (min-width: 390px) {
+        grid-template-rows: 3.5rem 5rem 67vh 5rem;
+    }
+}
+
+.left-hang {
+    grid-area: left-hang;
+}
+.right-hang {
+    grid-area: right-hang;
 }
 
 .head {

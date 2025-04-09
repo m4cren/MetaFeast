@@ -1,0 +1,34 @@
+.main {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 15vh 50vh 4vh 25vh;
+
+    grid-template-areas:
+        "     temperature        chat-container     "
+        "     time        time     "
+        "     trivia        trivia     "
+        "     greet        action-container     ";
+
+    @media (min-width: 390px) {
+        grid-template-rows: 15vh 47vh 4vh 25vh;
+    }
+}
+
+.temperature {
+    grid-area: temperature;
+}
+.chat-container {
+    grid-area: chat-container;
+}
+.time {
+    grid-area: time;
+}
+.trivia {
+    grid-area: trivia;
+}
+.greet {
+    grid-area: greet;
+}
+.action-container {
+    grid-area: action-container;
+}

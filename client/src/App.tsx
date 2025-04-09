@@ -51,7 +51,6 @@ const App = () => {
     useEffect(() => {
         fetchCostumerData();
         if (!token) {
-            console.log("There is no token");
             localStorage.removeItem("current_phase");
             localStorage.removeItem("table-picked");
             localStorage.removeItem("costumer_name");
