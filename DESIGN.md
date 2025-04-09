@@ -21,6 +21,13 @@
       <img src="./figma/Table Request popup.png" width="500"/>
     </td>
   </tr>
+  <tr>
+    <td>
+      <p><strong>Pending Payment</strong></p>
+      <img src="./figma/Payment request.png" width="500"/>
+    </td>
+
+  </tr>
 </table>
 
 ---
@@ -79,5 +86,23 @@
       <p><strong>Eating Phase</strong></p>
       <img src="./figma/Eating phase.png" width="300"/>
     </td>
+  </tr>
+    <tr>
+    <td>
+      <p><strong>Costumer payment</strong></p>
+      <img src="./figma/Payment.png" width="300"/>
+    </td>
+    <td>
+      <p><strong>Costumer waiting for payment confirmation</strong></p>
+      <img src="./figma/Waiting for payment confirmation.png" width="300"/>
+    </td>
+  </tr>
+    </tr>
+    <tr>
+    <td>
+      <p><strong>Confirmed payment</strong></p>
+      <img src="./figma/Payment confirmed.png" width="300"/>
+    </td>
+  
   </tr>
 </table>
