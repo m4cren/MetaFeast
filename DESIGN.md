@@ -49,6 +49,7 @@
       <img src="./figma/Confirm table.png" width="300"/>
     </td>
   </tr>
+
   <tr>
     <td>
       <p><strong>Waiting for Table Request</strong></p>
@@ -63,6 +64,7 @@
       <img src="./figma/Order Menu.png" width="300"/>
     </td>
   </tr>
+
   <tr>
     <td>
       <p><strong>Product Details</strong></p>
@@ -76,18 +78,17 @@
       <p><strong>Order Confirmation</strong></p>
       <img src="./figma/After Checkout.png" width="300"/>
     </td>
-  </tr>
-  <tr>
     <td>
       <p><strong>Order Waiting</strong></p>
       <img src="./figma/waiting order.png" width="300"/>
     </td>
+  </tr>
+
+  <tr>
     <td>
       <p><strong>Eating Phase</strong></p>
       <img src="./figma/Eating phase.png" width="300"/>
     </td>
-  </tr>
-    <tr>
     <td>
       <p><strong>Costumer payment</strong></p>
       <img src="./figma/Payment.png" width="300"/>
@@ -97,12 +98,12 @@
       <img src="./figma/Waiting for payment confirmation.png" width="300"/>
     </td>
   </tr>
-    </tr>
-    <tr>
+ 
+    
+  </tr>
     <td>
       <p><strong>Confirmed payment</strong></p>
       <img src="./figma/Payment confirmed.png" width="300"/>
-    </td>
-  
+    </td>  
   </tr>
 </table>
