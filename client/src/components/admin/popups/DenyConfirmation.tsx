@@ -1,3 +1,5 @@
+import { CircleAlert } from "lucide-react";
+
 interface DenyConfirmationProps {
     setIsDenyConfirm: React.Dispatch<React.SetStateAction<boolean>>;
     handleDeny: (
@@ -17,8 +19,11 @@ const DenyConfirmation = ({
 }: DenyConfirmationProps) => {
     return (
         <div className="bg-black/40 fixed w-full h-screen flex items-center justify-center z-10 cursor-copy">
-            <div className="bg-white/90 rounded-4xl w-[40vw] h-[20rem] flex flex-col items-center justify-center gap-8 pointer-events-auto pop-up-animation">
-                <h1 className="text-4xl">What is the reason?</h1>
+            <div className="bg-white/90 rounded-3xl w-[65vw] h-[20rem] flex flex-col items-center justify-center gap-8 pointer-events-auto pop-up-animation">
+                <CircleAlert size={50} />
+                <h1 className="text-4xl">
+                    Please select the appropriate reason:
+                </h1>
 
                 <div className="flex flex-row items-center gap-8">
                     <button
@@ -27,12 +32,12 @@ const DenyConfirmation = ({
                             handleDeny(
                                 table_selected,
                                 costumer_name,
-                                "Someone get there first",
+                                "Someone has already occupied the table",
                             );
                         }}
-                        className="p-2 border-1 rounded-2xl border-black/50 cursor-pointer"
+                        className="px-4 py-2 font-light text-primary text-[1.1rem] bg-gradient-to-t text-shadow-md from-darkbrown to-lightbrown rounded-2xl cursor-pointer [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
                     >
-                        Someone get there first
+                        Someone has already occupied the table
                     </button>
                     <button
                         onClick={() => {
@@ -40,12 +45,12 @@ const DenyConfirmation = ({
                             handleDeny(
                                 table_selected,
                                 costumer_name,
-                                "There is no human on that table",
+                                "The table appears unoccupied (no person detected)",
                             );
                         }}
-                        className="p-2 border-1 rounded-2xl border-black/50 cursor-pointer"
+                        className="px-4 py-2 font-light text-primary text-[1.1rem] bg-gradient-to-t text-shadow-md from-darkbrown to-lightbrown rounded-2xl cursor-pointer [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
                     >
-                        There is no human on that table
+                        The table appears unoccupied (no person detected)
                     </button>
                 </div>
             </div>

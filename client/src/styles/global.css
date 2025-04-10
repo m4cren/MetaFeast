@@ -89,7 +89,10 @@ body {
 }
 
 .pop-up-animation {
-    animation: popUp 0.1s ease-in-out;
+    animation: popUp 0.2s ease-in-out;
+}
+.pop-close-animation {
+    animation: popClose 0.2s ease-in-out;
 }
 
 .notification-animation {

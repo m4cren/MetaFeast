@@ -62,6 +62,14 @@
         scale: 1;
     }
 }
+@keyframes popClose {
+    from {
+        scale: 1;
+    }
+    to {
+        scale: 0;
+    }
+}
 
 @keyframes notification {
     from {
@@ -167,7 +175,7 @@
 
 @keyframes pendingDropClose {
     from {
-        max-height: 65vh;
+        max-height: 32rem;
     }
     to {
         max-height: 0rem;
@@ -178,7 +186,7 @@
         height: 0;
     }
     to {
-        height: 65vh;
+        height: 32rem;
     }
 }
 @keyframes pendingHandleDropClose {

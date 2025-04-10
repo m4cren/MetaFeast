@@ -150,5 +150,29 @@ class Orders(db.Model):
         self.status = 'Served'
 
 
+class PendingPayments(db.Model):
+    __tablename__ = 'pending_payments'
+    id = db.Column(db.Integer, primary_key = True)
+    payment_id = db.Column(db.String(10), nullable = False, unique = True)
+    costumer_name = db.Column(db.String(69), nullable = False)
+    table_id = db.Column(db.String(69), nullable = False)
+    total_payment = db.Column(db.Integer, nullable = False)
+    payment_time = db.Column(db.DateTime, default = datetime.utcnow)
+
+    def to_dict(self):
+        return{
+            'payment_id': self.payment_id,
+            'costumer_name': self.costumer_name,
+            'table_id': self.table_id,
+            'total_payment': self.total_payment,
+            'payment_time': time_ago(self.payment_time)
+            
+        }
+    
+
+
+
+
+
         
     

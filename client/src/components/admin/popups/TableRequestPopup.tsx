@@ -37,6 +37,7 @@ const TableRequestPopup = ({
     setTableSelected,
 }: Props) => {
     const [requestMessage, setRequestMessage] = useState<RequestType[]>([]);
+    const [isClose, setIsClose] = useState<boolean>(false);
     const [currentCostumers, setCurrentCostumers] = useState<
         CurrentCostumerType[]
     >([]);
@@ -109,7 +110,9 @@ const TableRequestPopup = ({
 
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex justify-center items-center pointer-events-auto">
-            <div className="pop-up-animation px-8 py-2 w-[28rem] translate-x-[1rem] h-[55vh] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]">
+            <div
+                className={`${isClose && "pop-close-animation"} pop-up-animation px-8 py-2 w-[28rem] translate-x-[1rem] h-[55vh] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+            >
                 <div className="w-full border-b-3 border-white/20 p-4 flex flex-row items-center justify-center relative">
                     <h1 className="text-primary text-[1.3rem] text-center text-shadow-md ">
                         Current Costumers
@@ -228,13 +231,22 @@ const TableRequestPopup = ({
                     )}
                 </ul>
             </div>
-            <div className="pop-up-animation realtive px-8 py-2 w-[40rem] translate-x-[-1rem] h-[70vh] z-2 bg-gradient-to-t from-darkbrown to-lightbrown rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]">
+            <div
+                className={`${isClose && "pop-close-animation"} pop-up-animation realtive px-8 py-2 w-[40rem] translate-x-[-1rem] h-[70vh] z-2 bg-gradient-to-t from-darkbrown to-lightbrown rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+            >
                 <div className="w-full border-b-3 border-white/20 p-4 flex flex-row items-center justify-center relative">
                     <h1 className="font-medium text-primary text-[1.6rem] text-center text-shadow-md">
                         Incoming Costumers
                     </h1>
                     <button
-                        onClick={() => setIsTableRequest(false)}
+                        onClick={() => {
+                            setIsClose(true);
+
+                            setTimeout(() => {
+                                setIsClose(false);
+                                setIsTableRequest(false);
+                            }, 200);
+                        }}
                         className="absolute text-white/75 cursor-pointer hover:scale-105 transition duration-100 active:scale-95 drop-shadow-md right-0"
                     >
                         <LogOut size={25} />

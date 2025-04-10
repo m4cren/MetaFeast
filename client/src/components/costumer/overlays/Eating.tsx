@@ -1,12 +1,75 @@
+import { SetStateAction, useState } from "react";
 import layout from "../../../styles/layouts/eating.module.css";
-import { MessageSquareText } from "lucide-react";
+import { MessageSquareText, Scroll } from "lucide-react";
 
-const Eating = () => {
+interface EatingProps {
+    setPhase: React.Dispatch<SetStateAction<number>>;
+}
+
+const Eating = ({ setPhase }: EatingProps) => {
     const name = localStorage.getItem("costumer_name");
+    const [isBillingConfirmation, setIsBillingConfirmation] =
+        useState<boolean>(false);
+
+    const [isPromptClose, setIsPromptClose] = useState<boolean>(false);
     return (
         <div
             className={`${layout.main} fixed w-full h-screen backdrop-blur-[12px] [-webkit-backdrop-blur:(12px)]`}
         >
+            {isBillingConfirmation && (
+                <div
+                    className={
+                        " fixed flex items-center justify-center z-20 w-full h-screen bg-black/30 backdrop-blur-[15px] [-webkit-backdrop-blur:(15px)] "
+                    }
+                >
+                    <div
+                        className={`${isPromptClose && "pop-close-animation"} pop-up-animation flex flex-col items-center justify-center gap-4 w-[90%] min-[390px]:w-[85%] h-[14rem] bg-gradient-to-b from-darkbrown to-lightbrown rounded-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
+                    >
+                        <div className="flex flex-col items-center gap-4">
+                            {" "}
+                            <i className="text-primary opacity-80">
+                                <Scroll size={40} />
+                            </i>
+                            <h1 className="text-primary text-shadow-md text-[1.3rem] min-[390px]:text-[1.4rem] text-center leading-6">
+                                Please confirm if you’ve completed your meal.
+                            </h1>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-2">
+                            <button
+                                onClick={() => {
+                                    setIsPromptClose(true);
+                                    setTimeout(() => {
+                                        setIsPromptClose(false);
+                                        setIsBillingConfirmation(false);
+                                    }, 200);
+                                }}
+                                className="p-2 text-[0.9rem] min-[390px]:text-[1rem] px-2 min-[390px]:px-3 border-1 text-shadow-md border-white/20 rounded-xl text-white/70 font-extralight [box-shadow:-1px_1px_3px_rgba(0,0,0,0.3)]"
+                            >
+                                No, I’m still eating
+                            </button>
+                            <button
+                                onClick={() => {
+                                    setIsPromptClose(true);
+                                    setTimeout(() => {
+                                        setIsPromptClose(false);
+                                        setIsBillingConfirmation(false);
+                                        setPhase(5);
+                                        localStorage.setItem(
+                                            "current_phase",
+                                            "phase_5",
+                                        );
+                                    }, 200);
+                                }}
+                                className="p-2 text-[0.9rem] min-[390px]:text-[1rem] px-2 min-[390px]:px-3 bg-gradient-to-t text-shadow-md from-darkgreen to-lightgreen rounded-xl text-white/70 font-extralight [box-shadow:-1px_1px_3px_rgba(0,0,0,0.3)]"
+                            >
+                                Proceed to Billing
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div
                 className={`${layout.temperature} flex flex-col justify-end pl-6`}
             >
@@ -82,7 +145,10 @@ const Eating = () => {
                 <button className="px-4 py-1 text-white/80 font-extralight min-[390px]:py-2 text-[1rem] min-[390px]:text-[1.1rem] border-white/10 border-1 rounded-xl text-primary text-shadow-md [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)] ">
                     Order more
                 </button>
-                <button className="px-4 py-1 text-white/80 font-extralight min-[390px]:py-2 text-[1rem] min-[390px]:text-[1.1rem] bg-gradient-to-t from-darkbrown to-lightbrown rounded-xl text-primary text-shadow-md [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]">
+                <button
+                    onClick={() => setIsBillingConfirmation(true)}
+                    className="px-4 py-1 text-white/80 font-extralight min-[390px]:py-2 text-[1rem] min-[390px]:text-[1.1rem] bg-gradient-to-t from-darkbrown to-lightbrown rounded-xl text-primary text-shadow-md [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
+                >
                     Complete dining
                 </button>
             </div>

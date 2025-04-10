@@ -16,6 +16,7 @@ import useTableTransition from "../../hooks/useTableTransition";
 import Order from "./overlays/Order";
 import WaitingOrder from "./overlays/WaitingOrder";
 import Eating from "./overlays/Eating";
+import Billing from "./overlays/Billing";
 // import SceneCameraController from "../SceneCameraController";
 
 interface MainCostumerProps {
@@ -40,7 +41,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     const [selectedTable, setSelectedTable] = useState<string>("");
     const [isDenied, setIsDenied] = useState<boolean>(false);
 
-    const { init_Frame, pickName_Frame, selTable1stF_Frames } =
+    const { init_Frame, pickName_Frame, selTable1stF_Frames, to_counter } =
         useFrameProvider();
 
     const [camPos, setCamPos] = useState<[number, number, number]>(
@@ -114,6 +115,12 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                     if (table_picked) {
                         transitionToTable(table_picked);
                     }
+                    break;
+                case "phase_5":
+                    setPhase(5);
+                    setCamPos(to_counter.frame2.pos);
+                    setCamRot(to_counter.frame2.rot);
+                    break;
             }
         }
     }, [isStart]);
@@ -220,7 +227,10 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                         setPhase={setPhase}
                     />
                 )}
-                {phase === 4 && <Eating />}
+                {phase === 4 && <Eating setPhase={setPhase} />}
+                {phase === 5 && (
+                    <Billing setCamPos={setCamPos} setCamRot={setCamRot} />
+                )}
             </div>
 
             {/* <div className="fixed bottom-4">

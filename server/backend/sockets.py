@@ -1,8 +1,14 @@
 from .extensions import db, socketio
-from .db_config import save_data, delete_all_data, delete_data
+from .db_config import save_data, delete_all_data, delete_data, generate_payment_id
 from sqlalchemy import desc
 from flask_socketio import SocketIO, emit
-from .db_models import Table, TableRequest, Costumer, Orders, Products
+from .db_models import Table, TableRequest, Costumer, Orders, Products, PendingPayments
+
+def generate_unique_payment_id(lenght = 8):
+    while True:
+        pid = generate_payment_id(lenght)
+        if not PendingPayments.query.filter_by(payment_id = pid).first():
+            return pid
 
 
 @socketio.on("connect")

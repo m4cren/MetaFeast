@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 import os
 import urllib
 from datetime import datetime, timezone
+import string
+import secrets
 
 load_dotenv()
 
@@ -82,3 +84,7 @@ def time_ago(time):
         return f"{delta.seconds // 60} minutes ago"
     else:
         return f"{delta.seconds} seconds ago"
+    
+def generate_payment_id(length = 8):
+    chars = string.ascii_uppercase + string.digits
+    return ''.join(secrets.choice(chars) for _ in range(length))
