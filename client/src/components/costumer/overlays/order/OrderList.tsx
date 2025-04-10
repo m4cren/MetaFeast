@@ -116,18 +116,18 @@ const OrderList = ({
             {isCheckoutConfirmation && (
                 <div className="fixed w-full h-screen bg-black/40  z-20 flex items-center justify-center">
                     <div className="pop-up-animation flex flex-col justify-center gap-4 w-[85vw] h-[10rem] bg-gradient-to-b from-lightbrown to-darkbrown rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)]">
-                        <h1 className="text-center text-primary font-normal text-3xl text-shadow-md">
+                        <h1 className="text-center text-primary font-normal text-2xl min-[390px]:text-3xl text-shadow-md">
                             Proceed to counter?
                         </h1>
                         <div className=" text-primary flex place-items-center justify-center gap-4">
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light border-1 border-white/20 rounded-xl shadow-md p-3"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.95rem] min-[390px]:text-[1rem] font-light border-1 border-white/20 rounded-xl shadow-md p-2 min-[390px]:p-3"
                                 onClick={() => setIsCheckoutConfirmation(false)}
                             >
                                 Continue ordering
                             </button>
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[1rem] font-light bg-gradient-to-b p-3 from-lightgreen to-darkgreen rounded-xl"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.95rem] min-[390px]:text-[1rem] font-light bg-gradient-to-b p-2 min-[390px]:p-3 from-lightgreen to-darkgreen rounded-xl"
                                 onClick={() => setIsCheckout(true)}
                             >
                                 Let's Go
@@ -146,16 +146,16 @@ const OrderList = ({
                         setIsBasket(false);
                     }}
                 >
-                    <ArrowBigLeft size={45} />
+                    <ArrowBigLeft size={40} />
                 </button>
-                <h1 className="text-primary text-3xl text-shadow-md ">
+                <h1 className="text-primary text-[1.6rem] min-[390px]:text-[1.75rem] text-shadow-md ">
                     Basket
                 </h1>
                 <p
                     onClick={() => setTrash(!isTrash)}
                     className="text-primary text-shadow-md active:scale-95 transition duration-150 active:opacity-95"
                 >
-                    {!isTrash ? <Trash2 size={40} /> : <Ban size={40} />}
+                    {!isTrash ? <Trash2 size={35} /> : <Ban size={35} />}
                 </p>
             </div>
             <div
@@ -164,9 +164,9 @@ const OrderList = ({
                 {orders.map(({ food_name, price, quantity, img }, index) => (
                     <div
                         key={index}
-                        className="px-2 bg-gradient-to-t rounded-3xl shadow-md to-lightbrown from-darkbrown w-[90%] h-30 mx-auto flex flex-row items-center"
+                        className="px-2 bg-gradient-to-t rounded-3xl shadow-md to-lightbrown from-darkbrown w-[90%] h-27 min-[390px]:h-30 mx-auto flex flex-row items-center"
                     >
-                        <div className="w-1/2">
+                        <div className="w-1/2 scale-90 min-[390px]:scale-100">
                             <img
                                 className="drop-shadow-lg"
                                 src={`/images/products/${img}`}
@@ -174,7 +174,7 @@ const OrderList = ({
                             />
                         </div>
                         <div className="flex flex-col w-1/2 items-center gap-2">
-                            <h1 className="leading-5 text-primary text-[1.2rem] min-[390px]:text-[1.3rem] w-full text-center font-medium text-shadow-md">
+                            <h1 className="leading-5 text-primary text-[1.15rem] min-[390px]:text-[1.3rem] w-full text-center font-medium text-shadow-md">
                                 {food_name}
                             </h1>
                             <div
@@ -183,7 +183,7 @@ const OrderList = ({
                                 {!isTrash ? (
                                     <>
                                         {" "}
-                                        <p className="text-white/65 text-[1rem] text-shadow-md font-extralight">
+                                        <p className="text-white/65 text-[0.9rem] min-[390px]:text-[1rem] text-shadow-md font-extralight">
                                             ₱ {price}
                                         </p>
                                         <div className="[box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-white  rounded-4xl shadow-md  w-[6rem] h-[2.25rem] min-[390px]:w-[7rem] min-[390px]:h-[2.5rem] flex flex-row items-center justify-between min-[390px]:px-4 px-2 text-darkbrown">
@@ -227,23 +227,29 @@ const OrderList = ({
                     </div>
                 ))}
             </div>
-            <div className="z-10 absolute bottom-0 w-[80vw] h-fit p-4 flex flex-col gap-5 shadow-2xl  left-1/2 translate-y-[-40%] bg-black/20 translate-x-[-50%]  backdrop-blur-[20px] [-webkit-backdrop-blur:20px] border-1 border-white/10 rounded-2xl">
+            <div className="z-10 absolute bottom-0 w-[80vw] h-fit p-3 min-[390px]:p-4 flex flex-col gap-5 shadow-2xl  left-1/2 translate-y-[-40%] bg-black/20 translate-x-[-50%]  backdrop-blur-[20px] [-webkit-backdrop-blur:20px] border-1 border-white/10 rounded-2xl">
                 <div>
                     <h2 className="flex flex-row items-center justify-between text-[1.1rem] text-white font-light text-shadow-md">
-                        <span>Total Cost:</span>
-                        <span className="text-white/70 font-extralight">
+                        <span className="text-[1rem] min-[390px]:text-[1.2rem]">
+                            Total Cost:
+                        </span>
+                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem]">
                             ₱ {totalPrice}
                         </span>
                     </h2>
                     <h2 className="flex flex-row items-center justify-between  text-[1.1rem] text-white font-light">
-                        <span>Waiting Time:</span>
-                        <span className="text-white/70 font-extralight">
+                        <span className="text-[1rem] min-[390px]:text-[1.2rem]">
+                            Waiting Time:
+                        </span>
+                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem]">
                             {totalWaitingTime}mins
                         </span>
                     </h2>
                     <h2 className="flex flex-row items-center justify-between  text-[1.1rem] text-white font-light">
-                        <span>Total Energy:</span>
-                        <span className="text-white/70 font-extralight">
+                        <span className="text-[1rem] min-[390px]:text-[1.2rem]">
+                            Total Energy:
+                        </span>
+                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem]">
                             {totalEnergy}cal
                         </span>
                     </h2>
@@ -251,7 +257,7 @@ const OrderList = ({
                 <div className="flex w-full justify-center items-center">
                     <button
                         onClick={() => setIsCheckoutConfirmation(true)}
-                        className="active:scale-95 transition active:opacity-95 duration-150 bg-gradient-to-b px-20 from-lightgreen to-darkgreen p-2 rounded-4xl text-primary text-shadow-md shadow-2xl"
+                        className="active:scale-95 transition active:opacity-95 duration-150 bg-gradient-to-b px-15 min-[390px]:px-20 from-lightgreen to-darkgreen p-2 rounded-4xl text-primary text-shadow-md shadow-2xl"
                     >
                         Checkout
                     </button>

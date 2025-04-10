@@ -4,9 +4,14 @@ import { UtensilsCrossed } from "lucide-react";
 interface Props {
     isTransitioning: boolean;
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsPendingPayment: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const NavBar = ({ isTransitioning, setIsTableRequest }: Props) => {
+const NavBar = ({
+    isTransitioning,
+    setIsTableRequest,
+    setIsPendingPayment,
+}: Props) => {
     return (
         <div
             className={`${isTransitioning && "translate-y-[-8rem]"} h-[10vh] mr-5 pointer-events-auto transition duration-500  bg-gradient-to-b from-darkbrown to-lightbrown backdrop-blur-lg rounded-br-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] flex flex-row justify-between px-10 items-center`}
@@ -27,7 +32,10 @@ const NavBar = ({ isTransitioning, setIsTableRequest }: Props) => {
                     Table Request
                 </p>
 
-                <p className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80">
+                <p
+                    onClick={() => setIsPendingPayment(true)}
+                    className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80"
+                >
                     Pending Payment
                 </p>
                 <p className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80">

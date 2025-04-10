@@ -164,3 +164,36 @@
         opacity: 0;
     }
 }
+
+@keyframes pendingDropClose {
+    from {
+        max-height: 65vh;
+    }
+    to {
+        max-height: 0rem;
+    }
+}
+@keyframes pendingDrop {
+    from {
+        height: 0;
+    }
+    to {
+        height: 65vh;
+    }
+}
+@keyframes pendingHandleDropClose {
+    from {
+        max-height: 2.5rem;
+    }
+    to {
+        max-height: 0rem;
+    }
+}
+@keyframes pendingHandleDrop {
+    from {
+        height: 0;
+    }
+    to {
+        height: 2.5rem;
+    }
+}

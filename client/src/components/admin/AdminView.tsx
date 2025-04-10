@@ -12,6 +12,7 @@ import useFrameProvider from "../../frames/useFrameProvider";
 import { NotificationType } from "../../types/types";
 import DenyConfirmation from "./popups/DenyConfirmation";
 import layout from "../../styles/layouts/admin_view.module.css";
+import PendingPayments from "./popups/PendingPayments";
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,6 +29,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     );
 
     const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
+    const [isPendingPayment, setIsPendingPayment] = useState<boolean>(false);
 
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
@@ -85,7 +87,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
         socket?.emit("deny-request", costumerToDeny);
     };
-
+    console.log(setIsPendingPayment);
     return (
         <>
             <div className="w-full, h-screen fixed left-0 right-0 top-0 bottom-0">
@@ -103,6 +105,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                     <NavBar
                         isTransitioning={isTransitioning}
                         setIsTableRequest={setIsTableRequest}
+                        setIsPendingPayment={setIsPendingPayment}
                     />
                 </div>
                 <div className={`${layout["pending-tab"]}`}>
@@ -148,6 +151,11 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         setIsDenyConfirm={setIsDenyConfirm}
                         setCostumerName={setCostumerName}
                         setTableSelected={setTableSelected}
+                    />
+                )}
+                {isPendingPayment && (
+                    <PendingPayments
+                        setIsPendingPayment={setIsPendingPayment}
                     />
                 )}
             </div>

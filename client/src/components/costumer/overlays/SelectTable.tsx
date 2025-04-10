@@ -88,16 +88,16 @@ const SelectTable = ({
         }
     }, []);
 
-    return !isTransitioning && !isConfirmed ? (
+    return !isConfirmed ? (
         <div className={`${layout.main}`}>
             <div
-                className={`${layout["left-hang"]} w-full bg-gradient-to-b from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+                className={`${layout["left-hang"]} ${isTransitioning && "-translate-y-50"} transition duration-800 w-full bg-gradient-to-b from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             ></div>
             <div
-                className={`${layout["right-hang"]} w-full bg-gradient-to-b from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+                className={`${layout["right-hang"]} ${isTransitioning && "-translate-y-50"} transition duration-800 w-full bg-gradient-to-b from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             ></div>
             <div
-                className={`${layout.head} flex flex-col py-12 min-[390px]:py-13 justify-center items-center bg-gradient-to-t from-darkbrown to-lightbrown w-[90vw] mx-auto rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+                className={`${layout.head} ${isTransitioning && "-translate-y-50"} transition duration-800 flex flex-col py-12 min-[390px]:py-13 justify-center items-center bg-gradient-to-t from-darkbrown to-lightbrown w-[90vw] mx-auto rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             >
                 <h1 className="text-primary text-[1.2rem] text-shadow-md min-[390px]:text-[1.3rem] text-center">
                     {isPicking
@@ -105,14 +105,16 @@ const SelectTable = ({
                         : `Find your perfect spot, ${costumerName}`}
                 </h1>
                 <p className="text-white/45 text-[0.8rem] font-extralight">
-                    {isPicking ? `Table ${selectedTable}` : `Middle View`}
+                    {isPicking
+                        ? `Table ${selectedTable}`
+                        : `${isLeftClicked ? "Left View" : isRightClicked ? "Right View" : "Middle View"}`}
                 </p>
             </div>
 
             {!isRightClicked && !isLeftClicked && !isPicking ? (
                 <>
                     <div
-                        className={`${layout["left-btn"]} flex items-center justify-center`}
+                        className={`${layout["left-btn"]} ${isTransitioning && "-translate-x-25"} transition duration-800 flex items-center justify-center`}
                     >
                         <button
                             onClick={() => {
@@ -126,7 +128,7 @@ const SelectTable = ({
                     </div>
 
                     <div
-                        className={`${layout["right-btn"]} flex items-center justify-center`}
+                        className={`${layout["right-btn"]} ${isTransitioning && "translate-x-25"} transition duration-800 flex items-center justify-center`}
                     >
                         <button
                             onClick={() => {
@@ -142,7 +144,7 @@ const SelectTable = ({
             ) : isRightClicked && !isPicking ? (
                 <>
                     <div
-                        className={`${layout["left-btn"]} flex items-center justify-center`}
+                        className={`${layout["left-btn"]} ${isTransitioning && "-translate-x-25"} transition duration-800 flex items-center justify-center`}
                     >
                         <button
                             onClick={() => {
@@ -159,7 +161,7 @@ const SelectTable = ({
             ) : isLeftClicked && !isPicking ? (
                 <>
                     <div
-                        className={`${layout["right-btn"]} flex items-center justify-center`}
+                        className={`${layout["right-btn"]} ${isTransitioning && "translate-x-25"} transition duration-800 flex items-center justify-center`}
                     >
                         <button
                             onClick={() => {
@@ -188,7 +190,7 @@ const SelectTable = ({
                                       ? handleDownFloor()
                                       : doNothing();
                             }}
-                            className="text-primary text-[1rem] min-[390px]:text-[1.2rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-3 bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
+                            className={`${isTransitioning && "translate-y-50"} transition duration-800 text-primary text-[1rem] min-[390px]:text-[1.2rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-3 bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]`}
                         >
                             {floor === 1 ? (
                                 <>

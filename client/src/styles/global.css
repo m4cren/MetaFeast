@@ -122,6 +122,18 @@ body {
 .text-close-animation {
     animation: textClose 0.3s ease-in-out forwards;
 }
+.pending-payment-animation {
+    animation: pendingDrop 0.5s ease-in-out;
+}
+.pending-payment-close-animation {
+    animation: pendingDropClose 0.5s ease-in-out;
+}
+.pending-handle-animation {
+    animation: pendingHandleDrop 0.5s ease-in-out;
+}
+.pending-handle-close-animation {
+    animation: pendingHandleDropClose 0.5s ease-in-out;
+}
 
 .category-btn {
     box-shadow:
