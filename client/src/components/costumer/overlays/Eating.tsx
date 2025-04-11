@@ -1,18 +1,33 @@
 import { SetStateAction, useState } from "react";
 import layout from "../../../styles/layouts/eating.module.css";
 import { MessageSquareText, Scroll } from "lucide-react";
+import Order from "./Order";
 
 interface EatingProps {
     setPhase: React.Dispatch<SetStateAction<number>>;
+    setCamPos: React.Dispatch<SetStateAction<[number, number, number]>>;
+    setCamRot: React.Dispatch<SetStateAction<[number, number, number]>>;
 }
 
-const Eating = ({ setPhase }: EatingProps) => {
+const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
     const name = localStorage.getItem("costumer_name");
+    const [isOrderMore, setIsOrderMore] = useState<boolean>(false);
     const [isBillingConfirmation, setIsBillingConfirmation] =
         useState<boolean>(false);
 
     const [isPromptClose, setIsPromptClose] = useState<boolean>(false);
-    return (
+
+    return isOrderMore ? (
+        <div>
+            <Order
+                setCamPos={setCamPos}
+                setCamRot={setCamRot}
+                setPhase={setPhase}
+                isOrderMore={isOrderMore}
+                setIsOrderMore={setIsOrderMore}
+            />
+        </div>
+    ) : (
         <div
             className={`${layout.main} fixed w-full h-screen backdrop-blur-[12px] [-webkit-backdrop-blur:(12px)]`}
         >
@@ -142,7 +157,10 @@ const Eating = ({ setPhase }: EatingProps) => {
             <div
                 className={`${layout["action-container"]} flex flex-col justify-center items-end pr-6 gap-3`}
             >
-                <button className="px-4 py-1 text-white/80 font-extralight min-[390px]:py-2 text-[1rem] min-[390px]:text-[1.1rem] border-white/10 border-1 rounded-xl text-primary text-shadow-md [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)] ">
+                <button
+                    onClick={() => setIsOrderMore(true)}
+                    className="px-4 py-1 text-white/80 font-extralight min-[390px]:py-2 text-[1rem] min-[390px]:text-[1.1rem] border-white/10 border-1 rounded-xl text-primary text-shadow-md [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)] "
+                >
                     Order more
                 </button>
                 <button

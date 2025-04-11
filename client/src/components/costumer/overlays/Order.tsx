@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import OrderMenu from "./order/OrderMenu";
 import ProductDetails from "./order/ProductDetails";
 import axios from "axios";
@@ -11,8 +11,16 @@ interface OrderProps {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setPhase: React.Dispatch<React.SetStateAction<number>>;
+    isOrderMore?: boolean;
+    setIsOrderMore?: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
+const Order = ({
+    setCamPos,
+    setCamRot,
+    setPhase,
+    isOrderMore,
+    setIsOrderMore,
+}: OrderProps) => {
     const { to_counter, to_1st_Frames } = useFrameProvider();
     const [orders, setOrders] = useState<OrderType[]>([]);
     const [selectedCuisine, setSelectedCusine] = useState<string>("");
@@ -138,6 +146,7 @@ const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
                     isTransitionDone={isTransitionDone}
                     setPhase={setPhase}
                     totalWaitingTime={totalWaitingTime}
+                    isOrderMore={isOrderMore}
                 />
             ) : isBasket ? (
                 <OrderList
@@ -165,6 +174,8 @@ const Order = ({ setCamPos, setCamRot, setPhase }: OrderProps) => {
                     productDetails={productDetails}
                     isPlaceBasket={isPlaceBasket}
                     setIsBasket={setIsBasket}
+                    isOrderMore={isOrderMore}
+                    setIsOrderMore={setIsOrderMore}
                 />
             )}
         </>

@@ -227,7 +227,13 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                         setPhase={setPhase}
                     />
                 )}
-                {phase === 4 && <Eating setPhase={setPhase} />}
+                {phase === 4 && (
+                    <Eating
+                        setPhase={setPhase}
+                        setCamPos={setCamPos}
+                        setCamRot={setCamRot}
+                    />
+                )}
                 {phase === 5 && (
                     <Billing setCamPos={setCamPos} setCamRot={setCamRot} />
                 )}

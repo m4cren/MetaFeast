@@ -102,31 +102,78 @@ def send_order(data):
     img = data.get('img')
     quantity = data.get('quantity')
     total_price = data.get('total_price')
+    additional_order = data.get('additional_order')
 
 
+
+    current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
     for order in range(len(food_names)):
         product_to_update = Products.query.filter_by(food_name = food_names[order]).first()
         product_to_update.quantity -= quantity[order]
+
+    if additional_order == 'No':
+        new_order = Orders(costumer_name = current_costumer.costumer_name,
+                        total_waiting_time = total_waiting_time,
+                        current_costumer_id = current_costumer.id,
+                        current_table = table_picked,
+                        orders = [{'food_name': fn,
+                                    'food_category': cat,
+                                    'img': img,
+                                    'quantity': q,
+                                    'price': p
+                                    } for fn, q, p, cat, img in zip(food_names, quantity, total_price, food_category, img)]
+                        )
+        
+        db.session.add(new_order)
+
+    elif additional_order == 'Yes':
+
+        additional_orders = [{'food_name': fn,
+                              'food_category': cat,
+                              'img': img,
+                              'quantity': q,
+                              'price': p
+                              } for fn, q, p, cat, img in zip(food_names, quantity, total_price, food_category, img)]
+                        
+        order = Orders.query.filter_by(current_table = table_picked).first()
+        order.additional_order()
+        
+        current_orders = []
+        print('===================== ADDITIONAL ==========================')
+        for item in additional_orders:
+
+            print(f'{item['food_name']}: {item['quantity']} ')
+            current_orders.append(item)
+        
+        print('===========================================================')
+
+        print('===================== ORIGINAL ==========================')
+        for item in order.orders:
+
+            print(f'{item['food_name']}: {item['quantity']} ')
+            current_orders.append(item)
+        
+        print('===========================================================')
+
+        
+        order.orders = current_orders
+
+
+        order.additional_orders = additional_orders
+
+
     
 
-    current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
+    
+        
+      
 
     
-    new_order = Orders(costumer_name = current_costumer.costumer_name,
-                       total_waiting_time = total_waiting_time,
-                       current_costumer_id = current_costumer.id,
-                       current_table = table_picked,
-                       orders = [{'food_name': fn,
-                                  'food_category': cat,
-                                  'img': img
-,                                  'quantity': q,
-                                  'price': p
-                                  } for fn, q, p, cat, img in zip(food_names, quantity, total_price, food_category, img)]
-                       )
-    
-    db.session.add(new_order)
 
     db.session.commit()
+
+   
+
 
     emit('push-to-admin', broadcast=True)
 
@@ -147,7 +194,7 @@ def deliver_order(data):
     table_to_update.update_to_eating()
 
     order_finished = Orders.query.filter(Orders.costumer_name == costumer_name and Orders.current_table == table_id).first()
-    delete_data(order_finished)
+    order_finished.serve()
     db.session.commit()
 
     emit('accept-order', response, broadcast=True )

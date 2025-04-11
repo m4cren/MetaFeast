@@ -87,7 +87,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
         socket?.emit("deny-request", costumerToDeny);
     };
-    console.log(setIsPendingPayment);
+
     return (
         <>
             <div className="w-full, h-screen fixed left-0 right-0 top-0 bottom-0">

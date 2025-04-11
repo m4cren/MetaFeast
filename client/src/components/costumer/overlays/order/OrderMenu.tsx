@@ -10,6 +10,7 @@ import {
     Croissant,
     Salad,
     Candy,
+    LogOut,
 } from "lucide-react";
 
 import Category from "../../products/Category";
@@ -31,6 +32,8 @@ interface Props {
     productDetails: ProductDetailsType[];
     isPlaceBasket: boolean;
     setIsBasket: React.Dispatch<React.SetStateAction<boolean>>;
+    isOrderMore?: boolean;
+    setIsOrderMore?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const OrderMenu = ({
@@ -38,6 +41,8 @@ const OrderMenu = ({
     productDetails,
     isPlaceBasket,
     setIsBasket,
+    isOrderMore,
+    setIsOrderMore,
 }: Props) => {
     const [selected, setSelected] = useState<string>("Appetizers");
     const [name] = useState<string | null>(
@@ -64,13 +69,30 @@ const OrderMenu = ({
                 </h1>
 
                 <p className="text-primary ">
-                    <Utensils size={40} />
+                    {isOrderMore ? (
+                        <LogOut
+                            size={40}
+                            onClick={() => {
+                                if (setIsOrderMore) {
+                                    setIsOrderMore(false);
+                                }
+                            }}
+                        />
+                    ) : (
+                        <Utensils size={40} />
+                    )}
                 </p>
             </div>
             <div className={`${layout.greet}`}>
-                <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
-                    What do you want for <br /> dinner?
-                </p>
+                {isOrderMore ? (
+                    <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
+                        Additional order
+                    </p>
+                ) : (
+                    <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
+                        What do you want for <br /> dinner?
+                    </p>
+                )}
             </div>
             <div
                 className={`${layout.category} flex items-center space-x-4  overflow-x-auto snap-proximity px-4`}

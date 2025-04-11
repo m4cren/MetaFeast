@@ -9,7 +9,7 @@ const useCostumerName = () => {
         if (current_costumer_name) {
             setCostumerName(current_costumer_name);
         }
-    });
+    }, []);
 
     return { costumerName, setCostumerName };
 };

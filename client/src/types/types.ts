@@ -105,6 +105,7 @@ export type PendingOrderType = {
     total_waiting_time: string;
     costumer_name: string;
     current_table: string;
+    is_additional: boolean;
 
     orders: [
         {
@@ -115,6 +116,17 @@ export type PendingOrderType = {
             quantity: number;
         },
     ];
+    additional_orders:
+        | [
+              {
+                  food_name: string;
+                  food_category: string;
+                  img: string;
+                  price: number;
+                  quantity: number;
+              },
+          ]
+        | undefined;
 };
 
 export type CurrentCostumerType = {

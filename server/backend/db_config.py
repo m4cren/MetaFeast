@@ -88,3 +88,4 @@ def time_ago(time):
 def generate_payment_id(length = 8):
     chars = string.ascii_uppercase + string.digits
     return ''.join(secrets.choice(chars) for _ in range(length))
+

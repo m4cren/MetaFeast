@@ -6,6 +6,7 @@ interface OrderConfirmationProps {
     isTransitionDone: boolean;
     setPhase: React.Dispatch<React.SetStateAction<number>>;
     totalWaitingTime: number;
+    isOrderMore?: boolean;
 }
 
 const OrderConfirmation = ({
@@ -13,6 +14,7 @@ const OrderConfirmation = ({
     isTransitionDone,
     setPhase,
     totalWaitingTime,
+    isOrderMore,
 }: OrderConfirmationProps) => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const socket = useSocket();
@@ -49,6 +51,7 @@ const OrderConfirmation = ({
             img: orders.map(({ img }) => {
                 return img;
             }),
+            additional_order: isOrderMore ? "Yes" : "No",
         };
 
         socket?.emit("send-order", data);
@@ -58,8 +61,10 @@ const OrderConfirmation = ({
             {isTransitionDone && (
                 <div className="pop-up-animation overflow-hidden relative py-6 w-[75vw] h-[75vh] bg-black/10 backdrop-blur-[20px] [-webkit-backdrop-blur:20px] border-2 border-white/15 rounded-3xl">
                     <div className="h-[15%] flex justify-center items-center">
-                        <h1 className="text-center text-primary text-[1.7rem] min-[390px]:text-[1.85rem] font-medium text-shadow-md">
-                            Confirm Order
+                        <h1 className="text-center leading-7 text-primary text-[1.7rem] min-[390px]:text-[1.85rem] font-medium text-shadow-md">
+                            {isOrderMore
+                                ? "Confirm additional order"
+                                : "Confirm Order"}
                         </h1>
                     </div>
                     <div className="h-[70%] px-6 ">

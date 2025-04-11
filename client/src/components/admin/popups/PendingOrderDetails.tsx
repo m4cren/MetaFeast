@@ -38,12 +38,18 @@ const PendingOrderDetails = ({
             getPendingOrders();
         }, 850);
     };
-
+    console.log(maxLenght);
     useEffect(() => {
-        if (pendingOrderDetails) {
+        if (!pendingOrderDetails) return;
+        if (!pendingOrderDetails.is_additional) {
             setMaxLength(pendingOrderDetails?.orders.length - 1);
+        } else if (
+            pendingOrderDetails.is_additional &&
+            pendingOrderDetails.additional_orders
+        ) {
+            setMaxLength(pendingOrderDetails.additional_orders.length - 1);
         }
-    }, []);
+    }, [pendingOrderDetails]);
     const handleNext = () => {
         if (selected < maxLenght) {
             setSelected((prev) => prev + 1);
@@ -73,10 +79,17 @@ const PendingOrderDetails = ({
                 <div className="z-5 flex flex-row items-center justify-between pl-14 pr-8 absolute top-0 rounded-3xl bg-gradient-to-t from-darkbrown to-lightbrown w-full h-[4.5rem] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
                     <div>
                         <div className="text-primary text-shadow-md flex flex-row gap-2 items-center">
-                            <h1 className="text-[1.55rem] font-normal text-shadow-md">
-                                {pendingOrderDetails?.costumer_name}'s order
-                                list
-                            </h1>
+                            {pendingOrderDetails?.is_additional ? (
+                                <h1 className="text-[1.55rem] font-normal text-shadow-md">
+                                    {pendingOrderDetails?.costumer_name}'s
+                                    additional order list
+                                </h1>
+                            ) : (
+                                <h1 className="text-[1.55rem] font-normal text-shadow-md">
+                                    {pendingOrderDetails?.costumer_name}'s order
+                                    list
+                                </h1>
+                            )}
                             <p className="opacity-85">
                                 <ScrollText size={30} />
                             </p>
@@ -112,16 +125,29 @@ const PendingOrderDetails = ({
                             <h1>Quantity</h1>
                         </div>
                         <div className=" h-[80%] py-4">
-                            {pendingOrderDetails?.orders.map(
-                                ({ food_name, quantity }, index) => (
-                                    <li
-                                        key={index}
-                                        className={`${isClose && "text-close-animation"} text-drop-animation opacity-0 list-none text-white/60 font-extralight flex flex-row justify-between text-[0.85rem]`}
-                                    >
-                                        <h1>{food_name}</h1> <p>{quantity}x</p>
-                                    </li>
-                                ),
-                            )}
+                            {!pendingOrderDetails?.is_additional
+                                ? pendingOrderDetails?.orders.map(
+                                      ({ food_name, quantity }, index) => (
+                                          <li
+                                              key={index}
+                                              className={`${isClose && "text-close-animation"} text-drop-animation opacity-0 list-none text-white/60 font-extralight flex flex-row justify-between text-[0.85rem]`}
+                                          >
+                                              <h1>{food_name}</h1>{" "}
+                                              <p>{quantity}x</p>
+                                          </li>
+                                      ),
+                                  )
+                                : pendingOrderDetails?.additional_orders?.map(
+                                      ({ food_name, quantity }, index) => (
+                                          <li
+                                              key={index}
+                                              className={`${isClose && "text-close-animation"} text-drop-animation opacity-0 list-none text-white/60 font-extralight flex flex-row justify-between text-[0.85rem]`}
+                                          >
+                                              <h1>{food_name}</h1>{" "}
+                                              <p>{quantity}x</p>
+                                          </li>
+                                      ),
+                                  )}
                         </div>
                         <div
                             className={`${isClose && "text-close-animation"} text-drop-animation opacity-0 h-[10%] flex gap-1 flex-row items-center justify-between w-100%`}
@@ -159,33 +185,52 @@ const PendingOrderDetails = ({
                             className={`${layout.head} flex flex-col px-10 justify-end ${isClose && "text-close-animation"} text-drop-animation `}
                         >
                             <h1 className="text-primary text-[1.25rem] text-shadow-md leading-5">
-                                {
-                                    pendingOrderDetails?.orders[selected]
-                                        .food_name
-                                }
+                                {!pendingOrderDetails?.is_additional
+                                    ? pendingOrderDetails?.orders[selected]
+                                          .food_name
+                                    : pendingOrderDetails.additional_orders &&
+                                      pendingOrderDetails?.additional_orders[
+                                          selected
+                                      ].food_name}
                             </h1>
                             <p className="text-white/65 text-[0.75rem] text-shadow-md">
-                                {
-                                    pendingOrderDetails?.orders[selected]
-                                        .food_category
-                                }
+                                {!pendingOrderDetails?.is_additional
+                                    ? pendingOrderDetails?.orders[selected]
+                                          .food_category
+                                    : pendingOrderDetails.additional_orders &&
+                                      pendingOrderDetails?.additional_orders[
+                                          selected
+                                      ].food_category}
                             </p>
                         </div>
                         <div
                             className={`${layout.main} flex flex-row px-5 max-w-fit  items-center ${isClose && "text-close-animation"} text-drop-animation `}
                         >
-                            {pendingOrderDetails?.orders.map(
-                                ({ img }, index, orders) => (
-                                    <img
-                                        key={index}
-                                        style={{
-                                            transform: `translateX(${adjust}%)`,
-                                        }}
-                                        className={`${orders[selected].img !== img ? "scale-50 opacity-20 blur-[2.5px]" : "scale-125"} transition duration-150 drop-shadow-md`}
-                                        src={`/images/products/${img}`}
-                                    />
-                                ),
-                            )}
+                            {!pendingOrderDetails?.is_additional
+                                ? pendingOrderDetails?.orders.map(
+                                      ({ img }, index, orders) => (
+                                          <img
+                                              key={index}
+                                              style={{
+                                                  transform: `translateX(${adjust}%)`,
+                                              }}
+                                              className={`${orders[selected].img !== img ? "scale-50 opacity-20 blur-[2.5px]" : "scale-125"} transition duration-150 drop-shadow-md`}
+                                              src={`/images/products/${img}`}
+                                          />
+                                      ),
+                                  )
+                                : pendingOrderDetails.additional_orders?.map(
+                                      ({ img }, index, orders) => (
+                                          <img
+                                              key={index}
+                                              style={{
+                                                  transform: `translateX(${adjust}%)`,
+                                              }}
+                                              className={`${orders[selected].img !== img ? "scale-50 opacity-20 blur-[2.5px]" : "scale-125"} transition duration-150 drop-shadow-md`}
+                                              src={`/images/products/${img}`}
+                                          />
+                                      ),
+                                  )}
                         </div>
                         {selected !== 0 && (
                             <div
@@ -211,7 +256,13 @@ const PendingOrderDetails = ({
                                 Quantity:
                             </p>
                             <p className="text-white/75 text-[0.85rem] font-extralight">
-                                {pendingOrderDetails?.orders[selected].quantity}
+                                {!pendingOrderDetails?.is_additional
+                                    ? pendingOrderDetails?.orders[selected]
+                                          .quantity
+                                    : pendingOrderDetails.additional_orders &&
+                                      pendingOrderDetails?.additional_orders[
+                                          selected
+                                      ].quantity}
                                 x
                             </p>
                         </div>

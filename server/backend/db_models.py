@@ -1,5 +1,5 @@
 from .extensions import db
-from datetime import datetime
+from datetime import datetime,timezone
 from .db_config import time_ago
 
 
@@ -126,6 +126,8 @@ class Orders(db.Model):
     current_costumer_id = db.Column(db.Integer, db.ForeignKey("costumer.id"), nullable=True)
     current_table = db.Column(db.String(10), nullable = False)
     orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0}])
+    additional = db.Column(db.Boolean, default = False, nullable = False)
+    additional_orders = db.Column(db.JSON, nullable = True, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0}])
     order_time = db.Column(db.DateTime, default = datetime.utcnow)
 
 
@@ -136,6 +138,7 @@ class Orders(db.Model):
             'total_waiting_time': self.total_waiting_time,
             'order_time': time_ago(self.order_time),
             'current_table': self.current_table,
+            'is_additional': self.additional,
             'orders':[{
                 'food_name': order['food_name'],
                 'food_category': order['food_category'],
@@ -143,11 +146,30 @@ class Orders(db.Model):
                 'quantity': order['quantity'],
                 'price': order['price'],
                 
-            } for order in self.orders]
+            } for order in self.orders],
+            'additional_orders':[{
+                'food_name': order['food_name'],
+                'food_category': order['food_category'],
+                'img': order['img'],
+                'quantity': order['quantity'],
+                'price': order['price'],
+                
+            } for order in self.additional_orders]
+            
         }
+    
+
     
     def serve(self):
         self.status = 'Served'
+        self.additional = False
+        self.additional_orders = []
+
+    def additional_order(self):
+        self.status = 'Pending'
+        self.additional = True
+        self.order_time = datetime.now(timezone.utc)
+
 
 
 class PendingPayments(db.Model):

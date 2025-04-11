@@ -17,7 +17,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
         useState<PendingOrderType | null>(null);
 
     const [isToggle, setIsToggle] = useState<boolean>(false);
-    console.log(setIsToggle);
+
     const getPendingOrders = async () => {
         const headers = {
             "Content-Type": "json/application",
@@ -31,6 +31,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
             );
 
             setPendingOrders(response.data.pending_orders);
+            console.dir(response.data.pending_orders);
         } catch (error) {
             console.log(error);
         }
@@ -69,7 +70,10 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
 
             <ul className="text-primary bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-2xl rounded-tl-2xl h-[88vh] p-4 space-y-3  overflow-y-auto custom-scrollbar">
                 {pendingOrders.map(
-                    ({ costumer_name, current_table }, index) => (
+                    (
+                        { costumer_name, current_table, is_additional },
+                        index,
+                    ) => (
                         <li
                             className="bg-gradient-to-b from-[#ffffff0b] to-[#0000000b] border-1 border-white/20  rounded-2xl p-2 flex flex-row justify-between px-5 transition duration-200 pending-list-shadow  hover:translate-y-[-3px] hover:translate-x-[5px] cursor-pointer "
                             key={index}
@@ -90,6 +94,11 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
                                     <ScrollText />
                                     View orders
                                 </button>
+                                {is_additional && (
+                                    <p className="text-[0.9rem] text-white/60 font-extralight">
+                                        Additional
+                                    </p>
+                                )}
                             </div>
                         </li>
                     ),

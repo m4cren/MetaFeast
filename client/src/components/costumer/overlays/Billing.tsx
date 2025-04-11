@@ -1,16 +1,92 @@
 import { SetStateAction, useEffect, useState } from "react";
 import useFrameProvider from "../../../frames/useFrameProvider";
+import axios from "axios";
+import useServerAddress from "../../../../useServerAddress";
+import { PendingOrderType } from "../../../types/types";
 
 interface BillingProps {
     setCamPos: React.Dispatch<SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<SetStateAction<[number, number, number]>>;
 }
+
+type OrderType = {
+    food_name: string;
+    food_category: string;
+    img: string;
+    price: number;
+    quantity: number;
+};
+
 const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
     const { to_counter, to_1st_Frames } = useFrameProvider();
     const current_table = localStorage.getItem("table-picked");
     const [isReady, setIsReady] = useState<boolean>(false);
+    const { server } = useServerAddress();
+    const [myOrders, setMyOrders] = useState<PendingOrderType | null>(null);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
+
+    const getOrders = async () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) return;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        };
+
+        try {
+            const response = await axios.get(`${server}/order/get-order`, {
+                headers,
+                withCredentials: true,
+            });
+
+            console.log(response.data.orders);
+
+            if (response.data.status) {
+                setMyOrders(response.data.orders);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
+        let price_ = 0;
+        myOrders?.orders.forEach(({ price }) => {
+            return (price_ = price + price_);
+        });
+
+        setTotalPrice(price_);
+    }, [myOrders]);
+    const mergeOrders = (orders: OrderType[]): OrderType[] => {
+        const merged = orders.reduce<Record<string, OrderType>>((acc, item) => {
+            if (!acc[item.food_name]) {
+                acc[item.food_name] = { ...item };
+            } else {
+                acc[item.food_name].quantity += item.quantity;
+                acc[item.food_name].price += item.price;
+            }
+            return acc;
+        }, {});
+
+        return Object.values(merged);
+    };
+
+    const mergedOrders: OrderType[] = myOrders?.orders
+        ? mergeOrders(myOrders?.orders)
+        : [
+              {
+                  food_category: "",
+                  food_name: "",
+                  img: "",
+                  price: 0,
+                  quantity: 0,
+              },
+          ];
+
+    useEffect(() => {
+        getOrders();
+
         if (current_table?.includes("A", 0)) {
             setCamPos(to_counter.frame1.pos);
             setCamRot(to_counter.frame1.rot);
@@ -18,6 +94,7 @@ const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
             setTimeout(() => {
                 setCamPos(to_counter.frame2.pos);
                 setCamRot(to_counter.frame2.rot);
+                setIsReady(true);
             }, 600);
         } else if (current_table?.includes("B", 0)) {
             setCamPos(to_1st_Frames.frame1.pos);
@@ -49,9 +126,8 @@ const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
                                             setCamRot(to_counter.frame1.rot);
                                             setCamPos(to_counter.frame1.pos);
 
-                                            setIsReady(true);
-
                                             setTimeout(() => {
+                                                setIsReady(true);
                                                 setCamRot(
                                                     to_counter.frame2.rot,
                                                 );
@@ -75,7 +151,7 @@ const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
                 <div className="pop-up-animation overflow-hidden relative py-6 w-[75vw] h-[75vh] bg-black/10 backdrop-blur-[20px] [-webkit-backdrop-blur:20px] border-2 border-white/15 rounded-3xl">
                     <div className="h-[15%] flex justify-center items-center">
                         <h1 className="text-center text-primary text-[1.7rem] min-[390px]:text-[1.85rem] font-medium text-shadow-md">
-                            Payment
+                            Confirm Payment
                         </h1>
                     </div>
                     <div className="h-[70%] px-6 ">
@@ -84,21 +160,28 @@ const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
                             <p className="text-shadow-sm">Quantity</p>
                         </div>
                         <div className="h-[70%] border-b-1 border-white/30 overflow-y-scroll">
-                            <div className="flex items-center justify-between">
-                                <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
-                                    Wagyu
-                                </p>
-                                <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
-                                    2x
-                                </p>
-                            </div>
+                            {mergedOrders.map(
+                                ({ food_name, quantity }, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center justify-between"
+                                    >
+                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
+                                            {food_name}
+                                        </p>
+                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
+                                            {quantity}x
+                                        </p>
+                                    </div>
+                                ),
+                            )}
                         </div>
                         <div className="h-[15%] flex items-center justify-between">
                             <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm">
                                 Total Price:
                             </p>
                             <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm text-white/80 font-extralight">
-                                ₱ 1299
+                                ₱ {totalPrice}
                             </p>
                         </div>
                     </div>
@@ -124,7 +207,7 @@ const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
                             </button>
                         </div>
                         <p className="text-[0.65rem] min-[390px]:text-[0.75rem] text-white/60 font-extralight text-shadow-md">
-                            You can add order later while waiting or dining
+                            We suggest to pay thru PayMongo
                         </p>
                     </div>
                     <div className=" absolute top-0 left-0 right-0 bottom-0 inset-0 mask-image-[linear-gradient(to_top,transparent,black),linear-gradient(to_bottom,transparent,black)] pointer-events-none"></div>
