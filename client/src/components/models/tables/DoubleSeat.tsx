@@ -33,7 +33,10 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        if (!scene) return;
+        if (!scene) {
+            console.log("no table");
+            return;
+        }
 
         const foundMeshes: THREE.Mesh[] = [];
         scene.traverse((child) => {
@@ -51,7 +54,9 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
     }, [scene]);
 
     useEffect(() => {
-        if (!meshRef.current || meshes.length === 0) return;
+        if (!meshRef.current || meshes.length === 0) {
+            return;
+        }
 
         const colorArray = new Float32Array(TABLE_POSITION.length * 3);
 
@@ -89,7 +94,9 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
         }
     }, [meshes, availableTable]);
 
-    if (!isLoaded || meshes.length === 0) return null;
+    if (!isLoaded || meshes.length === 0) {
+        return null;
+    }
 
     const handleClick = (event: ThreeEvent<PointerEvent>) => {
         if (event.instanceId !== undefined) {

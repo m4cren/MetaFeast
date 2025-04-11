@@ -28,7 +28,8 @@ const CostumerScene = ({
     setIsLoading,
 }: CameraControl) => {
     const socket = useSocket();
-    const uniqueKey = Date.now();
+    const uniqueKey = Date.now;
+
     const { tables, getTableStatus } = useTableStatus() ?? {
         tables: [],
         getTableStatus: () => {},
