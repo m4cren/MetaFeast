@@ -26,6 +26,18 @@
       <p><strong>Pending Payment</strong></p>
       <img src="./figma/Payment request.png" width="500"/>
     </td>
+     <td>
+      <p><strong>QR Code</strong></p>
+      <img src="./figma/QRCODE.png" width="500"/>
+    </td>
+
+  </tr>
+   <tr>
+    <td>
+      <p><strong>Admin Login</strong></p>
+      <img src="./figma/Admin Login.png" width="500"/>
+    </td>
+
 
   </tr>
 </table>
