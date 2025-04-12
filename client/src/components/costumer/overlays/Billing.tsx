@@ -3,10 +3,13 @@ import useFrameProvider from "../../../frames/useFrameProvider";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import { PendingOrderType } from "../../../types/types";
+import { useSocket } from "../../../contexts/SocketContext";
+import { data } from "react-router-dom";
 
 interface BillingProps {
     setCamPos: React.Dispatch<SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<SetStateAction<[number, number, number]>>;
+    setPhase: React.Dispatch<SetStateAction<number>>;
 }
 
 type OrderType = {
@@ -17,13 +20,44 @@ type OrderType = {
     quantity: number;
 };
 
-const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
+const Billing = ({ setCamPos, setCamRot, setPhase }: BillingProps) => {
     const { to_counter, to_1st_Frames } = useFrameProvider();
     const current_table = localStorage.getItem("table-picked");
     const [isReady, setIsReady] = useState<boolean>(false);
     const { server } = useServerAddress();
     const [myOrders, setMyOrders] = useState<PendingOrderType | null>(null);
     const [totalPrice, setTotalPrice] = useState<number>(0);
+    const socket = useSocket();
+    // costumer_name = data.get('costumer_name')
+    // table_id = data.get('table_id')
+    // total_price = data.get('total_price')
+    // orders = data.get('orders')
+    // print(f'{order['food_name']}:   {order['quantity']}       {order['price']}')
+
+    const handleBillRequest = (payment_type: string) => {
+        const dataToSend = {
+            costumer_name: myOrders?.costumer_name,
+            table_id: myOrders?.current_table,
+            payment_type: payment_type,
+            total_price: totalPrice,
+            orders: mergedOrders.map(({ food_name, quantity, price }) => {
+                return {
+                    food_name: food_name,
+                    quantity: quantity,
+                    price: price,
+                };
+            }),
+        };
+
+        try {
+            socket?.emit("billing-request", dataToSend);
+
+            setPhase(6);
+            localStorage.setItem("current_phase", "phase_6");
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const getOrders = async () => {
         const token = localStorage.getItem("token");
@@ -187,10 +221,16 @@ const Billing = ({ setCamPos, setCamRot }: BillingProps) => {
                     </div>
                     <div className="h-[15%] flex items-center justify-center flex-col gap-3">
                         <div className="flex flex-row items-center gap-2">
-                            <button className="text-[1.1rem] min-[390px]:text-[1.2rem] px-4 min-[390px]:px-8 shadow-3xl text-shadow-md py-3  text-primary [box-shadow:-1px_1px_5px_rgba(0,0,0,0.4)] rounded-2xl border-1 border-white/25">
+                            <button
+                                onClick={() => handleBillRequest("Cash")}
+                                className="text-[1.1rem] min-[390px]:text-[1.2rem] px-4 min-[390px]:px-8 shadow-3xl text-shadow-md py-3  text-primary [box-shadow:-1px_1px_5px_rgba(0,0,0,0.4)] rounded-2xl border-1 border-white/25"
+                            >
                                 Cash
                             </button>
-                            <button className="px-5 min-[390px]:px-8 shadow-3xl text-shadow-md py-1  text-primary [box-shadow:-2px_2px_5px_rgba(0,0,0,0.3)] rounded-2xl bg-gradient-to-b  from-lightbrown to-darkbrown">
+                            <button
+                                onClick={() => handleBillRequest("PayMongo")}
+                                className="px-5 min-[390px]:px-8 shadow-3xl text-shadow-md py-1  text-primary [box-shadow:-2px_2px_5px_rgba(0,0,0,0.3)] rounded-2xl bg-gradient-to-b  from-lightbrown to-darkbrown"
+                            >
                                 <h1 className="text-[1.1rem] min-[390px]:text-[1.2rem]">
                                     Pay Online
                                 </h1>

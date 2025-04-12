@@ -13,6 +13,7 @@ import { NotificationType } from "../../types/types";
 import DenyConfirmation from "./popups/DenyConfirmation";
 import layout from "../../styles/layouts/admin_view.module.css";
 import PendingPayments from "./popups/PendingPayments";
+import { useTableStatus } from "../../contexts/TableStatusContext";
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,6 +42,10 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const socket = useSocket();
     const notif_sound = new Audio("/audios/admin_notif.mp3");
 
+    const { getTableStatus } = useTableStatus() ?? {
+        getTableStatus: () => {},
+    };
+
     useEffect(() => {
         socket?.on("notify-admin", (data) => {
             notif_sound.play();
@@ -50,8 +55,15 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
             ]);
         });
 
+        socket?.on("push-to-admin-payment", (_) => {
+            setTimeout(() => {
+                getTableStatus();
+            }, 850);
+        });
+
         return () => {
             socket?.off("notify-admin");
+            socket?.off("push-to-admin-payment");
         };
     }, [socket]);
 

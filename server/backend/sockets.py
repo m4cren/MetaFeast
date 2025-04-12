@@ -139,41 +139,17 @@ def send_order(data):
         order.additional_order()
         
         current_orders = []
-        print('===================== ADDITIONAL ==========================')
+
         for item in additional_orders:
-
-            print(f'{item['food_name']}: {item['quantity']} ')
             current_orders.append(item)
-        
-        print('===========================================================')
 
-        print('===================== ORIGINAL ==========================')
-        for item in order.orders:
-
-            print(f'{item['food_name']}: {item['quantity']} ')
+        for item in order.orders:    
             current_orders.append(item)
-        
-        print('===========================================================')
 
-        
         order.orders = current_orders
-
-
         order.additional_orders = additional_orders
 
-
-    
-
-    
-        
-      
-
-    
-
     db.session.commit()
-
-   
-
 
     emit('push-to-admin', broadcast=True)
 
@@ -198,6 +174,56 @@ def deliver_order(data):
     db.session.commit()
 
     emit('accept-order', response, broadcast=True )
+
+
+@socketio.on('billing-request')
+def billing_request(data):
+    costumer_name = data.get('costumer_name')
+    table_id = data.get('table_id')
+    total_price = data.get('total_price')
+    orders = data.get('orders')
+    payment_id = generate_unique_payment_id()
+    payment_type = data.get('payment_type')
+    print('==========================================')
+    print(f'Costumer Name: {costumer_name}')
+    print(f'Payment ID: {payment_id}')
+    print(f'Table ID: {table_id}')
+    print(f'Total Price: {total_price}')
+    print('Orders: ')
+    for order in orders:
+        print(f'{order['food_name']}:   {order['quantity']}       {order['price']}')
+    print('=========================================')
+   
+
+    try:
+
+        new_payment_request = PendingPayments(payment_id = payment_id,
+                                            costumer_name = costumer_name,
+                                            table_id = table_id,
+                                            payment_type = payment_type,
+                                            total_payment = total_price,
+                                            orders = [{
+                                                'food_name': order['food_name'],
+                                                'quantity': order['quantity'],
+                                                'price': order['price']
+                                            }for order in orders])
+        
+        save_data(new_payment_request)
+
+        costumer_to_update = Costumer.query.filter(Costumer.costumer_name == costumer_name and Costumer.current_table == table_id).first()
+        print(f'{costumer_to_update.costumer_name} =============')
+        costumer_to_update.update_to_billing()
+
+        table_to_update = Table.query.filter_by(table_name = table_id).first()
+        table_to_update.update_to_billing()
+
+        db.session.commit()
+
+        emit('push-to-admin-payment', broadcast=True)
+    except:
+        print('error saving to the database')
+
+
    
 
         

@@ -135,3 +135,19 @@ export type CurrentCostumerType = {
     current_table: string;
     time: string;
 };
+
+export type PendingPaymentType = {
+    payment_id: string;
+    costumer_name: string;
+    status: "Unconfirmed" | "Confirmed";
+    payment_type: "Cash" | "PayMongo";
+    table_id: string;
+    total_payment: number;
+
+    orders: {
+        food_name: string;
+        quantity: number;
+        price: number;
+    };
+    payment_time: string;
+};

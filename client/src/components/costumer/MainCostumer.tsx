@@ -17,6 +17,7 @@ import Order from "./overlays/Order";
 import WaitingOrder from "./overlays/WaitingOrder";
 import Eating from "./overlays/Eating";
 import Billing from "./overlays/Billing";
+import WaitingPaymentConfirmation from "./overlays/WaitingPaymentConfirmation";
 // import SceneCameraController from "../SceneCameraController";
 
 interface MainCostumerProps {
@@ -118,6 +119,11 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                     break;
                 case "phase_5":
                     setPhase(5);
+                    setCamPos(to_counter.frame2.pos);
+                    setCamRot(to_counter.frame2.rot);
+                    break;
+                case "phase_6":
+                    setPhase(6);
                     setCamPos(to_counter.frame2.pos);
                     setCamRot(to_counter.frame2.rot);
                     break;
@@ -235,8 +241,13 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                     />
                 )}
                 {phase === 5 && (
-                    <Billing setCamPos={setCamPos} setCamRot={setCamRot} />
+                    <Billing
+                        setCamPos={setCamPos}
+                        setCamRot={setCamRot}
+                        setPhase={setPhase}
+                    />
                 )}
+                {phase === 6 && <WaitingPaymentConfirmation />}
             </div>
 
             {/* <div className="fixed bottom-4">

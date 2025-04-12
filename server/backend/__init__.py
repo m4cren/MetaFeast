@@ -65,8 +65,9 @@ def create_website():
     from .api.tables import tables
     from .api.admin import admin
     from .api.products import products
+    from .api.payment import payment
  
-
+    app.register_blueprint(payment)
     app.register_blueprint(order)
     app.register_blueprint(costumer)
     app.register_blueprint(tables)

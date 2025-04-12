@@ -177,7 +177,10 @@ class PendingPayments(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     payment_id = db.Column(db.String(10), nullable = False, unique = True)
     costumer_name = db.Column(db.String(69), nullable = False)
+    status = db.Column(db.String(69), nullable = False, default = 'Unconfirmed')
+    payment_type = db.Column(db.String(69), nullable = True)
     table_id = db.Column(db.String(69), nullable = False)
+    orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '', 'quantity': 0, 'price': 0}])
     total_payment = db.Column(db.Integer, nullable = False)
     payment_time = db.Column(db.DateTime, default = datetime.utcnow)
 
@@ -185,11 +188,21 @@ class PendingPayments(db.Model):
         return{
             'payment_id': self.payment_id,
             'costumer_name': self.costumer_name,
+            'payment_type': self.payment_type,
+            'status': self.status,
             'table_id': self.table_id,
             'total_payment': self.total_payment,
+            'orders': [{
+                'food_name': order['food_name'],
+                'quantity': order['quantity'],
+                'price': order['price']
+            }for order in self.orders],
             'payment_time': time_ago(self.payment_time)
             
         }
+    
+    def confirm(self):
+        self.status = 'Confirmed'
     
 
 

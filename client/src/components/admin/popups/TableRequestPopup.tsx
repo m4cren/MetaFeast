@@ -232,7 +232,7 @@ const TableRequestPopup = ({
                 </ul>
             </div>
             <div
-                className={`${isClose && "pop-close-animation"} pop-up-animation realtive px-8 py-2 w-[40rem] translate-x-[-1rem] h-[70vh] z-2 bg-gradient-to-t from-darkbrown to-lightbrown rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+                className={`${isClose && "pop-close-animation"} pop-up-animation relative px-8 py-2 w-[40rem] translate-x-[-1rem] h-[70vh] z-2 bg-gradient-to-t from-darkbrown to-lightbrown rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             >
                 <div className="w-full border-b-3 border-white/20 p-4 flex flex-row items-center justify-center relative">
                     <h1 className="font-medium text-primary text-[1.6rem] text-center text-shadow-md">
