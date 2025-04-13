@@ -205,3 +205,23 @@
         height: 2.5rem;
     }
 }
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    10% {
+        width: 16ch;
+    }
+    90% {
+        width: 16ch;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}

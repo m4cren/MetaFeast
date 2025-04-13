@@ -31,16 +31,16 @@ const QrCode = () => {
                         src="/images/phone_border.png"
                         alt=""
                     />
-                    <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                    <span className="flex flex-col items-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
                         {" "}
-                        <p className="w-full text-center text-softblack font-semibold mb-4 text-[1.2rem]">
+                        <p className="w-full  letter tracking-widest   text-softblack font-bold mb-4 text-[1.25rem] typing-demo">
                             {localIp}
                         </p>
                         {localIp && (
                             <QRCode
                                 value={localIp}
                                 size={390}
-                                className="[box-shadow:-6px_6px_10px_rgba(0,0,0,0.6)] rounded-3xl"
+                                className="[box-shadow:-6px_6px_10px_rgba(0,0,0,0.6)] rounded-3xl "
                             />
                         )}
                     </span>

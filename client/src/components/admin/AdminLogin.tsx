@@ -2,11 +2,9 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import useServerAddress from "../../../useServerAddress";
 import { useNavigate } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
+
 import { Eye } from "lucide-react";
 
-import { OrbitControls } from "@react-three/drei";
-import Landscape from "../models/Landscape";
 import AdminLandingTemplate from "./AdminLandingTemplate";
 
 type FormType = {
@@ -92,7 +90,7 @@ const AdminLogin = () => {
                         onSubmit={handleSubmit}
                     >
                         <div className="relative w-full">
-                            <label className="absolute -top-[29%] left-4 rounded-xl px-1 text-softblack text-[0.85rem] bg-[#f5f5f5] font-semibold ">
+                            <label className="absolute -top-[25%] left-4 rounded-xl px-1 text-softblack text-[0.85rem] bg-[#f5f5f5] font-semibold ">
                                 Password
                             </label>
                             <i
@@ -114,7 +112,7 @@ const AdminLogin = () => {
 
                         <button
                             type="submit"
-                            className="text-primary text-[1.1rem] bg-gradient-to-b from-darkbrown to-lightbrown  [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)] rounded-xl w-[6rem] h-[2.5rem] cursor-pointer"
+                            className="text-primary text-[1.1rem] bg-gradient-to-t from-darkbrown to-lightbrown  [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)] rounded-xl w-[6rem] h-[2.5rem] cursor-pointer"
                         >
                             {isSubmitting ? (
                                 <span className="loader-white scale-40 -translate-y-3 pop-up-animation"></span>

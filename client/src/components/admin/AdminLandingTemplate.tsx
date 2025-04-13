@@ -15,11 +15,11 @@ const Sphere = () => {
 
     const handleHover = () => {
         setSize(1.2);
-        setSpeed(0.1);
+        setSpeed(0.04);
     };
     const handleOutHover = () => {
         setSize(1);
-        setSpeed(0.3);
+        setSpeed(0.09);
     };
 
     useFrame((_, delta) => {
@@ -37,7 +37,7 @@ const Sphere = () => {
             onPointerLeave={handleOutHover}
         >
             {" "}
-            <sphereGeometry args={[2.5 * size, 20, 12, 12]} />
+            <sphereGeometry args={[2.5 * size, 25, 20, 20]} />
             <meshStandardMaterial color={"brown"} wireframe />
         </mesh>
     );
@@ -50,13 +50,14 @@ const AdminLandingTemplate = ({ description, content }: AdminTemplateProps) => {
                 <div className="flex flex-col items-center gap-2 justify-center w-[48rem] h-[35rem]">
                     <div className="relative flex flex-row items-center justify-between w-[75%]">
                         <div
-                            className={`absolute w-[20rem] h-[20rem] opacity-10   -top-30 -left-40 transition duration-200`}
+                            className={`absolute w-[20rem] h-[20rem] opacity-20   -top-30 -left-40 transition duration-200`}
                         >
                             <Canvas>
+                                <ambientLight intensity={0.6} />
                                 <Sphere />
                             </Canvas>
                         </div>
-                        <h1 className="text-softblack text-[4.5rem] font-bold ">
+                        <h1 className="text-softblack text-[4.5rem] font-bold">
                             Metafeast
                         </h1>
                         <span className="w-[4px] h-[95px] rounded-t-full rounded-b-full bg-softblack "></span>
