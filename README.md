@@ -6,7 +6,7 @@ An interactive three dimensional user interface for dining restaurant
 ## Technology Stacks
 
 - **Frontend**: ReactJs, Typescript, Tailwindcss, React Three Fiber (ThreeJs)
-- **Backend**: Python, Flask (Python Web Framework), Socket.io (Websockets), JWT (Token-based Authentication), MySQL (Database)
+- **Backend**: Python, Flask (Python Web Framework), Socket.io (Websockets), JWT (Token-based Authentication), MySQL (Database), PayMongo API (Payment method)
 - **Others**: Figma, Sketch Up, Blender, Adobe Photoshop
 
 
