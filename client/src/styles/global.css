@@ -28,6 +28,7 @@ body {
     --color-lightred: #ad2500;
     --color-darkgreen: #075500;
     --color-lightgreen: #1f8400;
+    --color-softblack: #2c2c2c;
 }
 
 @layer utilities {

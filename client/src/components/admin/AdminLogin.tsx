@@ -2,6 +2,13 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import useServerAddress from "../../../useServerAddress";
 import { useNavigate } from "react-router-dom";
+import { Canvas } from "@react-three/fiber";
+import { Eye } from "lucide-react";
+
+import { OrbitControls } from "@react-three/drei";
+import Landscape from "../models/Landscape";
+import AdminLandingTemplate from "./AdminLandingTemplate";
+
 type FormType = {
     password: string;
 };
@@ -14,6 +21,8 @@ const AdminLogin = () => {
     const [isWarning, setIsWarning] = useState<boolean>(false);
     const inputRef = useRef(null);
     const { server } = useServerAddress();
+    const [isPasswordShow, setIsPasswordShow] = useState<boolean>(false);
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const navigate = useNavigate();
 
@@ -45,6 +54,7 @@ const AdminLogin = () => {
                     setIsWarning(false);
                 }, 5000);
             }
+            setIsSubmitting(false);
         } catch (error) {
             console.error(error);
         }
@@ -61,43 +71,66 @@ const AdminLogin = () => {
         event.preventDefault();
 
         submitToServer();
+        setIsSubmitting(true);
     };
     return (
-        <div className="w-full h-screen bg-[url('/images/admin_bg.gif')] bg-no-repeat bg-center bg-cover flex items-center justify-center fixed z-20">
-            <div className="bg-white/10 backdrop-blur-[9px] w-full h-screen flex flex-col justify-center items-center">
-                <div className="flex flex-col items-center justify-center bg-white/60 rounded-2xl p-25 gap-8 backdrop-blur-[30px]">
-                    <h1 className="text-black/70 font-bold text-3xl">
-                        Administrator Login
+        <AdminLandingTemplate
+            description={
+                <p className="text-softblack font-semibold text-[1.5rem]">
+                    Administrator <br />
+                    Authentication
+                </p>
+            }
+            content={
+                <div className="flex flex-col gap-6 items-center justify-center w-[48rem] h-[35rem]">
+                    <h1 className="text-softblack font-semibold text-[1.1rem]">
+                        Welcome back, Please authenticate to access the admin
+                        panel
                     </h1>
                     <form
-                        className="w-full flex flex-col items-center justify-center gap-4"
+                        className="flex flex-row w-[70%] items-center gap-2"
                         onSubmit={handleSubmit}
                     >
-                        {isWarning && (
-                            <p
-                                className={` text-[0.9rem] ${warningMessage === "Sucess, please wait..." ? "text-green-500" : "text-red-800"} `}
+                        <div className="relative w-full">
+                            <label className="absolute -top-[29%] left-4 rounded-xl px-1 text-softblack text-[0.85rem] bg-[#f5f5f5] font-semibold ">
+                                Password
+                            </label>
+                            <i
+                                onClick={() =>
+                                    setIsPasswordShow(!isPasswordShow)
+                                }
+                                className="absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                             >
-                                {warningMessage}
-                            </p>
-                        )}
+                                <Eye />
+                            </i>
+                            <input
+                                ref={inputRef}
+                                name="password"
+                                onChange={handleChange}
+                                type={`${isPasswordShow ? "text" : "password"}`}
+                                className="w-full text-[0.85rem] pl-4 text-softblack py-2 outline-none border-2 border-softblack rounded-xl [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)]"
+                            />
+                        </div>
 
-                        <input
-                            className="border-black/70 border-2 rounded-2xl text-center outline-none w-full"
-                            type="password"
-                            ref={inputRef}
-                            onChange={handleChange}
-                            name="password"
-                        />
                         <button
                             type="submit"
-                            className="rounded-2xl bg-black/70 text-white/90 px-10 py-3"
+                            className="text-primary text-[1.1rem] bg-gradient-to-b from-darkbrown to-lightbrown  [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)] rounded-xl w-[6rem] h-[2.5rem] cursor-pointer"
                         >
-                            Login
+                            {isSubmitting ? (
+                                <span className="loader-white scale-40 -translate-y-3 pop-up-animation"></span>
+                            ) : (
+                                "Login"
+                            )}
                         </button>
                     </form>
+                    {isWarning && (
+                        <p className="text-lightred text-[0.9rem] font-semibold">
+                            {warningMessage}
+                        </p>
+                    )}
                 </div>
-            </div>
-        </div>
+            }
+        />
     );
 };
 

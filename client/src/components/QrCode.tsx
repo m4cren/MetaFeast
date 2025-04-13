@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useServerAddress from "../../useServerAddress";
 
 import QRCode from "react-qr-code";
+import AdminLandingTemplate from "./admin/AdminLandingTemplate";
 
 const QrCode = () => {
     const [localIp, setLocalIp] = useState<string>("");
@@ -11,15 +12,41 @@ const QrCode = () => {
         setLocalIp(`${host}:${port}`);
     }, []);
     return (
-        <div className="fixed flex justify-center items-center z-20 bg-[#dfdfdf] top-0 left-0 right-0 bottom-0">
-            <div className=" p-10 flex flex-col items-center gap-5">
-                <h1 className="text-shadow-lg text-dark-primary text-4xl">
-                    Scan to Access
-                </h1>
-                {localIp && <QRCode value={localIp} size={500} />}
-                <p className="text-shadow-lg text-dark-secondary">{localIp}</p>
-            </div>
-        </div>
+        <AdminLandingTemplate
+            description={
+                <p className="text-softblack text-[1.5rem] font-semibold relative">
+                    Powered by <br />
+                    Paymong{" "}
+                    <img
+                        className="scale-15 absolute -top-[17%] -right-[38%] rounded-full"
+                        src="/images/paymongo.jpg"
+                        alt=""
+                    />
+                </p>
+            }
+            content={
+                <div className="relative">
+                    <img
+                        className="scale-150 translate-y-[20%]"
+                        src="/images/phone_border.png"
+                        alt=""
+                    />
+                    <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                        {" "}
+                        <p className="w-full text-center text-softblack font-semibold mb-4 text-[1.2rem]">
+                            {localIp}
+                        </p>
+                        {localIp && (
+                            <QRCode
+                                value={localIp}
+                                size={390}
+                                className="[box-shadow:-6px_6px_10px_rgba(0,0,0,0.6)] rounded-3xl"
+                            />
+                        )}
+                    </span>
+                </div>
+            }
+        />
     );
 };
 
