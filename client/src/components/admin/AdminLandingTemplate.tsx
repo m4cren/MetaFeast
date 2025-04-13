@@ -50,7 +50,7 @@ const AdminLandingTemplate = ({ description, content }: AdminTemplateProps) => {
                 <div className="flex flex-col items-center gap-2 justify-center w-[48rem] h-[35rem]">
                     <div className="relative flex flex-row items-center justify-between w-[75%]">
                         <div
-                            className={`absolute w-[20rem] h-[20rem] opacity-20   -top-30 -left-40 transition duration-200`}
+                            className={`absolute w-[20rem] h-[20rem] opacity-12   -top-35 -left-40 transition duration-200`}
                         >
                             <Canvas>
                                 <ambientLight intensity={0.6} />

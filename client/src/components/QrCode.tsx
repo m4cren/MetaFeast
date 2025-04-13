@@ -40,7 +40,10 @@ const QrCode = () => {
                             <QRCode
                                 value={localIp}
                                 size={390}
-                                className="[box-shadow:-6px_6px_10px_rgba(0,0,0,0.6)] rounded-3xl "
+                                className=" rounded-3xl "
+                                bgColor="#f5f5f500"
+                                fgColor="#2c2c2c"
+                                level="M"
                             />
                         )}
                     </span>
