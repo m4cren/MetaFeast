@@ -31,7 +31,6 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
             );
 
             setPendingOrders(response.data.pending_orders);
-            console.dir(response.data.pending_orders);
         } catch (error) {
             console.log(error);
         }

@@ -224,6 +224,25 @@ def billing_request(data):
         print('error saving to the database')
 
 
+@socketio.on('confirm-payment')
+def confirm_payment(data):
+    
+    payment_id = data.get('payment_id')
+
+    costumer_to_confirm = PendingPayments.query.filter_by(payment_id = payment_id).first()
+    costumer_to_confirm.confirm()
+
+    db.session.commit()
+
+    print(costumer_to_confirm)
+
+    response = {
+        'costumer_name': costumer_to_confirm.costumer_name,
+      
+    }
+
+    emit('push-to-costumer', {'response': response}, broadcast=True)
+
    
 
         

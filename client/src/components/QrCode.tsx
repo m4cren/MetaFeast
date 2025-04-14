@@ -34,7 +34,7 @@ const QrCode = () => {
                     <span className="flex flex-col items-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
                         {" "}
                         <p className="w-full  letter tracking-widest   text-softblack font-bold mb-4 text-[1.25rem] typing-demo">
-                            19x.xxx.3x.:6x69
+                            {localIp}
                         </p>
                         {localIp && (
                             <QRCode

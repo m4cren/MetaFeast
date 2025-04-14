@@ -52,6 +52,22 @@ const PendingPayments = ({ setIsPendingPayment }: PendingPayment) => {
         };
     }, [socket]);
 
+    const handleConfirm = (id: string) => {
+        const dataToSend = {
+            payment_id: id,
+        };
+
+        try {
+            socket?.emit("confirm-payment", dataToSend);
+        } catch (error) {
+            console.log(error);
+        }
+
+        setTimeout(() => {
+            getPendingPayments();
+        }, 500);
+    };
+
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex justify-center items-center pointer-events-auto">
             <div className="flex flex-col w-[55vw] h-[40rem] items-center">
@@ -92,7 +108,10 @@ const PendingPayments = ({ setIsPendingPayment }: PendingPayment) => {
                                 payment_type,
                                 total_payment,
                             }) => (
-                                <li className="w-[90%]  list-none flex flex-row items-center overflow-hidden justify-between rounded-2xl border-white/20 border-1 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)]">
+                                <li
+                                    key={payment_id}
+                                    className={` w-[90%]  list-none flex flex-row items-center overflow-hidden justify-between rounded-2xl border-white/20 border-1 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)]`}
+                                >
                                     <div className="flex flex-col items-start pl-4">
                                         <h1 className="text-primary text-[1rem] text-shadow-sm font-light">
                                             {costumer_name} has marked the
@@ -118,7 +137,12 @@ const PendingPayments = ({ setIsPendingPayment }: PendingPayment) => {
                                                 </div>
                                             </p>
                                         </div>
-                                        <button className="hover:scale-105 hover:to-lightbrown hover:from-darkbrown transition duration-200 cursor-pointer text-primary text-[0.9rem] text-shadow-sm font-light bg-gradient-to-b h-[3.25rem] px-4 from-lightgreen to-darkgreen">
+                                        <button
+                                            onClick={() => {
+                                                handleConfirm(payment_id);
+                                            }}
+                                            className="hover:scale-105 hover:to-lightbrown hover:from-darkbrown transition duration-200 cursor-pointer text-primary text-[0.9rem] text-shadow-sm font-light bg-gradient-to-b h-[3.25rem] px-4 from-lightgreen to-darkgreen"
+                                        >
                                             Confirm
                                         </button>
                                     </div>

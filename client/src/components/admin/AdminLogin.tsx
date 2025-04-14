@@ -38,7 +38,7 @@ const AdminLogin = () => {
 
             if (response.data.status) {
                 localStorage.setItem("authenticated", "true");
-                setWarningMessage("Sucess, please wait...");
+                setWarningMessage("Success, please wait...");
                 setIsWarning(true);
 
                 setTimeout(() => {
@@ -122,7 +122,9 @@ const AdminLogin = () => {
                         </button>
                     </form>
                     {isWarning && (
-                        <p className="text-lightred text-[0.9rem] font-semibold">
+                        <p
+                            className={`${warningMessage === "Incorrect password" && "text-lightred"}  text-lightgreen text-[0.9rem] font-semibold`}
+                        >
                             {warningMessage}
                         </p>
                     )}
