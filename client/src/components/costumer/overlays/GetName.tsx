@@ -5,6 +5,7 @@ import useFrameProvider from "../../../frames/useFrameProvider";
 import { UtensilsCrossed } from "lucide-react";
 import { CircleHelp } from "lucide-react";
 import layout from "../../../styles/layouts/get_name.module.css";
+import Instructions from "./instructions/Instructions";
 
 interface FormType {
     costumer_name: string;
@@ -30,6 +31,8 @@ const GetName = ({
     const [warningContent, setWarningContent] = useState<string>("");
 
     const { afterName_Frames, selTable1stF_Frames } = useFrameProvider();
+
+    const [isInstructions, setIsInstructions] = useState<boolean>(false);
 
     const setFrameOne = () => {
         setCamPos(afterName_Frames.frame1.pos);
@@ -138,6 +141,8 @@ const GetName = ({
         setName({ ...name, [e.currentTarget.name]: e.currentTarget.value });
     };
 
+    console.log(setIsInstructions);
+
     return (
         <>
             <div className="bg-gradient-to-t to-lightbrown/40 from-darkbrown/40 w-full h-[13rem] fixed bottom-0 opacity-60"></div>
@@ -157,7 +162,10 @@ const GetName = ({
                             Metafeast
                         </p>
                     </div>
-                    <span className="text-primary text-shadow-md">
+                    <span
+                        className="text-primary text-shadow-md"
+                        onClick={() => setIsInstructions(true)}
+                    >
                         <CircleHelp />
                     </span>
                 </div>
@@ -208,6 +216,9 @@ const GetName = ({
                         Terms and Condition
                     </p>
                 </div>
+                {isInstructions && (
+                    <Instructions setIsInstructions={setIsInstructions} />
+                )}
             </div>
         </>
     );
