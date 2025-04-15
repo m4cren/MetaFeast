@@ -23,8 +23,8 @@ An interactive three dimensional user interface for dining restaurant
 8. Recieve Order from costumers to the admin --done
 9. Order deliver to the costumer --done
 10. More table updates status like 'pending orders', 'order delivered', 'done eating' --done
-11. Costumer payment logic
-12. Admin confirming the payment
+11. Costumer payment logic thru paymongo and cash --done
+12. Admin confirming the payment --done
 13. Costumer can make a review
 14. Reviews storing in the backend
 15. Last table update back to available after costumer click the done button
