@@ -4,12 +4,12 @@ import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import { PendingOrderType } from "../../../types/types";
 import { useSocket } from "../../../contexts/SocketContext";
-import { data } from "react-router-dom";
 
 interface BillingProps {
     setCamPos: React.Dispatch<SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<SetStateAction<[number, number, number]>>;
     setPhase: React.Dispatch<SetStateAction<number>>;
+    setIsPayMongoMethod: React.Dispatch<SetStateAction<boolean>>;
 }
 
 type OrderType = {
@@ -20,7 +20,12 @@ type OrderType = {
     quantity: number;
 };
 
-const Billing = ({ setCamPos, setCamRot, setPhase }: BillingProps) => {
+const Billing = ({
+    setCamPos,
+    setCamRot,
+    setPhase,
+    setIsPayMongoMethod,
+}: BillingProps) => {
     const { to_counter, to_1st_Frames } = useFrameProvider();
     const current_table = localStorage.getItem("table-picked");
     const [isReady, setIsReady] = useState<boolean>(false);
@@ -28,11 +33,32 @@ const Billing = ({ setCamPos, setCamRot, setPhase }: BillingProps) => {
     const [myOrders, setMyOrders] = useState<PendingOrderType | null>(null);
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const socket = useSocket();
-    // costumer_name = data.get('costumer_name')
-    // table_id = data.get('table_id')
-    // total_price = data.get('total_price')
-    // orders = data.get('orders')
-    // print(f'{order['food_name']}:   {order['quantity']}       {order['price']}')
+
+    const redirect_to_paymongo = async () => {
+        const data_to_send = {
+            costumer_name: myOrders?.costumer_name,
+            price: totalPrice,
+        };
+
+        console.log(data_to_send.costumer_name);
+
+        try {
+            const response = await axios.post(
+                `${server}/payment`,
+                data_to_send,
+            );
+
+            const url = response.data.checkout_url;
+            console.dir(response);
+
+            if (url) {
+                localStorage.setItem("checkout_url", url);
+                setIsPayMongoMethod(true);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const handleBillRequest = (payment_type: string) => {
         const dataToSend = {
@@ -57,6 +83,10 @@ const Billing = ({ setCamPos, setCamRot, setPhase }: BillingProps) => {
         } catch (error) {
             console.log(error);
         }
+
+        if (payment_type === "PayMongo") {
+            redirect_to_paymongo();
+        }
     };
 
     const getOrders = async () => {
@@ -73,8 +103,6 @@ const Billing = ({ setCamPos, setCamRot, setPhase }: BillingProps) => {
                 headers,
                 withCredentials: true,
             });
-
-            console.log(response.data.orders);
 
             if (response.data.status) {
                 setMyOrders(response.data.orders);
@@ -179,6 +207,26 @@ const Billing = ({ setCamPos, setCamRot, setPhase }: BillingProps) => {
             }, 350);
         }
     }, []);
+    useEffect(() => {
+        const dataToSend = {
+            costumer_name: myOrders?.costumer_name,
+            table_id: myOrders?.current_table,
+            payment_type: "Undefined",
+            total_price: totalPrice,
+            orders: mergedOrders.map(({ food_name, quantity, price }) => {
+                return {
+                    food_name: food_name,
+                    quantity: quantity,
+                    price: price,
+                };
+            }),
+        };
+        console.dir(dataToSend);
+
+        if (myOrders?.costumer_name.length !== 0) {
+            socket?.emit("billing-request", dataToSend);
+        }
+    }, [myOrders]);
     return (
         isReady && (
             <div className="fixed w-full h-screen flex items-center justify-center">

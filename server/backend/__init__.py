@@ -59,13 +59,13 @@ def create_website():
     
 
     
-
+    from .api.payment import payment
     from .api.order import order
     from .api.costumer import costumer
     from .api.tables import tables
     from .api.admin import admin
     from .api.products import products
-    from .api.payment import payment
+
  
     app.register_blueprint(payment)
     app.register_blueprint(order)

@@ -194,34 +194,43 @@ def billing_request(data):
         print(f'{order['food_name']}:   {order['quantity']}       {order['price']}')
     print('=========================================')
    
+    query_existing_payment = PendingPayments.query.filter_by(costumer_name = costumer_name).first()
 
-    try:
+    if not query_existing_payment:
+        try:
+            new_payment_request = PendingPayments(payment_id = payment_id,
+                                                costumer_name = costumer_name,
+                                                table_id = table_id,
+                                                payment_type = payment_type,
+                                                total_payment = total_price,
+                                                orders = [{
+                                                    'food_name': order['food_name'],
+                                                    'quantity': order['quantity'],
+                                                    'price': order['price']
+                                                }for order in orders])
+            
+            save_data(new_payment_request)
 
-        new_payment_request = PendingPayments(payment_id = payment_id,
-                                            costumer_name = costumer_name,
-                                            table_id = table_id,
-                                            payment_type = payment_type,
-                                            total_payment = total_price,
-                                            orders = [{
-                                                'food_name': order['food_name'],
-                                                'quantity': order['quantity'],
-                                                'price': order['price']
-                                            }for order in orders])
-        
-        save_data(new_payment_request)
+            costumer_to_update = Costumer.query.filter(Costumer.costumer_name == costumer_name and Costumer.current_table == table_id).first()
+ 
+            costumer_to_update.update_to_billing()
 
-        costumer_to_update = Costumer.query.filter(Costumer.costumer_name == costumer_name and Costumer.current_table == table_id).first()
-        print(f'{costumer_to_update.costumer_name} =============')
-        costumer_to_update.update_to_billing()
+            table_to_update = Table.query.filter_by(table_name = table_id).first()
+            table_to_update.update_to_billing()
 
-        table_to_update = Table.query.filter_by(table_name = table_id).first()
-        table_to_update.update_to_billing()
+            
 
-        db.session.commit()
+            
+        except:
+            print('error saving to the database')
+
+    else:
+        query_existing_payment.payment_type = payment_type
+        query_existing_payment.total_payment = total_price
 
         emit('push-to-admin-payment', broadcast=True)
-    except:
-        print('error saving to the database')
+
+    db.session.commit()
 
 
 @socketio.on('confirm-payment')

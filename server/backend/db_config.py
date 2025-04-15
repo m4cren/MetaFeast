@@ -9,6 +9,7 @@ import urllib
 from datetime import datetime, timezone
 import string
 import secrets
+import base64
 
 load_dotenv()
 
@@ -24,6 +25,13 @@ mika_schema = os.getenv("MIKA_SCHEMA")
 mika_username = os.getenv("MIKA_USERNAME")
 mika_password = urllib.parse.quote(os.getenv("MIKA_PASSWORD", ""))
 mika_port = os.getenv("MIKA_PORT")
+
+
+PAYMONGO_API_KEY = os.getenv('PAYMONGO_API_KEY')
+PAYMONGO_API_URL = 'https://api.paymongo.com/v1/links'
+
+def encode_api_key(api_key):
+    return base64.b64encode(api_key.encode()).decode()
 
 
 # SHORTCUT DOON SA DB.SESSION.ADD AT DB.SESSION.COMMIT NA MAY KASAMANG ROLLBACK PAG ERROR

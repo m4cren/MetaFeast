@@ -70,6 +70,8 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
         setSelectedTable,
     });
 
+    const [isPayMongoMethod, setIsPayMongoMethod] = useState<boolean>(false);
+    console.log(isPayMongoMethod, setIsPayMongoMethod);
     useEffect(() => {
         let get_phase = localStorage.getItem("current_phase");
 
@@ -251,10 +253,15 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                         setCamPos={setCamPos}
                         setCamRot={setCamRot}
                         setPhase={setPhase}
+                        setIsPayMongoMethod={setIsPayMongoMethod}
                     />
                 )}
                 {phase === 6 && (
-                    <WaitingPaymentConfirmation setPhase={setPhase} />
+                    <WaitingPaymentConfirmation
+                        setPhase={setPhase}
+                        setIsPayMongoMethod={setIsPayMongoMethod}
+                        isPayMongoMethod={isPayMongoMethod}
+                    />
                 )}
                 {phase === 7 && <Receipt />}
             </div>

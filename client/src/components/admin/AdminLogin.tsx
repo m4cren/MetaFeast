@@ -38,7 +38,7 @@ const AdminLogin = () => {
 
             if (response.data.status) {
                 localStorage.setItem("authenticated", "true");
-                setWarningMessage("Success, please wait...");
+                setWarningMessage("Success, Please wait");
                 setIsWarning(true);
 
                 setTimeout(() => {
@@ -74,7 +74,7 @@ const AdminLogin = () => {
     return (
         <AdminLandingTemplate
             description={
-                <p className="text-softblack font-semibold text-[1.5rem]">
+                <p className="text-softblack font-semibold text-[1.5rem] leading-7">
                     Administrator <br />
                     Authentication
                 </p>
@@ -91,7 +91,7 @@ const AdminLogin = () => {
                     >
                         <div className="relative w-full">
                             <label className="absolute -top-[25%] left-4 rounded-xl px-1 text-softblack text-[0.85rem] bg-[#f5f5f5] font-semibold ">
-                                Password
+                                {isWarning ? warningMessage : "Password"}
                             </label>
                             <i
                                 onClick={() =>
@@ -121,13 +121,6 @@ const AdminLogin = () => {
                             )}
                         </button>
                     </form>
-                    {isWarning && (
-                        <p
-                            className={`${warningMessage === "Incorrect password" && "text-lightred"}  text-lightgreen text-[0.9rem] font-semibold`}
-                        >
-                            {warningMessage}
-                        </p>
-                    )}
                 </div>
             }
         />

@@ -42,6 +42,7 @@ const App = () => {
                 localStorage.removeItem("table-picked");
                 localStorage.removeItem("costumer_name");
                 localStorage.removeItem("last-product-placed");
+                localStorage.removeItem("checkout_url");
             }
         } catch (error) {
             console.log(error);
