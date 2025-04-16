@@ -4,8 +4,12 @@ const getTimeOfDay = () => {
     const now = new Date();
     let hours = now.getHours();
 
-    if (hours > 5) return "Araw";
-    if (hours > 17) return "Gabi";
+    if (hours <= 2 || hours == 24) return "Hating Gabi";
+    if (hours <= 5) return "Madaling Araw";
+    if (hours <= 9) return "Umaga";
+    if (hours <= 15) return "Tanghali";
+    if (hours <= 18) return "Hapon";
+    if (hours <= 11) return "Gabi";
 
     return "wala";
 };
@@ -16,6 +20,7 @@ const useTimeOfDay = (): {
     minute: string;
     hours: number;
     amPm: string;
+    day: number;
 } => {
     const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -38,12 +43,14 @@ const useTimeOfDay = (): {
         return () => clearInterval(intervalTime);
     }, []);
 
+    const day = currentTime.getDay();
+
     const hours = currentTime.getHours() % 12 || 12;
     const minute = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
     const amPm = currentTime.getHours() >= 12 ? "pm" : "am";
 
-    return { timeOfDay, seconds, minute, hours, amPm };
+    return { timeOfDay, seconds, minute, hours, amPm, day };
 };
 
 export default useTimeOfDay;

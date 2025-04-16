@@ -252,6 +252,14 @@ def confirm_payment(data):
 
     emit('push-to-costumer', {'response': response}, broadcast=True)
 
+
+@socketio.on('notify-costumer-exit')
+def notify_costumer_exit():
+
+    print('someone exit')
+
+    emit('notify-admin-costumer-exit', broadcast=True)
+
    
 
         

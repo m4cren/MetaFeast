@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from ..db_config import save_data, delete_all_data, delete_data
-from ..db_models import Costumer, Table, Orders
+from ..db_models import Costumer, Table, Orders, PendingPayments
 from ..extensions import jwt_required, get_jwt_identity, create_access_token, db
 
 
@@ -61,6 +61,11 @@ def exit_costumer():
 
     order_to_delete = Orders.query.filter_by(costumer_name = costumer_to_leave.costumer_name).first()
     db.session.delete(order_to_delete)
+    db.session.commit()
+
+    pending_payment_to_delete = PendingPayments.query.filter_by(costumer_name = costumer_to_leave.costumer_name).first()
+    print(pending_payment_to_delete.costumer_name, '==================111111111111111==============11111111111111')
+    db.session.delete(pending_payment_to_delete)
     db.session.commit()
 
  

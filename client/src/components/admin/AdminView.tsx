@@ -61,9 +61,16 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
             }, 850);
         });
 
+        socket?.on("notify-admin-costumer-exit", (_) => {
+            setTimeout(() => {
+                getTableStatus();
+            }, 850);
+        });
+
         return () => {
             socket?.off("notify-admin");
             socket?.off("push-to-admin-payment");
+            socket?.off("notify-admin-costumer-exit");
         };
     }, [socket]);
 

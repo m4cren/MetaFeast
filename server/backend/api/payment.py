@@ -76,7 +76,7 @@ def payment_request():
 
 @payment.route('/payment/receipt', methods=['GET'])
 @jwt_required()
-def get_paymnet_receipt():
+def get_payment_receipt():
 
      costumer_id = get_jwt_identity()
 

@@ -5,6 +5,7 @@ import useServerAddress from "../../../../useServerAddress";
 import html2canvas from "html2canvas";
 import { PendingPaymentType } from "../../../types/types";
 import useFrameProvider from "../../../frames/useFrameProvider";
+import { useSocket } from "../../../contexts/SocketContext";
 
 interface ReceiptProps {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -17,7 +18,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
     const { server } = useServerAddress();
     const [isExiting, setIsExiting] = useState<boolean>(false);
     const [isReceipt, setIsReceipt] = useState<boolean>(true);
-
+    const socket = useSocket();
     const printRef = useRef<HTMLDivElement>(null);
 
     const { to_exit } = useFrameProvider();
@@ -77,7 +78,12 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                         withCredentials: true,
                     },
                 );
-                console.log(response.data);
+
+                console.log(response.data.status);
+
+                if (response.data.status) {
+                    socket?.emit("notify-costumer-exit");
+                }
             } catch (error) {
                 console.log(error);
             }

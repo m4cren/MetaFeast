@@ -26,6 +26,7 @@ import Beverages from "../../products/SortedCuisine/Beverages";
 import Pastries from "../../products/SortedCuisine/Pastries";
 
 import { ProductDetailsType } from "../../../../types/types";
+import useTimeOfDay from "../../../../hooks/useTimeOfDay";
 
 interface Props {
     setSelectedCuisine: React.Dispatch<React.SetStateAction<string>>;
@@ -48,6 +49,8 @@ const OrderMenu = ({
     const [name] = useState<string | null>(
         localStorage.getItem("costumer_name"),
     );
+
+    const { timeOfDay } = useTimeOfDay();
 
     return (
         <div
@@ -90,7 +93,17 @@ const OrderMenu = ({
                     </p>
                 ) : (
                     <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
-                        What do you want for <br /> dinner?
+                        What do you want for <br />{" "}
+                        {timeOfDay === "Madaling Araw" || timeOfDay === "Umaga"
+                            ? "breakfeast"
+                            : timeOfDay === "Tanghali"
+                              ? "lunch"
+                              : timeOfDay === "Hapon" ||
+                                  timeOfDay === "Gabi" ||
+                                  timeOfDay === "Hating Gabi"
+                                ? "dinner"
+                                : null}
+                        ?
                     </p>
                 )}
             </div>

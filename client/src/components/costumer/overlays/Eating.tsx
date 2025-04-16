@@ -18,7 +18,7 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
 
     const [isPromptClose, setIsPromptClose] = useState<boolean>(false);
 
-    const { seconds, minute, hours, amPm } = useTimeOfDay();
+    const { seconds, minute, hours, amPm, day } = useTimeOfDay();
 
     let second_angle = Number(seconds) * 6;
     let minute_angle = Number(minute) * 6;
@@ -165,15 +165,32 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
                     </div>
                 </div>
                 <div className="flex flex-row items-center w-[60%] justify-around">
-                    <h1 className="text-primary text-[1.8rem] font-light text-shadow-md tracking-wide">
-                        {hours}:{minute}:
-                        <span className="text-white/50 font-extralight">
+                    <h1 className="text-primary text-[1.8rem] font-light text-shadow-md tracking-wider">
+                        {hours}
+                        <span className="text-lightbrown">:</span>
+                        {minute}
+                        <span className="text-lightbrown">:</span>
+                        <span className="text-white/50 font-extralight text-[1.45rem]">
                             {seconds}
                         </span>
                         {amPm}
                     </h1>
                     <p className="text-white/60 font-extralight text-shadow-md text-[1rem]">
-                        Thursday
+                        {day === 1
+                            ? "Monday"
+                            : day === 2
+                              ? "Tuesday"
+                              : day === 3
+                                ? "Wednesday"
+                                : day === 4
+                                  ? "Thursday"
+                                  : day === 5
+                                    ? "Friday"
+                                    : day === 6
+                                      ? "Saturday"
+                                      : day === 7
+                                        ? "Sunday"
+                                        : null}
                     </p>
                 </div>
             </div>
