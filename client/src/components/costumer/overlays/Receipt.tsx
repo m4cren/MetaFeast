@@ -4,13 +4,87 @@ import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import html2canvas from "html2canvas";
 import { PendingPaymentType } from "../../../types/types";
+import useFrameProvider from "../../../frames/useFrameProvider";
 
-const Receipt = () => {
+interface ReceiptProps {
+    setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+    setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
+}
+
+const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
     const [myOrders, setMyOrders] = useState<PendingPaymentType | null>(null);
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const { server } = useServerAddress();
+    const [isExiting, setIsExiting] = useState<boolean>(false);
+    const [isReceipt, setIsReceipt] = useState<boolean>(true);
 
     const printRef = useRef<HTMLDivElement>(null);
+
+    const { to_exit } = useFrameProvider();
+
+    const frame_sec = 350;
+
+    const handleCostumerExit = (costumer_name: string | undefined) => {
+        if (costumer_name) {
+            setCamPos(to_exit.frame1.pos);
+            setCamRot(to_exit.frame1.rot);
+
+            setIsReceipt(false);
+
+            setTimeout(() => {
+                setCamPos(to_exit.frame2.pos);
+                setCamRot(to_exit.frame2.rot);
+                setTimeout(() => {
+                    setCamPos(to_exit.frame3.pos);
+                    setCamRot(to_exit.frame3.rot);
+                    setTimeout(() => {
+                        setCamPos(to_exit.frame4.pos);
+                        setCamRot(to_exit.frame4.rot);
+                        setTimeout(() => {
+                            setCamPos(to_exit.frame5.pos);
+                            setCamRot(to_exit.frame5.rot);
+                            setTimeout(() => {
+                                setCamPos(to_exit.frame6.pos);
+                                setCamRot(to_exit.frame6.rot);
+                                setTimeout(() => {
+                                    setCamPos(to_exit.frame7.pos);
+                                    setCamRot(to_exit.frame7.rot);
+                                    setTimeout(() => {
+                                        setCamPos(to_exit.frame8.pos);
+                                        setCamRot(to_exit.frame8.rot);
+                                        setIsExiting(true);
+                                    }, frame_sec);
+                                }, frame_sec);
+                            }, frame_sec);
+                        }, frame_sec);
+                    }, frame_sec);
+                }, frame_sec);
+            }, frame_sec);
+        }
+
+        const costumerExit = async () => {
+            const headers = {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+            };
+
+            try {
+                const response = await axios.post(
+                    `${server}/costumer/exit`,
+                    {},
+                    {
+                        headers,
+                        withCredentials: true,
+                    },
+                );
+                console.log(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        costumerExit();
+    };
 
     const handleSaveAsImage = async () => {
         if (printRef.current) {
@@ -62,7 +136,7 @@ const Receipt = () => {
         getOrders();
     }, []);
 
-    return (
+    return isReceipt ? (
         <div className="fixed gap-4 flex items-center justify-start flex-col  w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] ">
             <div>
                 <div className="flex flex-row justify-around">
@@ -179,7 +253,12 @@ const Receipt = () => {
                     </div>
                 </div>
                 <div className="absolute bottom-6 gap-2 w-full flex flex-row items-center justify-center">
-                    <button className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl border-1 border-white/20">
+                    <button
+                        onClick={() =>
+                            handleCostumerExit(myOrders?.costumer_name)
+                        }
+                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl border-1 border-white/20"
+                    >
                         Exit
                         <DoorOpen size={15} />
                     </button>
@@ -197,6 +276,12 @@ const Receipt = () => {
                 </div>
             </div>
         </div>
+    ) : (
+        isExiting && (
+            <div className="fixed w-full h-screen flex flex-col items-center justify-center">
+                <h1 className="text-center text-primary">Thanks</h1>
+            </div>
+        )
     );
 };
 

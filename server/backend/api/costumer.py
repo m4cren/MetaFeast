@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from ..db_config import save_data, delete_all_data, delete_data
-from ..db_models import Costumer
-from ..extensions import jwt_required, get_jwt_identity, create_access_token
+from ..db_models import Costumer, Table, Orders
+from ..extensions import jwt_required, get_jwt_identity, create_access_token, db
 
 
 costumer = Blueprint("costumer", __name__)
@@ -53,11 +53,23 @@ def get_name():
 def exit_costumer():
     current_costumer_id = get_jwt_identity()
 
+    
+
     costumer_to_leave = Costumer.query.filter_by(id=current_costumer_id).first()
+    table_to_update = Table.query.filter_by(current_costumer_name = costumer_to_leave.costumer_name).first()
+    table_to_update.clear_costumer()
+
+    order_to_delete = Orders.query.filter_by(costumer_name = costumer_to_leave.costumer_name).first()
+    db.session.delete(order_to_delete)
+    db.session.commit()
+
+ 
 
     if not costumer_to_leave:
         return jsonify({"message": "Costumer not found", "status": False})
-
-    delete_data(costumer_to_leave)
+    print(costumer_to_leave.costumer_name, '-----------------------------------')
+    db.session.delete(costumer_to_leave)
+    db.session.commit()
+    
 
     return jsonify({"message": "Succesfully loggout!", "status": True})

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-
+// For Editing camera position and transition
 // import useCameraControl from "../../hooks/useCameraControl";
+// import SceneCameraController from "../SceneCameraController";
+
 import CostumerScene from "./scenes/CostumerScene";
 
 import useFrameProvider from "../../frames/useFrameProvider";
@@ -19,7 +21,6 @@ import Eating from "./overlays/Eating";
 import Billing from "./overlays/Billing";
 import WaitingPaymentConfirmation from "./overlays/WaitingPaymentConfirmation";
 import Receipt from "./overlays/Receipt";
-// import SceneCameraController from "../SceneCameraController";
 
 interface MainCostumerProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +31,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     setIsLoading,
     isStart,
 }) => {
+    // For Editing camera position and transition
     // const { camPos, camRot, cameraFunctions } = useCameraControl();
     // console.log(
     //     `Cam Pos: PX - ${camPos[0]}    PY - ${camPos[1]}    PZ - ${camPos[2]}`,
@@ -263,7 +265,9 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
                         isPayMongoMethod={isPayMongoMethod}
                     />
                 )}
-                {phase === 7 && <Receipt />}
+                {phase === 7 && (
+                    <Receipt setCamPos={setCamPos} setCamRot={setCamRot} />
+                )}
             </div>
 
             {/* <div className="fixed bottom-4">

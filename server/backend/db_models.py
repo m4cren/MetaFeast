@@ -56,6 +56,12 @@ class Table(db.Model):
     )
     current_costumer_status = db.Column(db.String(56), default='Available')
 
+    def clear_costumer(self):
+        self.isAvailable = True
+        self.current_costumer_name = 'AVAILABLE'
+        self.current_costumer_id = None
+        self.current_costumer_status = 'Available'
+
     def get_position(self):
         return [self.table_position_x, self.table_position_y, self.table_position_z]
 
@@ -74,6 +80,8 @@ class TableRequest(db.Model):
     costumer_name = db.Column(db.String(56))
     table_id = db.Column(db.String(5))
     date_time = db.Column(db.DateTime, default = datetime.utcnow)
+
+
 
     def to_dict(self):
         return{
@@ -97,6 +105,16 @@ class Products(db.Model):
     description = db.Column(db.String(246), nullable = False)
     details = db.Column(db.Text, nullable = False)
     type = db.Column(db.String(64), nullable = True)
+    ratings = db.Column(db.Integer, default = 0, nullable = False)
+    total_ratings = db.Column(db.Integer, default = 0, nullable = False)
+    total_orders = db.Column(db.Integer, default = 0, nullable =False)
+
+    def add_total_order(self, quantity):
+        self.total_orders += quantity
+    
+    def update_ratings(self, rate):
+        self.ratings = (self.ratings + rate)/self.total_ratings
+
 
 
     def to_dict(self):
