@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
-from ..db_models import PendingPayments
+from ..db_models import PendingPayments, Costumer
 from ..db_config import PAYMONGO_API_URL, PAYMONGO_API_KEY, encode_api_key
+from ..extensions import jwt_required,get_jwt_identity 
 
 from sqlalchemy import desc
 import requests
@@ -62,8 +63,6 @@ def payment_request():
 
      costumer_name = data.get('costumer_name')
 
-     print(f'NAMEEEEE : {costumer_name}')
-
      price = data.get('price')
      payment_item = PendingPayments.query.filter_by(costumer_name = costumer_name).first()
      payment_id = payment_item.payment_id
@@ -74,4 +73,18 @@ def payment_request():
      result = create_payment_link(price, description, remarks)
 
      return jsonify(result) 
-     
+
+@payment.route('/payment/receipt', methods=['GET'])
+@jwt_required()
+def get_paymnet_receipt():
+
+     costumer_id = get_jwt_identity()
+
+     query_costumer = Costumer.query.filter_by(id = costumer_id).first()
+
+     costumer_receipt = PendingPayments.query.filter_by(costumer_name = query_costumer.costumer_name).first()
+
+
+     response = costumer_receipt.to_dict()
+
+     return jsonify({'msg': 'Success', 'response': response, 'status': True})

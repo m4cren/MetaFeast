@@ -141,8 +141,6 @@ const GetName = ({
         setName({ ...name, [e.currentTarget.name]: e.currentTarget.value });
     };
 
-    console.log(setIsInstructions);
-
     return (
         <>
             <div className="bg-gradient-to-t to-lightbrown/40 from-darkbrown/40 w-full h-[13rem] fixed bottom-0 opacity-60"></div>

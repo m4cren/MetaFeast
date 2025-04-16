@@ -1,6 +1,13 @@
 from .extensions import db
 from datetime import datetime,timezone
 from .db_config import time_ago
+import pytz
+
+
+phillipines_tz = pytz.timezone('Asia/Manila')
+
+def current_ph_time():
+    return datetime.now(phillipines_tz)
 
 
 class AdminCredentials(db.Model):
@@ -183,6 +190,7 @@ class PendingPayments(db.Model):
     orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '', 'quantity': 0, 'price': 0}])
     total_payment = db.Column(db.Integer, nullable = False)
     payment_time = db.Column(db.DateTime, default = datetime.utcnow)
+    date_and_time = db.Column(db.DateTime, default = current_ph_time)
 
     def to_dict(self):
         return{
@@ -197,7 +205,8 @@ class PendingPayments(db.Model):
                 'quantity': order['quantity'],
                 'price': order['price']
             }for order in self.orders],
-            'payment_time': time_ago(self.payment_time)
+            'payment_time': time_ago(self.payment_time),
+            'date_and_time': self.date_and_time.strftime("%Y-%m-%d %H:%M:%S")
             
         }
     

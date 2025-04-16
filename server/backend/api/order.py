@@ -25,6 +25,6 @@ def get_orders():
      costumer_orders = Orders.query.filter_by(current_costumer_id = costumer.id).first()
 
      response = costumer_orders.to_dict()
-     print(response)
+
 
      return jsonify({'msg': 'success', 'orders': response, 'status': True})

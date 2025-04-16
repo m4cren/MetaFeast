@@ -116,18 +116,18 @@ const OrderList = ({
             {isCheckoutConfirmation && (
                 <div className="fixed w-full h-screen bg-black/40  z-20 flex items-center justify-center">
                     <div className="pop-up-animation flex flex-col justify-center gap-4 w-[90vw]  h-[10rem] bg-gradient-to-b from-lightbrown to-darkbrown rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)]">
-                        <h1 className="text-center text-primary font-normal leading-7 text-[1.5rem] min-[390px]:text-[1.6rem] text-shadow-md">
+                        <h1 className="text-center text-primary font-normal leading-7 text-[1.4rem] min-[390px]:text-[1.5rem] text-shadow-md">
                             Ready to proceed to checkout?
                         </h1>
                         <div className=" text-primary flex place-items-center justify-center gap-4">
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.85rem] min-[390px]:text-[0.95rem] font-light border-1 border-white/20 rounded-xl shadow-md p-2 min-[390px]:p-3"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.8rem] min-[390px]:text-[0.9rem] font-light border-1 border-white/20 rounded-xl shadow-md p-2 min-[390px]:p-3"
                                 onClick={() => setIsCheckoutConfirmation(false)}
                             >
                                 Continue Browsing
                             </button>
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.85rem] min-[390px]:text-[0.95rem] font-light bg-gradient-to-b p-2 min-[390px]:p-3 from-lightgreen to-darkgreen rounded-xl"
+                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.8rem] min-[390px]:text-[0.9rem] font-light bg-gradient-to-b p-2 min-[390px]:p-3 from-lightgreen to-darkgreen rounded-xl"
                                 onClick={() => setIsCheckout(true)}
                             >
                                 Proceed to Checkout

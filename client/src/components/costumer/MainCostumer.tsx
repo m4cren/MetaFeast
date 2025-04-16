@@ -71,7 +71,7 @@ const MainCostumer: React.FC<MainCostumerProps> = ({
     });
 
     const [isPayMongoMethod, setIsPayMongoMethod] = useState<boolean>(false);
-    console.log(isPayMongoMethod, setIsPayMongoMethod);
+
     useEffect(() => {
         let get_phase = localStorage.getItem("current_phase");
 

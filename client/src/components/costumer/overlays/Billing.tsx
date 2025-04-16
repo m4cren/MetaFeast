@@ -40,8 +40,6 @@ const Billing = ({
             price: totalPrice,
         };
 
-        console.log(data_to_send.costumer_name);
-
         try {
             const response = await axios.post(
                 `${server}/payment`,

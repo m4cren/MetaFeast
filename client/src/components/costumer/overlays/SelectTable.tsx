@@ -59,9 +59,16 @@ const SelectTable = ({
 
     const triviaMessage = [
         "Did you know that egg contains 6-7 grams of protein?",
-        "Banana are rich in magnesium and potassium",
+        "Bananas are rich in magnesium and potassium",
         "You look good, you feel good, you do good",
-        "Hello world",
+        "Our system saves the customer's last activity phase",
+        "Hydration boosts focus and mood—drink water!",
+        "Our smart menu adapts to your past choices",
+        "Healthy habits lead to a healthy lifestyle",
+        "Your preferences help us serve you better",
+        "Small changes make a big difference in health",
+        "We remember your favorites, so you don’t have to",
+        "Our system ensures a smooth and personalized experience",
     ];
 
     const [triviaIndex, setTriviaIndex] = useState<number>(0);
@@ -69,10 +76,10 @@ const SelectTable = ({
     useEffect(() => {
         const intervalId = setInterval(() => {
             setTriviaIndex((prev) => (prev + 1) % triviaMessage.length);
-        }, 3500);
+        }, 5000);
 
-        return () => clearInterval(intervalId); // Cleanup to prevent memory leaks
-    }, []); // Runs once on mount
+        return () => clearInterval(intervalId);
+    }, []);
 
     useEffect(() => {
         const token = localStorage.getItem("token");

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useFrameProvider from "../../../frames/useFrameProvider";
 
 interface WaitingOrderProps {
@@ -14,6 +14,30 @@ const WaitingOrder = ({
     setCamRot,
 }: WaitingOrderProps) => {
     const { to_2nd_Frames } = useFrameProvider();
+    const triviaMessage = [
+        "Did you know that egg contains 6-7 grams of protein?",
+        "Bananas are rich in magnesium and potassium",
+        "You look good, you feel good, you do good",
+        "Our system saves the customer's last activity phase",
+        "Hydration boosts focus and mood—drink water!",
+        "Our smart menu adapts to your past choices",
+        "Healthy habits lead to a healthy lifestyle",
+        "Your preferences help us serve you better",
+        "Small changes make a big difference in health",
+        "We remember your favorites, so you don’t have to",
+        "Our system ensures a smooth and personalized experience",
+    ];
+
+    const [triviaIndex, setTriviaIndex] = useState<number>(0);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTriviaIndex((prev) => (prev + 1) % triviaMessage.length);
+        }, 5000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
     useEffect(() => {
         const table_picked = localStorage.getItem("table-picked");
         if (!table_picked) return;
@@ -77,7 +101,7 @@ const WaitingOrder = ({
                 We're cooking up something delicious for you!
             </h1>
             <p className="text-white/60 text-[0.75rem] min-[390px]:text-[0.85rem] font-extralight text-shadow-md">
-                Did you know that egg contains 6-7grams of protein
+                {triviaMessage[triviaIndex]}
             </p>
         </div>
     );

@@ -144,10 +144,13 @@ export type PendingPaymentType = {
     table_id: string;
     total_payment: number;
 
-    orders: {
-        food_name: string;
-        quantity: number;
-        price: number;
-    };
+    orders: [
+        {
+            food_name: string;
+            quantity: number;
+            price: number;
+        },
+    ];
     payment_time: string;
+    date_and_time: string;
 };
