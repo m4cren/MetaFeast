@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import { PendingPaymentType } from "../../../types/types";
 import useFrameProvider from "../../../frames/useFrameProvider";
 import { useSocket } from "../../../contexts/SocketContext";
+import ServiceReview from "./ServiceReview";
 
 interface ReceiptProps {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -20,6 +21,11 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
     const [isReceipt, setIsReceipt] = useState<boolean>(true);
     const socket = useSocket();
     const printRef = useRef<HTMLDivElement>(null);
+
+    const [isReview, setIsReview] = useState<boolean>(false);
+
+    const [isReceiptDownloaded, setIsReceiptDownloaded] =
+        useState<boolean>(false);
 
     const { to_exit } = useFrameProvider();
 
@@ -99,8 +105,11 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
 
             const link = document.createElement("a");
             link.href = image;
-            link.download = "metafeast_receipt.png";
+            link.download = `metafeast_receipt_${myOrders?.payment_id}.png`;
             link.click();
+
+            setIsReceiptDownloaded(true);
+            localStorage.setItem("receipt-download", "true");
         }
     };
 
@@ -142,7 +151,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
         getOrders();
     }, []);
 
-    return isReceipt ? (
+    return isReceipt && !isReview ? (
         <div className="fixed gap-4 flex items-center justify-start flex-col  w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] ">
             <div>
                 <div className="flex flex-row justify-around">
@@ -268,25 +277,37 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                         Exit
                         <DoorOpen size={15} />
                     </button>
-                    <button className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl border-1 border-white/20">
+                    <button
+                        onClick={() => setIsReview(true)}
+                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl border-1 border-white/20"
+                    >
                         Review
                         <Star size={15} />
                     </button>
-                    <button
-                        onClick={handleSaveAsImage}
-                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl bg-gradient-to-t from-darkgreen to-lightgreen"
-                    >
-                        Download receipt
-                        <Download size={15} />
-                    </button>
+                    {!isReceiptDownloaded &&
+                        localStorage.getItem("receipt-download") !== "true" && (
+                            <button
+                                onClick={handleSaveAsImage}
+                                className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl bg-gradient-to-t from-darkgreen to-lightgreen"
+                            >
+                                Download receipt
+                                <Download size={15} />
+                            </button>
+                        )}
                 </div>
             </div>
         </div>
+    ) : isExiting ? (
+        <div className="fixed w-full h-screen flex flex-col items-center justify-center">
+            <h1 className="text-center text-primary">Thanks</h1>
+        </div>
     ) : (
-        isExiting && (
-            <div className="fixed w-full h-screen flex flex-col items-center justify-center">
-                <h1 className="text-center text-primary">Thanks</h1>
-            </div>
+        isReview && (
+            <ServiceReview
+                isReceipt={isReceipt}
+                myOrders={myOrders}
+                handleCostumerExit={handleCostumerExit}
+            />
         )
     );
 };

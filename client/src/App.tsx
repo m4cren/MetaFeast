@@ -43,6 +43,7 @@ const App = () => {
                 localStorage.removeItem("costumer_name");
                 localStorage.removeItem("last-product-placed");
                 localStorage.removeItem("checkout_url");
+                localStorage.removeItem("receipt-download");
             }
         } catch (error) {
             console.log(error);

@@ -9,7 +9,7 @@ const getTimeOfDay = () => {
     if (hours <= 9) return "Umaga";
     if (hours <= 15) return "Tanghali";
     if (hours <= 18) return "Hapon";
-    if (hours <= 11) return "Gabi";
+    if (hours <= 23) return "Gabi";
 
     return "wala";
 };

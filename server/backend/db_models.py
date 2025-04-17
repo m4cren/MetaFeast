@@ -205,7 +205,7 @@ class PendingPayments(db.Model):
     status = db.Column(db.String(69), nullable = False, default = 'Unconfirmed')
     payment_type = db.Column(db.String(69), nullable = True)
     table_id = db.Column(db.String(69), nullable = False)
-    orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '', 'quantity': 0, 'price': 0}])
+    orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '', 'quantity': 0, 'price': 0, 'img': ''}])
     total_payment = db.Column(db.Integer, nullable = False)
     payment_time = db.Column(db.DateTime, default = datetime.utcnow)
     date_and_time = db.Column(db.DateTime, default = current_ph_time)
@@ -221,6 +221,7 @@ class PendingPayments(db.Model):
             'orders': [{
                 'food_name': order['food_name'],
                 'quantity': order['quantity'],
+                'img': order['img'],
                 'price': order['price']
             }for order in self.orders],
             'payment_time': time_ago(self.payment_time),
@@ -230,6 +231,25 @@ class PendingPayments(db.Model):
     
     def confirm(self):
         self.status = 'Confirmed'
+
+
+class Reviews(db.Model):
+    __tablename__ = 'reviews'
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String(124), nullable = True)
+    name = db.Column(db.String(124), nullable = False)
+    comment = db.Column(db.String(524), nullable = True)
+    date = db.Column(db.DateTime, default = datetime.utcnow)
+
+    def to_dict(self):
+        return{
+            'email': self.email,
+            'name': self.name,
+            'comment': self.comment,
+            'date': self.date.strftime("%Y-%m-%d %H:%M:%S"),
+            'time_age': time_ago(self.date)
+
+        }
     
 
 

@@ -3,7 +3,9 @@ import layout from "../../../styles/layouts/eating.module.css";
 import { MessageSquareText, Scroll } from "lucide-react";
 import Order from "./Order";
 import useTimeOfDay from "../../../hooks/useTimeOfDay";
-
+import axios from "axios";
+import useServerAddress from "../../../../useServerAddress";
+import { triviaMessage } from "../../../types/types";
 interface EatingProps {
     setPhase: React.Dispatch<SetStateAction<number>>;
     setCamPos: React.Dispatch<SetStateAction<[number, number, number]>>;
@@ -11,42 +13,78 @@ interface EatingProps {
 }
 
 const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
+    const kelvinToCelius = (kelvin: number) => {
+        return kelvin - 273.15;
+    };
     const name = localStorage.getItem("costumer_name");
     const [isOrderMore, setIsOrderMore] = useState<boolean>(false);
     const [isBillingConfirmation, setIsBillingConfirmation] =
         useState<boolean>(false);
+    const [weatherApiKey, setWeatherApiKey] = useState<string>("");
 
     const [isPromptClose, setIsPromptClose] = useState<boolean>(false);
-
+    const { server } = useServerAddress();
     const { seconds, minute, hours, amPm, day } = useTimeOfDay();
+
+    const [temperature, setTemperature] = useState<number>(0);
 
     let second_angle = Number(seconds) * 6;
     let minute_angle = Number(minute) * 6;
     let hours_angle = Number(hours) * 30;
 
-    const triviaMessage = [
-        "Did you know that egg contains 6-7 grams of protein?",
-        "Bananas are rich in magnesium and potassium",
-        "You look good, you feel good, you do good",
-        "Our system saves the customer's last activity phase",
-        "Hydration boosts focus and mood—drink water!",
-        "Our smart menu adapts to your past choices",
-        "Healthy habits lead to a healthy lifestyle",
-        "Your preferences help us serve you better",
-        "Small changes make a big difference in health",
-        "We remember your favorites, so you don’t have to",
-        "Our system ensures a smooth and personalized experience",
-    ];
-
     const [triviaIndex, setTriviaIndex] = useState<number>(0);
+    const getWeatherApiKey = async () => {
+        try {
+            const headers = {
+                "Content-Type": "application/json",
+            };
+
+            const response = await axios.get(
+                `${server}/costumer/get-weather-api-key`,
+                {
+                    headers,
+                    withCredentials: false,
+                },
+            );
+
+            setWeatherApiKey(response.data.weather_api_key);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
+        getWeatherApiKey();
+
         const intervalId = setInterval(() => {
             setTriviaIndex((prev) => (prev + 1) % triviaMessage.length);
         }, 5000);
 
         return () => clearInterval(intervalId);
     }, []);
+
+    useEffect(() => {
+        const cityID = 1712027; //Dolores Quezon PH
+        const request_weather = async (cityId: number) => {
+            try {
+                console.log(weatherApiKey);
+
+                if (weatherApiKey) {
+                    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${weatherApiKey}`;
+
+                    const response = await axios.get(url);
+                    console.dir(response);
+                    const kelvinTemp = response.data.main.temp;
+
+                    setTemperature(kelvinToCelius(kelvinTemp));
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        request_weather(cityID);
+    }, [weatherApiKey]);
 
     return isOrderMore ? (
         <div>
@@ -120,10 +158,11 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
                 className={`${layout.temperature} flex flex-col justify-end pl-6`}
             >
                 <h1 className="text-primary font-light text-[1.9rem] min-[390px]:text-[2rem] text-shadow-md">
-                    25<span className="text-lightbrown">&deg;</span>c
+                    {temperature.toFixed(2)}
+                    <span className="text-lightbrown">&deg;</span>c
                 </h1>
                 <p className="text-white/70 font-extralight text-[1.1rem] min-[390px]:text-[1.2rem] -mt-2 text-shadow-md">
-                    Sunny
+                    Dolores Quezon
                 </p>
             </div>
             <div
@@ -155,7 +194,7 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
                             style={{ transform: `rotate(${second_angle}deg)` }}
                             className={`absolute  h-[100%] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center   `}
                         >
-                            <span className="h-[45%]  w-[2px] [box-shadow:0_0_6px_rgba(0,0,0,0.6)] bg-lightbrown absolute top-[33%] left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-t-full"></span>
+                            <span className="h-[45%] transition duration-75  w-[2px] [box-shadow:0_0_6px_rgba(0,0,0,0.6)] bg-lightbrown absolute top-[33%] left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-t-full"></span>
                         </span>
 
                         <span className="w-1 h-2 rounded-b-2xl bg-lightbrown absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2"></span>
@@ -166,9 +205,7 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
                 </div>
                 <div className="flex flex-row items-center w-[60%] justify-around">
                     <h1 className="text-primary text-[1.8rem] font-light text-shadow-md tracking-wider">
-                        {hours}
-                        <span className="text-lightbrown">:</span>
-                        {minute}
+                        {hours}:{minute}
                         <span className="text-lightbrown">:</span>
                         <span className="text-white/50 font-extralight text-[1.45rem]">
                             {seconds}
