@@ -29,6 +29,6 @@ if venv_path:
        if __name__ == "__main__":
             
           
-            socketio.run(app, debug=True, host="192.168.1.3", port=8080) 
+            socketio.run(app, debug=True, host="192.168.1.5", port=8080) 
     else:
         print('PLease activate a virtual environment')

@@ -6,12 +6,12 @@ interface InstructionsProps {
 
 const Instructions = ({ setIsInstructions }: InstructionsProps) => {
     const list = [
-        "Don't use long name, instead use alias or nickname to avoid text overflow.",
-        "Claim a seat before choosing a table on the user interface.",
-        "Choose the correct table id, so the owner won't decline you.",
-        "If the table is missing, reload the website.",
-        "The order basket will reset when the website is reloaded.",
-        "It is recommended to download the receipt before exiting.",
+        "Use a short name or nickname to prevent text overflow.",
+        "Please claim a seat before selecting a table on the user interface.",
+        "Select the correct table ID to avoid being declined by the owner.",
+        "If you don't see the table, try refreshing the page.",
+        "Note: Reloading the page will reset your order basket.",
+        "We recommend downloading your receipt before leaving the site.",
     ];
     return (
         <div className="flex flex-col items-center fixed w-full h-screen z-10 bg-black/40">

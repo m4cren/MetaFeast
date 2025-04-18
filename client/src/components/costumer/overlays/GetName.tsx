@@ -6,6 +6,8 @@ import { UtensilsCrossed } from "lucide-react";
 import { CircleHelp } from "lucide-react";
 import layout from "../../../styles/layouts/get_name.module.css";
 import Instructions from "./instructions/Instructions";
+import PrivacyPolicy from "./privacy/PrivacyPolicy";
+import TermsAndCondition from "./terms/TermsAndCondition";
 
 interface FormType {
     costumer_name: string;
@@ -33,6 +35,11 @@ const GetName = ({
     const { afterName_Frames, selTable1stF_Frames } = useFrameProvider();
 
     const [isInstructions, setIsInstructions] = useState<boolean>(false);
+
+    const [isPrivacyPolicy, setIsPrivacyPolicy] = useState<boolean>(false);
+
+    const [isTermsAndCondition, setIsTermsAndCondition] =
+        useState<boolean>(false);
 
     const setFrameOne = () => {
         setCamPos(afterName_Frames.frame1.pos);
@@ -207,15 +214,29 @@ const GetName = ({
                 <div
                     className={` ${layout.footer} flex flex-row items-center justify-around`}
                 >
-                    <p className="text-primary text-sm text-shadow-lg">
+                    <p
+                        className="text-primary text-sm text-shadow-lg"
+                        onClick={() => setIsPrivacyPolicy(true)}
+                    >
                         Privacy Policy
                     </p>
-                    <p className="text-primary text-sm text-shadow-lg">
+                    <p
+                        className="text-primary text-sm text-shadow-lg"
+                        onClick={() => setIsTermsAndCondition(true)}
+                    >
                         Terms and Condition
                     </p>
                 </div>
                 {isInstructions && (
                     <Instructions setIsInstructions={setIsInstructions} />
+                )}
+                {isPrivacyPolicy && (
+                    <PrivacyPolicy setIsPrivacyPolicy={setIsPrivacyPolicy} />
+                )}
+                {isTermsAndCondition && (
+                    <TermsAndCondition
+                        setIsTermsAndCondition={setIsTermsAndCondition}
+                    />
                 )}
             </div>
         </>
