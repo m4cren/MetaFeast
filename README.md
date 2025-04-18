@@ -8,7 +8,7 @@ An interactive three dimensional user interface for dining restaurant
 - **Frontend**: ReactJs, Typescript, Tailwindcss, React Three Fiber (ThreeJs)
 - **Backend**: Python, Flask (Python Web Framework), Socket.io (Websockets), JWT (Token-based Authentication), MySQL (Database)
 - **Integrated API** : PayMongo API (Payment Method), OpenWeatherMap API (Weather temperature), AvatarPlaceholder API (Random profile picture)
-- **Others**: Figma, Sketch Up, Blender, Adobe Photoshop
+- **Others**: Figma, Sketch Up, Blender, Adobe Photoshop, PixelLab
 
 ---- ACCOMPLISH ----
 
@@ -24,9 +24,9 @@ An interactive three dimensional user interface for dining restaurant
 10. More table updates status like 'pending orders', 'order delivered', 'done eating' --done
 11. Costumer payment logic thru paymongo and cash --done
 12. Admin confirming the payment --done
-13. Costumer can make a review
-14. Reviews storing in the backend
-15. Last table update back to available after costumer click the done button
+13. Costumer can make a review --done
+14. Reviews storing in the backend --done
+15. Last table update back to available after costumer click the done button --done
 16. Check other device compatibility, client testing, debugging
 
     ---- Must Have ----
@@ -35,7 +35,7 @@ An interactive three dimensional user interface for dining restaurant
 
 **Products** --done
 
-**Reciepts Creation**
+**Reciepts Creation** --done
 
 **Saving costumer's stage when they accidentally exit the browser** --done
 
