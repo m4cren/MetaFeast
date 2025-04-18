@@ -37,7 +37,10 @@
       <p><strong>Admin Login</strong></p>
       <img src="./figma/Admin Login.png" width="500"/>
     </td>
-
+    <td>
+      <p><strong>Admin Login</strong></p>
+      <img src="./figma/Reviews.png" width="500"/>
+    </td>
 
   </tr>
 </table>
@@ -119,5 +122,16 @@
       <p><strong>Confirmed payment</strong></p>
       <img src="./figma/Payment confirmed.png" width="300"/>
     </td>  
+     <td>
+      <p><strong>Confirmed payment</strong></p>
+      <img src="./figma/Costumer Rating.png" width="300"/>
+    </td> 
+  </tr>
+  </tr>
+      <td>
+      <p><strong>Costumer waiting for payment confirmation</strong></p>
+      <img src="./figma/Rating Done.png" width="300"/>
+    </td>
+   
   </tr>
 </table>
