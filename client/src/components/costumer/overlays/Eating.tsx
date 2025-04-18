@@ -6,6 +6,7 @@ import useTimeOfDay from "../../../hooks/useTimeOfDay";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import { triviaMessage } from "../../../types/types";
+import { useSocket } from "../../../contexts/SocketContext";
 interface EatingProps {
     setPhase: React.Dispatch<SetStateAction<number>>;
     setCamPos: React.Dispatch<SetStateAction<[number, number, number]>>;
@@ -13,6 +14,7 @@ interface EatingProps {
 }
 
 const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
+    const socket = useSocket();
     const kelvinToCelius = (kelvin: number) => {
         return kelvin - 273.15;
     };
@@ -142,6 +144,10 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
                                         localStorage.setItem(
                                             "current_phase",
                                             "phase_5",
+                                        );
+
+                                        socket?.emit(
+                                            "update-costumer-to-billing",
                                         );
                                     }, 200);
                                 }}

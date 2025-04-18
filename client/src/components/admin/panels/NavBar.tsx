@@ -5,12 +5,14 @@ interface Props {
     isTransitioning: boolean;
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
     setIsPendingPayment: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsReview: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const NavBar = ({
     isTransitioning,
     setIsTableRequest,
     setIsPendingPayment,
+    setIsReview,
 }: Props) => {
     return (
         <div
@@ -41,7 +43,10 @@ const NavBar = ({
                 <p className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80">
                     Products
                 </p>
-                <p className="cursor-pointer grow-1 text-center hover:text-white transition duration-100 hover:opacity-80">
+                <p
+                    onClick={() => setIsReview(true)}
+                    className="cursor-pointer grow-1 text-center hover:text-white transition duration-100 hover:opacity-80"
+                >
                     Ratings
                 </p>
             </div>

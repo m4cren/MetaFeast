@@ -254,6 +254,11 @@ def confirm_payment(data):
 
     emit('push-to-costumer', {'response': response}, broadcast=True)
 
+@socketio.on('update-costumer-to-billing')
+def notify_the_admin():
+
+    emit('notify_the_admin', broadcast=True)
+
 
 @socketio.on('notify-costumer-exit')
 def notify_costumer_exit():
@@ -262,7 +267,8 @@ def notify_costumer_exit():
 
     emit('notify-admin-costumer-exit', broadcast=True)
 
-   
+
+
 
         
 

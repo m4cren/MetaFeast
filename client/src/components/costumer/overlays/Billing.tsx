@@ -221,7 +221,6 @@ const Billing = ({
                 };
             }),
         };
-        console.dir(dataToSend);
 
         if (myOrders?.costumer_name.length !== 0) {
             socket?.emit("billing-request", dataToSend);

@@ -1,9 +1,11 @@
 from flask import Blueprint, jsonify, request
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import  check_password_hash
 from ..extensions import db
-from ..db_models import AdminCredentials, TableRequest, Costumer
+from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews
 from sqlalchemy import desc
-from ..db_config import time_ago
+from ..db_config import time_ago, save_data
+
+import random
 
 admin = Blueprint("admin", __name__)
 
@@ -94,15 +96,59 @@ def receive_rating():
      name =data.get('name')
      comment = data.get('comment')
      product_ratings = data.get('product_ratings')
+     ratings = data.get('ratings')
+     order_items = data.get('order_items')
+     total_spend = data.get('total_spend')
 
      print('===================================================================')
      print(f'Email: {email}')
      print(f'Name: {name}')
      print(f'Comment: {comment}')
+     print(f'Ratings: {ratings}')
+     print(f'total_spend: {total_spend}')
+     print(f'order_items: {order_items}')
      
      for x in product_ratings:
           print(f'{x['food_name']} : Ratings: {x['rating']}')
      print('===================================================================')
 
 
+     try: 
+          random_gender = random.randint(0,1)
+
+          gender = ''
+          
+          if random_gender == 0:
+               gender = 'boy'
+          elif random_gender == 1:
+               gender = 'girl'
+
+     
+
+          new_reviews = Reviews(email = email,
+                                ratings = ratings,
+                                name = name,
+                                comment = comment,
+                                img_profile_url = f'https://avatar.iran.liara.run/public/{gender}?username={name}',
+                                order_items = order_items,
+                                total_spend= total_spend)
+
+          
+          save_data(new_reviews)
+
+          
+     except KeyError:
+          print(KeyError)
+
+
      return jsonify({'msg': 'Success', 'status': True})
+
+
+@admin.route('/admin/fetch-reviews',methods=['GET'])
+def fetch_reviews():
+
+     get_reviews = Reviews.query.order_by(desc(Reviews.date)).all()
+
+     reviews = [ review.to_dict() for review in get_reviews]
+
+     return jsonify({'msg': 'Success', 'status': True, 'reviews': reviews})

@@ -237,17 +237,25 @@ class Reviews(db.Model):
     __tablename__ = 'reviews'
     id = db.Column(db.Integer, primary_key = True)
     email = db.Column(db.String(124), nullable = True)
+    ratings = db.Column(db.Integer, nullable = True)
     name = db.Column(db.String(124), nullable = False)
     comment = db.Column(db.String(524), nullable = True)
     date = db.Column(db.DateTime, default = datetime.utcnow)
+    img_profile_url = db.Column(db.String(264), nullable = True)
+    total_spend = db.Column(db.Integer, nullable = False)
+    order_items= db.Column(db.Integer, nullable = False)
 
     def to_dict(self):
         return{
             'email': self.email,
             'name': self.name,
+            'ratings': self.ratings,
             'comment': self.comment,
             'date': self.date.strftime("%Y-%m-%d %H:%M:%S"),
-            'time_age': time_ago(self.date)
+            'time_age': time_ago(self.date),
+            'img_profile_url': self.img_profile_url,
+            'total_spend': self.total_spend,
+            'order_items': self.order_items
 
         }
     

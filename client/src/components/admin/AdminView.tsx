@@ -14,6 +14,7 @@ import DenyConfirmation from "./popups/DenyConfirmation";
 import layout from "../../styles/layouts/admin_view.module.css";
 import PendingPayments from "./popups/PendingPayments";
 import { useTableStatus } from "../../contexts/TableStatusContext";
+import Reviews from "./popups/Reviews";
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,6 +32,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
     const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
     const [isPendingPayment, setIsPendingPayment] = useState<boolean>(false);
+    const [isReview, setIsReview] = useState<boolean>(false);
 
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
@@ -67,10 +69,17 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
             }, 850);
         });
 
+        socket?.on("notify_the_admin", (_) => {
+            setTimeout(() => {
+                getTableStatus();
+            }, 850);
+        });
+
         return () => {
             socket?.off("notify-admin");
             socket?.off("push-to-admin-payment");
             socket?.off("notify-admin-costumer-exit");
+            socket?.off("notify_the_admin");
         };
     }, [socket]);
 
@@ -125,6 +134,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         isTransitioning={isTransitioning}
                         setIsTableRequest={setIsTableRequest}
                         setIsPendingPayment={setIsPendingPayment}
+                        setIsReview={setIsReview}
                     />
                 </div>
                 <div className={`${layout["pending-tab"]}`}>
@@ -177,6 +187,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         setIsPendingPayment={setIsPendingPayment}
                     />
                 )}
+                {isReview && <Reviews setIsReview={setIsReview} />}
             </div>
         </>
     );

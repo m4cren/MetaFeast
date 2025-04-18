@@ -60,6 +60,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                                         setCamPos(to_exit.frame8.pos);
                                         setCamRot(to_exit.frame8.rot);
                                         setIsExiting(true);
+                                        localStorage.removeItem("token");
                                     }, frame_sec);
                                 }, frame_sec);
                             }, frame_sec);
@@ -304,6 +305,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
     ) : (
         isReview && (
             <ServiceReview
+                totalQuantity={totalQuantity}
                 isReceipt={isReceipt}
                 myOrders={myOrders}
                 handleCostumerExit={handleCostumerExit}

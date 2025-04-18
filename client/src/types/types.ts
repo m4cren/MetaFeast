@@ -169,3 +169,13 @@ export const triviaMessage = [
     "We remember your favorites, so you don’t have to",
     "Our system ensures a smooth and personalized experience",
 ];
+
+export type ReviewTypes = {
+    email: string;
+    name: string;
+    ratings: number;
+    comment: string;
+    date: string;
+    time_age: string;
+    img_profile_url: string;
+};
