@@ -1,0 +1,26 @@
+.product-review {
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
+    grid-template-rows: 3rem 10rem 3rem;
+    grid-template-areas:
+        "     .    header    .    "
+        "     left-btn    img-slider    right-btn    "
+        "     stars-btn    stars-btn    stars-btn    ";
+}
+
+.header {
+    grid-area: header;
+}
+
+.left-btn {
+    grid-area: left-btn;
+}
+.right-btn {
+    grid-area: right-btn;
+}
+.img-slider {
+    grid-area: img-slider;
+}
+.stars-btn {
+    grid-area: stars-btn;
+}

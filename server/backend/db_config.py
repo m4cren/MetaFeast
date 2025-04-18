@@ -14,6 +14,8 @@ import base64
 load_dotenv()
 
 
+
+
 m4cren_host = os.getenv("M4CREN_HOST")
 m4cren_schema = os.getenv("M4CREN_SCHEMA")
 m4cren_username = os.getenv("M4CREN_USERNAME")
@@ -29,6 +31,8 @@ mika_port = os.getenv("MIKA_PORT")
 
 PAYMONGO_API_KEY = os.getenv('PAYMONGO_API_KEY')
 PAYMONGO_API_URL = 'https://api.paymongo.com/v1/links'
+
+WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
 
 def encode_api_key(api_key):
     return base64.b64encode(api_key.encode()).decode()

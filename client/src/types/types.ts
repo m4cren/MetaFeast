@@ -149,8 +149,23 @@ export type PendingPaymentType = {
             food_name: string;
             quantity: number;
             price: number;
+            img: string;
         },
     ];
     payment_time: string;
     date_and_time: string;
 };
+
+export const triviaMessage = [
+    "Did you know that egg contains 6-7 grams of protein?",
+    "Bananas are rich in magnesium and potassium",
+    "You look good, you feel good, you do good",
+    "Our system saves the customer's last activity phase",
+    "Hydration boosts focus and mood—drink water!",
+    "Our smart menu adapts to your past choices",
+    "Healthy habits lead to a healthy lifestyle",
+    "Your preferences help us serve you better",
+    "Small changes make a big difference in health",
+    "We remember your favorites, so you don’t have to",
+    "Our system ensures a smooth and personalized experience",
+];

@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, request
-from ..db_config import save_data, delete_all_data, delete_data
+from ..db_config import save_data, delete_all_data, delete_data, WEATHER_API_KEY
 from ..db_models import Costumer, Table, Orders, PendingPayments
 from ..extensions import jwt_required, get_jwt_identity, create_access_token, db
+
+
 
 
 costumer = Blueprint("costumer", __name__)
@@ -42,8 +44,10 @@ def get_name():
 
 
 
+@costumer.route('/costumer/get-weather-api-key', methods=['GET'])
+def get_weather_api_key():
 
-
+    return jsonify({'msg': 'Success', 'status': True, 'weather_api_key':WEATHER_API_KEY})
 
 
 
@@ -64,7 +68,7 @@ def exit_costumer():
     db.session.commit()
 
     pending_payment_to_delete = PendingPayments.query.filter_by(costumer_name = costumer_to_leave.costumer_name).first()
-    print(pending_payment_to_delete.costumer_name, '==================111111111111111==============11111111111111')
+
     db.session.delete(pending_payment_to_delete)
     db.session.commit()
 
@@ -72,7 +76,7 @@ def exit_costumer():
 
     if not costumer_to_leave:
         return jsonify({"message": "Costumer not found", "status": False})
-    print(costumer_to_leave.costumer_name, '-----------------------------------')
+
     db.session.delete(costumer_to_leave)
     db.session.commit()
     

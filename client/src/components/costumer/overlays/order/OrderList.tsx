@@ -57,6 +57,7 @@ const OrderList = ({
                 order.food_name === foodName
                     ? {
                           ...order,
+
                           quantity:
                               order.quantity < order.available_quantity
                                   ? order.quantity + 1

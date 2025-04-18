@@ -2,6 +2,7 @@ import { memo, useEffect, useState } from "react";
 
 import { FaLessThan } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
+import { triviaMessage } from "../../../types/types";
 import { Gi3dStairs } from "react-icons/gi";
 
 import useSelectTableControl from "../../../hooks/useSelectTableControl";
@@ -56,20 +57,6 @@ const SelectTable = ({
         setIsConfirmed,
         setIsPicking,
     });
-
-    const triviaMessage = [
-        "Did you know that egg contains 6-7 grams of protein?",
-        "Bananas are rich in magnesium and potassium",
-        "You look good, you feel good, you do good",
-        "Our system saves the customer's last activity phase",
-        "Hydration boosts focus and mood—drink water!",
-        "Our smart menu adapts to your past choices",
-        "Healthy habits lead to a healthy lifestyle",
-        "Your preferences help us serve you better",
-        "Small changes make a big difference in health",
-        "We remember your favorites, so you don’t have to",
-        "Our system ensures a smooth and personalized experience",
-    ];
 
     const [triviaIndex, setTriviaIndex] = useState<number>(0);
 

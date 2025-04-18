@@ -58,21 +58,31 @@ def payment_request():
  
 
      data = request.json
-
-
-
      costumer_name = data.get('costumer_name')
 
      price = data.get('price')
+
+     print(costumer_name, 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXx')
+
+
+
+
+
      payment_item = PendingPayments.query.filter_by(costumer_name = costumer_name).first()
-     payment_id = payment_item.payment_id
+     print(payment_item)
 
-     description = f'Transaction for {costumer_name} - Ref No: {payment_id}'
-     remarks = f'Metafeast order #{payment_id} | Costumer: {costumer_name}'
+     if(payment_item):
+          payment_id = payment_item.payment_id
 
-     result = create_payment_link(price, description, remarks)
+          description = f'Transaction for {costumer_name} - Ref No: {payment_id}'
+          remarks = f'Metafeast order #{payment_id} | Costumer: {costumer_name}'
 
-     return jsonify(result) 
+          result = create_payment_link(price, description, remarks)
+
+          return jsonify(result) 
+     else:
+          return jsonify({'msg': 'Error', 'status': False})
+  
 
 @payment.route('/payment/receipt', methods=['GET'])
 @jwt_required()

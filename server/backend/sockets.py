@@ -182,6 +182,7 @@ def billing_request(data):
     table_id = data.get('table_id')
     total_price = data.get('total_price')
     orders = data.get('orders')
+  
     payment_id = generate_unique_payment_id()
     payment_type = data.get('payment_type')
     print('==========================================')
@@ -206,7 +207,8 @@ def billing_request(data):
                                                 orders = [{
                                                     'food_name': order['food_name'],
                                                     'quantity': order['quantity'],
-                                                    'price': order['price']
+                                                    'price': order['price'],
+                                                    'img': order['img']
                                                 }for order in orders])
             
             save_data(new_payment_request)

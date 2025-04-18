@@ -64,11 +64,12 @@ const Billing = ({
             table_id: myOrders?.current_table,
             payment_type: payment_type,
             total_price: totalPrice,
-            orders: mergedOrders.map(({ food_name, quantity, price }) => {
+            orders: mergedOrders.map(({ food_name, quantity, price, img }) => {
                 return {
                     food_name: food_name,
                     quantity: quantity,
                     price: price,
+                    img: img,
                 };
             }),
         };
@@ -211,11 +212,12 @@ const Billing = ({
             table_id: myOrders?.current_table,
             payment_type: "Undefined",
             total_price: totalPrice,
-            orders: mergedOrders.map(({ food_name, quantity, price }) => {
+            orders: mergedOrders.map(({ food_name, quantity, price, img }) => {
                 return {
                     food_name: food_name,
                     quantity: quantity,
                     price: price,
+                    img: img,
                 };
             }),
         };

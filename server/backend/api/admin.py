@@ -63,4 +63,46 @@ def get_current_costumers():
           print('error')
           return jsonify({'msg': 'error'})
 
+     # const dataToSend = {
+     #        product_ratings: productReview,
+     #        email:
+     #            serviceReview.email.length <= 0
+     #                ? "Anonymous"
+     #                : serviceReview.email,
+     #        comment: serviceReview.comment,
+     #        name: myOrders?.costumer_name,
+     #    };
+
+     #    const sendToAdmin = async () => {
+     #        try {
+     #            const response = await axios.post(
+     #                `${server}/admin/recieve-rating`,
+     #                dataToSend,
+     #            );
+
+     #            console.dir(response.data);
+     #        } catch (error) {
+     #            console.log(error);
+     #        }
+     #    };
+
+@admin.route('/admin/recieve-rating', methods=['POST'])
+def receive_rating():
+     data = request.json
+
+     email = data.get('email')
+     name =data.get('name')
+     comment = data.get('comment')
+     product_ratings = data.get('product_ratings')
+
+     print('===================================================================')
+     print(f'Email: {email}')
+     print(f'Name: {name}')
+     print(f'Comment: {comment}')
      
+     for x in product_ratings:
+          print(f'{x['food_name']} : Ratings: {x['rating']}')
+     print('===================================================================')
+
+
+     return jsonify({'msg': 'Success', 'status': True})

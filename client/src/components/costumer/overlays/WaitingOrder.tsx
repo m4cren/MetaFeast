@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useFrameProvider from "../../../frames/useFrameProvider";
-
+import { triviaMessage } from "../../../types/types";
 interface WaitingOrderProps {
     transitionToTable: (table_id: string) => void;
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -14,19 +14,6 @@ const WaitingOrder = ({
     setCamRot,
 }: WaitingOrderProps) => {
     const { to_2nd_Frames } = useFrameProvider();
-    const triviaMessage = [
-        "Did you know that egg contains 6-7 grams of protein?",
-        "Bananas are rich in magnesium and potassium",
-        "You look good, you feel good, you do good",
-        "Our system saves the customer's last activity phase",
-        "Hydration boosts focus and mood—drink water!",
-        "Our smart menu adapts to your past choices",
-        "Healthy habits lead to a healthy lifestyle",
-        "Your preferences help us serve you better",
-        "Small changes make a big difference in health",
-        "We remember your favorites, so you don’t have to",
-        "Our system ensures a smooth and personalized experience",
-    ];
 
     const [triviaIndex, setTriviaIndex] = useState<number>(0);
 
