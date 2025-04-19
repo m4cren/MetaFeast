@@ -15,6 +15,8 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
     const [reviews, setReviews] = useState<ReviewTypes[]>([]);
     const { server } = useServerAddress();
 
+    const [isFilter, setIsFilter] = useState<boolean>(false);
+
     const [totalReviews, setTotalReviews] = useState<number>(0);
     const [avgRatings, setAvgRatings] = useState<number>(0);
 
@@ -29,6 +31,10 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
     const [threeStarWidth, setThreeStarWidth] = useState<number>(0);
     const [twoStarWidth, setTwoStarWidth] = useState<number>(0);
     const [oneStarWidth, setOneStarWidth] = useState<number>(0);
+
+    const [filteredReviews, setFilteredReviews] = useState<ReviewTypes[]>([]);
+
+    const [isDateFilter, setIsDateFilter] = useState<boolean>(false);
 
     const fetchReviews = async () => {
         const headers = {
@@ -52,6 +58,7 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
 
     useEffect(() => {
         if (reviews) {
+            setFilteredReviews(reviews);
             setTotalReviews(reviews.length);
             let accumulated_ratings = 0;
             reviews.forEach(({ ratings }) => {
@@ -121,6 +128,17 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
         }, 180);
     };
 
+    const handleFilter = (stars: number) => {
+        if (stars !== 0) {
+            const newReviews = reviews.filter(
+                ({ ratings }) => ratings === stars,
+            );
+            setFilteredReviews(newReviews);
+        } else {
+            setFilteredReviews(reviews);
+        }
+    };
+
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex justify-center items-center pointer-events-auto">
             <div
@@ -131,13 +149,83 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
                         Reviews
                     </h1>
 
-                    <div className="flex flex-row items-center gap-4">
-                        <button className="text-[1.1rem] cursor-pointer font-extralight text-white/85 py-2 px-8 border-1 rounded-md border-white/30 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.2)]">
+                    <div className="relative flex flex-row items-center gap-4">
+                        <button
+                            onClick={() => setIsDateFilter(!isDateFilter)}
+                            className="text-[1.1rem] cursor-pointer font-extralight text-white/85 py-2 px-8 border-1 rounded-md border-white/30 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.2)]"
+                        >
                             This Year
                         </button>
-                        <button className="text-primary cursor-pointer">
+                        <button
+                            onClick={() => setIsFilter(!isFilter)}
+                            className="text-primary cursor-pointer"
+                        >
                             <ListFilter size={30} />
                         </button>
+                        {isDateFilter && (
+                            <div className="absolute top-[70%] right-[90%] w-[12rem] h-[12rem] rounded-b-2xl rounded-tl-2xl bg-gradient-to-b from-lightbrown to-darkbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]"></div>
+                        )}
+                        {isFilter && (
+                            <div className="w-[10rem] z-10 h-fit pb-4 pt-2 top-[70%] px-4 flex flex-col items-center gap-1 absolute rounded-b-2xl rounded-tl-2xl bg-gradient-to-b from-lightbrown to-darkbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]">
+                                <h1 className="text-primary border-b-2 text-shadow-md text-[1.3rem] text-center border-white/30 w-full">
+                                    Filter
+                                </h1>
+                                <p
+                                    onClick={() => {
+                                        setIsFilter(false);
+                                        handleFilter(0);
+                                    }}
+                                    className="text-white/70 text-[0.9rem] font-extralight text-shadow-md cursor-pointer hover:text-white/90 hover:underline transition duration-100"
+                                >
+                                    All
+                                </p>
+                                <p
+                                    onClick={() => {
+                                        setIsFilter(false);
+                                        handleFilter(5);
+                                    }}
+                                    className="text-white/70 text-[0.9rem] font-extralight text-shadow-md cursor-pointer hover:text-white/90 hover:underline transition duration-100"
+                                >
+                                    5 star review
+                                </p>
+                                <p
+                                    onClick={() => {
+                                        setIsFilter(false);
+                                        handleFilter(4);
+                                    }}
+                                    className="text-white/70 text-[0.9rem] font-extralight text-shadow-md cursor-pointer hover:text-white/90 hover:underline transition duration-100"
+                                >
+                                    4 star review
+                                </p>
+                                <p
+                                    onClick={() => {
+                                        setIsFilter(false);
+                                        handleFilter(3);
+                                    }}
+                                    className="text-white/70 text-[0.9rem] font-extralight text-shadow-md cursor-pointer hover:text-white/90 hover:underline transition duration-100"
+                                >
+                                    3 star review
+                                </p>
+                                <p
+                                    onClick={() => {
+                                        setIsFilter(false);
+                                        handleFilter(2);
+                                    }}
+                                    className="text-white/70 text-[0.9rem] font-extralight text-shadow-md cursor-pointer hover:text-white/90 hover:underline transition duration-100"
+                                >
+                                    2 star review
+                                </p>
+                                <p
+                                    onClick={() => {
+                                        setIsFilter(false);
+                                        handleFilter(1);
+                                    }}
+                                    className="text-white/70 text-[0.9rem] font-extralight text-shadow-md cursor-pointer hover:text-white/90 hover:underline transition duration-100"
+                                >
+                                    1 star review
+                                </p>
+                            </div>
+                        )}
                         <hr />
                         <hr />
 
@@ -351,8 +439,8 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
                         </div>
                     </div>
                 </div>
-                <ul className="flex flex-col h-[25rem] gap-8 py-8 overflow-y-scroll custom-scrollbar [mask-image:linear-gradient(to_bottom,black_85%,transparent)]">
-                    {reviews.map(
+                <ul className="flex flex-col h-[25rem] gap-8 py-8 overflow-y-scroll thin-scrollbar text-[0.9rem] font-extralight [mask-image:linear-gradient(to_bottom,black_85%,transparent)]">
+                    {filteredReviews.map(
                         (
                             {
                                 name,
