@@ -178,4 +178,22 @@ export type ReviewTypes = {
     date: string;
     time_age: string;
     img_profile_url: string;
+    total_spend: number;
+    order_items: number;
+};
+
+export type HistoryType = {
+    costumer_name: string;
+    table_seated: string;
+    total_payment: number;
+    payment_id: string;
+    total_order_items: number;
+    payment_method: string;
+    orders: [
+        {
+            food_name: string;
+            quantity: number;
+        },
+    ];
+    dine_time: string;
 };

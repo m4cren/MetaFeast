@@ -44,8 +44,6 @@ const GetName = ({
     const setFrameOne = () => {
         setCamPos(afterName_Frames.frame1.pos);
         setCamRot(afterName_Frames.frame1.rot);
-        setPhase(1);
-        localStorage.setItem("current_phase", "phase_1");
 
         setTimeout(() => {
             setCamPos(afterName_Frames.frame2.pos);
@@ -63,6 +61,8 @@ const GetName = ({
                         setTimeout(() => {
                             setCamPos(selTable1stF_Frames.mid.pos);
                             setCamRot(selTable1stF_Frames.mid.rot);
+                            setPhase(1);
+                            localStorage.setItem("current_phase", "phase_1");
                         }, 700);
                     }, 400);
                 }, 400);

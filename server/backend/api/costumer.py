@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from ..db_config import save_data, delete_all_data, delete_data, WEATHER_API_KEY
-from ..db_models import Costumer, Table, Orders, PendingPayments
+from ..db_models import Costumer, Table, Orders, PendingPayments, CostumerHistory
 from ..extensions import jwt_required, get_jwt_identity, create_access_token, db
 
 
@@ -56,6 +56,33 @@ def get_weather_api_key():
 @jwt_required()
 def exit_costumer():
     current_costumer_id = get_jwt_identity()
+
+    data = request.json
+
+
+    name = data.get('name')
+    table_seated = data.get('table_seated')
+    total_spend = data.get('total_spend')
+    order_items = data.get('order_items')
+    payment_method = data.get('payment_method')
+    orders = data.get('orders')
+    payment_id = data.get('payment_id')
+
+
+    new_costumer_history = CostumerHistory(
+               costumer_name = name,
+               table_seated = table_seated,
+               total_payment = total_spend,
+               total_order_items = order_items,
+               payment_id = payment_id,
+               payment_method = payment_method,
+               orders = [{
+                    'food_name': order['food_name'],
+                    'quantity': order['quantity']
+               } for order in orders]
+          )
+    save_data(new_costumer_history)
+
 
     
 

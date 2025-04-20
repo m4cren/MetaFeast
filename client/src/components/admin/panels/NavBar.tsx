@@ -6,6 +6,7 @@ interface Props {
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
     setIsPendingPayment: React.Dispatch<React.SetStateAction<boolean>>;
     setIsReview: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsHistory: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const NavBar = ({
@@ -13,6 +14,7 @@ const NavBar = ({
     setIsTableRequest,
     setIsPendingPayment,
     setIsReview,
+    setIsHistory,
 }: Props) => {
     return (
         <div
@@ -29,25 +31,31 @@ const NavBar = ({
             <div className="text-primary flex flex-row items-center justify-around w-[60%] text-shadow-md ">
                 <p
                     onClick={() => setIsTableRequest(true)}
-                    className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80"
+                    className="cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
                 >
                     Table Request
                 </p>
 
                 <p
                     onClick={() => setIsPendingPayment(true)}
-                    className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80"
+                    className="cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
                 >
                     Pending Payment
                 </p>
-                <p className="cursor-pointer grow-1 text-center border-r-3 border-white/40 hover:text-white transition duration-100 hover:opacity-80">
+                <p className="cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80">
                     Products
                 </p>
                 <p
                     onClick={() => setIsReview(true)}
-                    className="cursor-pointer grow-1 text-center hover:text-white transition duration-100 hover:opacity-80"
+                    className="cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
                 >
                     Ratings
+                </p>
+                <p
+                    onClick={() => setIsHistory(true)}
+                    className="cursor-pointer grow-1 text-center hover:text-white transition duration-100 hover:opacity-80"
+                >
+                    History
                 </p>
             </div>
         </div>

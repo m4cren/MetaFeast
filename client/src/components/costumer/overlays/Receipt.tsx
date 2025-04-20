@@ -71,6 +71,15 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
         }
 
         const costumerExit = async () => {
+            const dataToSend = {
+                name: myOrders?.costumer_name,
+                payment_id: myOrders?.payment_id,
+                total_spend: myOrders?.total_payment,
+                order_items: totalQuantity,
+                orders: myOrders?.orders,
+                payment_method: myOrders?.payment_type,
+                table_seated: myOrders?.table_id,
+            };
             const headers = {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
                 "Content-Type": "application/json",
@@ -79,7 +88,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
             try {
                 const response = await axios.post(
                     `${server}/costumer/exit`,
-                    {},
+                    dataToSend,
                     {
                         headers,
                         withCredentials: true,

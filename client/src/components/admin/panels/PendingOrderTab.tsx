@@ -17,6 +17,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
         useState<PendingOrderType | null>(null);
 
     const [isToggle, setIsToggle] = useState<boolean>(false);
+    const notif_sound = new Audio("/audios/notif.MP3");
 
     const getPendingOrders = async () => {
         const headers = {
@@ -54,6 +55,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
 
     useEffect(() => {
         socket?.on("push-to-admin", (_) => {
+            notif_sound.play();
             getPendingOrders();
         });
     }, [socket]);

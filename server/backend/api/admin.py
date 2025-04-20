@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from werkzeug.security import  check_password_hash
 from ..extensions import db
-from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews
+from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews, CostumerHistory
 from sqlalchemy import desc
 from ..db_config import time_ago, save_data
 
@@ -99,6 +99,10 @@ def receive_rating():
      ratings = data.get('ratings')
      order_items = data.get('order_items')
      total_spend = data.get('total_spend')
+  
+
+
+
 
      print('===================================================================')
      print(f'Email: {email}')
@@ -136,6 +140,9 @@ def receive_rating():
           
           save_data(new_reviews)
 
+
+
+
           
      except KeyError:
           print(KeyError)
@@ -149,6 +156,23 @@ def fetch_reviews():
 
      get_reviews = Reviews.query.order_by(desc(Reviews.date)).all()
 
-     reviews = [ review.to_dict() for review in get_reviews]
+     if get_reviews:
 
-     return jsonify({'msg': 'Success', 'status': True, 'reviews': reviews})
+          reviews = [ review.to_dict() for review in get_reviews]
+
+          return jsonify({'msg': 'Success', 'status': True, 'reviews': reviews})
+     
+     return jsonify({'msg': 'No reviews', 'status': False, 'reviews': 'empty'})
+
+
+@admin.route('/admin/fetch-history', methods=['GET'])
+def fetch_histories():
+     get_history = CostumerHistory.query.order_by(desc(CostumerHistory.dine_time)).all()
+
+     if get_history:
+
+          histories = [history.to_dict() for history in get_history]
+
+          return jsonify({'msg': 'Success', 'status': True, 'histories': histories})
+     
+     return jsonify({'msg': 'No history', 'status': False, 'histories': 'empty'})

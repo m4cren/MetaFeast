@@ -260,7 +260,32 @@ class Reviews(db.Model):
         }
     
 
+class CostumerHistory(db.Model):
+    __tablename__ = 'costumer_history'
+    id = db.Column(db.Integer, primary_key = True)
+    costumer_name = db.Column(db.String(64), nullable = False)
+    table_seated = db.Column(db.String(64), nullable = False)
+    total_payment = db.Column(db.Integer, nullable =False)
+    total_order_items = db.Column(db.Integer, nullable = False)
+    payment_method = db.Column(db.String(64), nullable = False)
+    payment_id = db.Column(db.String(64), nullable = False)
+    orders = db.Column(db.JSON, nullable = True, default=lambda: [{'food_name': '', 'quantity': 0}])
+    dine_time = db.Column(db.DateTime, default = datetime.utcnow)
 
+    def to_dict(self):
+        return{
+            'costumer_name': self.costumer_name,
+            'table_seated': self.table_seated,
+            'total_payment': self.total_payment,
+            'payment_id': self.payment_id,
+            'total_order_items': self.total_order_items,
+            'payment_method': self.payment_method,
+            'orders': [{
+                'food_name': order['food_name'],
+                'quantity': order['quantity']
+            } for order in self.orders],
+            'dine_time': self.dine_time.strftime("%Y-%m-%d %H:%M:%S"),
+        }
 
 
 

@@ -15,6 +15,7 @@ import layout from "../../styles/layouts/admin_view.module.css";
 import PendingPayments from "./popups/PendingPayments";
 import { useTableStatus } from "../../contexts/TableStatusContext";
 import Reviews from "./popups/Reviews";
+import History from "./popups/History";
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,6 +34,9 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
     const [isPendingPayment, setIsPendingPayment] = useState<boolean>(false);
     const [isReview, setIsReview] = useState<boolean>(false);
+    const [isHistory, setIsHistory] = useState<boolean>(false);
+
+    console.log(isHistory, setIsHistory);
 
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
@@ -42,7 +46,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const [tableSelected, setTableSelected] = useState<string>("");
 
     const socket = useSocket();
-    const notif_sound = new Audio("/audios/admin_notif.mp3");
+    const notif_sound = new Audio("/audios/notif.MP3");
 
     const { getTableStatus } = useTableStatus() ?? {
         getTableStatus: () => {},
@@ -135,6 +139,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         setIsTableRequest={setIsTableRequest}
                         setIsPendingPayment={setIsPendingPayment}
                         setIsReview={setIsReview}
+                        setIsHistory={setIsHistory}
                     />
                 </div>
                 <div className={`${layout["pending-tab"]}`}>
@@ -188,6 +193,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                     />
                 )}
                 {isReview && <Reviews setIsReview={setIsReview} />}
+                {isHistory && <History setIsHistory={setIsHistory} />}
             </div>
         </>
     );
