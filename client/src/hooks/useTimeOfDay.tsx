@@ -21,6 +21,8 @@ const useTimeOfDay = (): {
     hours: number;
     amPm: string;
     day: number;
+    yearNow: number;
+    monthNow: number;
 } => {
     const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -45,12 +47,14 @@ const useTimeOfDay = (): {
 
     const day = currentTime.getDay();
 
+    const yearNow = currentTime.getFullYear();
+    const monthNow = currentTime.getMonth() + 1;
     const hours = currentTime.getHours() % 12 || 12;
     const minute = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
     const amPm = currentTime.getHours() >= 12 ? "pm" : "am";
 
-    return { timeOfDay, seconds, minute, hours, amPm, day };
+    return { timeOfDay, seconds, minute, hours, amPm, day, yearNow, monthNow };
 };
 
 export default useTimeOfDay;
