@@ -1,5 +1,5 @@
 import { LogOut, ListFilter } from "lucide-react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { FaStar, FaStarHalfStroke } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
 import useServerAddress from "../../../../useServerAddress";
@@ -691,4 +691,4 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
     );
 };
 
-export default Reviews;
+export default memo(Reviews);

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, memo, useEffect, useRef, useState } from "react";
 import { Search, LogOut, ListEnd, ListStart } from "lucide-react";
 import { HistoryType } from "../../../types/types";
 import axios from "axios";
@@ -46,8 +46,12 @@ const History = ({ setIsHistory }: HistoryProps) => {
     };
 
     useEffect(() => {
-        const newList = historyList.filter(({ costumer_name }) =>
-            costumer_name.toLowerCase().includes(searchName.toLowerCase()),
+        const newList = historyList.filter(
+            ({ costumer_name, payment_id }) =>
+                costumer_name
+                    .toLowerCase()
+                    .includes(searchName.toLowerCase()) ||
+                payment_id.toLowerCase().includes(searchName.toLowerCase()),
         );
 
         setIsFilteredHistoryList(newList);
@@ -91,14 +95,14 @@ const History = ({ setIsHistory }: HistoryProps) => {
                         <h1 className="text-primary text-[2rem] font-medium">
                             History
                         </h1>
-                        <div className="flex flex-row items-center gap-1 text-primary w-[15rem] cursor-pointer ">
+                        <div className="flex flex-row items-center gap-1 text-primary w-[18rem] cursor-pointer ">
                             <Search size={30} />
                             <input
                                 onChange={handleChange}
                                 name="search_name"
                                 type="text"
                                 id="search_name"
-                                placeholder="Costumer name"
+                                placeholder="Costumer name or Payment ID"
                                 className="text-[0.75rem] border-white/20 border-1 rounded-md w-full text-secondary outline-none px-2 py-1"
                             />
                         </div>
@@ -319,4 +323,4 @@ const History = ({ setIsHistory }: HistoryProps) => {
     );
 };
 
-export default History;
+export default memo(History);

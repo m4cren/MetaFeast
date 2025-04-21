@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { lazy, memo, Suspense, useEffect, useState } from "react";
 
 import AdminScene from "./scenes/AdminScene";
 
@@ -14,8 +14,9 @@ import DenyConfirmation from "./popups/DenyConfirmation";
 import layout from "../../styles/layouts/admin_view.module.css";
 import PendingPayments from "./popups/PendingPayments";
 import { useTableStatus } from "../../contexts/TableStatusContext";
-import Reviews from "./popups/Reviews";
-import History from "./popups/History";
+
+const Reviews = lazy(() => import("./popups/Reviews"));
+const History = lazy(() => import("./popups/History"));
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,8 +36,6 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const [isPendingPayment, setIsPendingPayment] = useState<boolean>(false);
     const [isReview, setIsReview] = useState<boolean>(false);
     const [isHistory, setIsHistory] = useState<boolean>(false);
-
-    console.log(isHistory, setIsHistory);
 
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
 

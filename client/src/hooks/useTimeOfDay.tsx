@@ -27,7 +27,10 @@ const useTimeOfDay = (): {
     const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
     const [currentTime, setCurrentTime] = useState(new Date());
 
+    const [currentDate, setCurrentDate] = useState(new Date());
+
     useEffect(() => {
+        setCurrentDate(new Date());
         const interval = setInterval(() => {
             setTimeOfDay(getTimeOfDay());
         }, 1000 * 60);
@@ -47,8 +50,8 @@ const useTimeOfDay = (): {
 
     const day = currentTime.getDay();
 
-    const yearNow = currentTime.getFullYear();
-    const monthNow = currentTime.getMonth() + 1;
+    const yearNow = currentDate.getFullYear();
+    const monthNow = currentDate.getMonth() + 1;
     const hours = currentTime.getHours() % 12 || 12;
     const minute = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
