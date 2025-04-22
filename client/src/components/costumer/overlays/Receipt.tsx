@@ -308,8 +308,13 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
             </div>
         </div>
     ) : isExiting ? (
-        <div className="fixed w-full h-screen flex flex-col items-center justify-center">
-            <h1 className="text-center text-primary">Thanks</h1>
+        <div className="fixed  backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] bg-black/20 w-full h-screen flex flex-col  items-center justify-center">
+            <div className="pop-up-animation bg-gradient-to-b flex flex-col items-center py-8 from-lightbrown to-darkbrown w-[80vw] h-fit rounded-2xl">
+                <h1 className="text-center text-primary text-[2rem] font-medium">
+                    Thanks
+                </h1>
+                <p className="text-secondary">You can now exit our website</p>
+            </div>
         </div>
     ) : (
         isReview && (

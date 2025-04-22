@@ -4,6 +4,7 @@ import { HistoryType } from "../../../types/types";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import html2canvas from "html2canvas";
+
 interface HistoryProps {
     setIsHistory: React.Dispatch<React.SetStateAction<boolean>>;
 }

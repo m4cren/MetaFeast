@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { UtensilsCrossed } from "lucide-react";
 
 interface Props {
@@ -38,7 +38,7 @@ const NavBar = ({
 
                 <p
                     onClick={() => setIsPendingPayment(true)}
-                    className="cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
+                    className="relative cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
                 >
                     Pending Payment
                 </p>

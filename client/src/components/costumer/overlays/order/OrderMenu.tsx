@@ -95,7 +95,7 @@ const OrderMenu = ({
                     <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
                         What do you want for <br />{" "}
                         {timeOfDay === "Madaling Araw" || timeOfDay === "Umaga"
-                            ? "breakfeast"
+                            ? "breakfast"
                             : timeOfDay === "Tanghali"
                               ? "lunch"
                               : timeOfDay === "Hapon" ||

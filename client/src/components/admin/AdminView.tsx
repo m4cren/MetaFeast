@@ -1,4 +1,4 @@
-import React, { lazy, memo, Suspense, useEffect, useState } from "react";
+import React, { lazy, memo, useEffect, useState } from "react";
 
 import AdminScene from "./scenes/AdminScene";
 
