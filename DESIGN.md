@@ -43,6 +43,30 @@
     </td>
 
   </tr>
+
+   <tr>
+    <td>
+      <p><strong>Product Managements</strong></p>
+      <img src="./figma/Product Managements.png" width="500"/>
+    </td>
+    <td>
+      <p><strong>Edit Products</strong></p>
+      <img src="./figma/Edit Products.png" width="500"/>
+    </td>
+
+  </tr>
+
+  <tr>
+    <td>
+      <p><strong>Order Histroy</strong></p>
+      <img src="./figma/Order Histroy.png" width="500"/>
+    </td>
+    <td>
+      <p><strong>Sales Analytics.png</strong></p>
+      <img src="./figma/Sales Analytics.png" width="500"/>
+    </td>
+
+  </tr>
 </table>
 
 ---
