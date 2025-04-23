@@ -171,11 +171,11 @@ body {
     transform: translate(5px, -3px);
 }
 .typing-demo {
-    width: 16ch;
+    width: 18ch;
     white-space: nowrap;
     overflow: hidden;
     border-right: 2px solid #2c2c2c;
     animation:
-        typing 15s steps(15) 6s infinite alternate,
+        typing 15s steps(18) 6s infinite alternate,
         blink 0.75s step-end infinite;
 }

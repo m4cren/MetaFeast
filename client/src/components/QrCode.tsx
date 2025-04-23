@@ -31,9 +31,9 @@ const QrCode = () => {
                         src="/images/phone_border.png"
                         alt=""
                     />
-                    <span className="flex flex-col items-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                    <span className="flex flex-col items-center absolute top-[45%] left-1/2 -translate-y-1/2 -translate-x-1/2">
                         {" "}
-                        <p className="w-full  letter tracking-widest   text-softblack font-bold mb-4 text-[1.25rem] typing-demo">
+                        <p className="w-full tracking-wider   text-softblack font-bold mb-4 text-[1.15rem] typing-demo">
                             {localIp}
                         </p>
                         {localIp && (
