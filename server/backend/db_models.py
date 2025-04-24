@@ -73,6 +73,14 @@ class Table(db.Model):
 
     def update_to_billing(self):
         self.current_costumer_status = 'Billing'
+
+    def to_dict(self):
+        return{
+            'table_name': self.table_name,
+            'costumer_name': self.current_costumer_name,
+            'is_available': self.isAvailable,
+            'current_costumer_status': self.current_costumer_status
+        }
     
 class TableRequest(db.Model):
     __tablename__ = 'table_request'

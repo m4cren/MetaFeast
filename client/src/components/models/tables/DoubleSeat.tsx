@@ -11,12 +11,14 @@ interface AvailableTable {
 interface Props {
     transitionToTable?: (table_id: string) => void;
     role: string;
+    fetchTableDetails?: (table_id: string) => void;
 }
 
 const DoubleSeat: React.FC<AvailableTable & Props> = ({
     availableTable,
     transitionToTable = () => {},
     role,
+    fetchTableDetails = () => {},
 }) => {
     const TABLE_POSITION = availableTable.map((table) => {
         return table.table_position;
@@ -103,6 +105,7 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
             let table_id: string = TABLE_ID[event.instanceId];
 
             transitionToTable(table_id);
+            fetchTableDetails(table_id);
         }
     };
 

@@ -9,6 +9,8 @@ import DoubleSeat from "../../models/tables/DoubleSeat";
 import SingleSeat from "../../models/tables/SingleSeat";
 import QuadSeat from "../../models/tables/QuadSeat";
 import { TableStatus } from "../../../types/types";
+import axios from "axios";
+import useServerAddress from "../../../../useServerAddress";
 const Restaurant = lazy(() => import("../../models/Restaurant"));
 const Stairs = lazy(() => import("../../models/Stairs"));
 
@@ -21,6 +23,8 @@ interface CameraControl {
 const AdminScene = ({ camPos, camRot, setIsLoading }: CameraControl) => {
     const { tables } = useTableStatus() ?? { tables: [] };
 
+    const { server } = useServerAddress();
+
     const singleTable: TableStatus[] = tables?.filter(
         (table) => table.table_type === "Single_seat",
     );
@@ -30,6 +34,39 @@ const AdminScene = ({ camPos, camRot, setIsLoading }: CameraControl) => {
     const quadTable: TableStatus[] = tables?.filter(
         (table) => table.table_type === "Quad_seat",
     );
+
+    const fetchTableDetails = async (table_id: string) => {
+        const headers = {
+            "Content-Type": "application/json",
+        };
+        try {
+            const response = await axios.post(
+                "http://192.168.1.5:8080/get-table-details",
+                {
+                    table_id: table_id,
+                },
+                { headers },
+            );
+            if (response.data.status) {
+                let costumer_name = response.data.table_detail.costumer_name;
+                let table_name = response.data.table_detail.table_name;
+                let current_costumer_status =
+                    response.data.table_detail.current_costumer_status;
+                let is_available = response.data.table_detail.is_available;
+                alert(
+                    `Costumer Name: ${costumer_name}, Table ID: ${table_name}, Costumer Status: ${current_costumer_status}, Table Status: ${is_available ? "Available" : "Occupied"}`,
+                );
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // 'table_name': self.table_name,
+    // 'costumer_name': self.current_costumer_name,
+    // 'is_available': self.isAvailable,
+    // 'current_costumer_status': self.current_costumer_status
+
     return (
         <Canvas>
             <CameraController
@@ -42,9 +79,21 @@ const AdminScene = ({ camPos, camRot, setIsLoading }: CameraControl) => {
                 <Restaurant onLoadComplete={() => setIsLoading(false)} />
                 <Stairs />
 
-                <SingleSeat availableTable={singleTable} role="admin" />
-                <DoubleSeat availableTable={doubleTable} role="admin" />
-                <QuadSeat availableTable={quadTable} role="admin" />
+                <SingleSeat
+                    availableTable={singleTable}
+                    role="admin"
+                    fetchTableDetails={fetchTableDetails}
+                />
+                <DoubleSeat
+                    availableTable={doubleTable}
+                    role="admin"
+                    fetchTableDetails={fetchTableDetails}
+                />
+                <QuadSeat
+                    availableTable={quadTable}
+                    role="admin"
+                    fetchTableDetails={fetchTableDetails}
+                />
             </Suspense>
         </Canvas>
     );
