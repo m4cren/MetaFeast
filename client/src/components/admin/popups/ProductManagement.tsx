@@ -1,0 +1,131 @@
+import React, { useState } from "react";
+import {
+    NotebookTabs,
+    ChartNoAxesCombined,
+    FileClock,
+    LogOut,
+    House,
+    ChevronRight,
+} from "lucide-react";
+import OrderHistory from "./productManagement/OrderHistory";
+
+interface ProductManagementProps {
+    setIsProductManagement: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ProductManagement = ({
+    setIsProductManagement,
+}: ProductManagementProps) => {
+    const [isClose, setIsClose] = useState<boolean>(false);
+
+    const [selectedTab, setSelectedTab] = useState<string>("Order History");
+
+    const [openTabs, setOpenTabs] = useState<string[]>([
+        "Catalouges",
+        "Order History",
+    ]);
+
+    const handleClose = () => {
+        setIsClose(true);
+        setTimeout(() => {
+            setIsClose(false);
+            setIsProductManagement(false);
+        }, 250);
+    };
+    return (
+        <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex flex-row justify-center items-center pointer-events-auto">
+            <div
+                className={`${isClose && "to-left-close-animation"} to-left-animation w-[15.5vw] origin-right h-[40rem] px-6 bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
+            >
+                <div
+                    className={`${isClose && "pop-close-animation"} pop-up-animation flex items-end pb-2  h-[10%]`}
+                >
+                    <p className="text-white/70 text-[0.85rem] font-light text-shadow-md">
+                        Catalouges
+                    </p>
+                </div>
+                <div className="flex flex-col gap-2 px-2 py-2  h-[78%]">
+                    <li
+                        className={`${isClose && "pop-close-animation"} pop-up-animation flex flex-row gap-2 items-center text-primary`}
+                    >
+                        <i>
+                            <NotebookTabs />
+                        </i>
+                        <h1 className=" text-[1rem] text-shadow-md">
+                            Product Management
+                        </h1>
+                    </li>
+                    <li
+                        className={`${isClose && "pop-close-animation"} pop-up-animation flex flex-row gap-2 items-center text-primary`}
+                    >
+                        <i>
+                            <ChartNoAxesCombined />
+                        </i>
+                        <h1 className=" text-[1rem] text-shadow-md">
+                            Sales Analytics
+                        </h1>
+                    </li>
+                    <li
+                        className={`${isClose && "pop-close-animation"} pop-up-animation flex flex-row gap-2 items-center text-primary`}
+                    >
+                        <i>
+                            <FileClock />
+                        </i>
+                        <h1 className=" text-[1rem] text-shadow-md">
+                            Order History
+                        </h1>
+                    </li>
+                </div>
+                <div className="flex flex-row items-start justify-between h-[12%]">
+                    <div
+                        className={`${isClose && "pop-close-animation"} pop-up-animation flex flex-col leading-6`}
+                    >
+                        <h1 className="text-primary text-[1.6rem] text-shadow-md">
+                            Metafeast
+                        </h1>
+                        <p className="text-secondary text-[0.75rem] font-extralight text-shadow-md">
+                            metafeastxyz@outlook.com
+                        </p>
+                    </div>
+                    <div
+                        className={`${isClose && "pop-close-animation"} pop-up-animation`}
+                    >
+                        <button
+                            onClick={handleClose}
+                            className="text-primary cursor-pointer"
+                        >
+                            <LogOut size={33} />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div className="flex flex-col justify-between h-[23rem]">
+                <div className="w-[1.5rem] relative -z-1 h-2 bg-gradient-to-t from-darkbrown to-lightbrown"></div>
+                <div className="w-[1.5rem] relative -z-1 h-2 bg-gradient-to-t from-darkbrown to-lightbrown"></div>
+            </div>
+            <div
+                className={`${isClose && "to-right-close-animation"} to-right-animation w-[50vw] h-[40rem] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tr-3xl rounded-br-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
+            >
+                <div className="flex items-end h-[4rem] w-full">
+                    <span className="pl-12 bg-gradient-to-r from-black/20 to-black/0 w-full py-1 flex flex-row items-center text-[0.7rem] font-extralight text-white/65  gap-5">
+                        <House size={18} />
+
+                        {openTabs.map((tab) => (
+                            <>
+                                <ChevronRight size={20} />
+                                <p
+                                    className={`${selectedTab === tab && "text-white/90"}`}
+                                >
+                                    {tab}
+                                </p>
+                            </>
+                        ))}
+                    </span>
+                </div>
+                <OrderHistory />
+            </div>
+        </div>
+    );
+};
+
+export default ProductManagement;

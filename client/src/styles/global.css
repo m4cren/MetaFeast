@@ -179,3 +179,17 @@ body {
         typing 15s steps(18) 6s infinite alternate,
         blink 0.75s step-end infinite;
 }
+
+.to-left-animation {
+    animation: toLeft 0.25s ease-in;
+}
+.to-right-animation {
+    animation: toRight 0.25s ease-in;
+}
+
+.to-left-close-animation {
+    animation: toLeftReverse 0.25s ease-out;
+}
+.to-right-close-animation {
+    animation: toRightReverse 0.25s ease-out;
+}

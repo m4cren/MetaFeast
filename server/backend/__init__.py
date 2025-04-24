@@ -1,6 +1,6 @@
 import eventlet
-
 eventlet.monkey_patch()
+
 
 from flask import Flask
 from .extensions import db, migrate, socketio, jwt

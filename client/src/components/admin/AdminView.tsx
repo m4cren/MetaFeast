@@ -14,9 +14,9 @@ import DenyConfirmation from "./popups/DenyConfirmation";
 import layout from "../../styles/layouts/admin_view.module.css";
 import PendingPayments from "./popups/PendingPayments";
 import { useTableStatus } from "../../contexts/TableStatusContext";
+import ProductManagement from "./popups/ProductManagement";
 
 const Reviews = lazy(() => import("./popups/Reviews"));
-const History = lazy(() => import("./popups/History"));
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,7 +35,8 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
     const [isPendingPayment, setIsPendingPayment] = useState<boolean>(false);
     const [isReview, setIsReview] = useState<boolean>(false);
-    const [isHistory, setIsHistory] = useState<boolean>(false);
+    const [isProductManagement, setIsProductManagement] =
+        useState<boolean>(false);
 
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
@@ -138,7 +139,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         setIsTableRequest={setIsTableRequest}
                         setIsPendingPayment={setIsPendingPayment}
                         setIsReview={setIsReview}
-                        setIsHistory={setIsHistory}
+                        setIsProductManagement={setIsProductManagement}
                     />
                 </div>
                 <div className={`${layout["pending-tab"]}`}>
@@ -192,7 +193,11 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                     />
                 )}
                 {isReview && <Reviews setIsReview={setIsReview} />}
-                {isHistory && <History setIsHistory={setIsHistory} />}
+                {isProductManagement && (
+                    <ProductManagement
+                        setIsProductManagement={setIsProductManagement}
+                    />
+                )}
             </div>
         </>
     );

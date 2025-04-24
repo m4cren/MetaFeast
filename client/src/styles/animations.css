@@ -225,3 +225,40 @@
         border-color: transparent;
     }
 }
+
+@keyframes toLeft {
+    from {
+        max-width: 0;
+    }
+
+    to {
+        max-width: 15.5vw;
+    }
+}
+@keyframes toRight {
+    from {
+        max-width: 0;
+    }
+
+    to {
+        max-width: 50vw;
+    }
+}
+@keyframes toLeftReverse {
+    from {
+        width: 15.5vw;
+    }
+
+    to {
+        width: 0;
+    }
+}
+@keyframes toRightReverse {
+    from {
+        width: 50vw;
+    }
+
+    to {
+        width: 0;
+    }
+}
