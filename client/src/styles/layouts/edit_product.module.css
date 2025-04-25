@@ -1,0 +1,45 @@
+/* <div className={`${layout['img-container']}`}></div>
+               <div className={`${layout['product-details']}`}></div>
+               <div className={`${layout['title-edit']}`}></div>
+               <div className={`${layout['edit-product']}`}></div>
+               <div className={`${layout['edit-details']}`}></div>
+               <div className={`${layout['delete-container']}`}></div>
+               <div className={`${layout['control-container']}`}></div> */
+
+.main {
+    display: grid;
+    grid-template-columns: 28% 3% 69%;
+    grid-template-rows: 10% 28% 5% 5% 5% 35% 12%;
+
+    grid-template-areas:
+        "     img-container       .       title-edit    "
+        "     img-container        .      edit-product    "
+        "     img-container        .      edit-details    "
+        "     product-details        .      edit-details    "
+        "     product-details        .      edit-details    "
+        "     product-details        .       edit-details    "
+        "     delete-container       .       control-container    ";
+}
+
+.img-container {
+    grid-area: img-container;
+}
+.product-details {
+    grid-area: product-details;
+}
+.title-edit {
+    grid-area: title-edit;
+}
+.edit-product {
+    grid-area: edit-product;
+}
+.edit-details {
+    grid-area: edit-details;
+    background-color: #f6fe00;
+}
+.delete-container {
+    grid-area: delete-container;
+}
+.control-container {
+    grid-area: control-container;
+}

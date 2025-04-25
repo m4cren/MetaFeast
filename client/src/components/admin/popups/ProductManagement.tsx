@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import OrderHistory from "./productManagement/OrderHistory";
 import ManageProducts from "./productManagement/ManageProducts";
+import EditProduct from "./productManagement/EditProduct";
 
 interface ProductManagementProps {
     setIsProductManagement: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,7 +38,7 @@ const ProductManagement = ({
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex flex-row justify-center items-center pointer-events-auto">
             <div
-                className={`${isClose && "to-left-close-animation"} to-left-animation w-[15.5vw] origin-right h-[40rem] px-6 bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
+                className={`${isClose && "to-left-close-animation"} to-left-animation w-[15.5vw] origin-right h-[45rem] px-6 bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
             >
                 <div
                     className={`${isClose && "pop-close-animation"} pop-up-animation flex items-end pb-2  h-[10%]`}
@@ -113,12 +114,12 @@ const ProductManagement = ({
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col justify-between h-[23rem]">
+            <div className="flex flex-col justify-between h-[25rem]">
                 <div className="w-[1.5rem] relative -z-1 h-2 bg-gradient-to-t from-darkbrown to-lightbrown"></div>
                 <div className="w-[1.5rem] relative -z-1 h-2 bg-gradient-to-t from-darkbrown to-lightbrown"></div>
             </div>
             <div
-                className={`${isClose && "to-right-close-animation"} to-right-animation w-[50vw] h-[40rem] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tr-3xl rounded-br-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
+                className={`${isClose && "to-right-close-animation"} to-right-animation w-[50vw] h-[45rem] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tr-3xl rounded-br-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
             >
                 <div className="text-pop-up-animation flex items-end h-[4rem] w-full">
                     <span className="pl-12 bg-gradient-to-r from-black/20 to-black/0 w-full py-1 flex flex-row items-center text-[0.7rem] font-extralight text-white/65  gap-5">
@@ -137,13 +138,14 @@ const ProductManagement = ({
                         ))}
                     </span>
                 </div>
-                {selectedTab === "Order History" && <OrderHistory />}
+                {/* {selectedTab === "Order History" && <OrderHistory />}
                 {selectedTab === "Product Management" && (
                     <ManageProducts
                         setSelectedCategory={setSelectedCategory}
                         selectedCategory={selectedCategory}
                     />
-                )}
+                )} */}
+                <EditProduct />
             </div>
         </div>
     );
