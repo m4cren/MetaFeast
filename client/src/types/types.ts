@@ -199,3 +199,10 @@ export type HistoryType = {
     ];
     dine_time: string;
 };
+
+export type TableDetailTypes = {
+    costumer_name: string;
+    table_name: string;
+    current_costumer_status: string;
+    is_available: boolean;
+};

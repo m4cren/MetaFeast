@@ -9,20 +9,36 @@ import TableRequestPopup from "./popups/TableRequestPopup";
 import { useSocket } from "../../contexts/SocketContext";
 import RequestNotification from "./popups/RequestNotification";
 import useFrameProvider from "../../frames/useFrameProvider";
-import { NotificationType } from "../../types/types";
+import { NotificationType, TableDetailTypes } from "../../types/types";
 import DenyConfirmation from "./popups/DenyConfirmation";
 import layout from "../../styles/layouts/admin_view.module.css";
 import PendingPayments from "./popups/PendingPayments";
 import { useTableStatus } from "../../contexts/TableStatusContext";
 import ProductManagement from "./popups/ProductManagement";
+import { LogOut } from "lucide-react";
 
 const Reviews = lazy(() => import("./popups/Reviews"));
+
+// let costumer_name = response.data.table_detail.costumer_name;
+//                 let table_name = response.data.table_detail.table_name;
+//                 let current_costumer_status =
+//                     response.data.table_detail.current_costumer_status;
+//                 let is_available = response.data.table_detail.is_available;
 
 interface AdminViewProps {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AdminView = ({ setIsLoading }: AdminViewProps) => {
+    const [tableDetails, setTableDetails] = useState<TableDetailTypes | null>(
+        null,
+    );
+
+    const [isTableDetails, setIsTableDetails] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsTableDetails(true);
+    }, [tableDetails]);
     const { admin_init_Frame } = useFrameProvider();
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
     const [camPos, setCamPos] = useState<[number, number, number]>(
@@ -122,8 +138,39 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
     return (
         <>
+            {isTableDetails && (
+                <div className="fixed top-5 right-5 w-fit h-fit p-4 bg-gradient-to-b from-lightbrown to-darkbrown rounded-xl z-10 shadow-md pop-up-animation">
+                    <div className="flex flex-row justify-between items-center">
+                        <h1 className="text-primary text-center mb-2">
+                            Table Details
+                        </h1>
+                        <button
+                            className="text-primary cursor-pointer"
+                            onClick={() => setIsTableDetails(false)}
+                        >
+                            <LogOut />
+                        </button>
+                    </div>
+                    <p className="text-secondary">
+                        Table Name: {tableDetails?.table_name}
+                    </p>
+                    <p className="text-secondary">
+                        Costumer Name: {tableDetails?.costumer_name}
+                    </p>
+                    <p className="text-secondary">
+                        Current Costumer Status:{" "}
+                        {tableDetails?.current_costumer_status}
+                    </p>
+                    <p className="text-secondary">
+                        Table Status:{" "}
+                        {tableDetails?.is_available ? "Available" : "Occupied"}
+                    </p>
+                </div>
+            )}
+
             <div className="w-full, h-screen fixed left-0 right-0 top-0 bottom-0">
                 <AdminScene
+                    setTableDetails={setTableDetails}
                     camPos={camPos}
                     camRot={camRot}
                     setIsLoading={setIsLoading}

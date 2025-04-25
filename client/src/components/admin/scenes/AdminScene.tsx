@@ -8,19 +8,27 @@ import { useTableStatus } from "../../../contexts/TableStatusContext";
 import DoubleSeat from "../../models/tables/DoubleSeat";
 import SingleSeat from "../../models/tables/SingleSeat";
 import QuadSeat from "../../models/tables/QuadSeat";
-import { TableStatus } from "../../../types/types";
+import { TableStatus, TableDetailTypes } from "../../../types/types";
 import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 const Restaurant = lazy(() => import("../../models/Restaurant"));
 const Stairs = lazy(() => import("../../models/Stairs"));
 
 interface CameraControl {
+    setTableDetails: React.Dispatch<
+        React.SetStateAction<TableDetailTypes | null>
+    >;
     camPos: number[];
     camRot: number[];
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AdminScene = ({ camPos, camRot, setIsLoading }: CameraControl) => {
+const AdminScene = ({
+    camPos,
+    camRot,
+    setIsLoading,
+    setTableDetails,
+}: CameraControl) => {
     const { tables } = useTableStatus() ?? { tables: [] };
 
     const { server } = useServerAddress();
@@ -53,9 +61,12 @@ const AdminScene = ({ camPos, camRot, setIsLoading }: CameraControl) => {
                 let current_costumer_status =
                     response.data.table_detail.current_costumer_status;
                 let is_available = response.data.table_detail.is_available;
-                alert(
-                    `Costumer Name: ${costumer_name}, Table ID: ${table_name}, Costumer Status: ${current_costumer_status}, Table Status: ${is_available ? "Available" : "Occupied"}`,
-                );
+                setTableDetails({
+                    costumer_name: costumer_name,
+                    table_name: table_name,
+                    current_costumer_status: current_costumer_status,
+                    is_available: is_available,
+                });
             }
         } catch (error) {
             console.log(error);
