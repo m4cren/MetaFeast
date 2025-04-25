@@ -37,7 +37,9 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const [isTableDetails, setIsTableDetails] = useState<boolean>(false);
 
     useEffect(() => {
-        setIsTableDetails(true);
+        if (tableDetails?.costumer_name.length !== 0) {
+            setIsTableDetails(true);
+        }
     }, [tableDetails]);
     const { admin_init_Frame } = useFrameProvider();
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);

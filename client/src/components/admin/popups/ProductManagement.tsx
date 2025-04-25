@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import OrderHistory from "./productManagement/OrderHistory";
 import ManageProducts from "./productManagement/ManageProducts";
-import EditProduct from "./productManagement/EditProduct";
 
 interface ProductManagementProps {
     setIsProductManagement: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,7 +20,6 @@ const ProductManagement = ({
     const [isClose, setIsClose] = useState<boolean>(false);
     const [selectedCategory, setSelectedCategory] =
         useState<string>("Appetizers");
-    console.log(selectedCategory, setSelectedCategory);
 
     const [selectedTab, setSelectedTab] =
         useState<string>("Product Management");
@@ -35,6 +33,10 @@ const ProductManagement = ({
             setIsProductManagement(false);
         }, 250);
     };
+
+    useEffect(() => {
+        setOpenTabs(["Catalogues", "Product Management"]);
+    }, []);
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex flex-row justify-center items-center pointer-events-auto">
             <div
@@ -138,14 +140,13 @@ const ProductManagement = ({
                         ))}
                     </span>
                 </div>
-                {/* {selectedTab === "Order History" && <OrderHistory />}
+                {selectedTab === "Order History" && <OrderHistory />}
                 {selectedTab === "Product Management" && (
                     <ManageProducts
                         setSelectedCategory={setSelectedCategory}
                         selectedCategory={selectedCategory}
                     />
-                )} */}
-                <EditProduct />
+                )}
             </div>
         </div>
     );

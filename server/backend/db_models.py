@@ -113,15 +113,13 @@ class Products(db.Model):
     description = db.Column(db.String(246), nullable = False)
     details = db.Column(db.Text, nullable = False)
     type = db.Column(db.String(64), nullable = True)
-    ratings = db.Column(db.Integer, default = 0, nullable = False)
+    ratings = db.Column(db.JSON, default=lambda:[{'rating': 0}], nullable = False)
     total_orders = db.Column(db.Integer, default = 0, nullable =False)
 
     def add_total_order(self, quantity):
         self.total_orders += quantity
     
-    def update_ratings(self, rate):
-        self.ratings = (self.ratings + rate)/self.total_ratings
-
+   
 
 
     def to_dict(self):
@@ -135,7 +133,9 @@ class Products(db.Model):
             'img': self.img,
             'description': self.description,
             'details': self.details,
-            'ratings': self.ratings,
+            'ratings': [{
+                'rating': rate['rating']
+            } for rate in self.ratings],
             'total_orders': self.total_orders
             
         }

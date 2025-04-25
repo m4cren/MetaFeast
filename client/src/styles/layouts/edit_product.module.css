@@ -35,7 +35,6 @@
 }
 .edit-details {
     grid-area: edit-details;
-    background-color: #f6fe00;
 }
 .delete-container {
     grid-area: delete-container;
