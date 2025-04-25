@@ -193,3 +193,10 @@ body {
 .to-right-close-animation {
     animation: toRightReverse 0.25s ease-out;
 }
+.text-pop-up-animation {
+    animation: textPopup 0.4s ease-in;
+}
+
+.text-pop-close-animation {
+    animation: textPopup 0.2s ease-out reverse;
+}

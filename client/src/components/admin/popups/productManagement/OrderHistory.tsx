@@ -60,7 +60,7 @@ const OrderHistory = () => {
         }
     };
     return (
-        <div className="flex flex-col px-12 py-8">
+        <div className="text-pop-up-animation flex flex-col px-12 py-8">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-col leading-6">
                     <h1 className="text-primary text-[1.75rem]">
@@ -105,7 +105,7 @@ const OrderHistory = () => {
                 <p>Costumer Info</p>
             </div>
             <div>
-                <ul className="flex flex-col py-4 gap-2 h-[33rem]  overflow-y-scroll thin-scrollbar text-[0.9rem] font-extralight ">
+                <ul className="flex flex-col py-4 gap-2 h-[25rem]  overflow-y-scroll thin-scrollbar text-[0.9rem] font-extralight ">
                     {filteredHistoryList.map(
                         (
                             {

@@ -41,7 +41,7 @@ const AdminScene = ({ camPos, camRot, setIsLoading }: CameraControl) => {
         };
         try {
             const response = await axios.post(
-                "http://192.168.1.5:8080/get-table-details",
+                `${server}/get-table-details`,
                 {
                     table_id: table_id,
                 },

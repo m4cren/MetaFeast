@@ -114,7 +114,6 @@ class Products(db.Model):
     details = db.Column(db.Text, nullable = False)
     type = db.Column(db.String(64), nullable = True)
     ratings = db.Column(db.Integer, default = 0, nullable = False)
-    total_ratings = db.Column(db.Integer, default = 0, nullable = False)
     total_orders = db.Column(db.Integer, default = 0, nullable =False)
 
     def add_total_order(self, quantity):
@@ -135,7 +134,9 @@ class Products(db.Model):
             'waiting_time': self.waiting_time,
             'img': self.img,
             'description': self.description,
-            'details': self.details
+            'details': self.details,
+            'ratings': self.ratings,
+            'total_orders': self.total_orders
             
         }
 

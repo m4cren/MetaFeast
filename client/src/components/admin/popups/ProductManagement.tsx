@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     NotebookTabs,
     ChartNoAxesCombined,
@@ -8,6 +8,7 @@ import {
     ChevronRight,
 } from "lucide-react";
 import OrderHistory from "./productManagement/OrderHistory";
+import ManageProducts from "./productManagement/ManageProducts";
 
 interface ProductManagementProps {
     setIsProductManagement: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,13 +18,14 @@ const ProductManagement = ({
     setIsProductManagement,
 }: ProductManagementProps) => {
     const [isClose, setIsClose] = useState<boolean>(false);
+    const [selectedCategory, setSelectedCategory] =
+        useState<string>("Appetizers");
+    console.log(selectedCategory, setSelectedCategory);
 
-    const [selectedTab, setSelectedTab] = useState<string>("Order History");
+    const [selectedTab, setSelectedTab] =
+        useState<string>("Product Management");
 
-    const [openTabs, setOpenTabs] = useState<string[]>([
-        "Catalouges",
-        "Order History",
-    ]);
+    const [openTabs, setOpenTabs] = useState<string[]>(["Catalouges"]);
 
     const handleClose = () => {
         setIsClose(true);
@@ -46,7 +48,11 @@ const ProductManagement = ({
                 </div>
                 <div className="flex flex-col gap-2 px-2 py-2  h-[78%]">
                     <li
-                        className={`${isClose && "pop-close-animation"} pop-up-animation flex flex-row gap-2 items-center text-primary`}
+                        onClick={() => {
+                            setSelectedTab("Product Management");
+                            setOpenTabs(["Catalogues", "Product Management"]);
+                        }}
+                        className={`${isClose && "pop-close-animation"} cursor-pointer pop-up-animation flex flex-row gap-2 items-center text-primary`}
                     >
                         <i>
                             <NotebookTabs />
@@ -56,7 +62,11 @@ const ProductManagement = ({
                         </h1>
                     </li>
                     <li
-                        className={`${isClose && "pop-close-animation"} pop-up-animation flex flex-row gap-2 items-center text-primary`}
+                        onClick={() => {
+                            setSelectedTab("Sales Analytics");
+                            setOpenTabs(["Catalogues", "Sales Analytics"]);
+                        }}
+                        className={`${isClose && "pop-close-animation"} cursor-pointer pop-up-animation flex flex-row gap-2 items-center text-primary`}
                     >
                         <i>
                             <ChartNoAxesCombined />
@@ -66,7 +76,11 @@ const ProductManagement = ({
                         </h1>
                     </li>
                     <li
-                        className={`${isClose && "pop-close-animation"} pop-up-animation flex flex-row gap-2 items-center text-primary`}
+                        onClick={() => {
+                            setSelectedTab("Order History");
+                            setOpenTabs(["Catalogues", "Order History"]);
+                        }}
+                        className={`${isClose && "pop-close-animation"} cursor-pointer pop-up-animation flex flex-row gap-2 items-center text-primary`}
                     >
                         <i>
                             <FileClock />
@@ -106,7 +120,7 @@ const ProductManagement = ({
             <div
                 className={`${isClose && "to-right-close-animation"} to-right-animation w-[50vw] h-[40rem] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tr-3xl rounded-br-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
             >
-                <div className="flex items-end h-[4rem] w-full">
+                <div className="text-pop-up-animation flex items-end h-[4rem] w-full">
                     <span className="pl-12 bg-gradient-to-r from-black/20 to-black/0 w-full py-1 flex flex-row items-center text-[0.7rem] font-extralight text-white/65  gap-5">
                         <House size={18} />
 
@@ -114,6 +128,7 @@ const ProductManagement = ({
                             <>
                                 <ChevronRight size={20} />
                                 <p
+                                    key={tab}
                                     className={`${selectedTab === tab && "text-white/90"}`}
                                 >
                                     {tab}
@@ -122,7 +137,13 @@ const ProductManagement = ({
                         ))}
                     </span>
                 </div>
-                <OrderHistory />
+                {selectedTab === "Order History" && <OrderHistory />}
+                {selectedTab === "Product Management" && (
+                    <ManageProducts
+                        setSelectedCategory={setSelectedCategory}
+                        selectedCategory={selectedCategory}
+                    />
+                )}
             </div>
         </div>
     );
