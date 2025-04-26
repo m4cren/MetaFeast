@@ -6,11 +6,11 @@ import {
     Hourglass,
     MessageCircleWarning,
 } from "lucide-react";
+import { FaStar, FaStarHalfStroke } from "react-icons/fa6";
+import { FaRegStar } from "react-icons/fa";
 
-import { ProductDetailsType } from "../../../../types/types";
+import { ProductDetailsType, OrderType } from "../../../../types/types";
 import { useEffect, useState } from "react";
-
-import { OrderType } from "../../../../types/types";
 
 interface Props {
     selectedCuisine: string;
@@ -141,7 +141,7 @@ const ProductDetails = ({
                 className={`${layout["image-container"]} pointer-events-none translate-y-[-70px] min-[390px]:translate-y-[-60px] scale-90 min-[390px]:scale-100`}
             >
                 <img
-                    className="drop-shadow-lg"
+                    className="drop-shadow-lg scale-85"
                     src={`/images/products/${selectedProduct?.img}`}
                 />
             </div>
@@ -155,6 +155,97 @@ const ProductDetails = ({
                     <p className="text-white/50 font-extralight text-[0.7rem] min-[390px]:text-[0.8rem] leading-4">
                         {selectedProduct?.description}
                     </p>
+                </div>
+                <div className="flex flex-row items-center gap-1 text-primary">
+                    {selectedProduct && selectedProduct.ratings > 4.75 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 4.25 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStarHalfStroke size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 3.75 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 3.25 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStarHalfStroke size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 2.75 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 2.25 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaStarHalfStroke size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 1.75 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 1.25 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaStarHalfStroke size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 0.75 ? (
+                        <>
+                            <FaStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings > 0.25 ? (
+                        <>
+                            <FaStarHalfStroke size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : selectedProduct && selectedProduct.ratings >= 0 ? (
+                        <>
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                            <FaRegStar size={15} />
+                        </>
+                    ) : null}
                 </div>
                 <div className="pr-2 flex flex-row text-white/60 text-[0.7rem] min-[390px]:text-[0.8rem] font-extralight justify-between h-[3.35rem]">
                     <p className="flex flex-row items-center">
@@ -172,14 +263,14 @@ const ProductDetails = ({
             <div
                 className={`${layout["food-price"]} pr-6 flex flex-col justify-between items-end`}
             >
-                <h1 className="text-primary text-2xl min-[390px]:text-4xl text-shadow-md">
+                <h1 className="text-primary text-1xl min-[390px]:text-3xl text-shadow-md">
                     ₱{" "}
                     {selectedProduct?.food_price
                         ? selectedProduct.food_price * orderQuantity
                         : 0}
                 </h1>
 
-                <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-4xl shadow-md  w-[7rem] h-[2.5rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.35rem] to-lightbrown from-darkbrown flex flex-row items-center justify-between px-4 text-primary">
+                <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-3xl shadow-md  w-[7rem] h-[2.25rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.2rem] to-lightbrown from-darkbrown flex flex-row items-center justify-between px-4 text-primary">
                     <button
                         className="text-shadow-md text-4xl min-[390px]:text-5xl active:scale-95 active:opacity-95 transition duration-150"
                         onClick={handleDecreaseQuantity}
@@ -203,15 +294,20 @@ const ProductDetails = ({
             </div>
             <div className={`${layout["food-detail"]} px-6`}>
                 <div className="flex flex-row items-center justify-between">
-                    {" "}
                     <h1 className="text-primary text-lg">Details</h1>
-                    <p className="text-white/40 text-[0.8rem]">
-                        {selectedProduct?.quantity
-                            ? `stock: ${selectedProduct.quantity}`
-                            : selectedProduct?.quantity === 0
-                              ? "Unavailable"
-                              : null}
-                    </p>
+                    <div className="flex flex-row items-center gap-6">
+                        <p className="text-white/60 font-extralight text-[0.8rem]">
+                            {selectedProduct &&
+                                `Total Orders: ${selectedProduct.total_orders}`}
+                        </p>
+                        <p className="text-white/60 font-extralight text-[0.8rem]">
+                            {selectedProduct?.quantity
+                                ? `Stock: ${selectedProduct.quantity}`
+                                : selectedProduct?.quantity === 0
+                                  ? "Unavailable"
+                                  : null}
+                        </p>
+                    </div>
                 </div>
 
                 <p className="text-justify text-white/50 font-extralight text-[0.8rem]">

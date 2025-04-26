@@ -85,11 +85,9 @@ export type ProductDetailsType = {
     details: string;
     type?: "Non-Alcoholic" | "Cocktail" | "Champagne";
     total_orders: number;
-    ratings: [
-        {
-            rating: number;
-        },
-    ];
+
+    total_ratings: number;
+    ratings: number;
 };
 
 export type OrderType = {

@@ -1,7 +1,7 @@
 from .extensions import db
 from datetime import datetime,timezone
 from .db_config import time_ago
-import pytz
+import pytz, math
 
 
 phillipines_tz = pytz.timezone('Asia/Manila')
@@ -113,7 +113,8 @@ class Products(db.Model):
     description = db.Column(db.String(246), nullable = False)
     details = db.Column(db.Text, nullable = False)
     type = db.Column(db.String(64), nullable = True)
-    ratings = db.Column(db.JSON, default=lambda:[{'rating': 0}], nullable = False)
+    ratings = db.Column(db.Float, nullable = False, default = 0)
+    total_ratings = db.Column(db.Integer, default = 0, nullable = False)
     total_orders = db.Column(db.Integer, default = 0, nullable =False)
 
     def add_total_order(self, quantity):
@@ -133,12 +134,14 @@ class Products(db.Model):
             'img': self.img,
             'description': self.description,
             'details': self.details,
-            'ratings': [{
-                'rating': rate['rating']
-            } for rate in self.ratings],
+            'ratings': self.ratings,
+            'total_ratings': self.total_ratings,
             'total_orders': self.total_orders
             
         }
+
+    def get_ratings(self, rate):
+        self.ratings = ((self.ratings + rate)/ self.total_ratings)
 
     def increase_quantity(self):
         self.quantity += 1

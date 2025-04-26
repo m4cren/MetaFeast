@@ -1,7 +1,6 @@
 import {
     Search,
     Pencil,
-    Undo2,
     Trash2,
     FileCheck2,
     CornerDownLeft,
@@ -150,7 +149,7 @@ const ManageProducts = ({
                     <div className="flex flex-row items-center gap-4 w-fit">
                         <button
                             onClick={() => setSelectedCategory("Appetizers")}
-                            className={`${selectedCategory === "Appetizers" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            className={`${selectedCategory === "Appetizers" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
                             Appetizers
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
@@ -164,7 +163,7 @@ const ManageProducts = ({
                         </button>
                         <button
                             onClick={() => setSelectedCategory("Main Course")}
-                            className={`${selectedCategory === "Main Course" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            className={`${selectedCategory === "Main Course" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
                             Main Course
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
@@ -178,7 +177,7 @@ const ManageProducts = ({
                         </button>
                         <button
                             onClick={() => setSelectedCategory("Beverages")}
-                            className={`${selectedCategory === "Beverages" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            className={`${selectedCategory === "Beverages" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
                             Beverages
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
@@ -192,7 +191,7 @@ const ManageProducts = ({
                         </button>
                         <button
                             onClick={() => setSelectedCategory("Pastries")}
-                            className={`${selectedCategory === "Pastries" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem] px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            className={`${selectedCategory === "Pastries" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem] px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
                             Pastries
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
@@ -208,7 +207,7 @@ const ManageProducts = ({
                             onClick={() =>
                                 setSelectedCategory("Healthy Options")
                             }
-                            className={`${selectedCategory === "Healthy Options" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            className={`${selectedCategory === "Healthy Options" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
                             Healthy Options
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
@@ -224,7 +223,7 @@ const ManageProducts = ({
                             onClick={() =>
                                 setSelectedCategory("Soups & Salads")
                             }
-                            className={`${selectedCategory === "Soups & Salads" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            className={`${selectedCategory === "Soups & Salads" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
                             Soups & Salads
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
@@ -238,7 +237,7 @@ const ManageProducts = ({
                         </button>
                         <button
                             onClick={() => setSelectedCategory("Desserts")}
-                            className={`${selectedCategory === "Desserts" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            className={`${selectedCategory === "Desserts" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
                             Desserts
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
@@ -251,10 +250,12 @@ const ManageProducts = ({
                             </p>
                         </button>
                         <button
-                            onClick={() => setSelectedCategory("Savory")}
-                            className={`${selectedCategory === "Savory" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[10rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
+                            onClick={() =>
+                                setSelectedCategory("Savory Breakfast")
+                            }
+                            className={`${selectedCategory === "Savory Breakfast" && "bg-gradient-to-b from-lightbrown to-darkbrown rounded-sm py-1 px-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] "} cursor-pointer w-[12rem] text-[0.85rem]  px-2 text-white/75 flex flex-row items-center justify-center gap-2`}
                         >
-                            Savory
+                            Savory Breakfast
                             <p className="border-1 border-white/30 rounded-full px-2 text-[0.7rem] text-white/65">
                                 {
                                     productList.filter(
@@ -284,6 +285,7 @@ const ManageProducts = ({
                                 ratings,
                                 total_orders,
                                 waiting_time,
+                                total_ratings,
                             },
                             index,
                         ) => (
@@ -306,6 +308,7 @@ const ManageProducts = ({
                                                 img: img,
                                                 quantity: quantity,
                                                 waiting_time: waiting_time,
+                                                total_ratings: total_ratings,
                                             })
                                         }
                                         className="text-white/75 absolute top-2 right-2 cursor-pointer"
@@ -322,11 +325,105 @@ const ManageProducts = ({
                                         </h1>
                                         <div className="text-primary flex flex-row items-center gap-1">
                                             <>
-                                                <FaStar size={15} />
-                                                <FaStar size={15} />
-                                                <FaStar size={15} />
-                                                <FaStar size={15} />
-                                                <FaStar size={15} />
+                                                {ratings > 4.75 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                    </>
+                                                ) : ratings > 4.25 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStarHalfStroke
+                                                            size={15}
+                                                        />
+                                                    </>
+                                                ) : ratings > 3.75 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings > 3.25 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStarHalfStroke
+                                                            size={15}
+                                                        />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings > 2.75 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings > 2.25 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaStarHalfStroke
+                                                            size={15}
+                                                        />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings > 1.75 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings > 1.25 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaStarHalfStroke
+                                                            size={15}
+                                                        />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings > 0.75 ? (
+                                                    <>
+                                                        <FaStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings > 0.25 ? (
+                                                    <>
+                                                        <FaStarHalfStroke
+                                                            size={15}
+                                                        />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : ratings >= 0 ? (
+                                                    <>
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                        <FaRegStar size={15} />
+                                                    </>
+                                                ) : null}
                                             </>
                                         </div>
                                     </div>
@@ -361,13 +458,95 @@ const ManageProducts = ({
                     >
                         <div className="flex flex-col gap-4 w-[90%] h-full pt-6">
                             <div className="flex flex-row items-center text-primary gap-1 justify-center">
-                                <>
-                                    <FaStar size={25} />
-                                    <FaStar size={25} />
-                                    <FaStar size={25} />
-                                    <FaStar size={25} />
-                                    <FaStarHalfStroke size={25} />
-                                </>
+                                {selectedProduct.ratings > 4.75 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 4.25 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStarHalfStroke size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 3.75 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 3.25 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStarHalfStroke size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 2.75 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 2.25 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaStarHalfStroke size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 1.75 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 1.25 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaStarHalfStroke size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 0.75 ? (
+                                    <>
+                                        <FaStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings > 0.25 ? (
+                                    <>
+                                        <FaStarHalfStroke size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : selectedProduct.ratings >= 0 ? (
+                                    <>
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                        <FaRegStar size={15} />
+                                    </>
+                                ) : null}
                             </div>
                             <div className="flex flex-col gap-2">
                                 <div>
@@ -387,11 +566,13 @@ const ManageProducts = ({
                                 <div>
                                     <div className="text-secondary flex flex-row items-center justify-between">
                                         <p>Total Ratings:</p>
-                                        <p>{selectedProduct.ratings.length}</p>
+                                        <p>{selectedProduct.total_ratings}</p>
                                     </div>
                                     <div className="text-secondary flex flex-row items-center justify-between">
                                         <p>Average Ratings:</p>
-                                        <p>0</p>
+                                        <p>
+                                            {selectedProduct.ratings.toFixed(1)}
+                                        </p>
                                     </div>
 
                                     <div className="text-secondary flex flex-row items-center justify-between">
@@ -466,7 +647,7 @@ const ManageProducts = ({
                                     <div className="relative w-full ">
                                         <input
                                             type="number"
-                                            value={quantityValue}
+                                            placeholder={`${quantityValue}`}
                                             id="quantity"
                                             className=" border-darkbrown w-full input-number border-2 outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                         />
@@ -518,9 +699,8 @@ const ManageProducts = ({
                                     <div className="relative w-full ">
                                         <input
                                             type="number"
-                                            value={waitingTimeValue}
+                                            placeholder={`${waitingTimeValue}`}
                                             id="waiting_time"
-                                            placeholder="min"
                                             className=" border-darkbrown w-full input-number border-2 outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                         />
                                         <div className="absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-secondary">

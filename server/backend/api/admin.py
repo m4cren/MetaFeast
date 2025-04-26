@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, json
 from werkzeug.security import  check_password_hash
 from ..extensions import db
-from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews, CostumerHistory
+from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews, CostumerHistory, Products
 from sqlalchemy import desc
 from ..db_config import time_ago, save_data
 
@@ -113,9 +113,24 @@ def receive_rating():
      print(f'order_items: {order_items}')
      
      for x in product_ratings:
+
+          rated_product = Products.query.filter_by(food_name = x['food_name']).first()
+
+       
+
+          if x['rating'] > 0:
+               rated_product.total_ratings += 1
+               rated_product.get_ratings(x['rating'])
+          else:
+               print(f'{x['food_name']} got no reviews')
+
+          
+          
+
           print(f'{x['food_name']} : Ratings: {x['rating']}')
      print('===================================================================')
 
+     db.session.commit()
 
      try: 
           random_gender = random.randint(0,1)

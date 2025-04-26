@@ -37,7 +37,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
     const [isTableDetails, setIsTableDetails] = useState<boolean>(false);
 
     useEffect(() => {
-        if (tableDetails?.costumer_name.length !== 0) {
+        if (tableDetails?.table_name) {
             setIsTableDetails(true);
         }
     }, [tableDetails]);

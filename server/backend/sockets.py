@@ -107,9 +107,12 @@ def send_order(data):
 
 
     current_costumer = Costumer.query.filter_by(costumer_name = costumer_name).first()
+
+
     for order in range(len(food_names)):
         product_to_update = Products.query.filter_by(food_name = food_names[order]).first()
         product_to_update.quantity -= quantity[order]
+        product_to_update.total_orders += quantity[order]
 
     if additional_order == 'No':
         new_order = Orders(costumer_name = current_costumer.costumer_name,

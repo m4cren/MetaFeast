@@ -231,7 +231,7 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
                                     ? "Friday"
                                     : day === 6
                                       ? "Saturday"
-                                      : day === 7
+                                      : day === 0
                                         ? "Sunday"
                                         : null}
                     </p>
