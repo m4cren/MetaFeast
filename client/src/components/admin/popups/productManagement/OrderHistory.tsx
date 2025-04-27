@@ -53,7 +53,7 @@ const OrderHistory = () => {
             });
 
             if (response.data.status) {
-                setIsHistoryList(response.data.histories);
+                setIsHistoryList(response.data.histories_desc);
             }
         } catch (error) {
             console.log(error);

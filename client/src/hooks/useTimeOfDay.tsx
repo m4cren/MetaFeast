@@ -52,6 +52,7 @@ const useTimeOfDay = (): {
 
     const yearNow = currentDate.getFullYear();
     const monthNow = currentDate.getMonth() + 1;
+
     const hours = currentTime.getHours() % 12 || 12;
     const minute = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");

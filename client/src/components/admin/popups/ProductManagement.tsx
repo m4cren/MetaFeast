@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import OrderHistory from "./productManagement/OrderHistory";
 import ManageProducts from "./productManagement/ManageProducts";
+import SalesAnalytics from "./productManagement/SalesAnalytics";
 
 interface ProductManagementProps {
     setIsProductManagement: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,8 +22,9 @@ const ProductManagement = ({
     const [selectedCategory, setSelectedCategory] =
         useState<string>("Appetizers");
 
-    const [selectedTab, setSelectedTab] =
-        useState<string>("Product Management");
+    const [selectedTab, setSelectedTab] = useState<
+        "Product Management" | "Order History" | "Sales Analytics"
+    >("Product Management");
 
     const [openTabs, setOpenTabs] = useState<string[]>(["Catalouges"]);
 
@@ -147,6 +149,7 @@ const ProductManagement = ({
                         selectedCategory={selectedCategory}
                     />
                 )}
+                {selectedTab === "Sales Analytics" && <SalesAnalytics />}
             </div>
         </div>
     );

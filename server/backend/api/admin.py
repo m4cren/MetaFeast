@@ -182,12 +182,13 @@ def fetch_reviews():
 
 @admin.route('/admin/fetch-history', methods=['GET'])
 def fetch_histories():
-     get_history = CostumerHistory.query.order_by(desc(CostumerHistory.dine_time)).all()
+     get_history_desc = CostumerHistory.query.order_by(desc(CostumerHistory.dine_time)).all()
+     get_history = CostumerHistory.query.all()
 
-     if get_history:
-
+     if get_history or get_history_desc:
+          histories_desc = [history.to_dict() for history in get_history_desc]
           histories = [history.to_dict() for history in get_history]
 
-          return jsonify({'msg': 'Success', 'status': True, 'histories': histories})
+          return jsonify({'msg': 'Success', 'status': True, 'histories': histories, 'histories_desc': histories_desc})
      
      return jsonify({'msg': 'No history', 'status': False, 'histories': 'empty'})

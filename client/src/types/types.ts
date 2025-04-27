@@ -200,6 +200,7 @@ export type HistoryType = {
         },
     ];
     dine_time: string;
+    formatted_date?: string;
 };
 
 export type TableDetailTypes = {
