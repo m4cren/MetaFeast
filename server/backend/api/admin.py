@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, json
 from werkzeug.security import  check_password_hash
 from ..extensions import db
 from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews, CostumerHistory, Products
-from sqlalchemy import desc
+from sqlalchemy import desc, asc
 from ..db_config import time_ago, save_data
 
 import random
@@ -183,7 +183,7 @@ def fetch_reviews():
 @admin.route('/admin/fetch-history', methods=['GET'])
 def fetch_histories():
      get_history_desc = CostumerHistory.query.order_by(desc(CostumerHistory.dine_time)).all()
-     get_history = CostumerHistory.query.all()
+     get_history = CostumerHistory.query.order_by(asc(CostumerHistory.dine_time)).all()
 
      if get_history or get_history_desc:
           histories_desc = [history.to_dict() for history in get_history_desc]

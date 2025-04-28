@@ -1,10 +1,17 @@
-import { Wallet, History, ChartSpline, HandCoins } from "lucide-react";
+import {
+    Wallet,
+    History,
+    ChartSpline,
+    HandCoins,
+    ChartBarBig,
+} from "lucide-react";
 
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 
 import {
     Chart as ChartJS,
     CategoryScale,
+    BarElement,
     LinearScale,
     PointElement,
     LineElement,
@@ -17,9 +24,9 @@ import useServerAddress from "../../../../../useServerAddress";
 import axios from "axios";
 import { HistoryType } from "../../../../types/types";
 import useTimeOfDay from "../../../../hooks/useTimeOfDay";
-import { data } from "react-router-dom";
 
 ChartJS.register(
+    BarElement,
     CategoryScale,
     LinearScale,
     PointElement,
@@ -30,6 +37,7 @@ ChartJS.register(
 );
 
 const SalesAnalytics = () => {
+    const [chartType, setChartType] = useState<boolean>(true);
     const { server } = useServerAddress();
     const [historyData, setHistoryData] = useState<HistoryType[]>([]);
     const [filteredHistoryData, setFilteredHistoryData] = useState<
@@ -42,11 +50,11 @@ const SalesAnalytics = () => {
 
     const [isFilter, setIsFilter] = useState<boolean>(false);
     const [availableYears, setAvailableYears] = useState<string[]>([]);
-    const [filter, setFilter] = useState<string>("This Week");
+    const [filter, setFilter] = useState<string>("Overall");
 
     const fetchHistoryData = async () => {
         const headers = {
-            "Content-Type": "application/josn",
+            "Content-Type": "application/json",
         };
 
         try {
@@ -90,15 +98,25 @@ const SalesAnalytics = () => {
 
     const handleChangeFilter = (filterer: string) => {
         if (filterer === "This Year") {
-            const filteredHistory = filteredHistoryData.filter(
-                ({ dine_time }) => dine_time.includes(yearNow.toString()),
+            const filteredHistory = historyData.filter(({ dine_time }) =>
+                dine_time.includes(yearNow.toString()),
             );
 
             setFilteredHistoryData(filteredHistory);
-        }
-        if (filterer === "This Month") {
-            const filteredHistory = filteredHistoryData.filter(
-                ({ dine_time }) => dine_time.includes(monthNow.toString(), 3),
+        } else if (filterer === "This Month") {
+            const thisMonth = historyData.filter(
+                ({ dine_time }) =>
+                    dine_time.slice(5, 7) ===
+                        monthNow.toString().toString().padStart(2, "0") &&
+                    dine_time.includes(yearNow.toString()),
+            );
+
+            setFilteredHistoryData(thisMonth);
+        } else if (filterer === "Overall") {
+            setFilteredHistoryData(historyData);
+        } else {
+            const filteredHistory = historyData.filter(({ dine_time }) =>
+                dine_time.includes(filterer),
             );
 
             setFilteredHistoryData(filteredHistory);
@@ -161,9 +179,7 @@ const SalesAnalytics = () => {
                     dine_time.slice(0, 4) !==
                     reviews[index + 1].dine_time.slice(0, 4)
                 ) {
-                    available_years.push(
-                        reviews[index + 1].dine_time.slice(0, 4),
-                    );
+                    available_years.push(reviews[index].dine_time.slice(0, 4));
                 }
             }
         });
@@ -186,6 +202,7 @@ const SalesAnalytics = () => {
                         Monitor your sales here
                     </p>
                 </div>
+
                 <button
                     onClick={() => setIsFilter(!isFilter)}
                     className="border-1 cursor-pointer border-white/30 rounded-md text-primary text-[1.1rem] font-light py-2 px-12"
@@ -219,17 +236,19 @@ const SalesAnalytics = () => {
                         </button>
                         <button
                             onClick={() => {
-                                setFilter("This Week");
+                                setFilter("Overall");
                                 setIsFilter(false);
-                                handleChangeFilter("This Week");
+                                handleChangeFilter("Overall");
                             }}
                             className="cursor-pointer text-secondary border-1 rounded-sm py-1 px-3 border-white/20"
                         >
-                            This Week
+                            Overall
                         </button>
 
                         <details className="text-secondary flex flex-col items-center">
-                            <summary>Select a year</summary>
+                            <summary className="cursor-pointer">
+                                Select a year
+                            </summary>
                             {availableYears.length === 0 && (
                                 <p className="text-[0.7rem]">
                                     No data in the past
@@ -243,7 +262,7 @@ const SalesAnalytics = () => {
                                         setIsFilter(false);
                                         handleChangeFilter(year);
                                     }}
-                                    className="text-[0.7rem]"
+                                    className="text-[0.7rem] cursor-pointer list-none"
                                 >
                                     {year}
                                 </li>
@@ -287,7 +306,7 @@ const SalesAnalytics = () => {
                             </button>
                         </div>
                         <div className="leading-7">
-                            <p className="text-white/65 text-[0.8rem] font-extralight">
+                            <p className="text-white/65 text-[0.8rem] font-extralight leading-3">
                                 Total Sales {filter.toLowerCase()}
                             </p>
                             <h1 className="text-primary text-[1.9rem]">
@@ -307,53 +326,114 @@ const SalesAnalytics = () => {
             </div>
 
             <div className="border-darkbrown/50 border-2 rounded-lg [box-shadow:-2px_3px_3px_rgba(0,0,0,0.2)] w-full h-[24rem]">
-                <div className="flex flex-row items-center gap-2 px-8 py-3">
-                    <i className="text-primary">
-                        <HandCoins size={20} />
-                    </i>
-                    <h1 className="text-primary font-extralight text-[1.1rem]">
-                        Sales Revenue
-                    </h1>
+                <div className="flex flex-row items-center justify-between px-8 py-3">
+                    <div className="flex flex-row items-center gap-2">
+                        <i className="text-primary">
+                            <HandCoins size={20} />
+                        </i>
+                        <h1 className="text-primary font-extralight text-[1.1rem]">
+                            Sales Revenue
+                        </h1>
+                    </div>
+                    <button
+                        onClick={() => setChartType(!chartType)}
+                        className="text-secondary flex flex-row items-center gap-2 border-white/20 border-1 rounded-sm px-2 py-1 cursor-pointer"
+                    >
+                        {!chartType ? "Line" : "Bar"}
+                        {!chartType ? (
+                            <ChartSpline size={15} />
+                        ) : (
+                            <ChartBarBig size={15} />
+                        )}
+                    </button>
                 </div>
                 <div className="flex items-center justify-center w-full">
-                    <Line
-                        data={{
-                            labels: historyData.map(
-                                ({ formatted_date }) => formatted_date,
-                            ),
-                            datasets: [
-                                {
-                                    label: "Revenue",
-                                    data: historyData.map(
-                                        ({ total_payment }) => total_payment,
-                                    ),
-                                    borderColor: "white",
+                    {!chartType ? (
+                        <Line
+                            data={{
+                                labels: filteredHistoryData.map(
+                                    ({ formatted_date }) => formatted_date,
+                                ),
+                                datasets: [
+                                    {
+                                        label: "Revenue",
+                                        data: filteredHistoryData.map(
+                                            ({ total_payment }) =>
+                                                total_payment,
+                                        ),
+                                        borderColor: "white",
+                                        tension: 0.4,
+                                        borderWidth: 2,
+                                    },
+                                ],
+                            }}
+                            options={{
+                                color: "white",
+
+                                scales: {
+                                    x: {
+                                        ticks: {
+                                            color: "#f5f5f575",
+                                            stepSize: 4,
+                                        },
+                                        grid: {
+                                            color: "#f5f5f520",
+                                        },
+                                    },
+                                    y: {
+                                        ticks: {
+                                            color: "#f5f5f575",
+                                        },
+                                        grid: {
+                                            color: "#f5f5f520",
+                                        },
+                                    },
                                 },
-                            ],
-                        }}
-                        options={{
-                            color: "white",
-                            scales: {
-                                x: {
-                                    ticks: {
-                                        color: "#f5f5f575",
-                                        stepSize: 4,
+                            }}
+                        />
+                    ) : (
+                        <Bar
+                            data={{
+                                labels: filteredHistoryData.map(
+                                    ({ formatted_date }) => formatted_date,
+                                ),
+                                datasets: [
+                                    {
+                                        label: "Revenue",
+                                        data: filteredHistoryData.map(
+                                            ({ total_payment }) =>
+                                                total_payment,
+                                        ),
+                                        borderColor: "white",
+                                        backgroundColor: "white",
                                     },
-                                    grid: {
-                                        color: "#f5f5f520",
+                                ],
+                            }}
+                            options={{
+                                color: "white",
+
+                                scales: {
+                                    x: {
+                                        ticks: {
+                                            color: "#f5f5f575",
+                                            stepSize: 4,
+                                        },
+                                        grid: {
+                                            color: "#f5f5f520",
+                                        },
+                                    },
+                                    y: {
+                                        ticks: {
+                                            color: "#f5f5f575",
+                                        },
+                                        grid: {
+                                            color: "#f5f5f520",
+                                        },
                                     },
                                 },
-                                y: {
-                                    ticks: {
-                                        color: "#f5f5f575",
-                                    },
-                                    grid: {
-                                        color: "#f5f5f520",
-                                    },
-                                },
-                            },
-                        }}
-                    />
+                            }}
+                        />
+                    )}
                 </div>
             </div>
         </div>
