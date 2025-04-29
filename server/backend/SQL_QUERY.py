@@ -1,6 +1,6 @@
 from .extensions import db
-from .db_config import save_data, delete_all_data, delete_data
-from .db_models import Table, AdminCredentials, Products
+from .db_config import save_data, delete_all_data, delete_data, generate_payment_id
+from .db_models import Table, AdminCredentials, Products, CostumerHistory, Reviews
 from werkzeug.security import generate_password_hash
 
 from dotenv import load_dotenv
@@ -8,6 +8,59 @@ import os
 
 load_dotenv()
 
+
+def create_sample_history(app):
+    with app.app_context():
+        print('Sample Data added')
+        existing_reviews = CostumerHistory.query.first()
+
+        if not existing_reviews:
+            print('Sample Data added')
+
+            reviews = [
+                {
+                    'costumer_name': 'Mika',
+                    'table_seated': 'B_12', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-04-29 15:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                  {
+                    'costumer_name': 'Kyle',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4679',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-04-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+            ]
+
+            for review in reviews:
+                inject_data = CostumerHistory(costumer_name = review['costumer_name'],
+                                              table_seated = review['table_seated'],
+                                              total_payment = review['total_payment'],
+                                              total_order_items = review['total_order_items'],
+                                              payment_id = review['payment_id'],
+                                              payment_method = review['payment_method'],
+                                              dine_time = review['dine_time'],
+                                              orders =[ order for order in review['orders']])
+                save_data(inject_data)
+
+        else:
+            print('Sample data already exist')
 
 def create_products(app):
     with app.app_context():

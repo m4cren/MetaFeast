@@ -11,7 +11,7 @@ import pymysql
 from flask_cors import CORS
 from datetime import timedelta
 from dotenv import load_dotenv
-from .SQL_QUERY import create_table, create_admin, create_products
+from .SQL_QUERY import create_table, create_admin, create_products, create_sample_history
 
 load_dotenv()
 
@@ -89,6 +89,7 @@ def create_website():
     create_table(app)
     create_admin(app)
     create_products(app)
+    create_sample_history(app)
 
     
     return app
