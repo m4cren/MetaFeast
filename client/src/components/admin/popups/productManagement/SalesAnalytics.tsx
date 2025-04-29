@@ -24,6 +24,7 @@ import useServerAddress from "../../../../../useServerAddress";
 import axios from "axios";
 import { HistoryType } from "../../../../types/types";
 import useTimeOfDay from "../../../../hooks/useTimeOfDay";
+import { animate } from "framer-motion";
 
 ChartJS.register(
     BarElement,
@@ -195,7 +196,7 @@ const SalesAnalytics = () => {
         <div className="text-pop-up-animation flex flex-col px-12 py-8 gap-4">
             <div className="relative flex flex-row items-center justify-between">
                 <div className="flex flex-col leading-6">
-                    <h1 className="text-primary text-[1.75rem] ">
+                    <h1 className="text-primary text-[1.75rem] text-shadow-md font-medium">
                         Sales Analytics
                     </h1>
                     <p className=" text-[0.75rem] font-extralight text-white/60">
@@ -282,10 +283,14 @@ const SalesAnalytics = () => {
                         </div>
                         <div className="leading-7">
                             <p className="text-white/65 text-[0.8rem] font-extralight">
-                                Total Income {filter.toLowerCase()}
+                                Total Income{" "}
+                                {filter.includes("This") ||
+                                filter.includes("Overall")
+                                    ? filter.toLowerCase()
+                                    : `on ${filter}`}
                             </p>
                             <h1 className="text-primary text-[1.9rem]">
-                                ₱ {totalRevenue}
+                                ₱ {totalRevenue.toLocaleString()}
                             </h1>
                         </div>
                     </div>
@@ -305,9 +310,13 @@ const SalesAnalytics = () => {
                                 <History size={35} strokeWidth={1.5} />
                             </button>
                         </div>
-                        <div className="leading-7">
+                        <div className="leading-9">
                             <p className="text-white/65 text-[0.8rem] font-extralight leading-3">
-                                Total Sales {filter.toLowerCase()}
+                                Total Sales{" "}
+                                {filter.includes("This") ||
+                                filter.includes("Overall")
+                                    ? filter.toLowerCase()
+                                    : `on ${filter}`}
                             </p>
                             <h1 className="text-primary text-[1.9rem]">
                                 {totalSales}

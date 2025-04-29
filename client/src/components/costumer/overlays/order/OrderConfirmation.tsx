@@ -52,6 +52,9 @@ const OrderConfirmation = ({
                 return img;
             }),
             additional_order: isOrderMore ? "Yes" : "No",
+            available_quantity: orders.map(({ available_quantity }) => {
+                return available_quantity;
+            }),
         };
 
         socket?.emit("send-order", data);

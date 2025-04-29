@@ -6,6 +6,9 @@ import {
     CornerDownLeft,
     ChevronUp,
     ChevronDown,
+    Info,
+    LaptopMinimalCheck,
+    LogOut,
 } from "lucide-react";
 import { ProductDetailsType } from "../../../../types/types";
 import { FaStar, FaStarHalfStroke } from "react-icons/fa6";
@@ -15,18 +18,30 @@ import useServerAddress from "../../../../../useServerAddress";
 import axios from "axios";
 
 import layout from "../../../../styles/layouts/edit_product.module.css";
+import { useSocket } from "../../../../contexts/SocketContext";
 
 interface ManageProductsProps {
     selectedCategory: string;
     setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
+type NewProductDetailTypes = {
+    food_name_orig: string;
+    food_name: string;
+    cusine_category: string;
+    calories: number;
+    quantity: number;
+    product_price: number;
+    waiting_time: number;
+    short_desc: string;
+    full_details: string;
+};
+
 const ManageProducts = ({
     selectedCategory,
     setSelectedCategory,
 }: ManageProductsProps) => {
-    const [waitingTimeValue, setWaitingTimeValue] = useState<number>(0);
-    const [quantityValue, setQuantityValue] = useState<number>(0);
+    const [isUpdateConfirm, setIsUpdateConfirm] = useState<boolean>(false);
 
     const handleWaitingTimeValue = (
         type: "Increase" | "Decrease",
@@ -34,17 +49,65 @@ const ManageProducts = ({
     ) => {
         if (prop === "Waiting Time") {
             if (type === "Increase") {
-                setWaitingTimeValue((prev) => prev + 1);
+                setNewProductsDetails({
+                    food_name_orig: selectedProduct?.food_name
+                        ? selectedProduct.food_name
+                        : "",
+                    food_name: newProductDetails.food_name,
+                    cusine_category: newProductDetails.cusine_category,
+                    calories: newProductDetails.calories,
+                    full_details: newProductDetails.full_details,
+                    product_price: newProductDetails.product_price,
+                    short_desc: newProductDetails.short_desc,
+                    quantity: newProductDetails.quantity,
+                    waiting_time: newProductDetails.waiting_time + 1,
+                });
             }
-            if (type === "Decrease" && waitingTimeValue > 0) {
-                setWaitingTimeValue((prev) => prev - 1);
+            if (type === "Decrease" && newProductDetails.waiting_time > 0) {
+                setNewProductsDetails({
+                    food_name_orig: selectedProduct?.food_name
+                        ? selectedProduct.food_name
+                        : "",
+                    food_name: newProductDetails.food_name,
+                    cusine_category: newProductDetails.cusine_category,
+                    calories: newProductDetails.calories,
+                    full_details: newProductDetails.full_details,
+                    product_price: newProductDetails.product_price,
+                    short_desc: newProductDetails.short_desc,
+                    quantity: newProductDetails.quantity,
+                    waiting_time: newProductDetails.waiting_time - 1,
+                });
             }
         } else if (prop === "Quantity") {
             if (type === "Increase") {
-                setQuantityValue((prev) => prev + 1);
+                setNewProductsDetails({
+                    food_name_orig: selectedProduct?.food_name
+                        ? selectedProduct.food_name
+                        : "",
+                    food_name: newProductDetails.food_name,
+                    cusine_category: newProductDetails.cusine_category,
+                    calories: newProductDetails.calories,
+                    full_details: newProductDetails.full_details,
+                    product_price: newProductDetails.product_price,
+                    short_desc: newProductDetails.short_desc,
+                    quantity: newProductDetails.quantity + 1,
+                    waiting_time: newProductDetails.waiting_time,
+                });
             }
-            if (type === "Decrease" && waitingTimeValue > 0) {
-                setQuantityValue((prev) => prev - 1);
+            if (type === "Decrease" && newProductDetails.quantity > 0) {
+                setNewProductsDetails({
+                    food_name_orig: selectedProduct?.food_name
+                        ? selectedProduct.food_name
+                        : "",
+                    food_name: newProductDetails.food_name,
+                    cusine_category: newProductDetails.cusine_category,
+                    calories: newProductDetails.calories,
+                    full_details: newProductDetails.full_details,
+                    product_price: newProductDetails.product_price,
+                    short_desc: newProductDetails.short_desc,
+                    quantity: newProductDetails.quantity - 1,
+                    waiting_time: newProductDetails.waiting_time,
+                });
             }
         }
     };
@@ -59,10 +122,38 @@ const ManageProducts = ({
 
     const { server } = useServerAddress();
 
-    useEffect(() => {
-        setWaitingTimeValue(selectedProduct ? selectedProduct.waiting_time : 0);
-        setQuantityValue(selectedProduct ? selectedProduct.quantity : 0);
-    }, [selectedProduct]);
+    const [newProductDetails, setNewProductsDetails] =
+        useState<NewProductDetailTypes>({
+            food_name_orig: selectedProduct?.food_name
+                ? selectedProduct.food_name
+                : "",
+            food_name: "",
+            cusine_category: "",
+            calories: 0,
+            quantity: selectedProduct ? selectedProduct.quantity : 0,
+            product_price: 0,
+            waiting_time: selectedProduct ? selectedProduct.waiting_time : 0,
+            short_desc: "",
+            full_details: "",
+        });
+
+    const handleChangeEdit = (
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+        const { name, value } = e.currentTarget;
+        const numberFields = [
+            "calories",
+            "quantity",
+            "product_price",
+            "waiting_time",
+        ];
+
+        setNewProductsDetails({
+            ...newProductDetails,
+            [name]: numberFields.includes(name) ? Number(value) : value,
+        });
+    };
+
     const fetchProductList = async () => {
         const headers = {
             "Content-Type": "application/json",
@@ -109,11 +200,74 @@ const ManageProducts = ({
         setSelectedCategory(cat);
     };
 
+    const socket = useSocket();
+
+    const [adminPassword, setAdminPassword] = useState<string>("");
+    const [isEditSuccess, setIsEditSuccess] = useState<boolean>(false);
+    const [isIncorrectPassword, setIsIncorrectPassword] =
+        useState<boolean>(false);
+
+    const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setAdminPassword(e.currentTarget.value);
+    };
+
+    const [isSending, setIsSending] = useState<boolean>(false);
+
+    const handleConfirmChanges = async () => {
+        setIsSending(true);
+        const headers = {
+            "Content-Type": "application/json",
+        };
+
+        try {
+            const response = await axios.post(
+                `${server}/admin-login`,
+                {
+                    password: adminPassword,
+                },
+                {
+                    headers,
+                    withCredentials: true,
+                },
+            );
+
+            setIsSending(false);
+
+            if (response.data.status) {
+                setIsIncorrectPassword(false);
+                setIsUpdateConfirm(false);
+                setIsEditSuccess(true);
+                setTimeout(() => {
+                    setIsEditSuccess(false);
+                }, 3000);
+
+                console.dir(newProductDetails);
+
+                socket?.emit("handle-update-product", newProductDetails);
+            } else {
+                setIsIncorrectPassword(true);
+                setTimeout(() => {
+                    setIsIncorrectPassword(false);
+                }, 5000);
+            }
+            setAdminPassword("");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    useEffect(() => {
+        socket?.on("refresh-product", (_) => {
+            setTimeout(() => {
+                fetchProductList();
+            }, 2000);
+        });
+    }, [socket]);
+
     return (
         <div className="text-pop-up-animation flex flex-col px-12 py-8">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-col leading-7">
-                    <h1 className="text-primary text-[1.9rem] font-medium">
+                    <h1 className="text-primary text-[1.9rem] font-medium text-shadow-md">
                         {!selectedProduct
                             ? "Product Management"
                             : selectedProduct.food_name}
@@ -295,7 +449,7 @@ const ManageProducts = ({
                             >
                                 <div className="flex flex-col items-center justify-end h-full gap-1 ">
                                     <button
-                                        onClick={() =>
+                                        onClick={() => {
                                             setSelectedProduct({
                                                 calories: calories,
                                                 category: category,
@@ -309,8 +463,20 @@ const ManageProducts = ({
                                                 quantity: quantity,
                                                 waiting_time: waiting_time,
                                                 total_ratings: total_ratings,
-                                            })
-                                        }
+                                            });
+
+                                            setNewProductsDetails({
+                                                food_name_orig: food_name,
+                                                food_name: food_name,
+                                                cusine_category: category,
+                                                calories: calories,
+                                                waiting_time: waiting_time,
+                                                product_price: food_price,
+                                                quantity: quantity,
+                                                short_desc: description,
+                                                full_details: details,
+                                            });
+                                        }}
                                         className="text-white/75 absolute top-2 right-2 cursor-pointer"
                                     >
                                         <Pencil size={18} />
@@ -442,6 +608,20 @@ const ManageProducts = ({
                 </ul>
             ) : (
                 <div className={`${layout.main} h-[33rem] w-full mt-4`}>
+                    {isEditSuccess && (
+                        <div className="fixed pop-up-animation top-1/2 flex flex-col items-start justify-center left-1/2 shadow-xl z-10 -translate-x-1/2 w-[30rem] h-[18rem] -translate-y-1/2 bg-gradient-to-b from-[#DAE1E5] to-[#EAF2F5] rounded-xl">
+                            <div className="flex flex-col items-center w-full gap-2">
+                                <i className="text-lightgreen">
+                                    <LaptopMinimalCheck size={120} />
+                                </i>
+                                <h1 className="text-[#2c2c2c] text-[1.8rem] font-bold">
+                                    Product Updated Succesfully
+                                </h1>
+                            </div>
+
+                            <div className="bg-[#2c2c2c] h-[1.25rem] success-timeout absolute bottom-0"></div>
+                        </div>
+                    )}
                     <div
                         className={`${layout["img-container"]} flex items-center justify-center`}
                     >
@@ -593,7 +773,7 @@ const ManageProducts = ({
                     <div className={`${layout["edit-product"]}`}>
                         <div className="flex flex-col gap-2">
                             <div className="flex flex-row gap-2">
-                                <div className="flex flex-col w-[60%] gap-1">
+                                <div className="flex flex-col w-[70%] gap-1">
                                     <label
                                         htmlFor="cuisine_name"
                                         className="text-white/60 text-[0.75rem] font-extralight"
@@ -604,24 +784,14 @@ const ManageProducts = ({
                                         type="text"
                                         placeholder={`${selectedProduct.food_name}`}
                                         id="cuisine_name"
+                                        name="food_name"
+                                        value={newProductDetails.food_name}
+                                        onChange={handleChangeEdit}
                                         className=" border-darkbrown border-2 outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                     />
                                 </div>
-                                <div className="flex flex-col w-[40%] gap-1">
-                                    <label
-                                        htmlFor="cuisine_category"
-                                        className="text-white/60 text-[0.75rem] font-extralight"
-                                    >
-                                        Cusine Category
-                                    </label>
-                                    <input
-                                        type="text"
-                                        placeholder={`${selectedProduct.category}`}
-                                        id="cuisine_category"
-                                        className=" border-darkbrown border-2 outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
-                                    />
-                                </div>
-                                <div className="flex flex-col w-[20%] gap-1">
+
+                                <div className="flex flex-col w-[30%] gap-1">
                                     <label
                                         htmlFor="calories"
                                         className="text-white/60 text-[0.75rem] font-extralight"
@@ -629,9 +799,12 @@ const ManageProducts = ({
                                         Calories
                                     </label>
                                     <input
+                                        name="calories"
                                         type="number"
                                         placeholder={`${selectedProduct.calories}`}
                                         id="calories"
+                                        value={newProductDetails.calories}
+                                        onChange={handleChangeEdit}
                                         className=" border-darkbrown border-2 input-number outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                     />
                                 </div>
@@ -647,12 +820,15 @@ const ManageProducts = ({
                                     <div className="relative w-full ">
                                         <input
                                             type="number"
-                                            placeholder={`${quantityValue}`}
+                                            name="quantity"
                                             id="quantity"
+                                            value={newProductDetails.quantity}
+                                            onChange={handleChangeEdit}
                                             className=" border-darkbrown w-full input-number border-2 outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                         />
                                         <div className="absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-secondary">
                                             <button
+                                                className="cursor-pointer hover:scale-120 duration-75 transition"
                                                 onClick={() =>
                                                     handleWaitingTimeValue(
                                                         "Increase",
@@ -663,6 +839,7 @@ const ManageProducts = ({
                                                 <ChevronUp size={18} />
                                             </button>
                                             <button
+                                                className="cursor-pointer hover:scale-120 duration-75 transition"
                                                 onClick={() =>
                                                     handleWaitingTimeValue(
                                                         "Decrease",
@@ -684,7 +861,10 @@ const ManageProducts = ({
                                     </label>
                                     <input
                                         type="number"
+                                        name="product_price"
                                         id="price"
+                                        onChange={handleChangeEdit}
+                                        value={newProductDetails.product_price}
                                         placeholder={`${selectedProduct.food_price}`}
                                         className=" border-darkbrown border-2 input-number outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                     />
@@ -699,12 +879,17 @@ const ManageProducts = ({
                                     <div className="relative w-full ">
                                         <input
                                             type="number"
-                                            placeholder={`${waitingTimeValue}`}
+                                            name="waiting_time"
+                                            onChange={handleChangeEdit}
+                                            value={
+                                                newProductDetails.waiting_time
+                                            }
                                             id="waiting_time"
                                             className=" border-darkbrown w-full input-number border-2 outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                         />
                                         <div className="absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-secondary">
                                             <button
+                                                className="cursor-pointer hover:scale-120 duration-75 transition"
                                                 onClick={() =>
                                                     handleWaitingTimeValue(
                                                         "Increase",
@@ -715,6 +900,7 @@ const ManageProducts = ({
                                                 <ChevronUp size={18} />
                                             </button>
                                             <button
+                                                className="cursor-pointer hover:scale-120 duration-75 transition"
                                                 onClick={() =>
                                                     handleWaitingTimeValue(
                                                         "Decrease",
@@ -740,7 +926,9 @@ const ManageProducts = ({
                                     Short Description
                                 </label>
                                 <textarea
-                                    name=""
+                                    name="short_desc"
+                                    value={newProductDetails.short_desc}
+                                    onChange={handleChangeEdit}
                                     placeholder={`${selectedProduct.description}`}
                                     className="border-2 border-darkbrown  rounded-md resize-none outline-none text-white/80 px-2 font-extralight text-[0.85rem] py-1"
                                     id="short-description"
@@ -754,7 +942,9 @@ const ManageProducts = ({
                                     Full Details
                                 </label>
                                 <textarea
-                                    name="details"
+                                    name="full_details"
+                                    value={newProductDetails.full_details}
+                                    onChange={handleChangeEdit}
                                     placeholder={`${selectedProduct.details}`}
                                     className="border-2 border-darkbrown leading-4 rounded-md resize-none h-full outline-none text-white/80 px-2 font-extralight text-[0.8rem] py-1 text-justify"
                                     id="details"
@@ -781,11 +971,204 @@ const ManageProducts = ({
                                 <CornerDownLeft size={18} />
                                 Back
                             </button>
-                            <button className="flex flex-row gap-2 cursor-pointer [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/70 text-[0.85rem] font-light bg-gradient-to-b from-lightbrown to-darkbrown rounded-md px-6 py-2 border-1 border-darkbrown">
+                            <button
+                                onClick={() => {
+                                    if (
+                                        newProductDetails.food_name !==
+                                            selectedProduct.food_name ||
+                                        newProductDetails.cusine_category !==
+                                            selectedProduct.category ||
+                                        newProductDetails.calories !==
+                                            selectedProduct.calories ||
+                                        newProductDetails.quantity !==
+                                            selectedProduct.quantity ||
+                                        newProductDetails.product_price !==
+                                            selectedProduct.food_price ||
+                                        newProductDetails.waiting_time !==
+                                            selectedProduct.waiting_time ||
+                                        newProductDetails.short_desc !==
+                                            selectedProduct.description ||
+                                        newProductDetails.full_details !==
+                                            selectedProduct.details
+                                    ) {
+                                        setIsUpdateConfirm(true);
+                                    } else {
+                                        alert("Nothing changes");
+                                    }
+                                }}
+                                className="flex flex-row gap-2 cursor-pointer [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/70 text-[0.85rem] font-light bg-gradient-to-b from-lightbrown to-darkbrown rounded-md px-6 py-2 border-1 border-darkbrown"
+                            >
                                 <FileCheck2 size={18} />
                                 Update
                             </button>
                         </div>
+                        {isUpdateConfirm && (
+                            <div className="fixed top-0 bottom-0 left-0 right-0 w-full h-screen bg-black/40 flex items-center justify-center">
+                                <div className="pop-up-animation flex flex-col items-center gap-4 px-6 w-[50rem] h-fit pb-6 bg-gradient-to-t to-lightbrown from-darkbrown rounded-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
+                                    <div className="relative border-white/10 w-full border-b-2 py-6 px-4 flex flex-row items-center gap-2 justify-center">
+                                        <h1 className="text-primary text-[1.7rem] text-shadow-md">
+                                            Update Confirmation
+                                        </h1>
+                                        <i className="text-primary">
+                                            <Info size={35} />
+                                        </i>
+                                        <button
+                                            onClick={() =>
+                                                setIsUpdateConfirm(false)
+                                            }
+                                            className="cursor-pointer absolute right-8 text-white/75"
+                                        >
+                                            <LogOut size={37} />
+                                        </button>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-2 w-full border-white/10 py-6 border-2 rounded-md">
+                                        <h1 className="text-primary text-[1.4rem] mb-4 text-shadow-md w-full pl-12">
+                                            Review Changes
+                                        </h1>
+                                        <div className="flex flex-row items-center justify-around w-full">
+                                            {newProductDetails.food_name !==
+                                                selectedProduct.food_name && (
+                                                <div className="flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
+                                                    <p className="text-white/85 text-shadow-md">
+                                                        Food Name:
+                                                    </p>
+                                                    <p className="font-extralight text-shadow-md">
+                                                        {
+                                                            newProductDetails.food_name
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {newProductDetails.cusine_category !==
+                                                selectedProduct.category && (
+                                                <div className="flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
+                                                    <p className="text-white/85 text-shadow-md">
+                                                        Category:
+                                                    </p>
+                                                    <p className="font-extralight text-shadow-md">
+                                                        {
+                                                            newProductDetails.cusine_category
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {newProductDetails.calories !==
+                                                selectedProduct.calories && (
+                                                <div className="mt-4 flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
+                                                    <p className="text-white/85 text-shadow-md">
+                                                        Calories:
+                                                    </p>
+                                                    <p className="font-extralight text-shadow-md">
+                                                        {
+                                                            newProductDetails.calories
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-row items-center justify-around w-full">
+                                            {newProductDetails.quantity !==
+                                                selectedProduct.quantity && (
+                                                <div className="flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
+                                                    <p className="text-white/85 text-shadow-md">
+                                                        Quantity:
+                                                    </p>
+                                                    <p className="font-extralight text-shadow-md">
+                                                        {
+                                                            newProductDetails.quantity
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {newProductDetails.product_price !==
+                                                selectedProduct.food_price && (
+                                                <div className="flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
+                                                    <p className="text-white/85 text-shadow-md">
+                                                        Price:
+                                                    </p>
+                                                    <p className="font-extralight text-shadow-md">
+                                                        {
+                                                            newProductDetails.product_price
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {newProductDetails.waiting_time !==
+                                                selectedProduct.waiting_time && (
+                                                <div className="flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
+                                                    <p className="text-white/85 text-shadow-md">
+                                                        Waiting Time:
+                                                    </p>
+                                                    <p className="font-extralight text-shadow-md">
+                                                        {
+                                                            newProductDetails.waiting_time
+                                                        }{" "}
+                                                        mins
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {newProductDetails.short_desc !==
+                                            selectedProduct.description && (
+                                            <div className="flex mt-8 flex-row items-start justify-start w-[85%] text-white/60 text-[0.8rem] gap-4">
+                                                <p className="text-white/85 text-shadow-md">
+                                                    Short Description:
+                                                </p>
+                                                <p className="font-extralight text-shadow-md">
+                                                    {
+                                                        newProductDetails.short_desc
+                                                    }
+                                                </p>
+                                            </div>
+                                        )}
+                                        {newProductDetails.full_details !==
+                                            selectedProduct.details && (
+                                            <div className="flex flex-col items-start text-white/60 text-[0.8rem] w-[85%]">
+                                                <p className="text-white/85 text-shadow-md">
+                                                    Full details:
+                                                </p>
+                                                <p className="font-extralight text-shadow-md">
+                                                    {
+                                                        newProductDetails.full_details
+                                                    }
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="relative flex flex-row items-center gap-6">
+                                        <p className="text-white/85 text-[0.9rem] text-shadow-md">
+                                            Type administrator password to
+                                            confirm:
+                                        </p>
+                                        <div className="relative">
+                                            {isIncorrectPassword && (
+                                                <p className="absolute text-red-600 font-medium -top-[60%] left-0 text-[0.8rem]">
+                                                    Incorrect password
+                                                </p>
+                                            )}
+                                            <input
+                                                value={adminPassword}
+                                                onChange={handlePasswordChange}
+                                                type="password"
+                                                className="border-1 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.3)] border-white/30 py-1 px-5 rounded-md outline-none text-secondary text-center"
+                                            />
+                                        </div>
+
+                                        <button
+                                            onClick={handleConfirmChanges}
+                                            className="bg-gradient-to-t flex items-center justify-center font-medium cursor-pointer w-[6rem] h-[2.5rem] [box-shadow:-2px_2px_4px_rgba(0,0,0,0.3)] from-yellow-600 to-yellow-500 rounded-md text-[1.1rem] text-white "
+                                        >
+                                            {!isSending ? (
+                                                "Confirm"
+                                            ) : (
+                                                <span className="loader-white scale-40  pop-up-animation"></span>
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

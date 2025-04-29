@@ -206,3 +206,7 @@ body {
 .text-pop-close-animation {
     animation: textPopup 0.2s ease-out reverse;
 }
+
+.success-timeout {
+    animation: successTimeout 3s;
+}

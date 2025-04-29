@@ -131,10 +131,10 @@ const ServiceReview = ({
     return !isSubmitted
         ? isReceipt && (
               <div className="fixed flex items-center justify-end flex-col  w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] ">
-                  <div className="relative flex overflow-hidden flex-col p-4 pb-10 min-[390px]:pb-20  items-center bg-gradient-to-t rounded-t-[4rem] w-full h-[95vh] min-[390px]:h-[90vh] from-darkbrown to-lightbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
+                  <div className="relative flex overflow-hidden flex-col p-4 pb-10 min-[390px]:pb-20  items-center bg-gradient-to-t rounded-t-[4rem] w-full h-[97vh] min-[390px]:h-[97vh] from-darkbrown to-lightbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
                       <div className="h-[55%]   w-full flex flex-col items-center mt-6 gap-2 min-[390px]:gap-4">
                           <div className="flex flex-col items-center">
-                              <h1 className="text-primary text-[1.5rem] min-[390px]:text-[1.65rem]">
+                              <h1 className="text-primary text-[1.5rem] min-[390px]:text-[1.65rem] font-medium">
                                   How was your experience?
                               </h1>
                               <div className="text-primary flex flex-row scale-90 min-[390px]:scale-100 items-center justify-center gap-2 min-[390px]:gap-4">
@@ -363,7 +363,7 @@ const ServiceReview = ({
                           <form
                               id="reviewForm"
                               onSubmit={handleSubmit}
-                              className="w-full flex flex-col gap-2 items-center h-full"
+                              className="w-full flex flex-col gap-1 items-center h-full"
                           >
                               <label
                                   htmlFor="email"
@@ -391,7 +391,7 @@ const ServiceReview = ({
                                   required
                                   onChange={handleChangeText}
                                   placeholder="Tell us what you enjoyed or what we could improve…"
-                                  className="w-full h-[70%] resize-none bg-gradient-to-t from-[#DAE1E5] to-[#EAF2F5] rounded-md outline-none px-2 py-2 text-[#2c2c2c] text-[0.8rem]"
+                                  className="w-full h-[40%] resize-none bg-gradient-to-t from-[#DAE1E5] to-[#EAF2F5] rounded-md outline-none px-2 py-2 text-[#2c2c2c] text-[0.8rem]"
                                   name="comment"
                                   id="comment"
                               ></textarea>
@@ -399,7 +399,7 @@ const ServiceReview = ({
                       </div>
 
                       <div
-                          className={`${layout["product-review"]} h-[40%] w-full scale-75 min-[390px]:scale-85`}
+                          className={`${layout["product-review"]} h-[50%] w-full scale-70 min-[390px]:scale-80 -mt-25`}
                       >
                           <div
                               className={`${layout["header"]} flex flex-col items-center justify-center leading-5`}

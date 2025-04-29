@@ -1,7 +1,8 @@
 .product-review {
     display: grid;
     grid-template-columns: 3rem 1fr 3rem;
-    grid-template-rows: 3rem 10rem 3rem;
+    grid-template-rows: 5rem 12rem 5rem;
+
     grid-template-areas:
         "     .    header    .    "
         "     left-btn    img-slider    right-btn    "

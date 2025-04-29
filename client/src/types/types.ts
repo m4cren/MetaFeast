@@ -118,6 +118,7 @@ export type PendingOrderType = {
             img: string;
             price: number;
             quantity: number;
+            available_quantity: number;
         },
     ];
     additional_orders:
@@ -128,6 +129,7 @@ export type PendingOrderType = {
                   img: string;
                   price: number;
                   quantity: number;
+                  available_quantity: number;
               },
           ]
         | undefined;

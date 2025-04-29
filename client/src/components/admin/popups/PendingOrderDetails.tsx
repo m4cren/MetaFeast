@@ -38,7 +38,7 @@ const PendingOrderDetails = ({
             getPendingOrders();
         }, 850);
     };
-    console.log(maxLenght);
+
     useEffect(() => {
         if (!pendingOrderDetails) return;
         if (!pendingOrderDetails.is_additional) {
@@ -270,7 +270,14 @@ const PendingOrderDetails = ({
                             className={`${layout["available-container"]} ${isClose && "text-close-animation"} text-drop-animation flex items-center px-10`}
                         >
                             <p className="text-white/90 text-[0.85rem] font-light text-shadow-md">
-                                Available: 25
+                                Available:{" "}
+                                {!pendingOrderDetails?.is_additional
+                                    ? pendingOrderDetails?.orders[selected]
+                                          .available_quantity
+                                    : pendingOrderDetails.additional_orders &&
+                                      pendingOrderDetails?.additional_orders[
+                                          selected
+                                      ].available_quantity}
                             </p>
                         </div>
                     </div>

@@ -143,15 +143,7 @@ class Products(db.Model):
     def get_ratings(self, rate):
         self.ratings = ((self.ratings + rate)/ self.total_ratings)
 
-    def increase_quantity(self):
-        self.quantity += 1
-
-    def decrease_quantity(self):
-        if self.quantity <= 0:
-            self.quantity = 0
-            return
-        
-        self.quantity -= 1
+  
 
 
 class Orders(db.Model):
@@ -162,9 +154,9 @@ class Orders(db.Model):
     total_waiting_time = db.Column(db.String(64), nullable = False)
     current_costumer_id = db.Column(db.Integer, db.ForeignKey("costumer.id"), nullable=True)
     current_table = db.Column(db.String(10), nullable = False)
-    orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0}])
+    orders = db.Column(db.JSON, nullable = False, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0, 'available_quantity': 0}])
     additional = db.Column(db.Boolean, default = False, nullable = False)
-    additional_orders = db.Column(db.JSON, nullable = True, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0}])
+    additional_orders = db.Column(db.JSON, nullable = True, default=lambda: [{'food_name': '','food_category': '','img':'', 'quantity': 0, 'price': 0.0,  'available_quantity': 0}])
     order_time = db.Column(db.DateTime, default = datetime.utcnow)
 
 
@@ -182,6 +174,7 @@ class Orders(db.Model):
                 'img': order['img'],
                 'quantity': order['quantity'],
                 'price': order['price'],
+                'available_quantity': order['available_quantity']
                 
             } for order in self.orders],
             'additional_orders':[{
@@ -190,6 +183,7 @@ class Orders(db.Model):
                 'img': order['img'],
                 'quantity': order['quantity'],
                 'price': order['price'],
+                'available_quantity': order['available_quantity']
                 
             } for order in self.additional_orders]
             

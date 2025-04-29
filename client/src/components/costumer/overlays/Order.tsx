@@ -7,6 +7,7 @@ import { ProductDetailsType, OrderType } from "../../../types/types";
 import OrderList from "./order/OrderList";
 import OrderConfirmation from "./order/OrderConfirmation";
 import useFrameProvider from "../../../frames/useFrameProvider";
+import { useSocket } from "../../../contexts/SocketContext";
 interface OrderProps {
     setCamPos: React.Dispatch<React.SetStateAction<[number, number, number]>>;
     setCamRot: React.Dispatch<React.SetStateAction<[number, number, number]>>;
@@ -55,6 +56,14 @@ const Order = ({
     useEffect(() => {
         fetchProductDetails();
     }, []);
+    const socket = useSocket();
+    useEffect(() => {
+        socket?.on("refresh-product", (_) => {
+            setTimeout(() => {
+                fetchProductDetails();
+            }, 2000);
+        });
+    }, [socket]);
 
     const mergeOrders = (orders: OrderType[]): OrderType[] => {
         const merged = orders.reduce<Record<string, OrderType>>((acc, item) => {

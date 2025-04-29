@@ -138,35 +138,76 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
         socket?.emit("deny-request", costumerToDeny);
     };
 
+    const [isTableDetailClose, setIsTableDetailClose] =
+        useState<boolean>(false);
+
     return (
         <>
             {isTableDetails && (
-                <div className="fixed top-5 right-5 w-fit h-fit p-4 bg-gradient-to-b from-lightbrown to-darkbrown rounded-xl z-10 shadow-md pop-up-animation">
+                <div
+                    className={`${isTableDetailClose && "pop-close-animation"} fixed top-3 right-3 w-fit h-fit p-4 bg-gradient-to-t from-lightbrown to-darkbrown rounded-xl z-10 [box-shadow:5px_5px_4px_rgba(0,0,0,0.5)] pop-up-animation`}
+                >
                     <div className="flex flex-row justify-between items-center">
-                        <h1 className="text-primary text-center mb-2">
+                        <h1 className="text-primary text-center mb-2 text-shadow-md">
                             Table Details
                         </h1>
                         <button
                             className="text-primary cursor-pointer"
-                            onClick={() => setIsTableDetails(false)}
+                            onClick={() => {
+                                setIsTableDetailClose(true);
+                                setTimeout(() => {
+                                    setIsTableDetails(false);
+                                    setIsTableDetailClose(false);
+                                }, 200);
+                            }}
                         >
                             <LogOut />
                         </button>
                     </div>
-                    <p className="text-secondary">
+                    <p className="text-secondary text-[0.8rem] text-shadow-sm">
                         Table Name: {tableDetails?.table_name}
                     </p>
-                    <p className="text-secondary">
+                    <p className="text-secondary text-[0.8rem] text-shadow-sm">
                         Costumer Name: {tableDetails?.costumer_name}
                     </p>
-                    <p className="text-secondary">
+                    <p className="text-secondary text-[0.8rem] text-shadow-sm">
                         Current Costumer Status:{" "}
                         {tableDetails?.current_costumer_status}
                     </p>
-                    <p className="text-secondary">
+                    <p className="text-secondary text-[0.8rem] text-shadow-sm">
                         Table Status:{" "}
                         {tableDetails?.is_available ? "Available" : "Occupied"}
                     </p>
+
+                    <div className="flex flex-col items-center mt-4 border-t-2 border-white/30">
+                        <h2 className="text-white/85 text-[1rem] text-shadow-md py-2">
+                            Legends
+                        </h2>
+                        <span className="flex flex-row items-center w-[80%] justify-start gap-3 ">
+                            <p className="w-3 h-3 bg-green-600"></p>
+                            <p className="text-secondary text-[0.8rem] text-shadow-md">
+                                Table is available
+                            </p>
+                        </span>
+                        <span className="flex flex-row items-center w-[80%] justify-start gap-3">
+                            <p className="w-3 h-3 bg-yellow-400"></p>
+                            <p className="text-secondary text-[0.8rem] text-shadow-md">
+                                Costumer is ordering
+                            </p>
+                        </span>
+                        <span className="flex flex-row items-center w-[80%] justify-start gap-3">
+                            <p className="w-3 h-3 bg-blue-800"></p>
+                            <p className="text-secondary text-[0.8rem] text-shadow-md">
+                                Costumer is eating
+                            </p>
+                        </span>
+                        <span className="flex flex-row items-center w-[80%] justify-start gap-3">
+                            <p className="w-3 h-3 bg-pink-400"></p>
+                            <p className="text-secondary text-[0.8rem] text-shadow-md">
+                                Costumer is billing
+                            </p>
+                        </span>
+                    </div>
                 </div>
             )}
 

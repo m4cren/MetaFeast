@@ -36,10 +36,6 @@ const OrderHistory = () => {
     }, [historyList]);
 
     useEffect(() => {
-        console.log(filteredHistoryList);
-    }, [filteredHistoryList]);
-
-    useEffect(() => {
         fetchHistoryList();
     }, []);
 
@@ -63,7 +59,7 @@ const OrderHistory = () => {
         <div className="text-pop-up-animation flex flex-col px-12 py-8">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-col leading-6">
-                    <h1 className="text-primary text-[1.75rem]">
+                    <h1 className="text-primary text-[1.75rem] text-shadow-md font-medium">
                         Order History
                     </h1>
                     <p className=" text-[0.75rem] font-extralight text-white/60">

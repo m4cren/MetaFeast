@@ -103,6 +103,7 @@ def send_order(data):
     quantity = data.get('quantity')
     total_price = data.get('total_price')
     additional_order = data.get('additional_order')
+    available_quantity = data.get('available_quantity')
 
 
 
@@ -123,8 +124,9 @@ def send_order(data):
                                     'food_category': cat,
                                     'img': img,
                                     'quantity': q,
-                                    'price': p
-                                    } for fn, q, p, cat, img in zip(food_names, quantity, total_price, food_category, img)]
+                                    'price': p,
+                                    'available_quantity': a
+                                    } for fn, q, p, cat, img, a in zip(food_names, quantity, total_price, food_category, img, available_quantity)]
                         )
         
         db.session.add(new_order)
@@ -135,8 +137,9 @@ def send_order(data):
                               'food_category': cat,
                               'img': img,
                               'quantity': q,
-                              'price': p
-                              } for fn, q, p, cat, img in zip(food_names, quantity, total_price, food_category, img)]
+                              'price': p,
+                              'available_quantity': a
+                              } for fn, q, p, cat, img, a in zip(food_names, quantity, total_price, food_category, img, available_quantity)]
                         
         order = Orders.query.filter_by(current_table = table_picked).first()
         order.additional_order()
@@ -272,7 +275,63 @@ def notify_costumer_exit():
 
     emit('notify-admin-costumer-exit', broadcast=True)
 
+    # food_name: string;
+    # cusine_category: string;
+    # calories: number;
+    # quantity: number;
+    # product_price: number;
+    # waiting_time: number;
+    # short_desc: string;
+    # full_details: string;
 
+
+# category = db.Column(db.String(64), nullable = False)
+#     quantity = db.Column(db.Integer, default = 0)
+#     food_name = db.Column(db.String(64), nullable = False)
+#     food_price = db.Column(db.Integer, nullable = False)
+#     calories = db.Column(db.Integer, default = 0)
+#     waiting_time = db.Column(db.Integer, nullable = False)
+#     img = db.Column(db.String(124), nullable = False)
+#     description = db.Column(db.String(246), nullable = False)
+#     details = db.Column(db.Text, nullable = False)
+#     type = db.Column(db.String(64), nullable = True)
+#     ratings = db.Column(db.Float, nullable = False, default = 0)
+#     total_ratings = db.Column(db.Integer, default = 0, nullable = False)
+#     total_orders = db.Column(db.Integer, default = 0, nullable =False)
+@socketio.on('handle-update-product')
+def handle_update_product(data):
+    print(data)
+
+    food_name_orig = data.get('food_name_orig')
+    food_name = data.get('food_name')
+    cusine_category = data.get('cusine_category')
+    calories = data.get('calories')
+    quantity = data.get('quantity')
+    product_price = data.get('product_price')
+    waiting_time = data.get('waiting_time')
+    short_desc = data.get('short_desc')
+    full_details = data.get('full_details')
+
+    try:
+        selected_product = Products.query.filter_by(food_name = food_name_orig).first()
+    
+        if (selected_product):
+            selected_product.food_name = food_name
+            selected_product.category = cusine_category
+            selected_product.calories = calories
+            selected_product.quantity = quantity
+            selected_product.food_price = product_price
+            selected_product.waiting_time = waiting_time
+            selected_product.description = short_desc
+            selected_product.details = full_details
+
+            db.session.commit()
+        else:
+            print(f'Product: {food_name} does not exist on the kitchen')
+    except(KeyError):
+        print(KeyError)
+
+    emit('refresh-product', broadcast=True)
 
 
         
