@@ -1,0 +1,27 @@
+.main {
+    display: grid;
+    grid-template-columns: 28% 3% 69%;
+    grid-template-rows: 10% 30% 40% 5% 15%;
+
+    grid-template-areas:
+        "     img-container       .       .   "
+        "     img-container        .      edit-product    "
+        "     edit-details        edit-details      edit-details    "
+        "           .         .         .         "
+        "      control-container                     control-container              control-container         ";
+}
+
+.img-container {
+    grid-area: img-container;
+}
+
+.edit-product {
+    grid-area: edit-product;
+}
+.edit-details {
+    grid-area: edit-details;
+}
+
+.control-container {
+    grid-area: control-container;
+}

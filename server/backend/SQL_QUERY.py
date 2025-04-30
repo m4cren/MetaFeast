@@ -11,39 +11,48 @@ load_dotenv()
 
 def create_sample_history(app):
     with app.app_context():
-        print('Sample Data added')
         existing_reviews = CostumerHistory.query.first()
 
         if not existing_reviews:
-            print('Sample Data added')
-
             reviews = [
                 {
-                    'costumer_name': 'Mika',
-                    'table_seated': 'B_12', # range from A to B and 1 - 16 e.x: A_14 
-                    'total_payment': '2199',
+                    'costumer_name': 'Mika', #pag generate mo nalang chatgpt ng random names
+                    'table_seated': 'B_12',
+                    'total_payment': '2199', #ikaw na bahala kung pagkano binayad nila hehe from 2k - 8k sana 
                     'total_order_items': 5,
                     'payment_id': generate_payment_id(),
-                    'payment_method': 'Cash', # or PayMongo
+                    'payment_method': 'Cash', 
                     'orders':[
                                 {"quantity": 2, "food_name": "Pan-Seared Cod"},
                                 {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
+<<<<<<< HEAD
                     'dine_time': '2019-01-01 15:24:10' # year-month-date   hours-minute-seconds  military time
                 },
                 {
                     'costumer_name': 'Rainier',
                     'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+=======
+                    'dine_time': '2018-01-01 15:24:10' # year-month-date   hours-minute-seconds  military time
+                    #eto pinaka mahalaga dapat e from 2019 to 2025, basta may tig 5 na data per month sa isang year or kahit walang data ung ibang month sa loob ng isang taon
+                    # kahit wag mona bagihun yung time, adjust nlng ng year month and date 
+
+                },
+                {
+                    'costumer_name': 'Rainier',
+                    'table_seated': 'B_2', 
+>>>>>>> origin/main
                     'total_payment': '4679',
                     'total_order_items': 5,
                     'payment_id': generate_payment_id(),
-                    'payment_method': 'Cash', # or PayMongo
+                    'payment_method': 'Cash', 
                     'orders':[
                                 {"quantity": 2, "food_name": "Pan-Seared Cod"},
                                 {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
+<<<<<<< HEAD
                     'dine_time': '2019-01-02 10:24:10' # year-month-date   hours-minute-seconds  military time
                 },
                     {
@@ -5337,7 +5346,11 @@ def create_sample_history(app):
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
                     'dine_time': '2025-04-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+=======
+                    'dine_time': '2018-01-02 10:24:10' 
+>>>>>>> origin/main
                 },
+               
             ]
 
             for review in reviews:
@@ -5351,8 +5364,7 @@ def create_sample_history(app):
                                               orders =[ order for order in review['orders']])
                 save_data(inject_data)
 
-        else:
-            print('Sample data already exist')
+        
 
 def create_products(app):
     with app.app_context():

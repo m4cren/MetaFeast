@@ -43,6 +43,8 @@ const ManageProducts = ({
 }: ManageProductsProps) => {
     const [isUpdateConfirm, setIsUpdateConfirm] = useState<boolean>(false);
 
+    const [isDeleteProduct, setIsDeleteProduct] = useState<boolean>(false);
+
     const handleWaitingTimeValue = (
         type: "Increase" | "Decrease",
         prop: "Waiting Time" | "Quantity",
@@ -233,7 +235,7 @@ const ManageProducts = ({
 
             setIsSending(false);
 
-            if (response.data.status) {
+            if (response.data.status && !isDeleteProduct) {
                 setIsIncorrectPassword(false);
                 setIsUpdateConfirm(false);
                 setIsEditSuccess(true);
@@ -241,11 +243,21 @@ const ManageProducts = ({
                     setIsEditSuccess(false);
                 }, 3000);
 
-                console.dir(newProductDetails);
-
                 socket?.emit("handle-update-product", newProductDetails);
+            } else if (response.data.status && isDeleteProduct) {
+                setIsIncorrectPassword(false);
+
+                setIsEditSuccess(true);
+                setTimeout(() => {
+                    setIsEditSuccess(false);
+                    setIsDeleteProduct(false);
+                    setSelectedProduct(null);
+                }, 3000);
+
+                socket?.emit("handle-delete-product", newProductDetails);
             } else {
                 setIsIncorrectPassword(true);
+
                 setTimeout(() => {
                     setIsIncorrectPassword(false);
                 }, 5000);
@@ -615,7 +627,9 @@ const ManageProducts = ({
                                     <LaptopMinimalCheck size={120} />
                                 </i>
                                 <h1 className="text-[#2c2c2c] text-[1.8rem] font-bold">
-                                    Product Updated Succesfully
+                                    Product{" "}
+                                    {!isDeleteProduct ? "Updated" : "Deleted"}{" "}
+                                    Succesfully
                                 </h1>
                             </div>
 
@@ -956,11 +970,76 @@ const ManageProducts = ({
                         className={`${layout["delete-container"]} flex flex-col items-center`}
                     >
                         <div className="w-[90%] h-full flex items-center">
-                            <button className="flex flex-row gap-2 cursor-pointer [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/60 text-[0.75rem] font-light border-white/20 border-1 rounded-md px-6 py-2">
+                            <button
+                                onClick={() => setIsDeleteProduct(true)}
+                                className="flex flex-row gap-2 cursor-pointer [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/60 text-[0.75rem] font-light border-white/20 border-1 rounded-md px-6 py-2"
+                            >
                                 <Trash2 size={18} />
                                 Delete Product
                             </button>
                         </div>
+                        {isDeleteProduct && (
+                            <div className="fixed flex items-center justify-center bg-black/40 top-0 bottom-0 right-0 left-0">
+                                <div className="pop-up-animation flex flex-col items-center gap-4 px-6 w-[50rem] h-fit pb-6 bg-gradient-to-t to-lightbrown from-darkbrown rounded-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
+                                    <div className="relative border-white/10 w-full border-b-2 py-6 px-4 flex flex-col items-center gap-2 justify-center">
+                                        <div className=" flex flex-row items-center gap-4">
+                                            <h1 className="text-primary text-[1.7rem] text-shadow-md">
+                                                Delete This Product?
+                                            </h1>
+                                            <button
+                                                onClick={() =>
+                                                    setIsDeleteProduct(false)
+                                                }
+                                                className="cursor-pointer absolute right-8 text-white/75"
+                                            >
+                                                <LogOut size={37} />
+                                            </button>
+                                        </div>
+                                        <div className="flex flex-row items-center gap-4">
+                                            <img
+                                                src={`/images/products/${selectedProduct.img}`}
+                                                alt=""
+                                                className="w-[10rem] h-[10rem]"
+                                            />
+                                            <h1 className="text-primary">
+                                                {selectedProduct.food_name}
+                                            </h1>
+                                        </div>
+                                    </div>
+
+                                    <div className="relative flex flex-row items-center gap-6">
+                                        <p className="text-white/85 text-[0.9rem] text-shadow-md">
+                                            Type administrator password to
+                                            confirm:
+                                        </p>
+                                        <div className="relative">
+                                            {isIncorrectPassword && (
+                                                <p className="absolute text-red-600 font-medium -top-[60%] left-0 text-[0.8rem]">
+                                                    Incorrect password
+                                                </p>
+                                            )}
+                                            <input
+                                                value={adminPassword}
+                                                onChange={handlePasswordChange}
+                                                type="password"
+                                                className="border-1 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.3)] border-white/30 py-1 px-5 rounded-md outline-none text-secondary text-center"
+                                            />
+                                        </div>
+
+                                        <button
+                                            onClick={handleConfirmChanges}
+                                            className="bg-gradient-to-t flex items-center justify-center font-medium cursor-pointer w-[6rem] h-[2.5rem] [box-shadow:-2px_2px_4px_rgba(0,0,0,0.3)] from-yellow-600 to-yellow-500 rounded-md text-[1.1rem] text-white "
+                                        >
+                                            {!isSending ? (
+                                                "Confirm"
+                                            ) : (
+                                                <span className="loader-white scale-40  pop-up-animation"></span>
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <div className={`${layout["control-container"]}`}>
                         <div className="flex flex-row gap-2 justify-end items-center h-full">
