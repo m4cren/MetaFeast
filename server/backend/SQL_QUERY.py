@@ -30,10 +30,10 @@ def create_sample_history(app):
                                 {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
-                    'dine_time': '2025-04-29 15:24:10' # year-month-date   hours-minute-seconds  military time
+                    'dine_time': '2019-01-01 15:24:10' # year-month-date   hours-minute-seconds  military time
                 },
-                  {
-                    'costumer_name': 'Kyle',
+                {
+                    'costumer_name': 'Rainier',
                     'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
                     'total_payment': '4679',
                     'total_order_items': 5,
@@ -44,7 +44,5299 @@ def create_sample_history(app):
                                 {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
-                    'dine_time': '2025-04-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                    'dine_time': '2019-01-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Aki',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5975',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2018-01-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Kyle',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3579',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-01-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Rodnny',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5465',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-01-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'CJ',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7589',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-02-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Ijah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2498',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-02-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Tyrone',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5861',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-02-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Anne',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6458',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-02-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Jonah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2549',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-02-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Keanna',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3587',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-03-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Aizen',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5798',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-03-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Sophia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7152',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-03-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Liam',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3565',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-03-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Olivia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1585',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-03-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Noah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5486',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-04-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Emma',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2588',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-04-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Elijah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5678',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-04-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Ava',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7965',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-04-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Mateo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3597',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-04-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Isabella',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5952',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-05-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Ethan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6498',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-05-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Mia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7846',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-05-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Lucas',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-05-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Amelia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2458',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-05-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Mason',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4597',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-06-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Harper',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3788',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-06-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Logan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7989',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-06-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Ella',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4898',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-06-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'James',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5486',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-06-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Charllote',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3489',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-07-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Benjamin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-07-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Evelyn',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4872',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-07-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Alexander',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7235',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-07-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Abigail',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5482',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-07-31 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Henry',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1586',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-08-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Lily',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5796',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-08-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Jackson',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '8492',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-08-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Grace',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4537',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-08-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Sebastian',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5142',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-08-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Zoe',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5712',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-09-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Leo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4515',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-09-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Aria',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7129',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-09-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Julian',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4589',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-09-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Nora',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7899',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-09-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Gabriel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3159',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-10-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                    {
+                    'costumer_name': 'Hazel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2145',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-10-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Caleb',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5852',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-10-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Violet',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4782',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-10-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nathan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4898',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-10-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Aurora',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5248',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-11-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ezra',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3259',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-11-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Stella',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2458',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-11-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Owen',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6478',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-11-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lucy',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4689',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-11-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Isaiah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3587',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-12-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Riley',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-12-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Asher',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5498',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-12-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Layla',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7892',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-12-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Levi',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4598',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2019-12-31 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Aaron',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5678',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-01-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Bella',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3594',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-01-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Carter',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6879',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-01-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Daisy',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1548',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-01-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Dominic',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2582',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-01-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Eliza',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6597',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-02-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Finn',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5234',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-02-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Freya',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3459',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-02-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Gavin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7892',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-02-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Gianna',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5729',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-02-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Harrison',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2341',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-03-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hannah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5487',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-03-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ian',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7548',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-03-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ivy',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4897',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-03-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jace',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2341',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-03-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jasmine',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6487',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-04-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kaiden',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5487',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-04-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Keira',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2585',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-04-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Landon',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5545',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-04-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lila',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4548',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-04-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Miles',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3458',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-05-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Mya',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7545',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-05-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nolan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5484',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-05-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Naomi',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5678',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-05-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Oliver',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7545',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-05-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Olive',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-06-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Parker',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6754',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-06-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Penelope',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1321',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-06-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Quentin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7246',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-06-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Quinn',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5484',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-06-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ryder',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3498',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-07-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rose',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3548',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-07-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Silas',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6798',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-07-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sienna',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6881',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-07-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tristan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7162',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-07-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tessa',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5418',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-08-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Uriel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2154',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-08-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Uma',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3254',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-08-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Victor',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4895',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-08-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Vanessa',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7389',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-08-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Wesley',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6549',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-09-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Willow',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4564',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-09-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Xavier',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3545',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-09-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ximena',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7841',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-09-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Yosef',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5452',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-09-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Yara',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5482',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-10-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zachary',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3544',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-10-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zaylee',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2389',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-10-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Pheonix',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1578',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-10-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Skylar',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7898',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-10-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Atlas',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4569',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-11-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Luna',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-11-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elias',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7812',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-11-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Juniper',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2158',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-11-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Theo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4569',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-11-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Esme',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1399',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-12-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rowan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7216',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-12-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Cleo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7513',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-12-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Milo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6481',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-12-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Indigo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5488',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2020-12-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                }, 
+                   {
+                    'costumer_name': 'Adrian',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5782',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-01-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Blake',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7598',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-01-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Colin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5614',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-01-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Damien',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2458',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-01-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Derek',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-01-31 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Easton',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1589',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-02-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Felix',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-02-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Grayson',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-02-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hugo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3547',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-02-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Isaac',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7239',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-02-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jasper',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3587',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-03-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kyrie',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4899',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-03-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Levi',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6891',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-03-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Marcus',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3587',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-03-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nathaniel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2329',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-03-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Orion',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1899',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-04-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Preston',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2899',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-04-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Quent',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6592',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-04-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Riley',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3284',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-04-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Simon',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7121',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-04-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tyler',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5874',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-05-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Victor',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5841',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-05-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Wyatt',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7899',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-05-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zane',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6879',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-05-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Andre',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6781',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-05-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Beau',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3221',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-06-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Clyde',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3499',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-06-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Dante',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3577',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-06-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Emilio',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6711',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-06-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Finnian',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4519',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-06-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Gideo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5122',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-07-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Heath',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7229',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-07-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ivan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-07-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jaxon',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-07-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kieran',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3486',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-07-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Luka',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2488',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-08-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Magnus',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-08-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nico',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4211',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-08-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Omar',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2783',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-08-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Paolo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3289',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-08-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Quincy',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4599',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-09-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ronan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-09-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Seth',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7885',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-09-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tobias',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3816',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-09-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ulysses',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-09-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Vaughn',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-10-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Wes',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3599',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-10-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Xander',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4899',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-10-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Yosef',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6782',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-10-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zeke',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-10-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ada',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7521',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-11-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Beatrice',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6449',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-11-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Cora',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1399',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-11-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Delilah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4599',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-11-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Eden',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3261',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-11-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Luffy',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3699',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-12-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zoro',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7541',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-12-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sanji',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1288',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-12-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Robin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3177',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-12-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ussop',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7211',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2021-12-31 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nami',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3477',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-01-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Meliodas',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7819',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-01-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Mishyai',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3581',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-01-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kocho',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1574',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-01-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ash',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3776',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-01-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Skye',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5447',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-02-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Cairo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7244',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-02-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Cleo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4823',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-02-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Koda',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4718',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-02-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zion',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-02-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Malani',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3719',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-03-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kaia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-03-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Onyx',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-03-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lennox',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2499',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-03-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zuri',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3778',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-03-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Oaklyn',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-04-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Indie',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1889',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-04-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Knox',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3454',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-04-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Capri',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4399',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-04-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jett',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3729',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-04-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Mila',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-05-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rylan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3722',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-05-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elodie',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7499',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-05-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kairo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-05-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Brielle',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2488',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-05-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zayn',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2564',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-06-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ayla',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-06-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Soren',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7188',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-06-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Luna',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3726',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-06-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Bodhi',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4759',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-06-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Everly',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7155',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-07-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ember',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4811',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-07-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zayden',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4822',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-07-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jax',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2719',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-07-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nova',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3713',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-07-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Orin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2779',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-08-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tamsin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-08-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kiera',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3811',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-08-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rowan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7188',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-08-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Leiora',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-08-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Vaelin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2711',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-09-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ysolde',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3829',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-09-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sorin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-09-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Frewyn',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-09-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Talon',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7699',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-09-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elowen',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3715',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-10-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Corwin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4139',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-10-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Briar',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-10-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Aric',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-10-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lucan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-10-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Aerith',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-11-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Maelis',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4823',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-11-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ryker',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-11-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nimue',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5719',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-11-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Cassian',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5822',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-11-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Vespera',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2711',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-12-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Dorian',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3719',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-12-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lyra',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2771',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-12-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Fenris',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-12-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Morrigan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2022-12-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Thorne',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2759',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-01-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elaria',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4729',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-01-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kael',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7289',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-01-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Isael',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7225',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-01-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sylas',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-01-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zephyra',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7443',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-02-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elric',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5782',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-02-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Draven',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4299',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-02-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Seraphina',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-02-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Galadriel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3811',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-02-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elara',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7443',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-03-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Cedric',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5799',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-03-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Thalia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1119',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-03-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Alaric',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5722',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-03-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Arwen',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2115',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-03-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lydia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3175',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-04-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Boaz',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-04-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Dinah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6669',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-04-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jonathan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3544',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-04-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Susanna',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4199',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-04-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Asher',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2177',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-05-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Martha',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3722',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-05-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Caleb',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7779',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-05-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zipporah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2729',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-05-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Malachi',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3822',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-05-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Phoebe',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-06-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Simeon',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5277',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-06-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Joanna',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5822',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-06-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ezekiel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7897',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-06-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Priscilla',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3277',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-06-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Jairus',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2779',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-07-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lilah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6188',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-07-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Solomon',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6969',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-07-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tabitha',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5125',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-07-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Gideo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3841',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-07-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Abigail',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7447',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-08-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Josiah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '9522',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-08-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Mary',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3444',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-08-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Abel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6522',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-08-20 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hannah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6332',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-08-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Micah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4610',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-09-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rachel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5122',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-09-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Reuben',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5216',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-09-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sarah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7212',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-09-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ezra',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5228',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-09-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Deborah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3177',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-10-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Lev',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6577',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-10-02 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Miriam',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7488',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-10-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Samuel',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7116',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-10-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Naomi',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4512',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-10-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Isaac',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3552',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-11-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Esther',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4022',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-11-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Noah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6585',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-11-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ruth',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7115',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-11-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elijah',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5483',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-11-18 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Charon',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6889',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-12-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tyche',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3449',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-12-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Enyo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6177',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-12-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Themis',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4155',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-12-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Fenrir',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2772',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2023-12-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Eos',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4519',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-01-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Dione',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1898',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-01-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Bragi',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7115',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-01-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Morpheus',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5519',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-01-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hecate',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5277',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-01-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nemesis',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5129',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-02-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Medusa',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7218',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-02-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Pan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4153',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-02-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Circe',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5217',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-02-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rhea',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1553',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-02-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Helios',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2775',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-03-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nyx',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7122',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-03-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Triton',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1550',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-03-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Andromeda',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6522',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-03-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Atlas',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5124',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-03-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Demeter',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6227',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-04-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Calliope',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7049',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-04-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Achilles',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4577',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-04-23 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Juno',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-04-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Erol',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2776',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-04-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hestia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6879',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-05-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Selene',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3769',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-05-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hermes',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1895',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-05-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Gaia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7699',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-05-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Thor',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2816',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-05-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Iris',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5882',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-06-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Loki',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5586',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-06-06 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Artemis',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3782',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-06-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ares',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7779',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-06-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hera',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1499',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-06-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Odin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-07-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Freya',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7885',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-07-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Persues',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3488',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-07-14 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Athena',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5965',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-07-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Apollo',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3778',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-07-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Hollis',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6672',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-08-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Milan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5769',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-08-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zephyr',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2881',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-08-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zion',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6283',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-08-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Wren',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5963',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-08-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Toby',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-09-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Tegan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5882',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-09-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Teagan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2848',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-09-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Taylor',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4887',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-09-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sydney',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5429',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-09-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Stevie',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3788',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-10-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Spencer',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7979',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-10-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Skyler',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4893',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-10-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sky',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3228',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-10-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Shiloh',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1987',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-10-22 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sawyer',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3225',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-11-11 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Sage',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2785',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-11-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rowan',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1289',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-11-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Rory',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '3787',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-11-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'River',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6798',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-11-27 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Remy',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7689',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-12-03 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Reese',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2787',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-12-07 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Chin',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5788',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-12-15 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Peter',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6778',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-12-16 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kelsey',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6798',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2024-12-21 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Aveline',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5787',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-01-01 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kael',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-01-09 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Elara',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6997',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-01-12 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Dashiell',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7292',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-01-17 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Mirielle',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2189',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-01-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Isielde',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5787',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-02-04 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Caius',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '6576',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-02-08 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Nyra',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1989',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-02-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zephyr',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5829',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-02-28 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Liora',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2778',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-02-30 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Evren',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2549',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-03-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Zinnia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5878',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-03-10 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ilias',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '1999',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-03-13 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Freesia',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2782',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-03-26 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Kaida',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4839',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-03-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Azura',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '7288',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-04-05 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Xanthe',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5788',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-04-19 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Amaris',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '4789',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-04-24 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Idris',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '5882',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-04-25 10:24:10' # year-month-date   hours-minute-seconds  military time
+                },
+                   {
+                    'costumer_name': 'Ziva',
+                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
+                    'total_payment': '2881',
+                    'total_order_items': 5,
+                    'payment_id': generate_payment_id(),
+                    'payment_method': 'Cash', # or PayMongo
+                    'orders':[
+                                {"quantity": 2, "food_name": "Pan-Seared Cod"},
+                                {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
+                                {"quantity": 1, "food_name": "Foie Gras Terrine"}
+                            ],
+                    'dine_time': '2025-04-30 10:24:10' # year-month-date   hours-minute-seconds  military time
                 },
             ]
 
