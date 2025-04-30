@@ -6,10 +6,12 @@ import {
     LogOut,
     House,
     ChevronRight,
+    PackagePlus,
 } from "lucide-react";
 import OrderHistory from "./productManagement/OrderHistory";
 import ManageProducts from "./productManagement/ManageProducts";
 import SalesAnalytics from "./productManagement/SalesAnalytics";
+import NewProduct from "./productManagement/NewProduct";
 
 interface ProductManagementProps {
     setIsProductManagement: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,7 +25,10 @@ const ProductManagement = ({
         useState<string>("Appetizers");
 
     const [selectedTab, setSelectedTab] = useState<
-        "Product Management" | "Order History" | "Sales Analytics"
+        | "Product Management"
+        | "Order History"
+        | "Sales Analytics"
+        | "Add New Product"
     >("Product Management");
 
     const [openTabs, setOpenTabs] = useState<string[]>(["Catalouges"]);
@@ -94,6 +99,20 @@ const ProductManagement = ({
                             Order History
                         </h1>
                     </li>
+                    <li
+                        onClick={() => {
+                            setSelectedTab("Add New Product");
+                            setOpenTabs(["Catalogues", "Add New Product"]);
+                        }}
+                        className={`${isClose && "pop-close-animation"} cursor-pointer pop-up-animation flex flex-row gap-2 items-center text-primary`}
+                    >
+                        <i>
+                            <PackagePlus />
+                        </i>
+                        <h1 className=" text-[1rem] text-shadow-md">
+                            Add New Product
+                        </h1>
+                    </li>
                 </div>
                 <div className="flex flex-row items-start justify-between h-[12%]">
                     <div
@@ -150,6 +169,8 @@ const ProductManagement = ({
                     />
                 )}
                 {selectedTab === "Sales Analytics" && <SalesAnalytics />}
+
+                {selectedTab === "Add New Product" && <NewProduct />}
             </div>
         </div>
     );

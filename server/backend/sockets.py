@@ -333,7 +333,26 @@ def handle_update_product(data):
 
     emit('refresh-product', broadcast=True)
 
+@socketio.on('handle-delete-product')
+def handle_update_product(data):
+    print(data)
 
+  
+    food_name_orig = data.get('food_name')
+    
+
+    try:
+        selected_product = Products.query.filter_by(food_name = food_name_orig).first()
+
+        delete_data(selected_product)
+    
+    except(KeyError):
+        print(KeyError)
+
+    emit('refresh-product', broadcast=True)
+
+
+        
         
 
    
