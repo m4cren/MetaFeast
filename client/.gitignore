@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # privite informations
-.env
+server/.env
