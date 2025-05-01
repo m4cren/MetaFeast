@@ -3,6 +3,8 @@ from .db_config import save_data, delete_all_data, delete_data, generate_payment
 from sqlalchemy import desc
 from flask_socketio import SocketIO, emit
 from .db_models import Table, TableRequest, Costumer, Orders, Products, PendingPayments
+import os
+from flask import request
 
 def generate_unique_payment_id(lenght = 8):
     while True:
@@ -298,38 +300,15 @@ def notify_costumer_exit():
 #     ratings = db.Column(db.Float, nullable = False, default = 0)
 #     total_ratings = db.Column(db.Integer, default = 0, nullable = False)
 #     total_orders = db.Column(db.Integer, default = 0, nullable =False)
+
+
+
+
+
+
 @socketio.on('handle-update-product')
 def handle_update_product(data):
-    print(data)
-
-    food_name_orig = data.get('food_name_orig')
-    food_name = data.get('food_name')
-    cusine_category = data.get('cusine_category')
-    calories = data.get('calories')
-    quantity = data.get('quantity')
-    product_price = data.get('product_price')
-    waiting_time = data.get('waiting_time')
-    short_desc = data.get('short_desc')
-    full_details = data.get('full_details')
-
-    try:
-        selected_product = Products.query.filter_by(food_name = food_name_orig).first()
-    
-        if (selected_product):
-            selected_product.food_name = food_name
-            selected_product.category = cusine_category
-            selected_product.calories = calories
-            selected_product.quantity = quantity
-            selected_product.food_price = product_price
-            selected_product.waiting_time = waiting_time
-            selected_product.description = short_desc
-            selected_product.details = full_details
-
-            db.session.commit()
-        else:
-            print(f'Product: {food_name} does not exist on the kitchen')
-    except(KeyError):
-        print(KeyError)
+   
 
     emit('refresh-product', broadcast=True)
 

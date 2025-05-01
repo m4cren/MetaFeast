@@ -193,41 +193,47 @@ const TableRequestPopup = ({
                     </i>
                 </div>
                 <ul className="py-8 flex flex-col gap-2 h-[25rem] overflow-y-scroll custom-scrollbar px-3">
-                    {filterCurrentCostumer(filter).map(
-                        (
-                            { costumer_name, current_table, status, time },
-                            index,
-                        ) => (
-                            <li
-                                key={index}
-                                className="flex flex-row items-center justify-between text-primary border-1 border-white/20 rounded-2xl px-2 py-1 bg-gradient-to-r from-black/15 to-white/0 backdrop-blur-2xl [box-shadow:-2px_2px_5px_rgba(0,0,0,0.25)]"
-                            >
-                                <div className="flex flex-col">
-                                    <h1 className="text-[0.8rem] font-light">
-                                        {costumer_name} seats on table{" "}
-                                        {current_table}
-                                    </h1>
-                                    <div className="flex flex-row items-center opacity-60 gap-1">
-                                        <History size={15} />
-                                        <p className="text-[0.7rem] font-extralight">
-                                            {time}
-                                        </p>
+                    {currentCostumers.length !== 0 ? (
+                        filterCurrentCostumer(filter).map(
+                            (
+                                { costumer_name, current_table, status, time },
+                                index,
+                            ) => (
+                                <li
+                                    key={index}
+                                    className="flex flex-row items-center justify-between text-primary border-1 border-white/20 rounded-2xl px-2 py-1 bg-gradient-to-r from-black/15 to-white/0 backdrop-blur-2xl [box-shadow:-2px_2px_5px_rgba(0,0,0,0.25)]"
+                                >
+                                    <div className="flex flex-col">
+                                        <h1 className="text-[0.8rem] font-light">
+                                            {costumer_name} seats on table{" "}
+                                            {current_table}
+                                        </h1>
+                                        <div className="flex flex-row items-center opacity-60 gap-1">
+                                            <History size={15} />
+                                            <p className="text-[0.7rem] font-extralight">
+                                                {time}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="flex flex-row items-center gap-1">
-                                    <p className="text-[0.8rem] text-white/70 font-extralight">
-                                        {status}
-                                    </p>
-                                    {status === "Ordering" ? (
-                                        <ShoppingBasket size={20} />
-                                    ) : status === "Eating" ? (
-                                        <Drumstick />
-                                    ) : status === "Billing" ? (
-                                        <HandCoins />
-                                    ) : null}
-                                </div>
-                            </li>
-                        ),
+                                    <div className="flex flex-row items-center gap-1">
+                                        <p className="text-[0.8rem] text-white/70 font-extralight">
+                                            {status}
+                                        </p>
+                                        {status === "Ordering" ? (
+                                            <ShoppingBasket size={20} />
+                                        ) : status === "Eating" ? (
+                                            <Drumstick />
+                                        ) : status === "Billing" ? (
+                                            <HandCoins />
+                                        ) : null}
+                                    </div>
+                                </li>
+                            ),
+                        )
+                    ) : (
+                        <p className="text-white/50 text-[0.9rem] w-full text-center">
+                            There is no costumer
+                        </p>
                     )}
                 </ul>
             </div>
@@ -254,61 +260,41 @@ const TableRequestPopup = ({
                 </div>
 
                 <ul className="py-8 flex flex-col gap-2 h-[33rem] overflow-y-scroll custom-scrollbar px-3">
-                    {requestMessage.map(
-                        (
-                            {
-                                costumer_name,
-                                message,
-                                table_selected,
-                                time_ago,
-                            },
-                            index,
-                        ) => (
-                            <li
-                                key={index}
-                                className="flex flex-row items-center justify-between px-2  text-primary border-1 border-white/20 rounded-2xl p-2 bg-gradient-to-r from-black/15 to-white/0 backdrop-blur-2xl [box-shadow:-2px_2px_5px_rgba(0,0,0,0.25)]"
-                            >
-                                <div className="flex flex-col">
-                                    <h1 className="text-[0.9rem] font-light">
-                                        {message}
-                                    </h1>
-                                    <div className="flex flex-row items-center opacity-60 gap-1">
-                                        <History size={15} />
-                                        <p className="text-[0.7rem] font-extralight">
-                                            {time_ago}
-                                        </p>
+                    {requestMessage.length !== 0 ? (
+                        requestMessage.map(
+                            (
+                                {
+                                    costumer_name,
+                                    message,
+                                    table_selected,
+                                    time_ago,
+                                },
+                                index,
+                            ) => (
+                                <li
+                                    key={index}
+                                    className="flex flex-row items-center justify-between px-2  text-primary border-1 border-white/20 rounded-2xl p-2 bg-gradient-to-r from-black/15 to-white/0 backdrop-blur-2xl [box-shadow:-2px_2px_5px_rgba(0,0,0,0.25)]"
+                                >
+                                    <div className="flex flex-col">
+                                        <h1 className="text-[0.9rem] font-light">
+                                            {message}
+                                        </h1>
+                                        <div className="flex flex-row items-center opacity-60 gap-1">
+                                            <History size={15} />
+                                            <p className="text-[0.7rem] font-extralight">
+                                                {time_ago}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="flex flex-row items-center space-x-2 text-primary">
-                                    <button
-                                        onClick={() => {
-                                            refetchData();
-                                            setIsDenyConfirm(true);
-                                            setCostumerName(costumer_name);
-                                            setTableSelected(table_selected);
-                                            setRequestMessage((prev) =>
-                                                prev.filter(
-                                                    (item) =>
-                                                        item.table_selected !==
-                                                            table_selected ||
-                                                        item.costumer_name !==
-                                                            costumer_name,
-                                                ),
-                                            );
-                                        }}
-                                        className="flex items-center justify-center bg-gradient-to-l translate-x-[12px]  from-darkred to-lightred p-2 w-[3.25rem] h-[2rem] rounded-tl-2xl rounded-bl-2xl cursor-pointer"
-                                    >
-                                        <CircleX size={20} />
-                                    </button>
-                                    <button className="flex items-center justify-center z-2 bg-gradient-to-r from-darkgreen to-lightgreen w-[4.5rem] h-[2.75rem] rounded-tr-2xl rounded-br-2xl rounded-tl-md rounded-bl-md p-2 rounded-2xl cursor-pointer">
-                                        <CircleCheck
+                                    <div className="flex flex-row items-center space-x-2 text-primary">
+                                        <button
                                             onClick={() => {
                                                 refetchData();
-                                                handleAccept(
+                                                setIsDenyConfirm(true);
+                                                setCostumerName(costumer_name);
+                                                setTableSelected(
                                                     table_selected,
-                                                    costumer_name,
                                                 );
-
                                                 setRequestMessage((prev) =>
                                                     prev.filter(
                                                         (item) =>
@@ -319,12 +305,40 @@ const TableRequestPopup = ({
                                                     ),
                                                 );
                                             }}
-                                            size={30}
-                                        />
-                                    </button>
-                                </div>
-                            </li>
-                        ),
+                                            className="flex items-center justify-center bg-gradient-to-l translate-x-[12px]  from-darkred to-lightred p-2 w-[3.25rem] h-[2rem] rounded-tl-2xl rounded-bl-2xl cursor-pointer"
+                                        >
+                                            <CircleX size={20} />
+                                        </button>
+                                        <button className="flex items-center justify-center z-2 bg-gradient-to-r from-darkgreen to-lightgreen w-[4.5rem] h-[2.75rem] rounded-tr-2xl rounded-br-2xl rounded-tl-md rounded-bl-md p-2 rounded-2xl cursor-pointer">
+                                            <CircleCheck
+                                                onClick={() => {
+                                                    refetchData();
+                                                    handleAccept(
+                                                        table_selected,
+                                                        costumer_name,
+                                                    );
+
+                                                    setRequestMessage((prev) =>
+                                                        prev.filter(
+                                                            (item) =>
+                                                                item.table_selected !==
+                                                                    table_selected ||
+                                                                item.costumer_name !==
+                                                                    costumer_name,
+                                                        ),
+                                                    );
+                                                }}
+                                                size={30}
+                                            />
+                                        </button>
+                                    </div>
+                                </li>
+                            ),
+                        )
+                    ) : (
+                        <p className="text-white/50 text-[0.9rem] w-full text-center">
+                            There is no incoming costumer
+                        </p>
                     )}
                 </ul>
             </div>

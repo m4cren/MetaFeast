@@ -101,7 +101,7 @@ const OrderHistory = () => {
                 <p>Costumer Info</p>
             </div>
             <div>
-                <ul className="flex flex-col py-4 gap-2 h-[25rem]  overflow-y-scroll thin-scrollbar text-[0.9rem] font-extralight ">
+                <ul className="flex flex-col py-4 gap-2 h-[30rem]  overflow-y-scroll thin-scrollbar text-[0.9rem] font-extralight ">
                     {filteredHistoryList.map(
                         (
                             {

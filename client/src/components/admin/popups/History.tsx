@@ -63,10 +63,6 @@ const History = ({ setIsHistory }: HistoryProps) => {
     }, [historyList]);
 
     useEffect(() => {
-        console.log(filteredHistoryList);
-    }, [filteredHistoryList]);
-
-    useEffect(() => {
         fetchHistoryList();
     }, []);
 

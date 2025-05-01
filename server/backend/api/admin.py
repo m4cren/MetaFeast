@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request, json
 from werkzeug.security import  check_password_hash
+from werkzeug.utils import secure_filename
 from ..extensions import db
 from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews, CostumerHistory, Products
 from sqlalchemy import desc, asc
+import os
 from ..db_config import time_ago, save_data
 
 import random
@@ -170,6 +172,7 @@ def receive_rating():
 def fetch_reviews():
 
      get_reviews = Reviews.query.order_by(desc(Reviews.date)).all()
+     
 
      if get_reviews:
 
@@ -177,7 +180,7 @@ def fetch_reviews():
 
           return jsonify({'msg': 'Success', 'status': True, 'reviews': reviews})
      
-     return jsonify({'msg': 'No reviews', 'status': False, 'reviews': 'empty'})
+     return jsonify({'msg': 'No reviews', 'status': False})
 
 
 @admin.route('/admin/fetch-history', methods=['GET'])
@@ -192,3 +195,125 @@ def fetch_histories():
           return jsonify({'msg': 'Success', 'status': True, 'histories': histories, 'histories_desc': histories_desc})
      
      return jsonify({'msg': 'No history', 'status': False, 'histories': 'empty'})
+
+     #    formData.append("food_name_orig", newProductDetails.food_name_orig);
+     #    formData.append("food_name", newProductDetails.food_name);
+     #    formData.append("cusine_category", newProductDetails.cusine_category);
+     #    formData.append("calories", String(newProductDetails.calories));
+     #    formData.append("quantity", String(newProductDetails.quantity));
+     #    formData.append(
+     #        "product_price",
+     #        String(newProductDetails.product_price),
+     #    );
+     #    formData.append("waiting_time", String(newProductDetails.waiting_time));
+     #    formData.append("short_desc", newProductDetails.short_desc);
+     #    formData.append("full_details", newProductDetails.full_details);
+
+     #    if (newProductDetails.imgFile) {
+     #        formData.append("new_img_file", newProductDetails.imgFile);
+
+
+@admin.route('/admin/update-product', methods=['POST'])
+def update_product():
+
+     food_name_orig = request.form.get('food_name_orig')
+     food_name = request.form.get("food_name")
+     cusine_category = request.form.get("cusine_category")
+     calories = request.form.get("calories")
+     quantity = request.form.get("quantity")
+     product_price = request.form.get("product_price")
+     waiting_time = request.form.get("waiting_time")
+     short_desc = request.form.get("short_desc")
+     full_details = request.form.get("full_details")
+
+     new_img_file = request.files.get("new_img_file")
+     
+
+     try:
+          selected_product = Products.query.filter_by(food_name = food_name_orig).first()
+
+          
+    
+          if (selected_product):
+
+               if new_img_file :
+                    
+                    print(os.getcwd())
+                   
+                    filename = secure_filename(new_img_file.filename)
+                    project_root = os.path.abspath(os.path.join(os.getcwd(), '..'))
+                    UPLOAD_FOLDER = os.path.join(project_root, 'client', 'public', 'images', 'products')
+                    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+                    file_path = os.path.join(UPLOAD_FOLDER, filename)
+                    new_img_file.save(file_path)
+                    selected_product.img = new_img_file.filename
+                    print(f'success changing image of {food_name} to {new_img_file.filename}')
+
+
+               selected_product.food_name = food_name
+               selected_product.category = cusine_category
+               selected_product.calories = calories
+               selected_product.quantity = quantity
+               selected_product.food_price = product_price
+               selected_product.waiting_time = waiting_time
+               selected_product.description = short_desc
+               selected_product.details = full_details
+
+               db.session.commit()
+          else:
+               print(f'Product: {food_name} does not exist on the kitchen')
+     except(KeyError):
+          print(KeyError)
+
+     return jsonify({'msg': 'Success', 'status': True})
+
+
+
+@admin.route('/admin/create-product',methods=['POST'])
+def create_product():
+      
+     food_name = request.form.get("food_name")
+     cusine_category = request.form.get("cusine_category")
+     calories = request.form.get("calories")
+     quantity = request.form.get("quantity")
+     product_price = request.form.get("product_price")
+     waiting_time = request.form.get("waiting_time")
+     short_desc = request.form.get("short_desc")
+     full_details = request.form.get("full_details")
+
+     new_img_file = request.files.get("new_img_file")
+
+     existing_product = Products.query.filter(Products.food_name.ilike(f'%{food_name}%')).first()
+
+     if not existing_product:
+          if new_img_file :
+                    
+               print(os.getcwd())
+                   
+               filename = secure_filename(new_img_file.filename)
+               project_root = os.path.abspath(os.path.join(os.getcwd(), '..'))
+               UPLOAD_FOLDER = os.path.join(project_root, 'client', 'public', 'images', 'products')
+               os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+               file_path = os.path.join(UPLOAD_FOLDER, filename)
+               new_img_file.save(file_path)
+              
+               print(f'success changing image of {food_name} to {new_img_file.filename}')
+
+          new_product = Products(
+               category = cusine_category,
+               quantity = quantity,
+               food_name = food_name,
+               food_price = product_price,
+               calories = calories,
+               waiting_time = waiting_time,
+               img = new_img_file.filename,
+               description = short_desc,
+               details = full_details
+          )
+          save_data(new_product)
+
+          return jsonify({'msg': 'Sucess', 'status': True})
+     else:
+          return jsonify({'msg': 'Product already exist', 'status': False})

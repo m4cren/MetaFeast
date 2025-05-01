@@ -203,6 +203,7 @@ export type HistoryType = {
     ];
     dine_time: string;
     formatted_date?: string;
+    year?: string;
 };
 
 export type TableDetailTypes = {
@@ -210,4 +211,17 @@ export type TableDetailTypes = {
     table_name: string;
     current_costumer_status: string;
     is_available: boolean;
+};
+
+export type NewProductDetailTypes = {
+    food_name_orig?: string;
+    food_name: string;
+    cusine_category: string;
+    calories: number;
+    quantity: number;
+    product_price: number;
+    waiting_time: number;
+    short_desc: string;
+    full_details: string;
+    imgFile?: File;
 };

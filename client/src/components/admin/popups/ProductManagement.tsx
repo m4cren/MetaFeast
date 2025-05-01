@@ -47,7 +47,7 @@ const ProductManagement = ({
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex flex-row justify-center items-center pointer-events-auto">
             <div
-                className={`${isClose && "to-left-close-animation"} to-left-animation w-[15.5vw] origin-right h-[45rem] px-6 bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
+                className={`${isClose && "to-left-close-animation"} to-left-animation w-[18vw] origin-right h-[45rem] px-6 bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]`}
             >
                 <div
                     className={`${isClose && "pop-close-animation"} pop-up-animation flex items-end pb-2  h-[10%]`}

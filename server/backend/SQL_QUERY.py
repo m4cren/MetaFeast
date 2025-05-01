@@ -14,6 +14,7 @@ def create_sample_history(app):
         existing_reviews = CostumerHistory.query.first()
 
         if not existing_reviews:
+
             reviews = [
                 {
                     'costumer_name': 'Mika', #pag generate mo nalang chatgpt ng random names
@@ -27,13 +28,6 @@ def create_sample_history(app):
                                 {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
-<<<<<<< HEAD
-                    'dine_time': '2019-01-01 15:24:10' # year-month-date   hours-minute-seconds  military time
-                },
-                {
-                    'costumer_name': 'Rainier',
-                    'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
-=======
                     'dine_time': '2018-01-01 15:24:10' # year-month-date   hours-minute-seconds  military time
                     #eto pinaka mahalaga dapat e from 2019 to 2025, basta may tig 5 na data per month sa isang year or kahit walang data ung ibang month sa loob ng isang taon
                     # kahit wag mona bagihun yung time, adjust nlng ng year month and date 
@@ -42,7 +36,6 @@ def create_sample_history(app):
                 {
                     'costumer_name': 'Rainier',
                     'table_seated': 'B_2', 
->>>>>>> origin/main
                     'total_payment': '4679',
                     'total_order_items': 5,
                     'payment_id': generate_payment_id(),
@@ -52,7 +45,7 @@ def create_sample_history(app):
                                 {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
-<<<<<<< HEAD
+
                     'dine_time': '2019-01-02 10:24:10' # year-month-date   hours-minute-seconds  military time
                 },
                     {
@@ -5333,7 +5326,7 @@ def create_sample_history(app):
                             ],
                     'dine_time': '2025-04-25 10:24:10' # year-month-date   hours-minute-seconds  military time
                 },
-                   {
+                {
                     'costumer_name': 'Ziva',
                     'table_seated': 'B_2', # range from A to B and 1 - 16 e.x: A_14 
                     'total_payment': '2881',
@@ -5346,10 +5339,10 @@ def create_sample_history(app):
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
                     'dine_time': '2025-04-30 10:24:10' # year-month-date   hours-minute-seconds  military time
-=======
-                    'dine_time': '2018-01-02 10:24:10' 
->>>>>>> origin/main
-                },
+
+              
+
+                }
                
             ]
 

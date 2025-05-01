@@ -24,7 +24,6 @@ import useServerAddress from "../../../../../useServerAddress";
 import axios from "axios";
 import { HistoryType } from "../../../../types/types";
 import useTimeOfDay from "../../../../hooks/useTimeOfDay";
-import { animate } from "framer-motion";
 
 ChartJS.register(
     BarElement,
@@ -88,6 +87,7 @@ const SalesAnalytics = () => {
                             total_order_items: total_order_items,
                             total_payment: total_payment,
                             formatted_date: convertTime(dine_time),
+                            year: dine_time.slice(0, 4),
                         },
                     ]);
                 },
@@ -189,8 +189,53 @@ const SalesAnalytics = () => {
     }, [historyData]);
 
     useEffect(() => {
+        console.log(filteredHistoryData);
+    }, [filter]);
+
+    useEffect(() => {
         fetchHistoryData();
     }, []);
+
+    const groupedDate = filteredHistoryData.reduce<Record<string, number>>(
+        (tot_Pay, current) => {
+            const date = current.formatted_date
+                ? current.formatted_date
+                : "Unknown Date";
+
+            const for_overall = current.year ? current.year : "Unknown Year";
+
+            const for_this_year = current.formatted_date
+                ? current.formatted_date.slice(0, 3)
+                : "Unknown Month";
+
+            if (filter === "Overall") {
+                if (!tot_Pay[for_overall]) {
+                    tot_Pay[for_overall] = 0;
+                }
+
+                tot_Pay[for_overall] += current.total_payment;
+                return tot_Pay;
+            } else if (
+                filter === "This Year" ||
+                availableYears.find((year) => year === filter)
+            ) {
+                if (!tot_Pay[for_this_year]) {
+                    tot_Pay[for_this_year] = 0;
+                }
+
+                tot_Pay[for_this_year] += current.total_payment;
+                return tot_Pay;
+            } else {
+                if (!tot_Pay[date]) {
+                    tot_Pay[date] = 0;
+                }
+
+                tot_Pay[date] += current.total_payment;
+                return tot_Pay;
+            }
+        },
+        {},
+    );
 
     return (
         <div className="text-pop-up-animation flex flex-col px-12 py-8 gap-4">
@@ -283,7 +328,7 @@ const SalesAnalytics = () => {
                         </div>
                         <div className="leading-7">
                             <p className="text-white/65 text-[0.8rem] font-extralight">
-                                Total Income{" "}
+                                Total ROI{" "}
                                 {filter.includes("This") ||
                                 filter.includes("Overall")
                                     ? filter.toLowerCase()
@@ -360,24 +405,19 @@ const SalesAnalytics = () => {
                     {!chartType ? (
                         <Line
                             data={{
-                                labels: filteredHistoryData.map(
-                                    ({ formatted_date }) => formatted_date,
-                                ),
+                                labels: Object.keys(groupedDate),
                                 datasets: [
                                     {
                                         label: "Revenue",
-                                        data: filteredHistoryData.map(
-                                            ({ total_payment }) =>
-                                                total_payment,
-                                        ),
-                                        borderColor: "white",
+                                        data: Object.values(groupedDate),
+                                        borderColor: "#f5f5f575",
                                         tension: 0.4,
-                                        borderWidth: 2,
+                                        borderWidth: 1.5,
                                     },
                                 ],
                             }}
                             options={{
-                                color: "white",
+                                color: "#f5f5f575",
 
                                 scales: {
                                     x: {
@@ -403,23 +443,20 @@ const SalesAnalytics = () => {
                     ) : (
                         <Bar
                             data={{
-                                labels: filteredHistoryData.map(
-                                    ({ formatted_date }) => formatted_date,
-                                ),
+                                labels: Object.keys(groupedDate),
                                 datasets: [
                                     {
                                         label: "Revenue",
-                                        data: filteredHistoryData.map(
-                                            ({ total_payment }) =>
-                                                total_payment,
-                                        ),
-                                        borderColor: "white",
-                                        backgroundColor: "white",
+                                        data: Object.values(groupedDate),
+                                        borderColor: "#f5f5f5",
+                                        backgroundColor: "#f5f5f5",
+                                        borderRadius: 10,
+                                        hoverBackgroundColor: "#f5f5f580",
                                     },
                                 ],
                             }}
                             options={{
-                                color: "white",
+                                color: "#f5f5f5",
 
                                 scales: {
                                     x: {

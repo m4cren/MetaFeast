@@ -13,7 +13,7 @@ import useTimeOfDay from "../../../hooks/useTimeOfDay";
 
 const Reviews = ({ setIsReview }: ReviewProps) => {
     const [isClose, setIsClose] = useState<boolean>(false);
-    const [reviews, setReviews] = useState<ReviewTypes[]>([]);
+    const [reviews, setReviews] = useState<ReviewTypes[] | null>(null);
     const { server } = useServerAddress();
 
     const [isFilter, setIsFilter] = useState<boolean>(false);
@@ -33,7 +33,9 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
     const [twoStarWidth, setTwoStarWidth] = useState<number>(0);
     const [oneStarWidth, setOneStarWidth] = useState<number>(0);
 
-    const [filteredReviews, setFilteredReviews] = useState<ReviewTypes[]>([]);
+    const [filteredReviews, setFilteredReviews] = useState<
+        ReviewTypes[] | null
+    >(null);
 
     const [starFilter, setStarFilter] = useState<number>(0);
     const [dateFilter, setDateFilter] = useState<string>("All Time");
@@ -51,8 +53,11 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
             const response = await axios.get(`${server}/admin/fetch-reviews`, {
                 headers,
             });
+            console.log(response.data.reviews);
 
-            setReviews(response.data.reviews);
+            if (response.data.reviews) {
+                setReviews(response.data.reviews);
+            }
         } catch (error) {
             console.log(error);
         }
@@ -85,6 +90,7 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
     }, [reviews]);
 
     useEffect(() => {
+        if (!filteredReviews) return;
         setTotalReviews(filteredReviews.length);
         let accumulated_ratings = 0;
         filteredReviews.forEach(({ ratings }) => {
@@ -144,6 +150,7 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
     };
 
     useEffect(() => {
+        if (!reviews) return;
         if (starFilter !== 0) {
             availableYears.forEach((item) => {
                 if (dateFilter === item) {
@@ -576,114 +583,120 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
                     </div>
                 </div>
                 <ul className="flex flex-col h-[25rem] gap-8 py-8 overflow-y-scroll thin-scrollbar text-[0.9rem] font-extralight [mask-image:linear-gradient(to_bottom,black_85%,transparent)]">
-                    {filteredReviews.map(
-                        (
-                            {
-                                name,
-                                img_profile_url,
-                                ratings,
-                                comment,
-                                date,
-                                time_age,
-                                order_items,
-                                total_spend,
-                                email,
-                            },
-                            index,
-                        ) => (
-                            <li
-                                key={index}
-                                className="flex flex-row items-start list-none w-full min-h-[10rem] "
-                            >
-                                <div className="flex flex-row items-center w-[40%] gap-3 ">
-                                    <img
-                                        className="w-[4.5rem] h-[4.5rem] bg-darkbrown/50 rounded-md p-1"
-                                        src={img_profile_url}
-                                        alt=""
-                                    />
-                                    <div className="flex flex-col gap-1 w-[50%]  ">
-                                        <div className="leading-5">
-                                            <h1 className="text-primary text-[1.5rem] font-light">
-                                                {name}
-                                            </h1>
-                                            <p className="text-white/60 text-[0.75rem] font-extralight">
-                                                {email}
-                                            </p>
-                                        </div>
+                    {filteredReviews?.length !== 0 && filteredReviews ? (
+                        filteredReviews.map(
+                            (
+                                {
+                                    name,
+                                    img_profile_url,
+                                    ratings,
+                                    comment,
+                                    date,
+                                    time_age,
+                                    order_items,
+                                    total_spend,
+                                    email,
+                                },
+                                index,
+                            ) => (
+                                <li
+                                    key={index}
+                                    className="flex flex-row items-start list-none w-full min-h-[10rem] "
+                                >
+                                    <div className="flex flex-row items-center w-[40%] gap-3 ">
+                                        <img
+                                            className="w-[4.5rem] h-[4.5rem] bg-darkbrown/50 rounded-md p-1"
+                                            src={img_profile_url}
+                                            alt=""
+                                        />
+                                        <div className="flex flex-col gap-1 w-[50%]  ">
+                                            <div className="leading-5">
+                                                <h1 className="text-primary text-[1.5rem] font-light">
+                                                    {name}
+                                                </h1>
+                                                <p className="text-white/60 text-[0.75rem] font-extralight">
+                                                    {email}
+                                                </p>
+                                            </div>
 
-                                        <div className=" ">
-                                            <p className="text-white/60 text-[0.75rem] font-extralight flex flex-row items-center justify-between w-full ">
-                                                Total Spend:{" "}
-                                                <span>₱ {total_spend}</span>
+                                            <div className=" ">
+                                                <p className="text-white/60 text-[0.75rem] font-extralight flex flex-row items-center justify-between w-full ">
+                                                    Total Spend:{" "}
+                                                    <span>₱ {total_spend}</span>
+                                                </p>
+                                                <p className="text-white/60 text-[0.75rem] font-extralight flex flex-row items-center justify-between w-full ">
+                                                    Order item(s):{" "}
+                                                    <span>{order_items}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className=" w-[60%] flex flex-col gap-4">
+                                        <div className="flex flex-row items-end gap-2">
+                                            <div className="flex flex-row text-primary gap-2">
+                                                {ratings === 1 && (
+                                                    <>
+                                                        <FaStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                    </>
+                                                )}
+                                                {ratings === 2 && (
+                                                    <>
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                    </>
+                                                )}
+                                                {ratings === 3 && (
+                                                    <>
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                    </>
+                                                )}
+                                                {ratings === 4 && (
+                                                    <>
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaRegStar size={25} />
+                                                    </>
+                                                )}
+                                                {ratings === 5 && (
+                                                    <>
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                        <FaStar size={25} />
+                                                    </>
+                                                )}
+                                            </div>
+                                            <p className="text-white/50 font-extralight text-[0.75rem] tracking-wider">
+                                                {time_age} | {date}
                                             </p>
-                                            <p className="text-white/60 text-[0.75rem] font-extralight flex flex-row items-center justify-between w-full ">
-                                                Order item(s):{" "}
-                                                <span>{order_items}</span>
+                                        </div>
+                                        <div>
+                                            <p className="text-white/60 font-extralight text-[0.85rem]">
+                                                "{comment}"
                                             </p>
                                         </div>
                                     </div>
-                                </div>
-                                <div className=" w-[60%] flex flex-col gap-4">
-                                    <div className="flex flex-row items-end gap-2">
-                                        <div className="flex flex-row text-primary gap-2">
-                                            {ratings === 1 && (
-                                                <>
-                                                    <FaStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                </>
-                                            )}
-                                            {ratings === 2 && (
-                                                <>
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                </>
-                                            )}
-                                            {ratings === 3 && (
-                                                <>
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                </>
-                                            )}
-                                            {ratings === 4 && (
-                                                <>
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaRegStar size={25} />
-                                                </>
-                                            )}
-                                            {ratings === 5 && (
-                                                <>
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                    <FaStar size={25} />
-                                                </>
-                                            )}
-                                        </div>
-                                        <p className="text-white/50 font-extralight text-[0.75rem] tracking-wider">
-                                            {time_age} | {date}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p className="text-white/60 font-extralight text-[0.85rem]">
-                                            "{comment}"
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                        ),
+                                </li>
+                            ),
+                        )
+                    ) : (
+                        <h2 className="text-white/50 text-[1rem] font-light text-center w-full py-2">
+                            There is no available data
+                        </h2>
                     )}
                 </ul>
             </div>

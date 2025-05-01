@@ -9,8 +9,12 @@ import {
     Info,
     LaptopMinimalCheck,
     LogOut,
+    ImagePlus,
 } from "lucide-react";
-import { ProductDetailsType } from "../../../../types/types";
+import {
+    ProductDetailsType,
+    NewProductDetailTypes,
+} from "../../../../types/types";
 import { FaStar, FaStarHalfStroke } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -25,18 +29,6 @@ interface ManageProductsProps {
     setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-type NewProductDetailTypes = {
-    food_name_orig: string;
-    food_name: string;
-    cusine_category: string;
-    calories: number;
-    quantity: number;
-    product_price: number;
-    waiting_time: number;
-    short_desc: string;
-    full_details: string;
-};
-
 const ManageProducts = ({
     selectedCategory,
     setSelectedCategory,
@@ -45,6 +37,35 @@ const ManageProducts = ({
 
     const [isDeleteProduct, setIsDeleteProduct] = useState<boolean>(false);
 
+    const [newImgPreview, setNewImgPreview] = useState<string | null>(null);
+
+    const handleChangeImg = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.currentTarget.files) {
+            const file = e.currentTarget.files?.[0];
+            setNewImgPreview(URL.createObjectURL(file));
+
+            setNewProductsDetails({
+                food_name_orig: selectedProduct?.food_name
+                    ? selectedProduct.food_name
+                    : "",
+                food_name: newProductDetails.food_name,
+                cusine_category: newProductDetails.cusine_category,
+                calories: newProductDetails.calories,
+                full_details: newProductDetails.full_details,
+                product_price: newProductDetails.product_price,
+                short_desc: newProductDetails.short_desc,
+                quantity: newProductDetails.quantity,
+                waiting_time: newProductDetails.waiting_time,
+                imgFile: file,
+            });
+        }
+    };
+    useEffect(() => {
+        return () => {
+            if (newImgPreview) URL.revokeObjectURL(newImgPreview);
+        };
+    }, [newImgPreview]);
+
     const handleWaitingTimeValue = (
         type: "Increase" | "Decrease",
         prop: "Waiting Time" | "Quantity",
@@ -52,63 +73,27 @@ const ManageProducts = ({
         if (prop === "Waiting Time") {
             if (type === "Increase") {
                 setNewProductsDetails({
-                    food_name_orig: selectedProduct?.food_name
-                        ? selectedProduct.food_name
-                        : "",
-                    food_name: newProductDetails.food_name,
-                    cusine_category: newProductDetails.cusine_category,
-                    calories: newProductDetails.calories,
-                    full_details: newProductDetails.full_details,
-                    product_price: newProductDetails.product_price,
-                    short_desc: newProductDetails.short_desc,
-                    quantity: newProductDetails.quantity,
+                    ...newProductDetails,
                     waiting_time: newProductDetails.waiting_time + 1,
                 });
             }
             if (type === "Decrease" && newProductDetails.waiting_time > 0) {
                 setNewProductsDetails({
-                    food_name_orig: selectedProduct?.food_name
-                        ? selectedProduct.food_name
-                        : "",
-                    food_name: newProductDetails.food_name,
-                    cusine_category: newProductDetails.cusine_category,
-                    calories: newProductDetails.calories,
-                    full_details: newProductDetails.full_details,
-                    product_price: newProductDetails.product_price,
-                    short_desc: newProductDetails.short_desc,
-                    quantity: newProductDetails.quantity,
+                    ...newProductDetails,
                     waiting_time: newProductDetails.waiting_time - 1,
                 });
             }
         } else if (prop === "Quantity") {
             if (type === "Increase") {
                 setNewProductsDetails({
-                    food_name_orig: selectedProduct?.food_name
-                        ? selectedProduct.food_name
-                        : "",
-                    food_name: newProductDetails.food_name,
-                    cusine_category: newProductDetails.cusine_category,
-                    calories: newProductDetails.calories,
-                    full_details: newProductDetails.full_details,
-                    product_price: newProductDetails.product_price,
-                    short_desc: newProductDetails.short_desc,
+                    ...newProductDetails,
                     quantity: newProductDetails.quantity + 1,
-                    waiting_time: newProductDetails.waiting_time,
                 });
             }
             if (type === "Decrease" && newProductDetails.quantity > 0) {
                 setNewProductsDetails({
-                    food_name_orig: selectedProduct?.food_name
-                        ? selectedProduct.food_name
-                        : "",
-                    food_name: newProductDetails.food_name,
-                    cusine_category: newProductDetails.cusine_category,
-                    calories: newProductDetails.calories,
-                    full_details: newProductDetails.full_details,
-                    product_price: newProductDetails.product_price,
-                    short_desc: newProductDetails.short_desc,
+                    ...newProductDetails,
                     quantity: newProductDetails.quantity - 1,
-                    waiting_time: newProductDetails.waiting_time,
                 });
             }
         }
@@ -140,7 +125,9 @@ const ManageProducts = ({
         });
 
     const handleChangeEdit = (
-        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+        e: ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >,
     ) => {
         const { name, value } = e.currentTarget;
         const numberFields = [
@@ -243,7 +230,7 @@ const ManageProducts = ({
                     setIsEditSuccess(false);
                 }, 3000);
 
-                socket?.emit("handle-update-product", newProductDetails);
+                updateThisProduct();
             } else if (response.data.status && isDeleteProduct) {
                 setIsIncorrectPassword(false);
 
@@ -274,6 +261,62 @@ const ManageProducts = ({
             }, 2000);
         });
     }, [socket]);
+
+    const updateThisProduct = async () => {
+        const formData = new FormData();
+
+        // food_name_orig: string;
+        // food_name: string;
+        // cusine_category: string;
+        // calories: number;
+        // quantity: number;
+        // product_price: number;
+        // waiting_time: number;
+        // short_desc: string;
+        // full_details: string;
+        // imgFile?: File;
+
+        formData.append(
+            "food_name_orig",
+            newProductDetails.food_name_orig
+                ? newProductDetails.food_name_orig
+                : "",
+        );
+        formData.append("food_name", newProductDetails.food_name);
+        formData.append("cusine_category", newProductDetails.cusine_category);
+        formData.append("calories", String(newProductDetails.calories));
+        formData.append("quantity", String(newProductDetails.quantity));
+        formData.append(
+            "product_price",
+            String(newProductDetails.product_price),
+        );
+        formData.append("waiting_time", String(newProductDetails.waiting_time));
+        formData.append("short_desc", newProductDetails.short_desc);
+        formData.append("full_details", newProductDetails.full_details);
+
+        if (newProductDetails.imgFile) {
+            formData.append("new_img_file", newProductDetails.imgFile);
+        }
+
+        const headers = {
+            "Content-Type": "multipart/form-data",
+        };
+        try {
+            const response = await axios.post(
+                `${server}/admin/update-product`,
+                formData,
+                {
+                    headers,
+                },
+            );
+
+            if (response.data.status) {
+                socket?.emit("handle-update-product", { message: "refresh" });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className="text-pop-up-animation flex flex-col px-12 py-8">
@@ -610,7 +653,9 @@ const ManageProducts = ({
                                             ₱ {food_price}
                                         </button>
                                         <button className="text-secondary text-[0.7rem] border-1 border-white/30 rounded-lg px-3 py-1">
-                                            Stock: {quantity}
+                                            {quantity <= 0
+                                                ? "Out of stock"
+                                                : `Stock: ${quantity}`}
                                         </button>
                                     </div>
                                 </div>
@@ -639,12 +684,36 @@ const ManageProducts = ({
                     <div
                         className={`${layout["img-container"]} flex items-center justify-center`}
                     >
-                        <div className="bg-darkbrown/60 rounded-xl w-[90%] h-[90%] [box-shadow:-2px_3px_3px_rgba(0,0,0,0.3)]">
-                            <img
-                                src={`/images/products/${selectedProduct.img}`}
-                                alt=""
-                                className="scale-90"
-                            />
+                        <div className="relative bg-darkbrown/60 rounded-xl w-[90%] h-[90%] [box-shadow:-2px_3px_3px_rgba(0,0,0,0.3)]">
+                            {newImgPreview ? (
+                                <img
+                                    src={newImgPreview}
+                                    alt=""
+                                    className="scale-90"
+                                />
+                            ) : (
+                                <img
+                                    src={`/images/products/${selectedProduct.img}`}
+                                    alt=""
+                                    className="scale-90"
+                                />
+                            )}
+                            <div className="absolute bottom-2 right-2">
+                                <label
+                                    htmlFor="image-upload"
+                                    className="cursor-pointer flex flex-row items-center gap-1 bg-lightbrown hover:bg-darkbrown text-primary text-[0.75rem] font-light py-1 px-2 rounded-md shadow-md transition duration-200 ease-in-out"
+                                >
+                                    <ImagePlus size={16} />
+                                    Change Image
+                                </label>
+                                <input
+                                    type="file"
+                                    accept="image/png"
+                                    id="image-upload"
+                                    className="hidden"
+                                    onChange={handleChangeImg}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div
@@ -803,6 +872,67 @@ const ManageProducts = ({
                                         onChange={handleChangeEdit}
                                         className=" border-darkbrown border-2 outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
                                     />
+                                </div>
+                                <div className="flex flex-col w-[30%] gap-1">
+                                    <label
+                                        htmlFor="cuisine-category"
+                                        className="text-white/60 text-[0.75rem] font-extralight"
+                                    >
+                                        Category
+                                    </label>
+
+                                    <select
+                                        id="cuisine-category"
+                                        value={
+                                            newProductDetails.cusine_category
+                                        }
+                                        onChange={handleChangeEdit}
+                                        name="cusine_category"
+                                        className="border-darkbrown border-2 input-number outline-none rounded-md text-white/80 px-2 font-light text-[0.85rem] py-1"
+                                    >
+                                        <option
+                                            value="Appetizers"
+                                            className="bg-darkbrown cursor-pointer"
+                                        >
+                                            Appetizers
+                                        </option>
+                                        <option
+                                            value="Main Course"
+                                            className="bg-darkbrown cursor-pointer"
+                                        >
+                                            Main Course
+                                        </option>
+                                        <option
+                                            value="Beverages"
+                                            className="bg-darkbrown cursor-pointer"
+                                        >
+                                            Beverages
+                                        </option>
+                                        <option
+                                            value="Pastries"
+                                            className="bg-darkbrown cursor-pointer"
+                                        >
+                                            Pastries
+                                        </option>
+                                        <option
+                                            value="Healthy Options"
+                                            className="bg-darkbrown cursor-pointer"
+                                        >
+                                            Healthy Options
+                                        </option>
+                                        <option
+                                            value="Desserts"
+                                            className="bg-darkbrown cursor-pointer"
+                                        >
+                                            Desserts
+                                        </option>
+                                        <option
+                                            value="Savory Breakfast"
+                                            className="bg-darkbrown cursor-pointer"
+                                        >
+                                            Savory Breakfast
+                                        </option>
+                                    </select>
                                 </div>
 
                                 <div className="flex flex-col w-[30%] gap-1">
@@ -999,7 +1129,7 @@ const ManageProducts = ({
                                             <img
                                                 src={`/images/products/${selectedProduct.img}`}
                                                 alt=""
-                                                className="w-[10rem] h-[10rem]"
+                                                className="w-[10rem]"
                                             />
                                             <h1 className="text-primary">
                                                 {selectedProduct.food_name}
@@ -1044,7 +1174,10 @@ const ManageProducts = ({
                     <div className={`${layout["control-container"]}`}>
                         <div className="flex flex-row gap-2 justify-end items-center h-full">
                             <button
-                                onClick={() => setSelectedProduct(null)}
+                                onClick={() => {
+                                    setSelectedProduct(null);
+                                    setNewImgPreview(null);
+                                }}
                                 className="flex flex-row gap-2 cursor-pointer [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/60 text-[0.75rem] font-light border-white/20 border-1 rounded-md px-6 py-2"
                             >
                                 <CornerDownLeft size={18} />
@@ -1068,7 +1201,8 @@ const ManageProducts = ({
                                         newProductDetails.short_desc !==
                                             selectedProduct.description ||
                                         newProductDetails.full_details !==
-                                            selectedProduct.details
+                                            selectedProduct.details ||
+                                        newProductDetails.imgFile
                                     ) {
                                         setIsUpdateConfirm(true);
                                     } else {
@@ -1105,6 +1239,18 @@ const ManageProducts = ({
                                             Review Changes
                                         </h1>
                                         <div className="flex flex-row items-center justify-around w-full">
+                                            {newImgPreview && (
+                                                <div className="flex flex-col py-2 border-1 border-white/20 px-2 rounded-md">
+                                                    <p className="text-white/85 text-shadow-md text-[0.8rem]">
+                                                        New Image:
+                                                    </p>
+                                                    <img
+                                                        src={newImgPreview}
+                                                        className="w-[10rem] drop-shadow-lg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            )}
                                             {newProductDetails.food_name !==
                                                 selectedProduct.food_name && (
                                                 <div className="flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
@@ -1118,6 +1264,7 @@ const ManageProducts = ({
                                                     </p>
                                                 </div>
                                             )}
+
                                             {newProductDetails.cusine_category !==
                                                 selectedProduct.category && (
                                                 <div className="flex flex-row items-center text-white/60 text-[0.8rem] gap-4">
