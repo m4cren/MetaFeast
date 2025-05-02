@@ -229,7 +229,10 @@ const Billing = ({
     return (
         isReady && (
             <div className="fixed w-full h-screen flex items-center justify-center">
-                <div className="pop-up-animation overflow-hidden relative py-6 w-[75vw] h-[75vh] bg-black/10 backdrop-blur-[20px] [-webkit-backdrop-blur:20px] border-2 border-white/15 rounded-3xl">
+                <div
+                    style={{ border: "rgba(255,255,255,0.15) solid 2px" }}
+                    className="pop-up-animation overflow-hidden relative py-6 w-[75vw] h-[75vh] bg-[rgba(0,0,0,0.1)] backdrop-blur-[20px] [-webkit-backdrop-blur:20px]  rounded-3xl"
+                >
                     <div className="h-[15%] flex justify-center items-center">
                         <h1 className="text-center text-primary text-[1.7rem] min-[390px]:text-[1.85rem] font-medium text-shadow-md">
                             Confirm Payment
@@ -240,17 +243,23 @@ const Billing = ({
                             <p className="text-shadow-sm">Orders</p>
                             <p className="text-shadow-sm">Quantity</p>
                         </div>
-                        <div className="h-[70%] border-b-1 border-white/30 overflow-y-scroll">
+                        <div
+                            style={{
+                                borderBottom:
+                                    "1.75px solid rgba(255,255,255,0.2)",
+                            }}
+                            className="h-[70%]  overflow-y-scroll"
+                        >
                             {mergedOrders.map(
                                 ({ food_name, quantity }, index) => (
                                     <div
                                         key={index}
                                         className="flex items-center justify-between"
                                     >
-                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
+                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-[rgba(255,255,255,0.6)]">
                                             {food_name}
                                         </p>
-                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-white/70">
+                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-[rgba(255,255,255,0.6)]">
                                             {quantity}x
                                         </p>
                                     </div>
@@ -261,7 +270,7 @@ const Billing = ({
                             <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm">
                                 Total Price:
                             </p>
-                            <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm text-white/80 font-extralight">
+                            <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm text-[rgba(255,255,2550.8)] font-extralight">
                                 ₱ {totalPrice}
                             </p>
                         </div>
@@ -269,20 +278,23 @@ const Billing = ({
                     <div className="h-[15%] flex items-center justify-center flex-col gap-3">
                         <div className="flex flex-row items-center gap-2">
                             <button
+                                style={{
+                                    border: "1px solid rgba(255,255,255,0.25)",
+                                }}
                                 onClick={() => handleBillRequest("Cash")}
-                                className="text-[1.1rem] min-[390px]:text-[1.2rem] px-4 min-[390px]:px-8 shadow-3xl text-shadow-md py-3  text-primary [box-shadow:-1px_1px_5px_rgba(0,0,0,0.4)] rounded-2xl border-1 border-white/25"
+                                className="text-[1.1rem] min-[390px]:text-[1.2rem] px-4 min-[390px]:px-8 shadow-3xl text-shadow-md py-2  text-primary [box-shadow:-1px_1px_5px_rgba(0,0,0,0.4)] rounded-2xl "
                             >
                                 Cash
                             </button>
                             <button
                                 onClick={() => handleBillRequest("PayMongo")}
-                                className="px-5 min-[390px]:px-8 shadow-3xl text-shadow-md py-1  text-primary [box-shadow:-2px_2px_5px_rgba(0,0,0,0.3)] rounded-2xl bg-gradient-to-b  from-lightbrown to-darkbrown"
+                                className="px-5 min-[390px]:px-8 shadow-3xl text-shadow-md py-1  text-primary [box-shadow:-2px_2px_5px_rgba(0,0,0,0.3)] rounded-2xl brown-gradient-to-b"
                             >
                                 <h1 className="text-[1.1rem] min-[390px]:text-[1.2rem]">
                                     Pay Online
                                 </h1>
                                 <div className="flex flex-row items-center gap-1">
-                                    <p className="text-white/60 text-[0.65rem] min-[390px]:text-[0.75rem] -mt-1">
+                                    <p className="text-[rgba(255,255,255,0.65)] text-[0.65rem] min-[390px]:text-[0.75rem] -mt-1">
                                         via PayMongo
                                     </p>
                                     <img
@@ -293,7 +305,7 @@ const Billing = ({
                                 </div>
                             </button>
                         </div>
-                        <p className="text-[0.65rem] min-[390px]:text-[0.75rem] text-white/60 font-extralight text-shadow-md">
+                        <p className="text-[0.65rem] min-[390px]:text-[0.75rem] text-[rgba(255,255,255,0.7)] font-extralight text-shadow-md">
                             We suggest to pay thru PayMongo
                         </p>
                     </div>

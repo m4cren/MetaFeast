@@ -150,7 +150,7 @@ const GetName = ({
 
     return (
         <>
-            <div className="bg-gradient-to-t to-lightbrown/40 from-darkbrown/40 w-full h-[13rem] fixed bottom-0 opacity-60"></div>
+            <div className="black-to-transparent-gradient w-full h-[13rem] fixed bottom-0 opacity-60"></div>
 
             <div
                 className={`${layout.main} w-full h-screen  bg-black/25 backdrop-blur-[15px] [-webkit-backdrop-filter:blur(15px)]`}
@@ -192,9 +192,12 @@ const GetName = ({
                                 </p>
                             ) : null}
                             <input
+                                style={{
+                                    border: "solid 1.25px rgba(255,255,255,0.4)",
+                                }}
                                 required
                                 type="text"
-                                className="text-center font-light border-1 outline-none border-white/40 w-[90%] h-[2.4rem] rounded-2xl text-primary text-shadow-lg"
+                                className="text-center font-light outline-none  w-[90%] h-[2.4rem] rounded-2xl text-primary text-shadow-lg"
                                 name="costumer_name"
                                 onChange={handleChange}
                                 value={name.costumer_name}
@@ -203,8 +206,11 @@ const GetName = ({
                         </div>
 
                         <button
+                            style={{
+                                border: "solid 1.25px rgba(255,255,255,0.4)",
+                            }}
                             type="submit"
-                            className="text-primary  border-white/40 text-shadow-lg border-1 p-3 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-lg shadow-[-2px_2px_4px_rgba(255,255,255,0.2),-3px_3px_0_rgba(255,255,255,0.05),-4px_4px_4px_rgba(255,255,255,0.2)]"
+                            className="text-primary   text-shadow-lg p-3 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-lg shadow-[-2px_2px_4px_rgba(255,255,255,0.2),-3px_3px_0_rgba(255,255,255,0.05),-4px_4px_4px_rgba(255,255,255,0.2)]"
                         >
                             Proceed
                         </button>

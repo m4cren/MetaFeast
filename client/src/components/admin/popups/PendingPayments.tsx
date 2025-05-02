@@ -8,8 +8,14 @@ import { PendingPaymentType } from "../../../types/types";
 
 interface PendingPayment {
     setIsPendingPayment: React.Dispatch<React.SetStateAction<boolean>>;
+    setSomeoneConfirmed: React.Dispatch<React.SetStateAction<number>>;
+    someoneConfirmed: number;
 }
-const PendingPayments = ({ setIsPendingPayment }: PendingPayment) => {
+const PendingPayments = ({
+    setIsPendingPayment,
+    setSomeoneConfirmed,
+    someoneConfirmed,
+}: PendingPayment) => {
     const [isClose, setIsClose] = useState<boolean>(false);
     const [pendingPayments, setPendingPayments] = useState<
         PendingPaymentType[]
@@ -31,7 +37,6 @@ const PendingPayments = ({ setIsPendingPayment }: PendingPayment) => {
                 },
             );
 
-            console.dir(response.data.pending_payment_requests);
             if (response.data.status) {
                 setPendingPayments(response.data.pending_payment_requests);
             } else {
@@ -44,15 +49,10 @@ const PendingPayments = ({ setIsPendingPayment }: PendingPayment) => {
 
     useEffect(() => {
         getPendingPayments();
-
-        socket?.on("push-to-admin-payment", (_) => {});
-
-        return () => {
-            socket?.off("push-to-admin-payment");
-        };
-    }, [socket]);
+    }, []);
 
     const handleConfirm = (id: string) => {
+        setSomeoneConfirmed((prev) => prev + 1);
         const dataToSend = {
             payment_id: id,
         };

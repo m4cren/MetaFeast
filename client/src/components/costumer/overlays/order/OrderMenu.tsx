@@ -49,7 +49,6 @@ const OrderMenu = ({
     const [name] = useState<string | null>(
         localStorage.getItem("costumer_name"),
     );
-
     const { timeOfDay } = useTimeOfDay();
 
     return (
@@ -64,10 +63,11 @@ const OrderMenu = ({
                     />
                 </div>
             )}
+
             <div
                 className={`${layout.head} flex  justify-between px-4 items-center`}
             >
-                <h1 className="text-primary font-medium text-3xl min-[390px]:text-4xl text-shadow-lg">
+                <h1 className="text-primary font-medium text-[1.7rem] min-[390px]:text-[1.8rem] text-shadow-md">
                     Hi, {name}
                 </h1>
 
@@ -75,6 +75,7 @@ const OrderMenu = ({
                     {isOrderMore ? (
                         <LogOut
                             size={40}
+                            opacity={80}
                             onClick={() => {
                                 if (setIsOrderMore) {
                                     setIsOrderMore(false);
@@ -82,17 +83,17 @@ const OrderMenu = ({
                             }}
                         />
                     ) : (
-                        <Utensils size={40} />
+                        <Utensils size={40} opacity={80} />
                     )}
                 </p>
             </div>
             <div className={`${layout.greet}`}>
                 {isOrderMore ? (
-                    <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
+                    <p className="text-primary opacity-80 text-[0.9rem] min-[390px]:text-[1.1rem] font-extralight text-shadow-lg px-4 flex items-center">
                         Additional order
                     </p>
                 ) : (
-                    <p className="text-primary opacity-80 text-[1rem] min-[390px]:text-[1.2rem] font-extralight text-shadow-lg px-4 flex items-center">
+                    <p className="text-primary opacity-80 text-[0.9rem] min-[390px]:text-[1.1rem] font-extralight text-shadow-lg px-4 flex items-center">
                         What do you want for <br />{" "}
                         {timeOfDay === "Madaling Araw" || timeOfDay === "Umaga"
                             ? "breakfast"
@@ -108,7 +109,7 @@ const OrderMenu = ({
                 )}
             </div>
             <div
-                className={`${layout.category} flex items-center space-x-4  overflow-x-auto snap-proximity px-4`}
+                className={`${layout.category} flex items-center gap-3 min-[390px]:gap-4   overflow-x-auto snap-proximity px-4`}
             >
                 <span onClick={() => setSelected("Appetizers")}>
                     <Category
@@ -168,9 +169,9 @@ const OrderMenu = ({
                 </span>
             </div>
             <div
-                className={`${layout.cuisine} flex flex-col items-center gap-4 min-[390px]:mt-4`}
+                className={`${layout.cuisine} flex flex-col items-center gap-3 min-[390px]:mt-4`}
             >
-                <h1 className="text-[1.1rem] min-[390px]:text-[1.3rem] text-primary text-shadow-lg">
+                <h1 className="text-[0.9rem] font-light min-[390px]:text-[1.3rem] text-primary text-shadow-md">
                     {selected}
                 </h1>
                 <div
@@ -221,13 +222,16 @@ const OrderMenu = ({
             </div>
             <div className="absolute left-1/2 bottom-[4%] min-[390px]:bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">
                 <button
-                    onClick={() => setIsBasket(true)}
-                    className="active:scale-95 active:opacity-95 transition duration-150 text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] border-1 border-white/10"
+                    style={{ border: "solid 1px rgba(255,255,255,0.1)" }}
+                    onClick={() => {
+                        setIsBasket(true);
+                    }}
+                    className="active:scale-95 active:opacity-95 transition duration-150 text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] "
                 >
                     <ShoppingBasket size={30} />
                 </button>
             </div>
-            <div className="w-full h-1/3 bg-gradient-to-t from-[black] to-[#ffffff00] absolute bottom-0 pointer-events-none"></div>
+            <div className="w-full h-1/3 black-to-transparent-gradient absolute bottom-0 pointer-events-none"></div>
         </div>
     );
 };

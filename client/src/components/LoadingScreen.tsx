@@ -7,7 +7,7 @@ interface LoadingProps {
 
 const LoadingScreen = ({ isLoading, setIsStart }: LoadingProps) => {
     return (
-        <div className="h-screen w-screen  flex flex-col items-center justify-center fixed z-10 bg-gradient-to-b to-darkbrown from-lightbrown">
+        <div className="h-screen w-screen  flex flex-col items-center justify-center fixed z-10  brown-gradient-to-b ">
             {isLoading ? (
                 <div className="flex flex-col items-center ">
                     <h1 className="text-primary text-4xl min-[390px]:text-5xl font-medium title-animation">

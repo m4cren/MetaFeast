@@ -175,7 +175,6 @@ const Order = ({
                     orders={orders}
                     setOrders={setOrders}
                     setIsPlaceBasket={setIsPlaceBasket}
-                    setIsBasket={setIsBasket}
                 />
             ) : (
                 <OrderMenu

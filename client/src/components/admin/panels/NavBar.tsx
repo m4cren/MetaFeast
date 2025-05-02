@@ -7,6 +7,7 @@ interface Props {
     setIsPendingPayment: React.Dispatch<React.SetStateAction<boolean>>;
     setIsReview: React.Dispatch<React.SetStateAction<boolean>>;
     setIsProductManagement: React.Dispatch<React.SetStateAction<boolean>>;
+    pendingPaymentNotification: number;
 }
 
 const NavBar = ({
@@ -15,6 +16,7 @@ const NavBar = ({
     setIsPendingPayment,
     setIsReview,
     setIsProductManagement,
+    pendingPaymentNotification,
 }: Props) => {
     return (
         <div
@@ -40,6 +42,11 @@ const NavBar = ({
                     onClick={() => setIsPendingPayment(true)}
                     className="relative cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
                 >
+                    {pendingPaymentNotification !== 0 && (
+                        <span className="absolute -top-2 right-7  w-5 h-5 rounded-full flex items-center justify-center bg-lightred text-white/90 text-[0.72rem] z-10 text-shadow-md [box-shadow:-2px_2px_5px_rgba(0,0,0,0.3)]">
+                            {pendingPaymentNotification}
+                        </span>
+                    )}
                     Pending Payment
                 </p>
                 <p

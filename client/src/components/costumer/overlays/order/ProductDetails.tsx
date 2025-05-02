@@ -20,7 +20,6 @@ interface Props {
     orders: OrderType[];
     setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>;
     setIsPlaceBasket: React.Dispatch<React.SetStateAction<boolean>>;
-    setIsBasket: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProductDetails = ({
@@ -30,7 +29,6 @@ const ProductDetails = ({
     orders,
     setOrders,
     setIsPlaceBasket,
-    setIsBasket,
 }: Props) => {
     const [orderQuantity, setOrderQuantity] = useState<number>(0);
     const [isDenied, setIsDenied] = useState<boolean>(false);
@@ -119,7 +117,7 @@ const ProductDetails = ({
 
     return (
         <div
-            className={`${layout.main} w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative`}
+            className={`${layout.main} w-screen h-full backdrop-blur-[10px] [-webkit-backdrop-blur:10px] relative overflow-clip`}
         >
             <div
                 className={`${layout.head} flex flex-row justify-between px-6`}
@@ -128,31 +126,25 @@ const ProductDetails = ({
                     className="text-primary text-shadow-md active:scale-95 active:opacity-95 transition duration-150"
                     onClick={() => setSelectedCuisine("")}
                 >
-                    <ArrowBigLeft size={45} />
-                </button>
-                <button
-                    onClick={() => setIsBasket(true)}
-                    className="text-primary text-shadow-md active:scale-95 active:opacity-95 transition duration-150"
-                >
-                    <ShoppingBasket size={45} />
+                    <ArrowBigLeft size={40} />
                 </button>
             </div>
             <div
-                className={`${layout["image-container"]} pointer-events-none translate-y-[-70px] min-[390px]:translate-y-[-60px] scale-90 min-[390px]:scale-100`}
+                className={`${layout["image-container"]} pointer-events-none w-[20rem] flex items-center justify-center mx-auto scale-90 `}
             >
                 <img
-                    className="drop-shadow-lg scale-85"
+                    className="drop-shadow-lg scale-85   min-[390px]:scale-100"
                     src={`/images/products/${selectedProduct?.img}`}
                 />
             </div>
             <div
-                className={`${layout["food-title"]} flex flex-col justify-between pl-6`}
+                className={`${layout["food-title"]} flex flex-col justify-between pl-6 gap-1`}
             >
-                <div className="flex flex-col gap-[0.5]">
+                <div className="flex flex-col gap-1">
                     <h1 className="text-primary text-[1.3rem] min-[390px]:text-2xl whitespace-nowrap overflow-visible">
                         {selectedProduct?.food_name}
                     </h1>
-                    <p className="text-white/50 font-extralight text-[0.7rem] min-[390px]:text-[0.8rem] leading-4">
+                    <p className="text-[rgba(255,255,255,0.5)] font-extralight text-[0.65rem] min-[390px]:text-[0.75rem] leading-3">
                         {selectedProduct?.description}
                     </p>
                 </div>
@@ -247,16 +239,16 @@ const ProductDetails = ({
                         </>
                     ) : null}
                 </div>
-                <div className="pr-2 flex flex-row text-white/60 text-[0.7rem] min-[390px]:text-[0.8rem] font-extralight justify-between h-[3.35rem]">
-                    <p className="flex flex-row items-center">
+                <div className="pr-2 flex flex-row text-[rgba(255,255,255,0.6)] text-[0.7rem] min-[390px]:text-[0.8rem] font-extralight justify-between h-[3.35rem]">
+                    <p className="flex flex-row items-center gap-1">
                         {selectedProduct?.calories
                             ? selectedProduct.calories * orderQuantity
                             : 0}
-                        <Flame size={17} />
+                        <Flame size={15} />
                     </p>
-                    <p className="flex flex-row items-center">
+                    <p className="flex flex-row items-center gap-1">
                         {selectedProduct?.waiting_time}mins{" "}
-                        <Hourglass size={17} />
+                        <Hourglass size={15} />
                     </p>
                 </div>
             </div>
@@ -270,7 +262,7 @@ const ProductDetails = ({
                         : 0}
                 </h1>
 
-                <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] bg-gradient-to-t rounded-3xl shadow-md  w-[7rem] h-[2.25rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.2rem] to-lightbrown from-darkbrown flex flex-row items-center justify-between px-4 text-primary">
+                <div className="relative [box-shadow:0_0_8px_rgba(0,0,0,0.5)_inset] brown-gradient-to-b rounded-2xl shadow-md  w-[7rem] h-[2.25rem] min-[390px]:w-[9.5rem] min-[390px]:h-[3.2rem] flex flex-row items-center justify-between px-4 text-primary">
                     <button
                         className="text-shadow-md text-4xl min-[390px]:text-5xl active:scale-95 active:opacity-95 transition duration-150"
                         onClick={handleDecreaseQuantity}
@@ -286,21 +278,25 @@ const ProductDetails = ({
                     </button>
 
                     {isDenied && (
-                        <div className="pop-up-animation absolute top-1/2 left-1/2 translate-y-[-120%] translate-x-[-0%] w-fit text-white/78 text-shadow-md">
+                        <div className="pop-up-animation absolute top-1/2 left-1/2 translate-y-[-120%] translate-x-[-0%] w-fit text-[rgba(255,255,255,0.78)] text-shadow-md">
                             <MessageCircleWarning size={40} />
                         </div>
                     )}
                 </div>
             </div>
-            <div className={`${layout["food-detail"]} px-6`}>
-                <div className="flex flex-row items-center justify-between">
-                    <h1 className="text-primary text-lg">Details</h1>
-                    <div className="flex flex-row items-center gap-6">
-                        <p className="text-white/60 font-extralight text-[0.8rem]">
+            <div
+                className={`${layout["food-detail"]} px-6 pt-3 min-[390px]:pt-4 `}
+            >
+                <div className="flex flex-row items-center justify-between ">
+                    <h1 className="text-primary text-[0.85rem] min-[390px]:text-[0.95rem]">
+                        Details
+                    </h1>
+                    <div className="flex flex-row items-center gap-6 ">
+                        <p className="text-[rgba(255,255,255,0.7)] font-extralight text-[0.65rem]">
                             {selectedProduct &&
                                 `Total Orders: ${selectedProduct.total_orders}`}
                         </p>
-                        <p className="text-white/60 font-extralight text-[0.8rem]">
+                        <p className="text-[rgba(255,255,255,0.7)] font-extralight text-[0.65rem]">
                             {selectedProduct?.quantity
                                 ? `Stock: ${selectedProduct.quantity}`
                                 : selectedProduct?.quantity === 0
@@ -310,19 +306,22 @@ const ProductDetails = ({
                     </div>
                 </div>
 
-                <p className="text-justify text-white/50 font-extralight text-[0.8rem]">
-                    {selectedProduct?.details}
-                </p>
+                <div className="leading-4 h-[8.5rem] min-[390px]:h-[12rem] overflow-y-scroll ">
+                    <p className="text-justify text-[rgba(255,255,255,0.5)] font-extralight text-[0.7rem] min-[390px]:text-[0.8rem]">
+                        {selectedProduct?.details}
+                    </p>
+                </div>
             </div>
             <div className="absolute bottom-10 min-[390px]:bottom-20 w-full h-15 flex items-center justify-center z-20 ">
                 <button
                     onClick={handlePlaceOrder}
-                    className={`${isDenied && "button-shake-animation"} active:scale-95 active:opacity-95 transition duration-150 text-primary  px-20 py-2 bg-transparent backdrop-blur-[50px] [-webkit-backdrop-filter:blur(50px)] rounded-[10rem] border-1 border-white/10 shadow-lg`}
+                    className={`${isDenied && "button-shake-animation"} text-[1rem] min-[390px]:text-[1.1rem] flex flex-row items-center gap-2 green-gradient-to-b text-shadow-md active:scale-95 active:opacity-95 transition duration-150 text-primary  px-15 py-1 min[390px]:px-18  min[390px]py-2  bg-transparent backdrop-blur-[50px] [-webkit-backdrop-filter:blur(50px)] rounded-xl border-1 border-white/10 shadow-lg`}
                 >
                     Add to basket
+                    <ShoppingBasket size={30} />
                 </button>
             </div>
-            <div className="w-full h-[80%] bg-gradient-to-t from-[#0000009e] to-[#ffffff00] absolute bottom-0 z-[-1]"></div>
+            <div className="w-full h-[80%] black-to-transparent-gradient absolute bottom-0 z-[-1]"></div>
         </div>
     );
 };

@@ -38,7 +38,7 @@ const WaitingPaymentConfirmation = ({
 
     return (
         <div className="fixed w-full gap-2 h-screen flex justify-center items-center flex-col bg-black/20 backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] ">
-            <span className="loader-white translate-y-[-4rem] opacity-70"></span>
+            <span className="loader-white mb-15 opacity-70"></span>
             <h1 className="text-primary text-[1.5rem] min-[390px]:text-[1.7rem] text-center text-shadow-md">
                 We're just confirming your payment, Please bear with us!
             </h1>
@@ -50,8 +50,9 @@ const WaitingPaymentConfirmation = ({
                         className="w-full h-full rounded-2xl [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
                     ></iframe>
                     <button
+                        style={{ border: "solid 1.5px rgba(255,255,255,0.2)" }}
                         onClick={() => setIsPaying(false)}
-                        className="text-primary w-[80%] [box-shadow:-1px_1px_4px_rgba(0,0,0,0.4)] flex items-center justify-center py-2 rounded-2xl border-2 border-white/20"
+                        className="text-primary w-[80%] [box-shadow:-1px_1px_4px_rgba(0,0,0,0.4)] flex items-center justify-center py-2 rounded-2xl "
                     >
                         <LogOut />
                     </button>

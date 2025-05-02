@@ -16,6 +16,8 @@ import PendingPayments from "./popups/PendingPayments";
 import { useTableStatus } from "../../contexts/TableStatusContext";
 import ProductManagement from "./popups/ProductManagement";
 import { LogOut } from "lucide-react";
+import axios from "axios";
+import useServerAddress from "../../../useServerAddress";
 
 const Reviews = lazy(() => import("./popups/Reviews"));
 
@@ -52,6 +54,9 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
     const [isTableRequest, setIsTableRequest] = useState<boolean>(false);
     const [isPendingPayment, setIsPendingPayment] = useState<boolean>(false);
+    const [pendingPaymentNotification, setPendingPaymentNotification] =
+        useState<number>(0);
+
     const [isReview, setIsReview] = useState<boolean>(false);
     const [isProductManagement, setIsProductManagement] =
         useState<boolean>(false);
@@ -65,11 +70,40 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
 
     const socket = useSocket();
     const notif_sound = new Audio("/audios/notif.MP3");
-
+    const { server } = useServerAddress();
+    const [someoneConfirmed, setSomeoneConfirmed] = useState<number>(0);
     const { getTableStatus } = useTableStatus() ?? {
         getTableStatus: () => {},
     };
+    const getPendingPayments = async () => {
+        const headers = {
+            "Content-Type": "application/json",
+        };
 
+        try {
+            const response = await axios.get(
+                `${server}/payment/get-pending-payments`,
+                {
+                    headers,
+                    withCredentials: false,
+                },
+            );
+
+            if (response.data.status) {
+                setPendingPaymentNotification(
+                    response.data.pending_payment_requests.length,
+                );
+            } else {
+                console.log("error");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getPendingPayments();
+    }, [someoneConfirmed]);
     useEffect(() => {
         socket?.on("notify-admin", (data) => {
             notif_sound.play();
@@ -82,6 +116,8 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
         socket?.on("push-to-admin-payment", (_) => {
             setTimeout(() => {
                 getTableStatus();
+                getPendingPayments();
+                notif_sound.play();
             }, 850);
         });
 
@@ -230,6 +266,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                         setIsPendingPayment={setIsPendingPayment}
                         setIsReview={setIsReview}
                         setIsProductManagement={setIsProductManagement}
+                        pendingPaymentNotification={pendingPaymentNotification}
                     />
                 </div>
                 <div className={`${layout["pending-tab"]}`}>
@@ -279,7 +316,9 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
                 )}
                 {isPendingPayment && (
                     <PendingPayments
+                        setSomeoneConfirmed={setSomeoneConfirmed}
                         setIsPendingPayment={setIsPendingPayment}
+                        someoneConfirmed={someoneConfirmed}
                     />
                 )}
                 {isReview && <Reviews setIsReview={setIsReview} />}

@@ -165,20 +165,20 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
         <div className="fixed gap-4 flex items-center justify-start flex-col  w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] ">
             <div>
                 <div className="flex flex-row justify-around">
-                    <div className="w-[8px] bg-gradient-to-t from-darkbrown to-lightbrown h-[2.5rem] min-[390px]:h-[5rem] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]"></div>
-                    <div className="w-[8px] bg-gradient-to-t from-darkbrown to-lightbrown h-[2.5rem] min-[390px]:h-[5rem] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]"></div>
+                    <div className="w-[8px] brown-gradient-to-b h-[2.5rem] min-[390px]:h-[5rem] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]"></div>
+                    <div className="w-[8px] brown-gradient-to-b h-[2.5rem] min-[390px]:h-[5rem] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]"></div>
                 </div>
-                <div className="w-[90vw] py-4 min-[390px]:py-6 rounded-2xl bg-gradient-to-b from-lightbrown to-darkbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_2px_rgba(0,0,0,0.3)]">
+                <div className="w-[90vw] py-4 min-[390px]:py-6 rounded-2xl brown-gradient-to-b [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_2px_rgba(0,0,0,0.3)]">
                     <h1 className="text-primary text-center text-[1.35rem] min-[390px]:text-[1.5rem] font-medium">
                         Payment Confirmed
                     </h1>
                 </div>
             </div>
-            <div className="relative flex flex-col pt-6 min-[390px]:pt-10 pb-1 items-center px-4 bg-gradient-to-t rounded-2xl w-[90vw] h-[75vh] min-[390px]:h-[70vh] from-darkbrown to-lightbrown [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
+            <div className="relative flex flex-col pt-6 min-[390px]:pt-10 pb-1 items-center px-4 brown-gradient-to-b rounded-2xl w-[90vw] h-[75vh] min-[390px]:h-[70vh]  [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
                 <div className="w-[90%] h-[60vh] min-[390px]:h-[55vh] overflow-y-scroll [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]  rounded-sm">
                     <div
                         ref={printRef}
-                        className="text-[#41484c] pb-4 h-fit min-h-[27rem] min-[390px]:min-h-[30rem] flex flex-col items-center  bg-gradient-to-b from-[#DAE1E5] to-[#EAF2F5]"
+                        className="text-[#41484c] pb-4 h-fit min-h-[27rem] min-[390px]:min-h-[30rem] flex flex-col items-center  white-gradient"
                     >
                         <h1 className="text-[1.3rem] min-[390px]:text-[1.5rem] font-semibold pt-5 min-[390px]:pt-7 pb-1 min-[390px]:pb-2">
                             Cash Receipt
@@ -279,17 +279,19 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                 </div>
                 <div className="absolute bottom-6 gap-2 w-full flex flex-row items-center justify-center">
                     <button
+                        style={{ border: "solid 1.25px rgba(255,255,255,0.2)" }}
                         onClick={() =>
                             handleCostumerExit(myOrders?.costumer_name)
                         }
-                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl border-1 border-white/20"
+                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl"
                     >
                         Exit
                         <DoorOpen size={15} />
                     </button>
                     <button
+                        style={{ border: "solid 1.25px rgba(255,255,255,0.2)" }}
                         onClick={() => setIsReview(true)}
-                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl border-1 border-white/20"
+                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl"
                     >
                         Review
                         <Star size={15} />
@@ -298,7 +300,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                         localStorage.getItem("receipt-download") !== "true" && (
                             <button
                                 onClick={handleSaveAsImage}
-                                className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-white/80 font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl bg-gradient-to-t from-darkgreen to-lightgreen"
+                                className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl green-gradient-to-b"
                             >
                                 Download receipt
                                 <Download size={15} />
@@ -309,7 +311,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
         </div>
     ) : isExiting ? (
         <div className="fixed  backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] bg-black/20 w-full h-screen flex flex-col  items-center justify-center">
-            <div className="pop-up-animation bg-gradient-to-b flex flex-col items-center py-8 from-lightbrown to-darkbrown w-[80vw] h-fit rounded-2xl">
+            <div className="pop-up-animation brown-gradient-to-b px-10 flex flex-col items-center py-8  h-fit rounded-2xl">
                 <h1 className="text-center text-primary text-[2rem] font-medium">
                     Thanks
                 </h1>

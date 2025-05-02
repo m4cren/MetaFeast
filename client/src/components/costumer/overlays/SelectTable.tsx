@@ -85,20 +85,20 @@ const SelectTable = ({
     return !isConfirmed ? (
         <div className={`${layout.main}`}>
             <div
-                className={`${layout["left-hang"]} ${isTransitioning && "-translate-y-50"} transition duration-800 w-full bg-gradient-to-b from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+                className={`${layout["left-hang"]} ${isTransitioning && "-translate-y-50"} transition duration-800 w-full brown-gradient-to-b [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             ></div>
             <div
-                className={`${layout["right-hang"]} ${isTransitioning && "-translate-y-50"} transition duration-800 w-full bg-gradient-to-b from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+                className={`${layout["right-hang"]} ${isTransitioning && "-translate-y-50"} transition duration-800 w-full brown-gradient-to-b [box-shadow:0_0_3px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             ></div>
             <div
-                className={`${layout.head} ${isTransitioning && "-translate-y-50"} transition duration-800 flex flex-col py-12 min-[390px]:py-13 justify-center items-center bg-gradient-to-t from-darkbrown to-lightbrown w-[90vw] mx-auto rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
+                className={`${layout.head} ${isTransitioning && "-translate-y-50"} transition duration-800 flex flex-col py-12 min-[390px]:py-13 justify-center items-center brown-gradient-to-b w-[90vw] mx-auto rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             >
                 <h1 className="text-primary text-[1.2rem] text-shadow-md min-[390px]:text-[1.3rem] text-center">
                     {isPicking
                         ? "Lock in your table?"
                         : `Find your perfect spot, ${costumerName}`}
                 </h1>
-                <p className="text-white/45 text-[0.8rem] font-extralight">
+                <p className="text-[rgba(255,255,255,0.45)] text-[0.8rem] font-extralight">
                     {isPicking
                         ? `Table ${selectedTable}`
                         : `${isLeftClicked ? "Left View" : isRightClicked ? "Right View" : "Middle View"}`}
@@ -184,11 +184,11 @@ const SelectTable = ({
                                       ? handleDownFloor()
                                       : doNothing();
                             }}
-                            className={`${isTransitioning && "translate-y-50"} transition duration-800 text-primary text-[1rem] min-[390px]:text-[1.2rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-3 bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]`}
+                            className={`${isTransitioning && "translate-y-50"} transition duration-800 text-primary text-[1rem] min-[390px]:text-[1.2rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-3 brown-gradient-to-b [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]`}
                         >
                             {floor === 1 ? (
                                 <>
-                                    <span>
+                                    <span className="pr-2">
                                         <Gi3dStairs />
                                     </span>
 
@@ -196,7 +196,7 @@ const SelectTable = ({
                                 </>
                             ) : floor === 2 ? (
                                 <>
-                                    <span className="scale-x-[-1]">
+                                    <span className="scale-x-[-1] pr-2">
                                         <Gi3dStairs />
                                     </span>
                                     <p>Go downstairs</p>
@@ -207,14 +207,17 @@ const SelectTable = ({
                 ) : (
                     <>
                         <button
+                            style={{
+                                border: "solid 1px rgba(255,255,255,0.1)",
+                            }}
                             onClick={handleChangeTable}
-                            className="text-primary text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-2 px-5 border-1 border-white/10 bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(15px)] [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
+                            className="text-primary mr-4 text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-2 px-5  bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(15px)] [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
                         >
                             <p>Change</p>
                         </button>
                         <button
                             onClick={handleConfirm}
-                            className="text-primary text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto  rounded-2xl p-2 px-10 bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
+                            className="text-primary text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto  rounded-2xl p-2 px-10 brown-gradient-to-b [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
                         >
                             <p>Confirm</p>
                         </button>
@@ -226,7 +229,7 @@ const SelectTable = ({
         <div
             className={`${selectedTable.includes("B", 0) && "bg-black/30"} fixed gap-2 w-full h-screen  backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] flex items-center justify-center flex-col`}
         >
-            <span className="loader-white translate-y-[-4rem] opacity-70"></span>
+            <span className="loader-white mb-15 opacity-70"></span>
             <h1 className="text-primary text-[1.55rem] min-[390px]:text-[1.7rem] text-center">
                 Hang tight! The owner is reviewing your request
             </h1>

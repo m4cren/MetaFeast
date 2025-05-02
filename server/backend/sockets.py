@@ -238,9 +238,11 @@ def billing_request(data):
         query_existing_payment.payment_type = payment_type
         query_existing_payment.total_payment = total_price
 
+        emit('push-to-admin-payment', broadcast=True)
+
         
     db.session.commit()
-    emit('push-to-admin-payment', broadcast=True)
+    
 
    
 

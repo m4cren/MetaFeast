@@ -1,7 +1,8 @@
 from backend import socketio, create_website
 from backend.db_config import m4cren_host, m4cren_port
-from backend.extensions import upgrade
+from backend.extensions import upgrade, print_metafeast_logo
 import os
+
 
 venv_path = os.environ.get('VIRTUAL_ENV')
 
@@ -20,15 +21,19 @@ if venv_path:
      
         
        if __name__ == "__main__":
-           
+            print_metafeast_logo()
             socketio.run(app, debug=True,  host=m4cren_host, port=8080)
          
     elif venv_path == r'C:\Users\lenovo\webDev\MetaFeast\server\venv_mika':
        
     
        if __name__ == "__main__":
-            
+            print_metafeast_logo()
           
             socketio.run(app, debug=True, host="192.168.1.5", port=8080) 
     else:
         print('PLease activate a virtual environment')
+
+
+
+
