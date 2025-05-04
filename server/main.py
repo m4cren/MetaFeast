@@ -17,10 +17,9 @@ app = create_website()
 
 
 if venv_path:
-    if venv_path == r'C:\Users\renre\webDev\MetaFeast\server\venv_m4cren':
      
         
-       if __name__ == "__main__":
+    if __name__ == "__main__":
             print_metafeast_logo()
             socketio.run(app, debug=True,  host=m4cren_host, port=8080)
          

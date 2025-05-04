@@ -169,13 +169,13 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                     <div className="w-[8px] brown-gradient-to-b h-[2.5rem] min-[390px]:h-[5rem] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]"></div>
                 </div>
                 <div className="w-[90vw] py-4 min-[390px]:py-6 rounded-2xl brown-gradient-to-b [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_2px_rgba(0,0,0,0.3)]">
-                    <h1 className="text-primary text-center text-[1.35rem] min-[390px]:text-[1.5rem] font-medium">
+                    <h1 className="text-primary min-[580px]:text-[3rem] text-center text-[1.35rem] min-[390px]:text-[1.5rem] font-medium">
                         Payment Confirmed
                     </h1>
                 </div>
             </div>
             <div className="relative flex flex-col pt-6 min-[390px]:pt-10 pb-1 items-center px-4 brown-gradient-to-b rounded-2xl w-[90vw] h-[75vh] min-[390px]:h-[70vh]  [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
-                <div className="w-[90%] h-[60vh] min-[390px]:h-[55vh] overflow-y-scroll [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]  rounded-sm">
+                <div className="w-[90%] min-[580px]:w-[35%] h-[60vh] min-[580px]:h-[30vh] min-[580px]:scale-150 min-[580px]:mt-60 min-[390px]:h-[55vh] overflow-y-scroll [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]  rounded-sm">
                     <div
                         ref={printRef}
                         className="text-[#41484c] pb-4 h-fit min-h-[27rem] min-[390px]:min-h-[30rem] flex flex-col items-center  white-gradient"
@@ -283,7 +283,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                         onClick={() =>
                             handleCostumerExit(myOrders?.costumer_name)
                         }
-                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl"
+                        className="flex  min-[580px]:text-[1.5rem] min-[580px]:px-10  flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl"
                     >
                         Exit
                         <DoorOpen size={15} />
@@ -291,7 +291,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                     <button
                         style={{ border: "solid 1.25px rgba(255,255,255,0.2)" }}
                         onClick={() => setIsReview(true)}
-                        className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl"
+                        className="flex  min-[580px]:text-[1.5rem] min-[580px]:px-10 flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl"
                     >
                         Review
                         <Star size={15} />
@@ -300,7 +300,7 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                         localStorage.getItem("receipt-download") !== "true" && (
                             <button
                                 onClick={handleSaveAsImage}
-                                className="flex flex-row items-center gap-1 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl green-gradient-to-b"
+                                className="flex flex-row items-center gap-1  min-[580px]:text-[1.5rem] min-[580px]:px-15 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-primary font-light text-primary text-[0.76rem] min-[390px]:text-[0.86rem] py-2 min-[390px]:py-3 px-2 min-[390px]:px-3 rounded-xl green-gradient-to-b"
                             >
                                 Download receipt
                                 <Download size={15} />
@@ -311,11 +311,13 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
         </div>
     ) : isExiting ? (
         <div className="fixed  backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] bg-black/20 w-full h-screen flex flex-col  items-center justify-center">
-            <div className="pop-up-animation brown-gradient-to-b px-10 flex flex-col items-center py-8  h-fit rounded-2xl">
-                <h1 className="text-center text-primary text-[2rem] font-medium">
+            <div className="pop-up-animation brown-gradient-to-b px-10 flex flex-col items-center py-8  h-fit rounded-2xl min-[580px]:px-30 min-[580px]:py-12">
+                <h1 className="text-center text-primary text-[2rem] font-medium min-[580px]:text-[3rem]">
                     Thanks
                 </h1>
-                <p className="text-secondary">You can now exit our website</p>
+                <p className="text-secondary min-[580px]:text-[1.2rem]">
+                    You can now exit our website
+                </p>
             </div>
         </div>
     ) : (

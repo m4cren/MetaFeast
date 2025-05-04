@@ -83,11 +83,11 @@ const WaitingOrder = ({
     }, []);
     return (
         <div className="fixed gap-2 w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] flex items-center justify-center flex-col">
-            <span className="loader-white opacity-70 mb-15"></span>
-            <h1 className="text-primary text-[1.5rem] min-[390px]:text-[1.7rem] text-center text-shadow-md">
+            <span className="loader-white opacity-70 mb-15 min-[580px]:scale-150  min-[580px]:mb-30 "></span>
+            <h1 className="text-primary text-[1.5rem] min-[580px]:text-[2.3rem]  min-[390px]:text-[1.7rem] text-center text-shadow-md">
                 We're cooking up something delicious for you!
             </h1>
-            <p className="text-[rgba(255,255,255,0.6)] text-[0.75rem] min-[390px]:text-[0.85rem] font-extralight text-shadow-md">
+            <p className="text-[rgba(255,255,255,0.6)] text-[0.75rem] min-[580px]:text-[1.2rem]  min-[390px]:text-[0.85rem] font-extralight text-shadow-md">
                 {triviaMessage[triviaIndex]}
             </p>
         </div>

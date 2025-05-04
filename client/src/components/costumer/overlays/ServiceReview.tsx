@@ -131,13 +131,13 @@ const ServiceReview = ({
     return !isSubmitted
         ? isReceipt && (
               <div className="fixed flex items-center justify-end flex-col  w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] ">
-                  <div className="relative flex overflow-hidden flex-col p-4 pb-10 min-[390px]:pb-20  items-center brown-gradient-to-b rounded-t-[4rem] w-full h-[97vh] min-[390px]:h-[97vh]  [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
+                  <div className="relative flex overflow-hidden flex-col p-4 pb-10 min-[390px]:pb-20  items-center brown-gradient-to-b rounded-t-[4rem] w-full h-[97vh] min-[390px]:h-[97vh] min-[580px]:h-[85vh]  [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
                       <div className="h-[55%]   w-full flex flex-col items-center mt-6 gap-2 min-[390px]:gap-4">
                           <div className="flex flex-col items-center">
-                              <h1 className="text-primary text-[1.5rem] min-[390px]:text-[1.65rem] font-medium">
+                              <h1 className="text-primary min-[580px]:text-[3rem] text-[1.5rem] min-[390px]:text-[1.65rem] font-medium">
                                   How was your experience?
                               </h1>
-                              <div className="text-primary flex flex-row scale-90 min-[390px]:scale-100 items-center justify-center gap-2 min-[390px]:gap-4">
+                              <div className="text-primary flex min-[580px]:scale-130 min-[580px]:mt-4 flex-row scale-90 min-[390px]:scale-100 items-center justify-center gap-2 min-[390px]:gap-4">
                                   {serviceRating === 0 && (
                                       <>
                                           <FaRegStar
@@ -343,7 +343,7 @@ const ServiceReview = ({
                                       </>
                                   )}
                               </div>
-                              <p className="text-[rgba(255,255,255,0.65)] text-[0.65rem] min-[390px]:text-[0.75rem] font-extralight mt-1">
+                              <p className="text-[rgba(255,255,255,0.65)] min-[580px]:text-[1.3rem] min-[580px]:mt-4 text-[0.65rem] min-[390px]:text-[0.75rem] font-extralight mt-1">
                                   {serviceRating === 1
                                       ? "Very disappointing, Needs major improvement"
                                       : serviceRating === 2
@@ -357,17 +357,17 @@ const ServiceReview = ({
                                               : ""}
                               </p>
                           </div>
-                          <h1 className="text-primary text-[0.85rem] min-[390px]:text-[0.95rem] text-center font-light">
+                          <h1 className="text-primary text-[0.85rem] min-[580px]:text-[1.5rem] min-[390px]:text-[0.95rem] text-center font-light">
                               We'd appreciate your thoughts on our service.
                           </h1>
                           <form
                               id="reviewForm"
                               onSubmit={handleSubmit}
-                              className="w-full flex flex-col gap-1 items-center h-full"
+                              className="w- min-[580px]:w-[80%] flex flex-col gap-1 items-center h-full"
                           >
                               <label
                                   htmlFor="email"
-                                  className="w-full text-[rgba(255,255,255,0.65)] font-extralight text-[0.7rem] min-[390px]:text-[0.8rem]"
+                                  className="w-full min-[580px]:text-[1.2rem] text-[rgba(255,255,255,0.65)] font-extralight text-[0.7rem] min-[390px]:text-[0.8rem]"
                               >
                                   Email [optional]
                               </label>
@@ -377,12 +377,12 @@ const ServiceReview = ({
                                   name="email"
                                   id="email"
                                   onChange={handleChange}
-                                  className="w-full text-[0.8rem] rounded-md px-2 py-1 text-[#2c2c2c] outline-none white-gradient"
+                                  className="w-full min-[580px]:text-[1rem] min-[580px]:py-3 text-[0.8rem] rounded-md px-2 py-1 text-[#2c2c2c] outline-none white-gradient"
                                   placeholder="Your email (optional)"
                               />
                               <label
                                   htmlFor="comment"
-                                  className="w-full text-[rgba(255,255,255,0.65)] font-extralight text-[0.7rem] min-[390px]:text-[0.8rem]"
+                                  className="w-full min-[580px]:text-[1.2rem] text-[rgba(255,255,255,0.65)] font-extralight text-[0.7rem] min-[390px]:text-[0.8rem]"
                               >
                                   Your comments
                               </label>
@@ -391,7 +391,7 @@ const ServiceReview = ({
                                   required
                                   onChange={handleChangeText}
                                   placeholder="Tell us what you enjoyed or what we could improve…"
-                                  className="w-full h-[40%] resize-none white-gradient rounded-md outline-none px-2 py-2 text-[#2c2c2c] text-[0.8rem]"
+                                  className="w-full min-[580px]:text-[1rem] min-[580px]:py-3 h-[40%] resize-none white-gradient rounded-md outline-none px-2 py-2 text-[#2c2c2c] text-[0.8rem]"
                                   name="comment"
                                   id="comment"
                               ></textarea>
@@ -399,16 +399,16 @@ const ServiceReview = ({
                       </div>
 
                       <div
-                          className={`${layout["product-review"]} h-[50%] w-full scale-70 min-[390px]:scale-80 -mt-22`}
+                          className={`${layout["product-review"]} h-[50%] min-[580px]:h-[35%] w-full scale-70 min-[390px]:scale-80 -mt-22 min-[580px]:-mt-45`}
                       >
                           <div
-                              className={`${layout["header"]} flex flex-col items-center justify-center leading-5`}
+                              className={`${layout["header"]} flex flex-col items-center justify-center leading-5 min-[580px]:leading-10`}
                           >
-                              <p className="text-primary text-[0.9rem] font-extralight text-[rgba(255,255,255,0.6)]">
+                              <p className="text-primary text-[0.9rem] min-[580px]:text-[1.8rem] font-extralight text-[rgba(255,255,255,0.6)]">
                                   Dish you tried
                               </p>
 
-                              <h1 className="text-primary text-[1.35rem]">
+                              <h1 className="text-primary text-[1.35rem] min-[580px]:text-[2.2rem]">
                                   {selectedProductName?.food_name}
                               </h1>
                           </div>
@@ -426,7 +426,7 @@ const ServiceReview = ({
                           </div>
 
                           <div
-                              className={`${layout["img-slider"]} relative flex flex-row items-center min-[390px]:translate-x-[0] `}
+                              className={`${layout["img-slider"]} relative flex flex-row items-center min-[390px]:translate-x-[0] min-[580px]:scale-50 `}
                           >
                               {myOrders?.orders.map(
                                   ({ food_name, img }, index) => (
@@ -445,7 +445,7 @@ const ServiceReview = ({
                           <div
                               className={`${layout["stars-btn"]} flex flex-col gap-1 relative z-10`}
                           >
-                              <div className="flex flex-row items-center justify-center gap-3 text-primary">
+                              <div className="flex flex-row items-center justify-center gap-3 text-primary min-[580px]:scale-140">
                                   {productReview[selectedProduct]?.rating ===
                                       0 && (
                                       <>
@@ -807,14 +807,14 @@ const ServiceReview = ({
                                       </>
                                   )}
                               </div>
-                              <p className="text-[rgba(255,255,255,0.6)] font-extralight text-center text-[0.8rem]">
+                              <p className="text-[rgba(255,255,255,0.6)] font-extralight text-center text-[0.8rem] min-[580px]:text-[1.5rem] min-[580px]:mt-2">
                                   Tap to rate
                               </p>
                           </div>
                       </div>
                       <button
                           form="reviewForm"
-                          className="w-[14rem] flex flex-row items-center justify-center green-gradient-to-b rounded-xl px-2 py-2 min-[390px]:px-3 min-[390px]:py-3 text-[0.85rem] min-[390px]:text-[1rem] text-primary gap-1 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)]"
+                          className="w-[14rem] min-[580px]:mt-30 min-[580px]:text-[1.6rem] min-[580px]:w-[25rem]  flex flex-row items-center justify-center green-gradient-to-b rounded-xl px-2 py-2 min-[390px]:px-3 min-[390px]:py-3 text-[0.85rem] min-[390px]:text-[1rem] text-primary gap-1 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)]"
                       >
                           Share my experience <Send />
                       </button>
@@ -823,11 +823,11 @@ const ServiceReview = ({
           )
         : isReceipt && (
               <div className="fixed  w-full h-screen bg-transparent backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] flex items-center justify-center ">
-                  <div className="brown-gradient-to-b w-[90vw] py-8 flex flex-col items-center gap-2  rounded-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
+                  <div className="brown-gradient-to-b w-[90vw] py-8 flex flex-col items-center gap-2 min-[580px]:py-12  rounded-2xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)]">
                       <i className="text-[rgba(255,255,255,0.7)] scale-80 min-[390px]:scale-100">
                           <BiHappyBeaming size={200} />
                       </i>
-                      <h1 className="text-white text-[1.35rem] min-[390px]:text-[1.5rem]">
+                      <h1 className="text-white text-[1.35rem] min-[390px]:text-[1.5rem] min-[580px]:text-[2.5rem]">
                           We appreciate your feedback
                       </h1>
                       <button
@@ -841,7 +841,7 @@ const ServiceReview = ({
                                       : "anonymous",
                               )
                           }
-                          className="mt-8 flex flex-row items-center gap-2 [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-[rgba(255,255,255,0.8)] font-light text-primary text-[1.2rem] min-[390px]:text-[0.86rem] py-8 min-[390px]:py-8 px-15 min-[390px]:px-15 rounded-xl "
+                          className="mt-8 flex flex-row items-center gap-2 min-[580px]:text-[1.5rem] [box-shadow:-2px_2px_3px_rgba(0,0,0,0.3)] text-[rgba(255,255,255,0.8)] font-light text-primary text-[1.2rem] min-[390px]:text-[0.86rem] py-8 min-[390px]:py-8 px-15 min-[390px]:px-15 rounded-xl "
                       >
                           Exit
                           <DoorOpen size={20} />

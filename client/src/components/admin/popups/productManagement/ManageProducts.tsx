@@ -500,7 +500,7 @@ const ManageProducts = ({
                         ) => (
                             <li
                                 key={index}
-                                className="relative translate-x-[2px] bg-gradient-to-t [box-shadow:-1px_2px_3px_rgba(0,0,0,0.2)] from-darkbrown to-lightbrown  rounded-2xl w-[12rem] h-[12rem]"
+                                className="relative translate-x-[2px] bg-gradient-to-t [box-shadow:-1px_2px_3px_rgba(0,0,0,0.2)] from-darkbrown to-lightbrown  rounded-2xl w-[15rem] h-[15rem] min-[2580px]:w-[12rem] min-[2580px]:h-[12rem]"
                             >
                                 <div className="flex flex-col items-center justify-end h-full gap-1 ">
                                     <button
@@ -538,7 +538,7 @@ const ManageProducts = ({
                                     </button>
                                     <img
                                         src={`/images/products/${img}`}
-                                        className="absolute scale-65 -top-1/5"
+                                        className="absolute scale-65 -top-1/5 drop-shadow-xl"
                                     />
                                     <div className="flex flex-col items-center leading-6">
                                         <h1 className="text-primary text-[1.1rem]">

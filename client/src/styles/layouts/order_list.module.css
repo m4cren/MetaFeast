@@ -1,10 +1,14 @@
 .main {
     display: grid;
     grid-template-columns: 100vw;
-    grid-template-rows: 11vh 89vh;
+    grid-template-rows: 15vh 85vh;
     grid-template-areas:
         "   head   "
         "   order-list   ";
+
+    @media (min-width: 580px) {
+        grid-template-rows: 13vh 82vh;
+    }
 }
 
 .head {
@@ -16,5 +20,6 @@
 
     display: grid;
     grid-template-columns: 100vw;
+
     grid-auto-rows: fit-content(100%);
 }

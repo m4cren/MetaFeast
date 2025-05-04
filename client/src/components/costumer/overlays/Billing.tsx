@@ -234,12 +234,12 @@ const Billing = ({
                     className="pop-up-animation overflow-hidden relative py-6 w-[75vw] h-[75vh] bg-[rgba(0,0,0,0.1)] backdrop-blur-[20px] [-webkit-backdrop-blur:20px]  rounded-3xl"
                 >
                     <div className="h-[15%] flex justify-center items-center">
-                        <h1 className="text-center text-primary text-[1.7rem] min-[390px]:text-[1.85rem] font-medium text-shadow-md">
+                        <h1 className="text-center min-[580px]:text-[3rem] text-primary text-[1.7rem] min-[390px]:text-[1.85rem] font-medium text-shadow-md">
                             Confirm Payment
                         </h1>
                     </div>
-                    <div className="h-[70%] px-6 ">
-                        <div className="h-[15%] flex items-center justify-between text-primary text-[1.2rem] min-[390px]:text-[1.35rem] font-light">
+                    <div className="h-[70%] px-6 min-[580px]:px-12">
+                        <div className="h-[15%] flex items-center justify-between min-[580px]:text-[1.85rem] text-primary text-[1.2rem] min-[390px]:text-[1.35rem] font-light">
                             <p className="text-shadow-sm">Orders</p>
                             <p className="text-shadow-sm">Quantity</p>
                         </div>
@@ -256,10 +256,10 @@ const Billing = ({
                                         key={index}
                                         className="flex items-center justify-between"
                                     >
-                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-[rgba(255,255,255,0.6)]">
+                                        <p className="text-[0.8rem] min-[580px]:text-[1.2rem] min-[390px]:text-[0.9rem] text-shadow-md font-light text-[rgba(255,255,255,0.75)]">
                                             {food_name}
                                         </p>
-                                        <p className="text-[0.8rem] min-[390px]:text-[0.9rem] text-shadow-md font-extralight text-[rgba(255,255,255,0.6)]">
+                                        <p className="text-[0.8rem] min-[580px]:text-[1.2rem] min-[390px]:text-[0.9rem] text-shadow-md font-light text-[rgba(255,255,255,0.75)]">
                                             {quantity}x
                                         </p>
                                     </div>
@@ -267,10 +267,10 @@ const Billing = ({
                             )}
                         </div>
                         <div className="h-[15%] flex items-center justify-between">
-                            <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm">
+                            <p className="text-[1.1rem] min-[580px]:text-[2rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm">
                                 Total Price:
                             </p>
-                            <p className="text-[1.1rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm text-[rgba(255,255,2550.8)] font-extralight">
+                            <p className="text-[1.1rem] min-[580px]:text-[2rem] text-primary min-[390px]:text-[1.2rem] text-shadow-sm text-[rgba(255,255,2550.8)] font-extralight">
                                 ₱ {totalPrice}
                             </p>
                         </div>
@@ -282,19 +282,19 @@ const Billing = ({
                                     border: "1px solid rgba(255,255,255,0.25)",
                                 }}
                                 onClick={() => handleBillRequest("Cash")}
-                                className="text-[1.1rem] min-[390px]:text-[1.2rem] px-4 min-[390px]:px-8 shadow-3xl text-shadow-md py-2  text-primary [box-shadow:-1px_1px_5px_rgba(0,0,0,0.4)] rounded-2xl "
+                                className="text-[1.1rem] min-[580px]:text-[1.6rem] min-[580px]:px-15 min-[580px]:py-3 min-[390px]:text-[1.2rem] px-4 min-[390px]:px-8 shadow-3xl text-shadow-md py-2  text-primary [box-shadow:-1px_1px_5px_rgba(0,0,0,0.4)] rounded-2xl "
                             >
                                 Cash
                             </button>
                             <button
                                 onClick={() => handleBillRequest("PayMongo")}
-                                className="px-5 min-[390px]:px-8 shadow-3xl text-shadow-md py-1  text-primary [box-shadow:-2px_2px_5px_rgba(0,0,0,0.3)] rounded-2xl brown-gradient-to-b"
+                                className="px-5 min-[390px]:px-8 shadow-3xl  min-[580px]:text-[1.75rem] min-[580px]:px-18 min-[580px]:py-1 text-shadow-md py-1  text-primary [box-shadow:-2px_2px_5px_rgba(0,0,0,0.3)] rounded-2xl brown-gradient-to-b"
                             >
-                                <h1 className="text-[1.1rem] min-[390px]:text-[1.2rem]">
+                                <h1 className="text-[1.1rem] min-[390px]:text-[1.2rem] min-[580px]:text-[1.65rem]">
                                     Pay Online
                                 </h1>
                                 <div className="flex flex-row items-center gap-1">
-                                    <p className="text-[rgba(255,255,255,0.65)] text-[0.65rem] min-[390px]:text-[0.75rem] -mt-1">
+                                    <p className="text-[rgba(255,255,255,0.65)] text-[0.65rem] min-[390px]:text-[0.75rem] min-[580px]:text-[1rem] -mt-1 ">
                                         via PayMongo
                                     </p>
                                     <img
@@ -305,7 +305,7 @@ const Billing = ({
                                 </div>
                             </button>
                         </div>
-                        <p className="text-[0.65rem] min-[390px]:text-[0.75rem] text-[rgba(255,255,255,0.7)] font-extralight text-shadow-md">
+                        <p className="text-[0.65rem] min-[580px]:text-[1rem] min-[390px]:text-[0.75rem] text-[rgba(255,255,255,0.7)] font-extralight text-shadow-md">
                             We suggest to pay thru PayMongo
                         </p>
                     </div>

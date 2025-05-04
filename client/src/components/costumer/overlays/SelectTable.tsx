@@ -93,12 +93,12 @@ const SelectTable = ({
             <div
                 className={`${layout.head} ${isTransitioning && "-translate-y-50"} transition duration-800 flex flex-col py-12 min-[390px]:py-13 justify-center items-center brown-gradient-to-b w-[90vw] mx-auto rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             >
-                <h1 className="text-primary text-[1.2rem] text-shadow-md min-[390px]:text-[1.3rem] text-center">
+                <h1 className="text-primary text-[1.2rem] min-[580px]:text-[2rem] text-shadow-md min-[390px]:text-[1.3rem] text-center">
                     {isPicking
                         ? "Lock in your table?"
                         : `Find your perfect spot, ${costumerName}`}
                 </h1>
-                <p className="text-[rgba(255,255,255,0.45)] text-[0.8rem] font-extralight">
+                <p className="text-[rgba(255,255,255,0.45)] min-[580px]:text-[1rem] text-[0.8rem] font-extralight">
                     {isPicking
                         ? `Table ${selectedTable}`
                         : `${isLeftClicked ? "Left View" : isRightClicked ? "Right View" : "Middle View"}`}
@@ -115,7 +115,7 @@ const SelectTable = ({
                                 setIsLeftClicked(true);
                                 handleLeftClick();
                             }}
-                            className="text-primary opacity-50 text-4xl pointer-events-auto"
+                            className="text-primary opacity-70 text-4xl pointer-events-auto min-[580px]:scale-180"
                         >
                             <FaLessThan />
                         </button>
@@ -129,7 +129,7 @@ const SelectTable = ({
                                 setIsRightClicked(true);
                                 handleRightClick();
                             }}
-                            className="text-primary opacity-50 text-4xl pointer-events-auto"
+                            className="text-primary opacity-70 text-4xl pointer-events-auto min-[580px]:scale-180"
                         >
                             <FaGreaterThan />
                         </button>
@@ -184,7 +184,7 @@ const SelectTable = ({
                                       ? handleDownFloor()
                                       : doNothing();
                             }}
-                            className={`${isTransitioning && "translate-y-50"} transition duration-800 text-primary text-[1rem] min-[390px]:text-[1.2rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-3 brown-gradient-to-b [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]`}
+                            className={`${isTransitioning && "translate-y-50"} min-[580px]:text-[2rem] min-[580px]:px-8 transition duration-800 text-primary text-[1rem] min-[390px]:text-[1.2rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-3 brown-gradient-to-b [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]`}
                         >
                             {floor === 1 ? (
                                 <>
@@ -211,13 +211,13 @@ const SelectTable = ({
                                 border: "solid 1px rgba(255,255,255,0.1)",
                             }}
                             onClick={handleChangeTable}
-                            className="text-primary mr-4 text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-2 px-5  bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(15px)] [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
+                            className="text-primary min-[580px]:text-[2rem] min-[580px]:px-20 mr-4 text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto rounded-2xl p-2 px-5  bg-transparent backdrop-blur-[10px] [-webkit-backdrop-filter:blur(15px)] [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
                         >
                             <p>Change</p>
                         </button>
                         <button
                             onClick={handleConfirm}
-                            className="text-primary text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto  rounded-2xl p-2 px-10 brown-gradient-to-b [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
+                            className="text-primary min-[580px]:text-[2rem] min-[580px]:px-30 text-[1.25rem] min-[390px]:text-[1.4rem] flex items-center space-x-1.5 pointer-events-auto  rounded-2xl p-2 px-10 brown-gradient-to-b [box-shadow:-2px_2px_6px_rgba(0,0,0,0.4)]"
                         >
                             <p>Confirm</p>
                         </button>
@@ -229,12 +229,12 @@ const SelectTable = ({
         <div
             className={`${selectedTable.includes("B", 0) && "bg-black/30"} fixed gap-2 w-full h-screen  backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] flex items-center justify-center flex-col`}
         >
-            <span className="loader-white mb-15 opacity-70"></span>
-            <h1 className="text-primary text-[1.55rem] min-[390px]:text-[1.7rem] text-center">
+            <span className="loader-white mb-15 opacity-70 min-[580px]:mb-35 min-[580px]:scale-180"></span>
+            <h1 className="text-primary text-[1.55rem] min-[390px]:text-[1.7rem] text-center min-[580px]:text-[2.25rem]">
                 Hang tight! The owner is reviewing your request
             </h1>
 
-            <p className="text-secondary text-[0.75rem] min-[390px]:text-[0.9rem]">
+            <p className="text-secondary text-[0.75rem] min-[390px]:text-[0.9rem] min-[580px]:text-[1.2rem]">
                 {triviaMessage[triviaIndex]}
             </p>
         </div>

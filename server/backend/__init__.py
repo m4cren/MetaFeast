@@ -31,12 +31,11 @@ def create_website():
     
 
     # PALITAN SA db_config.py YUNG CREDENTIALS NANG DATABASE, YUNG SCHEMA IS YUNG MAKIKITA PAG NAOPEN NA UNG DATABASE SA WORKBENCH SA LEFT SIDE
-
-    
+ 
     venv_path = os.environ.get('VIRTUAL_ENV')
 
     if venv_path:
-        if venv_path == r'C:\Users\renre\webDev\MetaFeast\server\venv_m4cren':
+        if venv_path == r'/home/m4cren/webDev/MetaFeast/server/venv_m4cren':
             print('Rainier virtual environment is activated')
 
           

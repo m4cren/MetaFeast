@@ -7,6 +7,10 @@
         "     .    header    .    "
         "     left-btn    img-slider    right-btn    "
         "     stars-btn    stars-btn    stars-btn    ";
+
+    @media (min-width: 580px) {
+        grid-template-rows: 5rem 30rem 5rem;
+    }
 }
 
 .header {

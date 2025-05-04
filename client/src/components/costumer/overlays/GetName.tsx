@@ -156,19 +156,19 @@ const GetName = ({
                 className={`${layout.main} w-full h-screen  bg-black/25 backdrop-blur-[15px] [-webkit-backdrop-filter:blur(15px)]`}
             >
                 <div
-                    className={` ${layout.head} flex justify-between items-center px-4`}
+                    className={` ${layout.head} flex justify-between items-center px-4 min-[580px]:px-12 min-[580px]:py-15`}
                 >
-                    <div className="flex items-center space-x-1.5 text-xl">
-                        <span className="text-primary text-shadow-md">
+                    <div className="flex items-center gap-2 min-[580px]:gap-6 text-xl">
+                        <span className="text-primary text-shadow-md min-[580px]:scale-200">
                             <UtensilsCrossed />
                         </span>
 
-                        <p className="text-primary text-[1.2rem] phone:text-[5rem] text-shadow-md">
+                        <p className="text-primary text-[1.2rem] min-[580px]:text-[2.5rem] phone:text-[5rem] text-shadow-md">
                             Metafeast
                         </p>
                     </div>
                     <span
-                        className="text-primary text-shadow-md"
+                        className="text-primary text-shadow-md min-[580px]:scale-200"
                         onClick={() => setIsInstructions(true)}
                     >
                         <CircleHelp />
@@ -178,7 +178,7 @@ const GetName = ({
                 <div
                     className={`${layout.body} flex flex-col items-center gap-3 justify-center`}
                 >
-                    <h1 className="text-primary text-[5.5vw] text-shadow-lg text-center">
+                    <h1 className="text-primary text-[5.5vw] min-[580px]:text-[2.7rem] text-shadow-lg text-center">
                         Got a nickname we can use?
                     </h1>
                     <form
@@ -197,7 +197,7 @@ const GetName = ({
                                 }}
                                 required
                                 type="text"
-                                className="text-center font-light outline-none  w-[90%] h-[2.4rem] rounded-2xl text-primary text-shadow-lg"
+                                className="text-center font-light outline-none  w-[90%] min-[580px]:w-[60%] h-[2.4rem] rounded-2xl text-primary text-shadow-lg"
                                 name="costumer_name"
                                 onChange={handleChange}
                                 value={name.costumer_name}
@@ -210,7 +210,7 @@ const GetName = ({
                                 border: "solid 1.25px rgba(255,255,255,0.4)",
                             }}
                             type="submit"
-                            className="text-primary   text-shadow-lg p-3 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-lg shadow-[-2px_2px_4px_rgba(255,255,255,0.2),-3px_3px_0_rgba(255,255,255,0.05),-4px_4px_4px_rgba(255,255,255,0.2)]"
+                            className="text-primary   text-shadow-lg min-[580px]:text-[2rem] p-3 rounded-2xl hover:scale-50 active:scale-80 transition-[200] text-lg shadow-[-2px_2px_4px_rgba(255,255,255,0.2),-3px_3px_0_rgba(255,255,255,0.05),-4px_4px_4px_rgba(255,255,255,0.2)]"
                         >
                             Proceed
                         </button>
@@ -221,13 +221,13 @@ const GetName = ({
                     className={` ${layout.footer} flex flex-row items-center justify-around`}
                 >
                     <p
-                        className="text-primary text-sm text-shadow-lg"
+                        className="text-primary text-sm text-shadow-lg min-[580px]:text-2xl"
                         onClick={() => setIsPrivacyPolicy(true)}
                     >
                         Privacy Policy
                     </p>
                     <p
-                        className="text-primary text-sm text-shadow-lg"
+                        className="text-primary text-sm text-shadow-lg min-[580px]:text-2xl"
                         onClick={() => setIsTermsAndCondition(true)}
                     >
                         Terms and Condition

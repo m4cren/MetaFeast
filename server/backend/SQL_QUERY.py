@@ -14,7 +14,7 @@ def create_sample_history(app):
         existing_reviews = CostumerHistory.query.first()
 
         if not existing_reviews:
-
+            print('Created sample history')
             reviews = [
                 {
                     'costumer_name': 'Mika', #pag generate mo nalang chatgpt ng random names
@@ -3518,7 +3518,7 @@ def create_sample_history(app):
                                 {"quantity": 1, "food_name": "Kombu-Cured Bream"}, 
                                 {"quantity": 1, "food_name": "Foie Gras Terrine"}
                             ],
-                    'dine_time': '2023-02-29 10:24:10' # year-month-date   hours-minute-seconds  military time
+                    'dine_time': '2023-02-27 10:24:10' # year-month-date   hours-minute-seconds  military time
                 },
                    {
                     'costumer_name': 'Elara',
@@ -5347,6 +5347,7 @@ def create_sample_history(app):
             ]
 
             for review in reviews:
+            
                 inject_data = CostumerHistory(costumer_name = review['costumer_name'],
                                               table_seated = review['table_seated'],
                                               total_payment = review['total_payment'],
@@ -5356,7 +5357,6 @@ def create_sample_history(app):
                                               dine_time = review['dine_time'],
                                               orders =[ order for order in review['orders']])
                 save_data(inject_data)
-
         
 
 def create_products(app):

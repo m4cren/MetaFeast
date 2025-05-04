@@ -189,10 +189,6 @@ const SalesAnalytics = () => {
     }, [historyData]);
 
     useEffect(() => {
-        console.log(filteredHistoryData);
-    }, [filter]);
-
-    useEffect(() => {
         fetchHistoryData();
     }, []);
 
@@ -438,6 +434,9 @@ const SalesAnalytics = () => {
                                         },
                                     },
                                 },
+                                animation: {
+                                    duration: 0,
+                                },
                             }}
                         />
                     ) : (
@@ -476,6 +475,9 @@ const SalesAnalytics = () => {
                                             color: "#f5f5f520",
                                         },
                                     },
+                                },
+                                animation: {
+                                    duration: 0,
                                 },
                             }}
                         />

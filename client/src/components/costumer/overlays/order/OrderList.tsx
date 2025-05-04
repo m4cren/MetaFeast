@@ -127,8 +127,8 @@ const OrderList = ({
         >
             {isCheckoutConfirmation && !isNoOrder && (
                 <div className="fixed w-full h-screen bg-[rgba(0,0,0,0.4)]  z-20 flex items-center justify-center">
-                    <div className="pop-up-animation flex flex-col justify-center gap-4 w-[95vw]  h-[8.7rem] brown-gradient-to-b rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)]">
-                        <h1 className="text-center text-shadow-md text-primary font-normal leading-7 text-[1.35rem] min-[390px]:text-[1.45rem] text-shadow-md">
+                    <div className="pop-up-animation flex flex-col justify-center gap-4 w-[95vw] min-[580px]:w-[75%] min-[580px]:h-[14rem] min-[580px]:gap-8  h-[8.7rem] brown-gradient-to-b rounded-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)]">
+                        <h1 className="min-[580px]:text-[2.25rem] text-center text-shadow-md text-primary font-normal leading-7 text-[1.35rem] min-[390px]:text-[1.45rem] text-shadow-md">
                             Ready to proceed to checkout?
                         </h1>
                         <div className=" text-primary flex place-items-center justify-center gap-4">
@@ -136,13 +136,13 @@ const OrderList = ({
                                 style={{
                                     border: "1px rgba(255,255,255,0.2) solid",
                                 }}
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.8rem] min-[390px]:text-[0.9rem] font-light border-1 border-[rgba(255,255,255,0.5)] rounded-xl shadow-md p-2 min-[390px]:p-2"
+                                className="active:opacity-95 active:scale-95 min-[580px]:text-[1.3rem] min-[580px]:px-6 min-[580px]:py-3  transition duration-150 text-shadow-md text-[0.8rem] min-[390px]:text-[0.9rem] font-light border-1 border-[rgba(255,255,255,0.5)] rounded-xl shadow-md p-2 min-[390px]:p-2"
                                 onClick={() => setIsCheckoutConfirmation(false)}
                             >
                                 Continue Browsing
                             </button>
                             <button
-                                className="active:opacity-95 active:scale-95 transition duration-150 text-shadow-md text-[0.8rem] min-[390px]:text-[0.9rem] font-light bg-gradient-to-b p-2 min-[390px]:p-2 green-gradient-to-b rounded-xl"
+                                className="active:opacity-95 active:scale-95  min-[580px]:text-[1.3rem] min-[580px]:px-15 min-[580px]:py-3 transition duration-150 text-shadow-md text-[0.8rem] min-[390px]:text-[0.9rem] font-light bg-gradient-to-b p-2 min-[390px]:p-2 green-gradient-to-b rounded-xl"
                                 onClick={() => setIsCheckout(true)}
                             >
                                 Proceed to Checkout
@@ -153,25 +153,27 @@ const OrderList = ({
             )}
             {isNoOrder && (
                 <div
-                    className={`${isNoOrderClose && "pop-close-animation"} pop-up-animation fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[90vw] h-fit flex flex-col items-center gap-4 brown-gradient-to-b rounded-2xl z-10 px-5 py-6 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)_inset]`}
+                    className={`${isNoOrderClose && "pop-close-animation"} min-[580px]:w-[75%] min-[580px]:h-[23rem] justify-center min-[580px]:gap-8 pop-up-animation fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[90vw] h-fit flex flex-col items-center gap-4 brown-gradient-to-b rounded-2xl z-10 px-5 py-6 [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)_inset]`}
                 >
-                    <Info color="#f5f5f5" size={75} opacity={80} />
-                    <h1 className="text-primary text-[1rem] min-[390px]:text-[1.2rem] text-center">
+                    <i className="min-[580px]:scale-150">
+                        <Info color="#f5f5f5" size={75} opacity={80} />
+                    </i>
+                    <h1 className="text-primary text-[1rem] min-[390px]:text-[1.2rem] text-center min-[580px]:text-[2rem]">
                         You haven’t selected any items yet.
                     </h1>
                     <button
                         onClick={handleClose}
-                        className="text-[rgba(255,255,255,0.85)] px-4 py-2 font-extralight rounded-lg cursor-pointer green-gradient-to-b [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)]"
+                        className="text-[rgba(255,255,255,0.85)] px-4 py-2 min-[580px]:text-[1.5rem] min-[580px]:px-12 min-[580px]:py-3 font-extralight rounded-lg cursor-pointer green-gradient-to-b [box-shadow:-2px_2px_4px_rgba(0,0,0,0.4)]"
                     >
                         Continue Browsing
                     </button>
                 </div>
             )}
             <div
-                className={`${layout.head} px-6 flex flex-row items-center justify-between`}
+                className={`${layout.head} px-6 flex flex-row items-center justify-between min-[580px]:px-12 min-[580px]:mt-20`}
             >
                 <button
-                    className="text-primary text-shadow-md active:scale-95 transition duration-150 active:opacity-95"
+                    className="text-primary text-shadow-md active:scale-95 transition duration-150 active:opacity-95 min-[580px]:scale-200"
                     onClick={() => {
                         setSelectedCuisine("");
                         setIsBasket(false);
@@ -179,33 +181,33 @@ const OrderList = ({
                 >
                     <ArrowBigLeft size={40} />
                 </button>
-                <h1 className="text-primary text-[1.6rem] min-[390px]:text-[1.75rem] text-shadow-md ">
+                <h1 className="text-primary text-[1.6rem] min-[390px]:text-[1.75rem] min-[580px]:text-[3rem] text-shadow-md ">
                     Basket
                 </h1>
                 <p
                     onClick={() => setTrash(!isTrash)}
-                    className="text-primary text-shadow-md active:scale-95 transition duration-150 active:opacity-95"
+                    className="text-primary text-shadow-md active:scale-95 transition duration-150 active:opacity-95 min-[580px]:scale-200"
                 >
                     {!isTrash ? <Trash2 size={35} /> : <Ban size={35} />}
                 </p>
             </div>
             <div
-                className={`${layout["order-list"]} pb-80 gap-2 min-[390px]:gap-3 pt-8 overflow-y-scroll [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
+                className={`${layout["order-list"]} min-[580px]:mt-15 pb-80 gap-2 min-[390px]:gap-3 min-[580px]:gap-6 pt-8 overflow-y-scroll [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
             >
                 {orders.map(({ food_name, price, quantity, img }, index) => (
                     <div
                         key={index}
-                        className="px-2 brown-gradient-to-b rounded-2xl shadow-md w-[88%] [box-shadow:2px_2px_3px_rgba(0,0,0,0.3)_inset] h-24 min-[390px]:h-28 mx-auto flex flex-row items-center"
+                        className="px-2 brown-gradient-to-b rounded-2xl shadow-md w-[88%] [box-shadow:2px_2px_3px_rgba(0,0,0,0.3)_inset] h-24 min-[580px]:h-45 min-[390px]:h-28 mx-auto flex flex-row items-center"
                     >
-                        <div className="w-[45%] scale-75 min-[390px]:scale-85">
+                        <div className="w-[45%] scale-75 min-[390px]:scale-85 min-[580px]:scale-60">
                             <img
                                 className="drop-shadow-lg"
                                 src={`/images/products/${img}`}
                                 alt=""
                             />
                         </div>
-                        <div className="flex flex-col w-1/2 items-center gap-2">
-                            <h1 className="leading-5 text-primary text-[1.15rem] min-[390px]:text-[1.3rem] w-full text-center  text-shadow-md">
+                        <div className="flex flex-col w-1/2 items-center min-[580px]:items-start gap-2 min-[580px]:gap-6">
+                            <h1 className="leading-5 text-primary min-[580px]:text-[2rem] text-[1.15rem] min-[390px]:text-[1.3rem] w-full text-shadow-md">
                                 {food_name}
                             </h1>
                             <div
@@ -214,21 +216,21 @@ const OrderList = ({
                                 {!isTrash ? (
                                     <>
                                         {" "}
-                                        <p className="text-[rgba(255,255,255,0.65)] text-[0.75rem] min-[390px]:text-[0.85rem] text-shadow-md font-extralight">
+                                        <p className="min-[580px]:text-[1.5rem] text-[rgba(255,255,255,0.65)] text-[0.75rem] min-[390px]:text-[0.85rem] text-shadow-md font-extralight">
                                             ₱ {price}
                                         </p>
-                                        <div className="[box-shadow:0_0_4px_rgba(0,0,0,0.4)_inset] bg-[#f5f5f5]  rounded-2xl shadow-md  w-[6rem] h-[2.25rem] min-[390px]:w-[7rem] min-[390px]:h-[2.5rem] flex flex-row items-center justify-between min-[390px]:px-4 px-2 text-darkbrown">
+                                        <div className="[box-shadow:0_0_4px_rgba(0,0,0,0.4)_inset] bg-[#f5f5f5]  rounded-2xl shadow-sm  w-[6rem] h-[2.25rem] min-[390px]:w-[7rem] min-[390px]:h-[2.5rem] min-[580px]:w-[10rem] min-[580px]:h-[3rem] flex flex-row items-center justify-between min-[390px]:px-4 px-2 text-darkbrown">
                                             <button
                                                 onClick={() =>
                                                     handleDecreaseQuantity(
                                                         food_name,
                                                     )
                                                 }
-                                                className="text-shadow-md text-3xl min-[390px]:text-4xl active:scale-95 transition active:opacity-95 duration-150"
+                                                className="min-[580px]:text-[3.5rem] text-shadow-md text-3xl min-[390px]:text-4xl active:scale-95 transition active:opacity-95 duration-150"
                                             >
                                                 -
                                             </button>
-                                            <p className="text-shadow-md font-bold">
+                                            <p className="text-shadow-sm font-light min-[580px]:text-[1.6rem] ">
                                                 {quantity}
                                             </p>
                                             <button
@@ -237,7 +239,7 @@ const OrderList = ({
                                                         food_name,
                                                     )
                                                 }
-                                                className="text-shadow-md text-3xl min-[390px]:text-4xl active:scale-95 active:opacity-95 transition duration-150"
+                                                className="min-[580px]:text-[3.5rem] text-shadow-sm text-3xl min-[390px]:text-4xl active:scale-95 active:opacity-95 transition duration-150"
                                             >
                                                 +
                                             </button>
@@ -260,30 +262,30 @@ const OrderList = ({
             </div>
             <div
                 style={{ border: "solid 1px rgba(255,255,255,0.1)" }}
-                className="z-10 absolute bottom-0 w-[80vw] h-fit p-3 min-[390px]:p-4 flex flex-col gap-5 shadow-2xl  left-1/2 translate-y-[-40%] bg-[rgba(0,0,0,0.2)] translate-x-[-50%]  backdrop-blur-[20px] [-webkit-backdrop-blur:20px] rounded-2xl"
+                className="z-10 absolute bottom-0 min-[580px]:bottom-[7%] w-[80vw] h-fit p-3 min-[390px]:p-4 flex flex-col gap-5 shadow-2xl  left-1/2 translate-y-[-40%] bg-[rgba(0,0,0,0.2)] translate-x-[-50%]  backdrop-blur-[20px] [-webkit-backdrop-blur:20px] rounded-2xl"
             >
                 <div>
                     <h2 className="flex flex-row items-center justify-between text-[1.1rem] text-white font-light text-shadow-md">
-                        <span className="text-[0.9rem] min-[390px]:text-[1.1rem]">
+                        <span className="text-[0.9rem] min-[390px]:text-[1.1rem] min-[580px]:text-[1.5rem]">
                             Total Cost:
                         </span>
-                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem]">
+                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem] min-[580px]:text-[1.35rem]">
                             ₱ {totalPrice}
                         </span>
                     </h2>
                     <h2 className="flex flex-row items-center justify-between  text-[1.1rem] text-white font-light">
-                        <span className="text-[0.9rem] min-[390px]:text-[1.1rem]">
+                        <span className="text-[0.9rem] min-[390px]:text-[1.1rem] min-[580px]:text-[1.5rem]">
                             Waiting Time:
                         </span>
-                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem]">
+                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem] min-[580px]:text-[1.35rem]">
                             {totalWaitingTime} mins
                         </span>
                     </h2>
                     <h2 className="flex flex-row items-center justify-between  text-[1.1rem] text-white font-light">
-                        <span className="text-[0.9rem] min-[390px]:text-[1.1rem]">
+                        <span className="text-[0.9rem] min-[390px]:text-[1.1rem] min-[580px]:text-[1.5rem]">
                             Total Energy:
                         </span>
-                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem]">
+                        <span className="text-white/70 font-extralight text-[0.9rem] min-[390px]:text-[1rem] min-[580px]:text-[1.35rem]">
                             {totalEnergy} cal
                         </span>
                     </h2>
@@ -297,7 +299,7 @@ const OrderList = ({
                                 setIsNoOrder(true);
                             }
                         }}
-                        className="active:scale-95 transition text-shadow-md active:opacity-95 duration-150 green-gradient-to-b px-15 min-[390px]:px-20  p-2 rounded-2xl text-primary py-1 min-[390px]:py-2"
+                        className="active:scale-95 min-[580px]:text-[1.75rem] min-[580px]:px-25 min-[580px]:py-3 transition text-shadow-md active:opacity-95 duration-150 green-gradient-to-b px-15 min-[390px]:px-20  p-2 rounded-2xl text-primary py-1 min-[390px]:py-2"
                     >
                         Checkout
                     </button>

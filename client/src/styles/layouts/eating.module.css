@@ -12,6 +12,9 @@
     @media (min-width: 390px) {
         grid-template-rows: 15vh 47vh 4vh 25vh;
     }
+    @media (min-width: 390px) {
+        grid-template-rows: 15vh 47vh 4vh 25vh;
+    }
 }
 
 .temperature {

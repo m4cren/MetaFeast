@@ -65,13 +65,13 @@ const OrderMenu = ({
             )}
 
             <div
-                className={`${layout.head} flex  justify-between px-4 items-center`}
+                className={`${layout.head} flex  justify-between px-4 min-[580px]:px-12 items-center`}
             >
-                <h1 className="text-primary font-medium text-[1.7rem] min-[390px]:text-[1.8rem] text-shadow-md">
+                <h1 className="text-primary font-medium text-[1.7rem] min-[580px]:text-[3.8rem] min-[390px]:text-[1.8rem] text-shadow-md">
                     Hi, {name}
                 </h1>
 
-                <p className="text-primary ">
+                <p className="text-primary min-[580px]:scale-150">
                     {isOrderMore ? (
                         <LogOut
                             size={40}
@@ -87,13 +87,13 @@ const OrderMenu = ({
                     )}
                 </p>
             </div>
-            <div className={`${layout.greet}`}>
+            <div className={`${layout.greet} `}>
                 {isOrderMore ? (
-                    <p className="text-primary opacity-80 text-[0.9rem] min-[390px]:text-[1.1rem] font-extralight text-shadow-lg px-4 flex items-center">
+                    <p className="text-primary min-[580px]:text-[1.5rem]  min-[580px]:px-12 opacity-80 text-[0.9rem] min-[390px]:text-[1.1rem] font-extralight text-shadow-lg px-4 flex items-center">
                         Additional order
                     </p>
                 ) : (
-                    <p className="text-primary opacity-80 text-[0.9rem] min-[390px]:text-[1.1rem] font-extralight text-shadow-lg px-4 flex items-center">
+                    <p className="text-primary opacity-80 min-[580px]:text-[1.5rem] min-[580px]:px-12 text-[0.9rem] min-[390px]:text-[1.1rem] font-extralight text-shadow-lg px-4 flex items-center">
                         What do you want for <br />{" "}
                         {timeOfDay === "Madaling Araw" || timeOfDay === "Umaga"
                             ? "breakfast"
@@ -109,7 +109,7 @@ const OrderMenu = ({
                 )}
             </div>
             <div
-                className={`${layout.category} flex items-center gap-3 min-[390px]:gap-4   overflow-x-auto snap-proximity px-4`}
+                className={`${layout.category} flex items-center gap-3  min-[580px]:gap-5 min-[390px]:gap-4   overflow-x-auto snap-proximity px-4 min-[580px]:px-12`}
             >
                 <span onClick={() => setSelected("Appetizers")}>
                     <Category
@@ -169,13 +169,13 @@ const OrderMenu = ({
                 </span>
             </div>
             <div
-                className={`${layout.cuisine} flex flex-col items-center gap-3 min-[390px]:mt-4`}
+                className={`${layout.cuisine} flex flex-col items-center gap-3 min-[390px]:mt-4 min-[580px]:mt-8`}
             >
-                <h1 className="text-[0.9rem] font-light min-[390px]:text-[1.3rem] text-primary text-shadow-md">
+                <h1 className="text-[0.9rem] text-shadow-lg min-[580px]:text-[1.5rem] min-[580px]:mb-5 font-light min-[390px]:text-[1.3rem] text-primary text-shadow-md">
                     {selected}
                 </h1>
                 <div
-                    className={`${layout["cuisine-container"]} overflow-y-scroll pb-80 scroll-smooth [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
+                    className={`${layout["cuisine-container"]} overflow-y-scroll pb-80 scroll-smooth [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)] min-[580px]:[mask-image:linear-gradient(to_top,transparent,black_30%)] min-[580px]:[-webkit-mask-image:linear-gradient(to_top,transparent,black_30%)]`}
                 >
                     {selected === "Appetizers" ? (
                         <Appetizers
@@ -220,18 +220,18 @@ const OrderMenu = ({
                     ) : null}
                 </div>
             </div>
-            <div className="absolute left-1/2 bottom-[4%] min-[390px]:bottom-[7%] translate-x-[-50%] translate-y-[-50%] z-1">
+            <div className="absolute left-1/2 bottom-[5%] min-[580px]:bottom-[10%] min-[390px]:bottom-[8%] translate-x-[-50%] translate-y-[-50%] z-1">
                 <button
                     style={{ border: "solid 1px rgba(255,255,255,0.1)" }}
                     onClick={() => {
                         setIsBasket(true);
                     }}
-                    className="active:scale-95 active:opacity-95 transition duration-150 text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] "
+                    className="active:scale-95 active:opacity-95  min-[580px]:scale-150 transition duration-150 text-primary px-30 min-[390px]:py-3 py-2 bg-transparent backdrop-blur-[30px] [-webkit-backdrop-filter:blur(30px)] rounded-[10rem] "
                 >
                     <ShoppingBasket size={30} />
                 </button>
             </div>
-            <div className="w-full h-1/3 black-to-transparent-gradient absolute bottom-0 pointer-events-none"></div>
+            <div className="w-full h-1/4 black-to-transparent-gradient absolute bottom-0 pointer-events-none"></div>
         </div>
     );
 };
