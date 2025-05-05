@@ -397,7 +397,7 @@ const SalesAnalytics = () => {
                         )}
                     </button>
                 </div>
-                <div className="flex items-center justify-center w-full">
+                <div className="flex items-center justify-center w-[95%]">
                     {!chartType ? (
                         <Line
                             data={{
@@ -434,9 +434,6 @@ const SalesAnalytics = () => {
                                         },
                                     },
                                 },
-                                animation: {
-                                    duration: 0,
-                                },
                             }}
                         />
                     ) : (
@@ -461,7 +458,7 @@ const SalesAnalytics = () => {
                                     x: {
                                         ticks: {
                                             color: "#f5f5f575",
-                                            stepSize: 4,
+                                            stepSize: 2,
                                         },
                                         grid: {
                                             color: "#f5f5f520",
@@ -475,9 +472,6 @@ const SalesAnalytics = () => {
                                             color: "#f5f5f520",
                                         },
                                     },
-                                },
-                                animation: {
-                                    duration: 0,
                                 },
                             }}
                         />

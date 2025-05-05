@@ -363,7 +363,7 @@ const ServiceReview = ({
                           <form
                               id="reviewForm"
                               onSubmit={handleSubmit}
-                              className="w- min-[580px]:w-[80%] flex flex-col gap-1 items-center h-full"
+                              className="w-full min-[580px]:w-[80%] flex flex-col gap-1 items-center h-full"
                           >
                               <label
                                   htmlFor="email"
