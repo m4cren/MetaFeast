@@ -79,7 +79,7 @@ const AdminScene = ({
     // 'current_costumer_status': self.current_costumer_status
 
     return (
-        <Canvas>
+        <Canvas gl={{ powerPreference: "high-performance" }}>
             <CameraController
                 position={[camPos[0], camPos[1], camPos[2]]}
                 rotation={[Math.PI / camRot[0], camRot[1], camRot[2]]}

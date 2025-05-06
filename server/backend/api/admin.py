@@ -2,10 +2,10 @@ from flask import Blueprint, jsonify, request, json
 from werkzeug.security import  check_password_hash
 from werkzeug.utils import secure_filename
 from ..extensions import db
-from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews, CostumerHistory, Products
+from ..db_models import AdminCredentials, TableRequest, Costumer, Reviews, CostumerHistory, Products, Orders,  PendingPayments,Table
 from sqlalchemy import desc, asc
 import os
-from ..db_config import time_ago, save_data
+from ..db_config import time_ago, save_data, delete_data
 
 import random
 
@@ -317,3 +317,40 @@ def create_product():
           return jsonify({'msg': 'Sucess', 'status': True})
      else:
           return jsonify({'msg': 'Product already exist', 'status': False})
+     
+
+@admin.route('/admin/remove-costumer',methods=['POST'])
+def remove_costumer():
+     print('hellofbafbwohfoiaw')
+
+     data = request.json
+
+     costumer_name = data.get('name')
+     table_id = data.get('table_id')
+    
+     costumer_identity = Costumer.query.filter_by(costumer_name=costumer_name).first()
+     print(costumer_name)
+     costumer_orders = Orders.query.filter_by(costumer_name=costumer_name).first()
+     costumer_table = Table.query.filter_by(table_name=table_id).first()
+     
+     if costumer_identity:
+          print('fwiofhioahiwaiofhwahfiowahio')
+
+          try:
+               
+               delete_data(costumer_identity)
+          
+               delete_data(costumer_orders)
+               costumer_table.current_costumer_name = "AVAILABLE"
+               costumer_table.isAvailable = True
+               costumer_table.current_costumer_id = None
+               costumer_table.current_costumer_status = 'Available'
+
+               db.session.commit()
+
+               return jsonify({'msg':'Success', 'status':True})
+          except:
+               print('error')
+
+     else: 
+          return jsonify({'msg':'Failed', 'status':False})

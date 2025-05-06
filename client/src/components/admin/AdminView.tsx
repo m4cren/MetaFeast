@@ -181,7 +181,7 @@ const AdminView = ({ setIsLoading }: AdminViewProps) => {
         <>
             {isTableDetails && (
                 <div
-                    className={`${isTableDetailClose && "pop-close-animation"} fixed top-3 right-3 w-fit h-fit p-4 bg-gradient-to-t from-lightbrown to-darkbrown rounded-xl z-10 [box-shadow:5px_5px_4px_rgba(0,0,0,0.5)] pop-up-animation`}
+                    className={`${isTableDetailClose && "pop-close-animation"} fixed top-3 right-3 w-fit h-fit p-4 bg-gradient-to-t from-lightbrown to-darkbrown rounded-xl z-10 [box-shadow:5px_5px_4px_rgba(0,0,0,0.5),0_0_5px_rgba(0,0,0,0.5)_inset] pop-up-animation`}
                 >
                     <div className="flex flex-row justify-between items-center">
                         <h1 className="text-primary text-center mb-2 text-shadow-md">

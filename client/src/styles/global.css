@@ -107,6 +107,10 @@ body {
         -webkit-appearance: none;
         margin: 0;
     }
+    .input-number {
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
 }
 /* --color-darkred: #7a1a00;
 --color-lightred: #ad2500;
@@ -172,7 +176,7 @@ body {
 }
 
 .place-order-animation {
-    animation: moveToBasket 1.5s ease-in-out;
+    animation: moveToBasket 1s ease-in-out;
 }
 
 .left-scroll-animation {

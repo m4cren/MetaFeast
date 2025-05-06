@@ -63,7 +63,7 @@ const ProductDetails = ({
 
             setTimeout(() => {
                 setIsPlaceBasket(false);
-            }, 1450);
+            }, 1000);
         }
 
         setIsDenied(true);

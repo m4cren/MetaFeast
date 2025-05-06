@@ -14,7 +14,6 @@ interface PendingPayment {
 const PendingPayments = ({
     setIsPendingPayment,
     setSomeoneConfirmed,
-    someoneConfirmed,
 }: PendingPayment) => {
     const [isClose, setIsClose] = useState<boolean>(false);
     const [pendingPayments, setPendingPayments] = useState<

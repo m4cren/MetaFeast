@@ -90,11 +90,16 @@ def get_payment_receipt():
 
      costumer_id = get_jwt_identity()
 
-     query_costumer = Costumer.query.filter_by(id = costumer_id).first()
+     try:
 
-     costumer_receipt = PendingPayments.query.filter_by(costumer_name = query_costumer.costumer_name).first()
+          query_costumer = Costumer.query.filter_by(id = costumer_id).first()
+
+          costumer_receipt = PendingPayments.query.filter_by(costumer_name = query_costumer.costumer_name).first()
 
 
-     response = costumer_receipt.to_dict()
+          response = costumer_receipt.to_dict()
 
+          
+     except:
+          print('the user exitted or have been removed')
      return jsonify({'msg': 'Success', 'response': response, 'status': True})

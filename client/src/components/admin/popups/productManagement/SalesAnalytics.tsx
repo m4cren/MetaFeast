@@ -37,7 +37,7 @@ ChartJS.register(
 );
 
 const SalesAnalytics = () => {
-    const [chartType, setChartType] = useState<boolean>(true);
+    const [chartType, setChartType] = useState<boolean>(false);
     const { server } = useServerAddress();
     const [historyData, setHistoryData] = useState<HistoryType[]>([]);
     const [filteredHistoryData, setFilteredHistoryData] = useState<
@@ -291,24 +291,27 @@ const SalesAnalytics = () => {
                             <summary className="cursor-pointer">
                                 Select a year
                             </summary>
+
                             {availableYears.length === 0 && (
                                 <p className="text-[0.7rem]">
                                     No data in the past
                                 </p>
                             )}
-                            {availableYears.map((year, index) => (
-                                <li
-                                    key={index}
-                                    onClick={() => {
-                                        setFilter(year);
-                                        setIsFilter(false);
-                                        handleChangeFilter(year);
-                                    }}
-                                    className="text-[0.7rem] cursor-pointer list-none"
-                                >
-                                    {year}
-                                </li>
-                            ))}
+                            <div className="flex flex-col items-center w-full h-[7rem] overflow-y-scroll">
+                                {availableYears.map((year, index) => (
+                                    <li
+                                        key={index}
+                                        onClick={() => {
+                                            setFilter(year);
+                                            setIsFilter(false);
+                                            handleChangeFilter(year);
+                                        }}
+                                        className="text-[0.85rem] cursor-pointer list-none hover:underline"
+                                    >
+                                        {year}
+                                    </li>
+                                ))}
+                            </div>
                         </details>
                     </div>
                 )}
@@ -397,7 +400,7 @@ const SalesAnalytics = () => {
                         )}
                     </button>
                 </div>
-                <div className="flex items-center justify-center w-[95%]">
+                <div className="flex items-center justify-center w-[100%]">
                     {!chartType ? (
                         <Line
                             data={{
@@ -412,6 +415,7 @@ const SalesAnalytics = () => {
                                     },
                                 ],
                             }}
+                            height={120}
                             options={{
                                 color: "#f5f5f575",
 
@@ -434,12 +438,14 @@ const SalesAnalytics = () => {
                                         },
                                     },
                                 },
+                                responsive: true,
                             }}
                         />
                     ) : (
                         <Bar
                             data={{
                                 labels: Object.keys(groupedDate),
+
                                 datasets: [
                                     {
                                         label: "Revenue",
@@ -451,6 +457,7 @@ const SalesAnalytics = () => {
                                     },
                                 ],
                             }}
+                            height={120}
                             options={{
                                 color: "#f5f5f5",
 
@@ -473,6 +480,7 @@ const SalesAnalytics = () => {
                                         },
                                     },
                                 },
+                                responsive: true,
                             }}
                         />
                     )}

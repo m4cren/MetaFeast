@@ -7,6 +7,7 @@ import {
     Drumstick,
     HandCoins,
     ListFilter,
+    UserX,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -37,6 +38,8 @@ const TableRequestPopup = ({
     setTableSelected,
 }: Props) => {
     const [requestMessage, setRequestMessage] = useState<RequestType[]>([]);
+    const [isRemoveCostumer, setIsRemoveCostumer] = useState<boolean>(false);
+
     const [isClose, setIsClose] = useState<boolean>(false);
     const [currentCostumers, setCurrentCostumers] = useState<
         CurrentCostumerType[]
@@ -108,15 +111,116 @@ const TableRequestPopup = ({
         }
     };
 
+    const [isCostumerRemoveConfirmation, setIsCostumerRemoveConfirmation] =
+        useState<boolean>(false);
+    const [isRemoveConfirmClose, setIsRemoveConfirmClose] =
+        useState<boolean>(false);
+
+    const [costumerToRemove, setCostumerToRemove] = useState<{
+        name: string;
+        table_id: string;
+    }>({
+        name: "",
+        table_id: "",
+    });
+
+    const handleClose = () => {
+        setIsRemoveConfirmClose(true);
+        setTimeout(() => {
+            setIsCostumerRemoveConfirmation(false);
+            setIsRemoveConfirmClose(false);
+            setCostumerToRemove({
+                name: "",
+                table_id: "",
+            });
+        }, 200);
+    };
+
+    const handleRemoveCostumer = (name: string, tableID: string) => {
+        setIsCostumerRemoveConfirmation(true);
+        setCostumerToRemove({
+            name: name,
+            table_id: tableID,
+        });
+    };
+
+    const removeCostumer = async () => {
+        const headers = {
+            "Content-Type": "application/json",
+        };
+        try {
+            const response = await axios.post(
+                `${server}/admin/remove-costumer`,
+
+                costumerToRemove,
+
+                {
+                    headers,
+                },
+            );
+            console.log(response);
+            fetchCurrentCostumers();
+            getTableStatus();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className="fixed bg-black/40 backdrop-blur-[4px] w-full h-screen flex justify-center items-center pointer-events-auto">
+            {isCostumerRemoveConfirmation && (
+                <div className="fixed top-0 bg-black/40 z-10 bottom-0 left-0 right-0 flex items-center justify-center">
+                    <div
+                        className={`${isRemoveConfirmClose && "pop-close-animation"} pop-up-animation [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)] w-[45rem] h-fit items-center flex p-12 flex-col rounded-xl gap-6 brown-gradient-to-b`}
+                    >
+                        <h1 className="text-primary text-center text-[1.5rem] text-shadow-md ">
+                            Are you sure to remove '
+                            <strong>{costumerToRemove.name}</strong>' seated on{" "}
+                            <strong>{costumerToRemove.table_id}</strong>
+                        </h1>
+
+                        <div className="flex flex-row items-center gap-4">
+                            <button
+                                onClick={() => {
+                                    handleClose();
+                                }}
+                                style={{
+                                    border: "1px solid rgba(255,255,255,0.2)",
+                                }}
+                                className="rounded-lg cursor-pointer text-[rgba(255,255,255,0.7)] px-5 py-2"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => {
+                                    removeCostumer();
+                                    handleClose();
+                                }}
+                                className="rounded-lg cursor-pointer text-[rgba(255,255,255,0.7)] px-5 py-2 green-gradient-to-b"
+                            >
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <div
                 className={`${isClose && "pop-close-animation"} pop-up-animation px-8 py-2 w-[28rem] translate-x-[1rem] h-[55vh] bg-gradient-to-t from-darkbrown to-lightbrown rounded-tl-3xl rounded-bl-3xl [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_8px_rgba(0,0,0,0.3)]`}
             >
                 <div className="w-full border-b-3 border-white/20 p-4 flex flex-row items-center justify-center relative">
                     <h1 className="text-primary text-[1.3rem] text-center text-shadow-md ">
-                        Current Costumers
+                        {!isRemoveCostumer
+                            ? "Current Costumers"
+                            : "Remove Costumer"}
                     </h1>
+                    <button
+                        onClick={() => {
+                            setIsRemoveCostumer(!isRemoveCostumer);
+                        }}
+                        className="flex flex-col items-center text-primary absolute right-2 cursor-pointer"
+                    >
+                        {isRemoveCostumer ? <CircleX /> : <UserX />}
+                    </button>
                     <i className="text-primary cursor-pointer absolute left-2">
                         {" "}
                         <span onClick={() => setIsFilter(!isFilter)}>
@@ -193,6 +297,11 @@ const TableRequestPopup = ({
                     </i>
                 </div>
                 <ul className="py-8 flex flex-col gap-2 h-[25rem] overflow-y-scroll custom-scrollbar px-3">
+                    {isRemoveCostumer && (
+                        <p className="text-secondary text-center w-full -mt-5">
+                            You can only remove costumer that forgot to exit
+                        </p>
+                    )}
                     {currentCostumers.length !== 0 ? (
                         filterCurrentCostumer(filter).map(
                             (
@@ -215,18 +324,49 @@ const TableRequestPopup = ({
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="flex flex-row items-center gap-1">
-                                        <p className="text-[0.8rem] text-white/70 font-extralight">
-                                            {status}
-                                        </p>
-                                        {status === "Ordering" ? (
-                                            <ShoppingBasket size={20} />
-                                        ) : status === "Eating" ? (
-                                            <Drumstick />
-                                        ) : status === "Billing" ? (
-                                            <HandCoins />
-                                        ) : null}
-                                    </div>
+                                    {!isRemoveCostumer ? (
+                                        <div className="flex flex-row items-center gap-1">
+                                            <p className="text-[0.8rem] text-white/70 font-extralight">
+                                                {status}
+                                            </p>
+                                            {status === "Ordering" ? (
+                                                <ShoppingBasket size={20} />
+                                            ) : status === "Eating" ? (
+                                                <Drumstick />
+                                            ) : status === "Billing" ? (
+                                                <HandCoins />
+                                            ) : null}
+                                        </div>
+                                    ) : isRemoveCostumer &&
+                                      status === "Billing" ? (
+                                        <div
+                                            onClick={() => {
+                                                handleRemoveCostumer(
+                                                    costumer_name,
+                                                    current_table,
+                                                );
+                                            }}
+                                            className="flex flex-row items-center gap-1 cursor-pointer"
+                                        >
+                                            <p className="text-[0.8rem] text-white/70 font-extralight pr-2">
+                                                Kick?
+                                            </p>
+                                            <UserX color="red" />
+                                        </div>
+                                    ) : (
+                                        <div className="flex flex-row items-center gap-1">
+                                            <p className="text-[0.8rem] text-white/70 font-extralight">
+                                                {status}
+                                            </p>
+                                            {status === "Ordering" ? (
+                                                <ShoppingBasket size={20} />
+                                            ) : status === "Eating" ? (
+                                                <Drumstick />
+                                            ) : status === "Billing" ? (
+                                                <HandCoins />
+                                            ) : null}
+                                        </div>
+                                    )}
                                 </li>
                             ),
                         )
