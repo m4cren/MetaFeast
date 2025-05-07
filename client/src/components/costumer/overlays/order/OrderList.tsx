@@ -192,7 +192,7 @@ const OrderList = ({
                 </p>
             </div>
             <div
-                className={`${layout["order-list"]} min-[580px]:mt-15 pb-80 gap-2 min-[390px]:gap-3 min-[580px]:gap-6 pt-8 overflow-y-scroll [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
+                className={`${layout["order-list"]} min-[580px]:mt-15 pb-80 min-[580px]:pb-120 gap-2 min-[390px]:gap-3 min-[580px]:gap-6 pt-8 overflow-y-scroll [mask-image:linear-gradient(to_top,transparent,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent,black_90%)]`}
             >
                 {orders.map(({ food_name, price, quantity, img }, index) => (
                     <div

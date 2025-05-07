@@ -51,7 +51,6 @@ const PendingPayments = ({
     }, []);
 
     const handleConfirm = (id: string) => {
-        setSomeoneConfirmed((prev) => prev + 1);
         const dataToSend = {
             payment_id: id,
         };
@@ -77,6 +76,7 @@ const PendingPayments = ({
                     <i
                         onClick={() => {
                             setIsClose(true);
+                            setSomeoneConfirmed((prev) => prev + 1);
                             setTimeout(() => {
                                 setIsClose(false);
                                 setIsPendingPayment(false);

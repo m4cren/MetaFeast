@@ -158,9 +158,10 @@ const TableRequestPopup = ({
                     headers,
                 },
             );
-            console.log(response);
-            fetchCurrentCostumers();
-            getTableStatus();
+            if (response.data.status) {
+                fetchCurrentCostumers();
+                getTableStatus();
+            }
         } catch (error) {
             console.log(error);
         }

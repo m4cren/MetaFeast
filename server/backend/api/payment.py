@@ -99,7 +99,9 @@ def get_payment_receipt():
 
           response = costumer_receipt.to_dict()
 
-          
+          return jsonify({'msg': 'Success', 'response': response, 'status': True})
      except:
-          print('the user exitted or have been removed')
-     return jsonify({'msg': 'Success', 'response': response, 'status': True})
+          print('the user exitted or had been removed')
+
+          return jsonify({'msg': 'Success',  'status': True})
+    

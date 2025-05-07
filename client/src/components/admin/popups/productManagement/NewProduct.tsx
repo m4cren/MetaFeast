@@ -281,7 +281,7 @@ const NewProduct = () => {
                                 </label>
                                 <input
                                     type="file"
-                                    accept="image/png"
+                                    accept="image/png, image/svg+xml"
                                     id="image-upload"
                                     className="hidden"
                                     onChange={handleChangeImg}

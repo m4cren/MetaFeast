@@ -329,28 +329,27 @@ def remove_costumer():
      table_id = data.get('table_id')
     
      costumer_identity = Costumer.query.filter_by(costumer_name=costumer_name).first()
-     print(costumer_name)
-     costumer_orders = Orders.query.filter_by(costumer_name=costumer_name).first()
+     print(costumer_identity.costumer_name)
+     costumer_orders = Orders.query.filter_by(costumer_name=costumer_identity.costumer_name).first()
      costumer_table = Table.query.filter_by(table_name=table_id).first()
      
      if costumer_identity:
-          print('fwiofhioahiwaiofhwahfiowahio')
-
-          try:
-               
-               delete_data(costumer_identity)
+         
+          costumer_table.clear_costumer()
+          db.session.commit()
+          db.session.delete(costumer_orders)
+          db.session.commit()
+          db.session.delete(costumer_identity)
+          db.session.commit()
           
-               delete_data(costumer_orders)
-               costumer_table.current_costumer_name = "AVAILABLE"
-               costumer_table.isAvailable = True
-               costumer_table.current_costumer_id = None
-               costumer_table.current_costumer_status = 'Available'
+          
+         
+          
 
-               db.session.commit()
-
-               return jsonify({'msg':'Success', 'status':True})
-          except:
-               print('error')
+          
+          print('Succesfully removed')
+          return jsonify({'msg':'Success', 'status':True})
+        
 
      else: 
           return jsonify({'msg':'Failed', 'status':False})
