@@ -34,7 +34,7 @@ const ManageProducts = ({
     setSelectedCategory,
 }: ManageProductsProps) => {
     const [isUpdateConfirm, setIsUpdateConfirm] = useState<boolean>(false);
-
+    const [isImgLoading, setIsImgLoading] = useState<boolean>(true);
     const [isDeleteProduct, setIsDeleteProduct] = useState<boolean>(false);
 
     const [newImgPreview, setNewImgPreview] = useState<string | null>(null);
@@ -502,7 +502,12 @@ const ManageProducts = ({
                                 key={index}
                                 className="relative translate-x-[2px] bg-gradient-to-t [box-shadow:-1px_2px_3px_rgba(0,0,0,0.2)] from-darkbrown to-lightbrown  rounded-2xl w-[16rem] h-[16rem] "
                             >
-                                <div className="flex flex-col items-center justify-end h-full gap-1 ">
+                                {isImgLoading && (
+                                    <div className="img-loading"></div>
+                                )}
+                                <div
+                                    className={`${isImgLoading && "hidden"} flex flex-col items-center justify-end h-full gap-1 `}
+                                >
                                     <button
                                         onClick={() => {
                                             setSelectedProduct({
@@ -539,6 +544,7 @@ const ManageProducts = ({
                                     <img
                                         src={`/images/products/${img}`}
                                         className="absolute scale-65 -top-1/5 drop-shadow-xl"
+                                        onLoad={() => setIsImgLoading(false)}
                                     />
                                     <div className="flex flex-col items-center leading-6">
                                         <h1 className="text-primary text-[1.1rem]">

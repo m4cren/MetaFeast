@@ -14,7 +14,7 @@ const WaitingPaymentConfirmation = ({
 }: WaitingPaymentProps) => {
     const socket = useSocket();
     const name = localStorage.getItem("costumer_name");
-
+    const [isPayMongoLoading, setIsPayMongoLoading] = useState<boolean>(true);
     const [isPaying, setIsPaying] = useState(false);
     const url = localStorage.getItem("checkout_url");
 
@@ -45,14 +45,18 @@ const WaitingPaymentConfirmation = ({
 
             {isPaying && isPayMongoMethod && (
                 <div className="fixed flex flex-col gap-4 items-center top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[90vw] h-[90vh]">
+                    {isPayMongoLoading && (
+                        <div className="img-loading rounded-2xl"></div>
+                    )}
                     <iframe
                         src={`${localStorage.getItem("checkout_url")}`}
-                        className="w-full h-full rounded-2xl [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
+                        className={`${isPayMongoLoading && "hidden"} w-full h-full rounded-2xl [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]`}
+                        onLoad={() => setIsPayMongoLoading(false)}
                     ></iframe>
                     <button
                         style={{ border: "solid 1.5px rgba(255,255,255,0.2)" }}
                         onClick={() => setIsPaying(false)}
-                        className="text-primary w-[80%] [box-shadow:-1px_1px_4px_rgba(0,0,0,0.4)] flex items-center justify-center py-2 rounded-2xl "
+                        className={`${isPayMongoLoading && "hidden"} text-primary w-[80%] [box-shadow:-1px_1px_4px_rgba(0,0,0,0.4)] flex items-center justify-center py-2 rounded-2xl `}
                     >
                         <LogOut />
                     </button>

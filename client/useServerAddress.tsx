@@ -1,5 +1,5 @@
 const useServerAddress = () => {
-    const host = "192.168.137.181";
+    const host = "192.168.1.10";
     const port = 1555;
 
     const server = `http://${host}:8080`;

@@ -15,7 +15,7 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
     const [isClose, setIsClose] = useState<boolean>(false);
     const [reviews, setReviews] = useState<ReviewTypes[] | null>(null);
     const { server } = useServerAddress();
-
+    const [isProfileLoading, setIsProfileLoading] = useState<boolean>(true);
     const [isFilter, setIsFilter] = useState<boolean>(false);
 
     const [totalReviews, setTotalReviews] = useState<number>(0);
@@ -603,11 +603,19 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
                                     key={index}
                                     className="flex flex-row items-start list-none w-full min-h-[10rem] "
                                 >
-                                    <div className="flex flex-row items-center w-[40%] gap-3 ">
+                                    {isProfileLoading && (
+                                        <div className="img-loading"></div>
+                                    )}
+                                    <div
+                                        className={`${isProfileLoading && "hidden"} flex flex-row items-center w-[40%] gap-3 `}
+                                    >
                                         <img
                                             className="w-[4.5rem] h-[4.5rem] bg-darkbrown/50 rounded-md p-1"
                                             src={img_profile_url}
                                             alt=""
+                                            onLoad={() =>
+                                                setIsProfileLoading(false)
+                                            }
                                         />
                                         <div className="flex flex-col gap-1 w-[50%]  ">
                                             <div className="leading-5">
@@ -631,7 +639,9 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className=" w-[60%] flex flex-col gap-4">
+                                    <div
+                                        className={`${isProfileLoading && "hidden"} w-[60%] flex flex-col gap-4`}
+                                    >
                                         <div className="flex flex-row items-end gap-2">
                                             <div className="flex flex-row text-primary gap-2">
                                                 {ratings === 1 && (
