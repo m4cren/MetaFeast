@@ -52,7 +52,11 @@ def create_website():
             
            
         else:
-            print('PLease activate a virtual environment')
+
+            #CHANGE THE DATABASE HERE IF YOU ARE NOT A CONTRIBUTOR
+            app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///anonymous.db'
+
+            print('Anonymous virtual environment, PLEASE MAKE A VIRTUAL ENVIRONMENT')
     # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') PARA LANG TO SA PAG DEDEPLOY
 
     
