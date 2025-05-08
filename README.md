@@ -30,7 +30,7 @@ An interactive three dimensional user interface for dining restaurant
 14. Reviews storing in the backend --done
 15. Last table update back to available after costumer click the done button --done
 16. Add product management and sales analytics --done
-17. Check other device compatibility, client testing, debugging
+17. Check other device compatibility, client testing, debugging --done
 
     ---- Must Have ----
 
