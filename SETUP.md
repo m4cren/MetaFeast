@@ -1,4 +1,4 @@
-#SETTING UP OUR SYSTEM
+
 **BACKEND CONFIGURATION AND ACTIVATION**
 
 1. cd to the server and make your own virtual environment, python -m venv "venv_name"
