@@ -71,7 +71,7 @@ const PendingPayments = ({
             <div className="flex flex-col w-[55vw] h-[40rem] items-center">
                 <div className="pop-up-animation relative flex items-center justify-center bg-gradient-to-b from-darkbrown to-lightbrown rounded-2xl w-full h-[5rem] [box-shadow:0_0_5px_rgba(0,0,0,0.6)_inset,0_0_10px_rgba(0,0,0,0.5)] ">
                     <h1 className="text-primary text-[1.6rem] text-center">
-                        Pending costumer's payment
+                        Open Tabs
                     </h1>
                     <i
                         onClick={() => {

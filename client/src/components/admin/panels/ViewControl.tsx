@@ -55,21 +55,21 @@ const ViewControl = ({
                             className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-3 bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-[10px] rounded-2xl hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
                             <Cctv />
-                            <p className="text-[1.25rem] w-max">View 1</p>
+                            <p className="text-[1.25rem] w-max">Left View</p>
                         </button>
                         <button
                             onClick={handleViewTwo}
                             className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-3 backdrop-blur-[10px] rounded-2xl bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)] hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
                             <Cctv />
-                            <p className="text-[1.25rem] w-max">View 2</p>
+                            <p className="text-[1.25rem] w-max">Right View</p>
                         </button>
                         <button
                             onClick={handleDefaultView}
                             className=" w-fit text-white text-shadow-lg text-[2rem] gap-2 flex flex-row items-center p-3 bg-gradient-to-t from-darkbrown to-lightbrown [box-shadow:0_0_3px_rgba(0,0,0,0.4)_inset,0_0_8px_rgba(0,0,0,0.3)] backdrop-blur-[10px] rounded-2xl  hover:scale-105 transition duration-200 active:scale-95 cursor-pointer"
                         >
                             <Cctv />
-                            <p className="text-[1.25rem] w-max">Default</p>
+                            <p className="text-[1.25rem] w-max">Counter</p>
                         </button>
                     </>
                 ) : null}

@@ -84,7 +84,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
                                     <h2 className="text-xl font-medium text-shadow-md">
                                         Table {current_table}
                                     </h2>
-                                    <p className="text-sm font-extralight text-white/70 text-shadow-md">
+                                    <p className="text-sm font-medium text-white/70 text-shadow-md">
                                         {costumer_name}
                                     </p>
                                 </div>
@@ -99,7 +99,7 @@ const PendingOrderTab = ({ isTransitioning }: Props) => {
                                         View orders
                                     </button>
                                     {is_additional && (
-                                        <p className="text-[0.9rem] text-white/60 font-extralight">
+                                        <p className="text-[1rem] text-white/60 font-extralight">
                                             Additional
                                         </p>
                                     )}

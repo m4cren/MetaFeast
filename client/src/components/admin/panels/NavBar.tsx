@@ -27,7 +27,7 @@ const NavBar = ({
                     <UtensilsCrossed size={40} />
                 </p>
 
-                <p className="text-[1.5rem]">Metafeast</p>
+                <p className="text-[1.85rem] font-medium">Metafeast</p>
             </div>
 
             <div className="text-primary flex flex-row items-center justify-around w-[60%] text-shadow-md ">
@@ -35,7 +35,7 @@ const NavBar = ({
                     onClick={() => setIsTableRequest(true)}
                     className="cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
                 >
-                    Table Request
+                    Costumer Queue
                 </p>
 
                 <p
@@ -47,19 +47,19 @@ const NavBar = ({
                             {pendingPaymentNotification}
                         </span>
                     )}
-                    Pending Payment
+                    Open Tabs
                 </p>
                 <p
                     onClick={() => setIsProductManagement(true)}
                     className="cursor-pointer grow-1 text-center border-r-3 border-darkbrown/70 hover:text-white transition duration-100 hover:opacity-80"
                 >
-                    Products
+                    Sales & Stock
                 </p>
                 <p
                     onClick={() => setIsReview(true)}
                     className="cursor-pointer grow-1 text-center  hover:text-white transition duration-100 hover:opacity-80"
                 >
-                    Ratings
+                    Insights
                 </p>
             </div>
         </div>

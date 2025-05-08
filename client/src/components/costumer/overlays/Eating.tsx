@@ -66,7 +66,8 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
     }, []);
 
     useEffect(() => {
-        const cityID = 1712027; //Dolores Quezon PH
+        // const cityID = 1712027; //Dolores Quezon PH
+        const cityID = 1688812; //SanPabloCIty
         const request_weather = async (cityId: number) => {
             try {
                 console.log(weatherApiKey);
@@ -171,7 +172,7 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
                     <span className="text-lightbrown">&deg;</span>c
                 </h1>
                 <p className="text-[rgba(255,255,255,0.7)] font-extralight text-[1rem] min-[580px]:text-[1.5em]  min-[390px]:text-[1.1rem] -mt-2 text-shadow-md">
-                    Dolores Quezon
+                    San Pablo City
                 </p>
             </div>
 
