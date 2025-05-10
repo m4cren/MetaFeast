@@ -19,9 +19,9 @@ const DenyConfirmation = ({
 }: DenyConfirmationProps) => {
     return (
         <div className="bg-black/40 fixed w-full h-screen flex items-center justify-center z-10 cursor-copy">
-            <div className="bg-white/90 rounded-3xl w-[65vw] h-[20rem] flex flex-col items-center justify-center gap-8 pointer-events-auto pop-up-animation">
-                <CircleAlert size={50} />
-                <h1 className="text-4xl">
+            <div className="brown-gradient-to-b rounded-2xl w-[65vw] h-[20rem] flex flex-col items-center justify-center gap-8 pointer-events-auto pop-up-animation">
+                <CircleAlert size={75} color={"white"} />
+                <h1 className="text-4xl text-primary">
                     Please select the appropriate reason:
                 </h1>
 
@@ -35,7 +35,7 @@ const DenyConfirmation = ({
                                 "Someone has already occupied the table",
                             );
                         }}
-                        className="px-4 py-2 font-light text-primary text-[1.1rem] bg-gradient-to-t text-shadow-md from-darkbrown to-lightbrown rounded-2xl cursor-pointer [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
+                        className="white-gradient py-2 px-4  font-medium text-primary-dark text-[1.1rem]  rounded-2xl cursor-pointer [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
                     >
                         Someone has already occupied the table
                     </button>
@@ -48,7 +48,7 @@ const DenyConfirmation = ({
                                 "The table appears unoccupied (no person detected)",
                             );
                         }}
-                        className="px-4 py-2 font-light text-primary text-[1.1rem] bg-gradient-to-t text-shadow-md from-darkbrown to-lightbrown rounded-2xl cursor-pointer [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
+                        className="white-gradient px-4 py-2 font-medium text-primary-dark text-[1.1rem]  rounded-2xl cursor-pointer [box-shadow:-2px_2px_5px_rgba(0,0,0,0.4)]"
                     >
                         The table appears unoccupied (no person detected)
                     </button>

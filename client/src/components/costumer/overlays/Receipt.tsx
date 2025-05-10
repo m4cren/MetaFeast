@@ -95,8 +95,6 @@ const Receipt = ({ setCamPos, setCamRot }: ReceiptProps) => {
                     },
                 );
 
-                console.log(response.data.status);
-
                 if (response.data.status) {
                     socket?.emit("notify-costumer-exit");
                 }

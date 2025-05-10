@@ -53,7 +53,6 @@ const Reviews = ({ setIsReview }: ReviewProps) => {
             const response = await axios.get(`${server}/admin/fetch-reviews`, {
                 headers,
             });
-            console.log(response.data.reviews);
 
             if (response.data.reviews) {
                 setReviews(response.data.reviews);

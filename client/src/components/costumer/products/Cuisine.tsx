@@ -11,7 +11,9 @@ const Cuisine: React.FC<CuisineProps> = ({
     const [isLoading, setIsLoading] = useState<boolean>(true);
     return (
         <div className="active:scale-95 active:opacity-95 transition duration-150 [box-shadow:2px_2px_3px_rgba(0,0,0,0.25)_inset] flex flex-col items-center w-[8.75rem] h-[8.75rem] min-[390px]:w-[10rem] min-[390px]:h-[10rem]  min-[580px]:w-[18rem] min-[580px]:h-[18rem] overflow-y-hidden brown-gradient-to-b rounded-xl shadow-md ">
-            {isLoading && <div className="img-loading "></div>}
+            {isLoading && (
+                <div className="img-loading [box-shadow:2px_2px_3px_rgba(0,0,0,0.25)_inset]"></div>
+            )}
             <div className={``}>
                 <img
                     className={`${isLoading && "hidden"} drop-shadow-lg w-[7rem] min-[390px]:w-[8rem] aspect-square min-[580px]:w-[14rem]`}

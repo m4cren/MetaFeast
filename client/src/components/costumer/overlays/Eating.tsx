@@ -70,8 +70,6 @@ const Eating = ({ setPhase, setCamPos, setCamRot }: EatingProps) => {
         const cityID = 1688812; //SanPabloCIty
         const request_weather = async (cityId: number) => {
             try {
-                console.log(weatherApiKey);
-
                 if (weatherApiKey) {
                     const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${weatherApiKey}`;
 

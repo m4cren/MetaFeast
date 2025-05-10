@@ -30,11 +30,6 @@ export const TableStatusProvider = ({
             headers.Authorization = `Bearer ${token}`;
         }
 
-        try {
-        } catch (error) {
-            console.log("error");
-        }
-
         const response = await axios.get(`${server}/get-table-status`, {
             headers,
             withCredentials: false,

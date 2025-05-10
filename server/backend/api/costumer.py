@@ -19,7 +19,7 @@ def costumer_register():
     is_costumer = Costumer.query.filter_by(costumer_name=name).first()
 
     if is_costumer:
-        print("Name already taken")
+        
         return jsonify({"message": f"Someone here named { name}", "status": False})
     else:
         new_costumer = Costumer(costumer_name=name)

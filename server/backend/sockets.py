@@ -34,7 +34,7 @@ def table_status(data):
         'tableID': tableID
     }
 
-    print(response)
+
 
     emit('notify-admin', response, broadcast=True)
 
@@ -49,7 +49,6 @@ def accept_request(data):
     current_costumer.update_to_ordering()
     costumerID = current_costumer.id
 
-    print(f'{costumer_name} is accepted to seat on table {selected_table}')
 
     change_table_status = Table.query.filter_by(table_name = selected_table).first()
     change_table_status.isAvailable = False
@@ -81,7 +80,7 @@ def accept_request(data):
     current_costumer_to_deny = Costumer.query.filter_by(costumer_name = costumer_name).first()
     delete_data(current_costumer_to_deny)
 
-    print(message)
+ 
     response = {
         'costumer_name': costumer_name,
         'selected_table': selected_table,
@@ -193,15 +192,7 @@ def billing_request(data):
   
     payment_id = generate_unique_payment_id()
     payment_type = data.get('payment_type')
-    print('==========================================')
-    print(f'Costumer Name: {costumer_name}')
-    print(f'Payment ID: {payment_id}')
-    print(f'Table ID: {table_id}')
-    print(f'Total Price: {total_price}')
-    print('Orders: ')
-    for order in orders:
-        print(f'{order['food_name']}:   {order['quantity']}       {order['price']}')
-    print('=========================================')
+   
    
     query_existing_payment = PendingPayments.query.filter_by(costumer_name = costumer_name).first()
 
@@ -257,7 +248,6 @@ def confirm_payment(data):
 
     db.session.commit()
 
-    print(costumer_to_confirm)
 
     response = {
         'costumer_name': costumer_to_confirm.costumer_name,
@@ -275,36 +265,9 @@ def notify_the_admin():
 @socketio.on('notify-costumer-exit')
 def notify_costumer_exit():
 
-    print('someone exit')
+  
 
     emit('notify-admin-costumer-exit', broadcast=True)
-
-    # food_name: string;
-    # cusine_category: string;
-    # calories: number;
-    # quantity: number;
-    # product_price: number;
-    # waiting_time: number;
-    # short_desc: string;
-    # full_details: string;
-
-
-# category = db.Column(db.String(64), nullable = False)
-#     quantity = db.Column(db.Integer, default = 0)
-#     food_name = db.Column(db.String(64), nullable = False)
-#     food_price = db.Column(db.Integer, nullable = False)
-#     calories = db.Column(db.Integer, default = 0)
-#     waiting_time = db.Column(db.Integer, nullable = False)
-#     img = db.Column(db.String(124), nullable = False)
-#     description = db.Column(db.String(246), nullable = False)
-#     details = db.Column(db.Text, nullable = False)
-#     type = db.Column(db.String(64), nullable = True)
-#     ratings = db.Column(db.Float, nullable = False, default = 0)
-#     total_ratings = db.Column(db.Integer, default = 0, nullable = False)
-#     total_orders = db.Column(db.Integer, default = 0, nullable =False)
-
-
-
 
 
 
@@ -316,7 +279,7 @@ def handle_update_product(data):
 
 @socketio.on('handle-delete-product')
 def handle_update_product(data):
-    print(data)
+    
 
   
     food_name_orig = data.get('food_name')

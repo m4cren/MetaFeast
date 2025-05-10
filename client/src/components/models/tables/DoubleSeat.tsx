@@ -36,7 +36,6 @@ const DoubleSeat: React.FC<AvailableTable & Props> = ({
 
     useEffect(() => {
         if (!scene) {
-            console.log("no table");
             return;
         }
 

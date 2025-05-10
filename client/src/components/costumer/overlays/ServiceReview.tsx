@@ -81,8 +81,6 @@ const ServiceReview = ({
 
                     dataToSend,
                 );
-
-                console.dir(response.data);
             } catch (error) {
                 console.log(error);
             }

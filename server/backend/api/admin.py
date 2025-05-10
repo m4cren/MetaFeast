@@ -21,10 +21,10 @@ def admin_login():
      admin = AdminCredentials.query.first()
 
      if check_password_hash(admin.admin_password, password):
-          print('success')
+         
           return jsonify({'message': 'Success', 'status': True})
      else:
-          print('error')
+      
           return jsonify({'message': 'Wrong password', 'status': False})
      
 @admin.route('/admin/table-request', methods=['GET'])
@@ -53,7 +53,7 @@ def get_current_costumers():
 
      try:
           current_costumers = Costumer.query.filter(Costumer.current_table != 'Undecided').order_by(desc(Costumer.id)).all()
-          print(current_costumers)
+        
           response = [{
                'costumer_name': costumer.costumer_name,
                'current_table': costumer.current_table,
@@ -64,7 +64,7 @@ def get_current_costumers():
           return jsonify({'msg': 'Success', 'current_costumers': response})
      
      except:
-          print('error')
+       
           return jsonify({'msg': 'error'})
 
      # const dataToSend = {
@@ -106,14 +106,7 @@ def receive_rating():
 
 
 
-     print('===================================================================')
-     print(f'Email: {email}')
-     print(f'Name: {name}')
-     print(f'Comment: {comment}')
-     print(f'Ratings: {ratings}')
-     print(f'total_spend: {total_spend}')
-     print(f'order_items: {order_items}')
-     
+    
      for x in product_ratings:
 
           rated_product = Products.query.filter_by(food_name = x['food_name']).first()
@@ -129,8 +122,7 @@ def receive_rating():
           
           
 
-          print(f'{x['food_name']} : Ratings: {x['rating']}')
-     print('===================================================================')
+  
 
      db.session.commit()
 
@@ -238,7 +230,7 @@ def update_product():
 
                if new_img_file :
                     
-                    print(os.getcwd())
+               
                    
                     filename = secure_filename(new_img_file.filename)
                     project_root = os.path.abspath(os.path.join(os.getcwd(), '..'))
@@ -248,7 +240,7 @@ def update_product():
                     file_path = os.path.join(UPLOAD_FOLDER, filename)
                     new_img_file.save(file_path)
                     selected_product.img = new_img_file.filename
-                    print(f'success changing image of {food_name} to {new_img_file.filename}')
+                 
 
 
                selected_product.food_name = food_name
@@ -289,7 +281,7 @@ def create_product():
      if not existing_product:
           if new_img_file :
                     
-               print(os.getcwd())
+               
                    
                filename = secure_filename(new_img_file.filename)
                project_root = os.path.abspath(os.path.join(os.getcwd(), '..'))
@@ -299,7 +291,7 @@ def create_product():
                file_path = os.path.join(UPLOAD_FOLDER, filename)
                new_img_file.save(file_path)
               
-               print(f'success changing image of {food_name} to {new_img_file.filename}')
+              
 
           new_product = Products(
                category = cusine_category,
@@ -321,7 +313,7 @@ def create_product():
 
 @admin.route('/admin/remove-costumer',methods=['POST'])
 def remove_costumer():
-     print('hellofbafbwohfoiaw')
+    
 
      data = request.json
 
@@ -329,7 +321,7 @@ def remove_costumer():
      table_id = data.get('table_id')
     
      costumer_identity = Costumer.query.filter_by(costumer_name=costumer_name).first()
-     print(costumer_identity.costumer_name)
+
      costumer_orders = Orders.query.filter_by(costumer_name=costumer_identity.costumer_name).first()
      costumer_table = Table.query.filter_by(table_name=table_id).first()
      
@@ -347,7 +339,7 @@ def remove_costumer():
           
 
           
-          print('Succesfully removed')
+       
           return jsonify({'msg':'Success', 'status':True})
         
 

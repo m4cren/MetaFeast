@@ -63,9 +63,7 @@ const useSelectTableControl = ({
 
     const frame_sec = 200;
 
-    const doNothing = useCallback(() => {
-        console.log("hehe");
-    }, []);
+    const doNothing = useCallback(() => {}, []);
 
     const handleDownFloor = () => {
         setIsTransitioning(true);

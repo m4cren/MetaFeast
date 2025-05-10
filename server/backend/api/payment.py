@@ -45,10 +45,10 @@ def get_pending_payments():
           pending_payments = PendingPayments.query.filter((PendingPayments.status == 'Unconfirmed') & (PendingPayments.payment_type != 'Undefined')).order_by(desc(PendingPayments.id)).all()
 
           response = [request.to_dict() for request in pending_payments]
-          print(response)
+         
           return jsonify({'msg': 'success', 'status': True, 'pending_payment_requests': response})
      except:
-          print('error')
+         
           response = None
           return jsonify({'msg': 'failed', 'status': False, 'pending_payment_requests': response})
      
@@ -62,14 +62,14 @@ def payment_request():
 
      price = data.get('price')
 
-     print(costumer_name, 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXx')
+     
 
 
 
 
 
      payment_item = PendingPayments.query.filter_by(costumer_name = costumer_name).first()
-     print(payment_item)
+   
 
      if(payment_item):
           payment_id = payment_item.payment_id
@@ -101,7 +101,7 @@ def get_payment_receipt():
 
           return jsonify({'msg': 'Success', 'response': response, 'status': True})
      except:
-          print('the user exitted or had been removed')
+    
 
           return jsonify({'msg': 'Success',  'status': True})
     
