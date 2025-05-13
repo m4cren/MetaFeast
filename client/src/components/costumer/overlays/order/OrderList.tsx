@@ -23,7 +23,7 @@ const OrderList = ({
 }: OrderListProps) => {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [totalEnergy, setTotalEnergy] = useState<number>(0);
-
+    const [isImgLoading, setIsImgLoading] = useState<boolean>(true);
     const [isTrash, setTrash] = useState<boolean>(false);
     const [isCheckoutConfirmation, setIsCheckoutConfirmation] =
         useState<boolean>(false);
@@ -197,16 +197,26 @@ const OrderList = ({
                 {orders.map(({ food_name, price, quantity, img }, index) => (
                     <div
                         key={index}
-                        className="px-2 brown-gradient-to-b rounded-2xl shadow-md w-[88%] [box-shadow:2px_2px_3px_rgba(0,0,0,0.3)_inset] h-24 min-[580px]:h-45 min-[390px]:h-28 mx-auto flex flex-row items-center"
+                        className={`${isImgLoading ? "px-0" : "px-2"} brown-gradient-to-b rounded-2xl shadow-md w-[88%] [box-shadow:2px_2px_3px_rgba(0,0,0,0.3)_inset] h-24 min-[580px]:h-45 min-[390px]:h-28 mx-auto flex flex-row items-center`}
                     >
-                        <div className="w-[45%] scale-75 min-[390px]:scale-85 min-[580px]:scale-60">
+                        {isImgLoading && (
+                            <div
+                                className={`img-loading w-full h-full [box-shadow:2px_2px_3px_rgba(0,0,0,0.3)_inset]`}
+                            ></div>
+                        )}
+                        <div
+                            className={`${isImgLoading && "hidden"} w-[45%] scale-75 min-[390px]:scale-85 min-[580px]:scale-60`}
+                        >
                             <img
                                 className="drop-shadow-lg"
                                 src={`/images/products/${img}`}
                                 alt=""
+                                onLoad={() => setIsImgLoading(false)}
                             />
                         </div>
-                        <div className="flex flex-col w-1/2 items-center min-[580px]:items-start gap-2 min-[580px]:gap-6">
+                        <div
+                            className={`${isImgLoading && "hidden"} flex flex-col w-1/2 items-center min-[580px]:items-start gap-2 min-[580px]:gap-6`}
+                        >
                             <h1 className="leading-5 text-primary min-[580px]:text-[2rem] text-[1.15rem] min-[390px]:text-[1.3rem] w-full text-shadow-md">
                                 {food_name}
                             </h1>

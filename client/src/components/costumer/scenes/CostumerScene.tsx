@@ -72,6 +72,9 @@ const CostumerScene = ({
         socket?.on("is-costumer-denied", (_) => {
             getTableStatus();
         });
+        socket?.on("notify-admin-costumer-exit", (_) => {
+            getTableStatus();
+        });
 
         return () => {
             socket?.off("is-table-accepted");

@@ -14,6 +14,7 @@ import axios from "axios";
 import useServerAddress from "../../../../useServerAddress";
 import { useTableStatus } from "../../../contexts/TableStatusContext";
 import { CurrentCostumerType } from "../../../types/types";
+import { useSocket } from "../../../contexts/SocketContext";
 
 interface Props {
     setIsTableRequest: React.Dispatch<React.SetStateAction<boolean>>;
@@ -143,7 +144,7 @@ const TableRequestPopup = ({
             table_id: tableID,
         });
     };
-
+    const socket = useSocket();
     const removeCostumer = async () => {
         const headers = {
             "Content-Type": "application/json",
@@ -161,6 +162,7 @@ const TableRequestPopup = ({
             if (response.data.status) {
                 fetchCurrentCostumers();
                 getTableStatus();
+                socket?.emit("notify-costumer-exit");
             }
         } catch (error) {
             console.log(error);
