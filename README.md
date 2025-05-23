@@ -3,7 +3,7 @@
 An interactive three dimensional user interface for dining restaurant
 -- 09/03/2025 -- Finished
 
-"We're building MetaFeast, a digital restaurant ordering system with real-time updates for admins and costumers."
+"We're building MetaFeast, a digital restaurant ordering system with real-time updates for admins and customers."
 
 
 ## Technology Stacks
