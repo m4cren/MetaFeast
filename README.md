@@ -11,7 +11,8 @@ An interactive three dimensional user interface for dining restaurant
 - **Frontend**: ReactJs, Typescript, Tailwindcss, React Three Fiber (ThreeJs)
 - **Backend**: Python, Flask (Python Web Framework), Socket.io (Websockets), JWT (Token-based Authentication), MySQL (Database)
 - **Integrated API** : PayMongo API (Payment Method), OpenWeatherMap API (Weather temperature), AvatarPlaceholder API (Random profile picture)
-- **Others**: Figma, Sketch Up, Blender, Adobe Photoshop, PixelLab
+- **Others** : FramerMotion, html2canvas, ChartJs
+- **Tools**: Figma, Sketch Up, Blender, Adobe Photoshop, PixelLab
 
 ---- ACCOMPLISH ----
 
